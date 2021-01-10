@@ -38,8 +38,8 @@
  
 ### 3. 자료수집 참고사이트
 * 디자인 레이아웃 시안 사이트 
-[미리캔버스](https://www.miricanvas.com/design,"miricanvas link")
+[미리캔버스] : <https://github.com/woungjin/PetTogether.git>
 
 ### 4. Git을 통한 데이터 공유
-
+<https://github.com/woungjin/PetTogether.git>
 
