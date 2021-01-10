@@ -11,8 +11,9 @@
 | **Development**  | 2020/01/08 ~ 01/09 | | | 
 
 
+LISTS
 -----------------
-1. 주제의 방향성
+-[x] 주제의 방향성
 2. 각 페이지 디자인 레이아웃 시안
 3. 필요한 기능들의 구성 및 자료수집
 4. Git을 통한 데이터 공유
@@ -40,8 +41,8 @@
  
 ### 3. 자료수집 및 참고사이트
 * 디자인 레이아웃 시안 사이트 
-[미리캔버스] : <https://github.com/woungjin/PetTogether.git>
+[미리캔버스] (https://github.com/woungjin/PetTogether.git)
 
 ### 4. Git을 통한 데이터 공유
-<https://github.com/woungjin/PetTogether.git>
+[GitHub](https://github.com/woungjin/PetTogether.git)
 
