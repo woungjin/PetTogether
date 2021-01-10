@@ -1,4 +1,8 @@
 # PetTogether
+<div align=center> 
+ <img width="150 src=""> </img>
+                       </div>
+       
 
 
 # ＊ 기획 (1/6 ~ 1/11)
