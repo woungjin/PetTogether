@@ -1,9 +1,6 @@
-# PetTogether
 <div align=center> 
  <img width="150" src="https://user-images.githubusercontent.com/74219139/104112803-7c14a800-5336-11eb-8326-9f69c35b41e0.PNG"> </img>
 </div>
-       
-<img width="150" src="https://user-images.githubusercontent.com/74219139/103889209-62524580-5129-11eb-9542-98ea94bc21db.PNG"></img>
 
 
 # ＊ 기획 (1/6 ~ 1/11)
