@@ -11,7 +11,6 @@
 | **Development**  | 2020/01/18 ~ 01/28 | |
 
 
-<span style="color:blue">파란 색</span>
 > ## ＊ **기획**
 TASK LISTS
 -----------------
@@ -27,7 +26,7 @@ TASK LISTS
 
 ### 2. 레이아웃 시안 
  
-- [x] HOME 디자인 (Header, footer) <- "이진웅"
+> + - [x] HOME 디자인 (Header, footer) <- "이진웅"
 
 - [x] MAP을 활용한 시설 위치를 알려줄 화면 디자인 <- 권대영 - 
 
@@ -48,7 +47,6 @@ TASK LISTS
 ### 4. Git을 통한 데이터 공유
 [GitHub](https://github.com/woungjin/PetTogether.git)
 
-<span style="color:red">붉은 색</span>
 
 
 > ## ＊ **디자인**
