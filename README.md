@@ -48,17 +48,13 @@ TASK LISTS
 [GitHub](https://github.com/woungjin/PetTogether.git)
 
 <br/>
+<br/>
+
 
 
 
 > ## ＊ **디자인**
-
-
-
-> ## ＊ **
 TASK LISTS**
-
-
 - - -  
  - [ ] __DB 테이블 구성(ER다이어그램)__ <br/>
   └> __메인화면, 계시글(카테고리), 리뷰(댓글작성 및 확인), 지도(api & 검색), 회원가입 및 로그인 (데이터분석 활용)__ <br/>
