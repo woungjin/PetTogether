@@ -12,7 +12,7 @@
 
 
 > ## ＊ **기획**
-TASK LISTS
+<span style="color:red">TASK LISTS</span>
 -----------------
 - [x] 주제의 방향성
 - [x] 각 페이지 디자인 레이아웃 시안
