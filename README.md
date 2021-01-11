@@ -11,7 +11,7 @@
 | **Development**  | 2020/01/18 ~ 01/28 | |
 
 
-
+<span style="color:blue">파란 색</span>
 > ## ＊ **기획**
 TASK LISTS
 -----------------
