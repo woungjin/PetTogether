@@ -26,7 +26,7 @@ TASK LISTS
 
 ### 2. 레이아웃 시안 
  
-> + - [x] HOME 디자인 (Header, footer) <- "이진웅"
+- [x] HOME 디자인 (Header, footer) <- "이진웅"
 
 - [x] MAP을 활용한 시설 위치를 알려줄 화면 디자인 <- 권대영 - 
 
