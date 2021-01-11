@@ -36,7 +36,8 @@ TASK LISTS
 
 - [x] 지도 페이지 디자인 및 API 정보 수집 (All)
 
-- [ ] DB 구성 (All)
+- [x] DB 구성 (All)
+   └> 찜목록 구성해야 함 
 
 * 디자인 레이아웃 시안 사이트 
 [미리캔버스] (https://github.com/woungjin/PetTogether.git) 
