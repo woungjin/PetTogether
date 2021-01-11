@@ -47,7 +47,7 @@
 ### 4. Git을 통한 데이터 공유
 [GitHub](https://github.com/woungjin/PetTogether.git)
 
-- - - 
+<br/>
 
 
 
