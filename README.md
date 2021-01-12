@@ -7,7 +7,7 @@
 | **TYPE** | **DATE** | **Contents** |
 |:---:|:---:|:---:|
 |  **Planning** | 2020/01/06 ~ 01/11 | |
-|  **Design** | 2020/01/12 ~ 01/17 | | 
+|  **Design** | 2020/01/12 ~ 01/16 | | 
 | **Development**  | 2020/01/18 ~ 01/28 | |
 
 
@@ -36,7 +36,8 @@ TASK LISTS
 
 - [x] 지도 페이지 디자인 및 API 정보 수집 (All)
 
-- [ ] DB 구성 (All)
+- [x] DB 구성 (All) <br/>
+   └> 찜목록 구성해야 함 
 
 * 디자인 레이아웃 시안 사이트 
 [미리캔버스] (https://github.com/woungjin/PetTogether.git) 
