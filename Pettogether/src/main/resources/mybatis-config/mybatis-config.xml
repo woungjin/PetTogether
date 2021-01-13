@@ -6,6 +6,6 @@
 <!-- mapper에서 사용할 객체의 경로를 변수로 생성한다 -->
 <configuration>
  	<typeAliases>
-
+		<!-- <typeAlias type="com.pet.command" alias="VO"/>	 -->
  	</typeAliases>   
 </configuration>
