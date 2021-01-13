@@ -213,6 +213,182 @@ select {
 
 
 
+/* 김계의 그 뭐야 그거 보드게시판 css */
+ 
+        section{display: block;} 
+       
+    
+       
+    
+        .content-img .list:hover ,
+        .content-img .list-img:hover {opacity: 0.5;}  
+        .content content-img{text-align: center; padding: 10px;  }
+        .content content-img span {display: block;}
+        
+    
+        .list{padding: 10px; }
+        .list .list-content {overflow: hidden; }
+
+
+        /*여기는 카테고리*/
+        
+
+        .category ul {text-align: center ; background-color: white; margin: 0; overflow: hidden; background-color: rgb(250, 186, 91);}
+        .category ul li {padding: 10px 20px;display: inline-block; border: 1px solid white; float: left;  padding: 15px 100px}
+        .category ul li a{color: white; font-weight: 400; text-decoration: none; font-weight: 900; font-size: 20px;}
+        .category ul li:hover{background-color:rgb(220,125,30);}   
+        .category {text-align: center; margin: 0 auto; display: inline-block;}
+        .category_set{margin: 0 auto ; text-align: center; }
+
+        .content-review{overflow: hidden;}
+        .content-left{float: left; }
+		.list-img img{width : 178px; height : 210px;}    
+        
+
+        .list p {margin: 0; display: block;}
+        
+        #star_grade a{
+            text-decoration: none;
+            color: red;
+        }
+        #star_grade a.on{
+            color: red;
+        }
+        .good img ,.bad img {
+            width: 20px ;height: 20px;
+        }
+
+        .good{display: none;}
+        .content-img img{position: relative;}
+        .bad img , .good img{width: 20px; height: 20px;}
+        .good{position: absolute; top: 16px; left: 36px;}
+        .bad{position: absolute; top:16px ; left: 36px;}
+        
+        
+        
+ /*===========================================================*/
+ /*김계환읜 보드 딕테일 =========================*/
+ 
+ 
+ .section-facebook {
+            border-right: 1px solid #cccccc ;
+            border-left: 1px solid #cccccc;
+        }
+
+        .location {border-bottom: 1px solid black; font-size: 40px; }
+        .title-inner .profile{
+           
+            left: 0px;
+            top: 0px;
+        }
+        .title-inner .title{
+            padding-left: 60px;
+        }
+
+       .content-inner{
+            padding: 10px 0;
+        }
+
+       
+        .title-inner p ,.contetn-inner p{margin: 0;}
+      
+       
+        .img-inner{text-align: center;}
+        .img-inner img {width: 985px; height: 400px; }
+
+       
+     
+
+        
+
+        .mid-review-content{overflow: hidden; text-align: center; margin: 20px 0 ;}
+        .mid-review-content p {
+          margin: 0;
+          font-size: 20px;
+        }
+        .mid-review-total{text-align: right;}
+        .mid-review-star{text-align: center;}
+        .mid-review-avg{text-align: left;}
+    
+
+
+
+
+        /*댓글*/
+        .reply-wrap {
+	background-color: white;
+	padding: 15px;
+	border: 1px solid #ddd;
+	position: relative; /*부모에 relative*/
+}
+
+.reply-wrap .reply-image {
+	position: absolute; /*자식에서 absolute로 부모요소 위치로 조정*/
+	left: 15px;
+	top: 15px;
+}
+
+.reply-wrap .reply-content {
+	padding-left: 60px;
+}
+/*부트스트랩의 form-control 조정 */
+.reply-content>.form-control {
+	resize: vertical; /*세로로만 조정가능*/
+	width: 94%; /*최대 100%*/
+	min-height: 80px; /*최대 넓이*/
+    margin-bottom: 10px;
+    
+}
+
+.reply-input>.form-control {
+	width: 200px;
+	margin-bottom: 5px;
+}
+
+.reply-group {
+	overflow: hidden;
+}
+
+.reply-input {
+	float: left;
+}
+
+.reply-group .right {
+	float: right;
+}
+
+/*댓글 영역*/
+.reply-group small {
+	margin-left: 10px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.reply-group small, .reply-group strong {
+	float: left;
+}
+
+.reply-group a {
+	text-decoration: none;
+	color: #777;
+	float: right;
+}
+/*댓글창 포커스시 서서히 보이기 */
+.reply-content textarea {
+	height: 50px;
+	transition: height .4s ease-in-out;
+}
+
+.reply-content textarea:focus {
+	height: 150px;
+}
+
+/*페이지 네이션 디자인 ( 김계환 )*/
+.page-nav{text-align: center;}
+.page-nav ul li a{color: black;}
+
+
+
 
 
 
