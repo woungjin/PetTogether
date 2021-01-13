@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--
+	 	1. 핸들러 어댑터, 핸들러맵핑 관련 작업을 내부적으로 처리. mvc에서 제공하는 어노테이션을 사용
+		2. header, footer를 나눌 tiles라이브러리 및 tiles경로 설정
+		3. 패지지마다 어노테이션을 통하게 해줄 Bean을 생성 
+	 -->
+	
+	
+	
+	<annotation-driven />
+	<!-- 정적파일 맵핑 설정 -->	
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- tiles -->
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles/tiles.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	
+
+		<!-- 뷰 합성기 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2"/>
+	</beans:bean>
+	
+	<!-- 각 패키지의 Bean만들어주는 -->
+	<context:component-scan base-package="com.pet.*">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+
+	</context:component-scan>
+	
+	
+	
+</beans:beans>

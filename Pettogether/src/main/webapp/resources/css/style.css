@@ -1,0 +1,133 @@
+﻿
+/* -----웹폰트 선언----- */
+
+/*css 폰트 url(css에서는 <style> 입력 안함)*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap'); */
+
+/*=======디자인 시작시 전역 설정========*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /*박스에 border-box설정*/
+
+}
+
+
+input, textarea, button, select {
+  /*고유하게 적용되어 있는 form관련 요소들을 제거해서 
+  여러 ＊브라우저에서 동일한 form관련 태그 디자인이 보이도록 처리.
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+ul, li, ol, dl{
+  list-style: none;
+}
+
+
+/*=============form, btn 윤곽===============*/
+.form-control, .btn{
+  border-radius: 0;
+
+}
+
+/*======================header=====================*/
+
+section {margin-top: 50px;}
+
+.logo {
+  display: block;
+  text-align: center;
+  margin-bottom: -180px ;
+  margin-top: -100px;
+  position: relative;
+}
+
+.logo img {
+
+  width: 700px;
+  height: 400px;
+}
+
+
+/*=============form, btn 윤곽===============*/
+.form-control, .btn{
+  border-radius: 0;
+}
+
+/*======================header=====================*/
+
+section {margin-top: 50px;}
+.my-header{
+  position: fixed; /*boby기준으로 헤더 고정*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50; /*z축으로 50*/
+
+}
+.my-header a {color: white; font-size: 15px; position: relative;}
+
+.nav {
+  background-color:rgba(235,170,80);
+  padding-left: 6px;
+  text-align: center;
+  
+}
+
+.nav li{
+  display: inline-block;
+  padding: 0px 40px;
+}
+
+.nav li a {
+  font-size: 23px;
+}
+
+.navbar {
+  position: relative;
+}
+
+.nav_right {
+  display: inline;
+  position: relative;
+  top: -230px;
+  right : -300px
+}
+
+
+.nav_right li a{
+  font-size: 25px;
+  color: rgba(220,125,30);
+
+}
+
+.bar{
+  color:sandybrown;
+  margin-top: -20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 가상선택자 */
+.nav>li>a:focus, .nav>li>a:hover {
+  background-color: #304047;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: #304047;
+
+}

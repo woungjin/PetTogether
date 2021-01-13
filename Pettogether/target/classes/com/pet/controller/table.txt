@@ -1,0 +1,51 @@
+=========================진웅이의 Hikari User 생성 테이블 ===========================
+-- DB 유저 생성 SQL문
+-- USER SQL
+CREATE USER "PET" IDENTIFIED BY "PET"
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+
+-- QUOTAS
+ALTER USER "PET" QUOTA UNLIMITED ON "USERS";
+
+-- ROLES
+GRANT "CONNECT" TO "PET" ;
+GRANT "RESOURCE" TO "PET" ;
+ALTER USER "PET" DEFAULT ROLE "CONNECT","RESOURCE";
+
+-- SYSTEM PRIVILEGES
+
+
+
+=========================  대영이형  ===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================= 동건이형 ===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================= 계환이 ===========================
+
+
