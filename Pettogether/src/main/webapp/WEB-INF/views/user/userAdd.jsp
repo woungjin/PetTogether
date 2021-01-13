@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 	
 	<section>
-
+       <div class="titlebox">
+                     	주소찾기
+                    </div>
+   
 
 	</section>
 	
