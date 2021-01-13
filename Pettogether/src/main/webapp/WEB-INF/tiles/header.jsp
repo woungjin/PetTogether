@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
     <header class="my-header">
         <nav class="navbar">
           <div class="container-fluid">
             
             <div class="logo">
               <div class="logo_img">
-                <img src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더">
+                <img src="${pageContext.request.contextPath}/resources/img/home/petLogo.svg" alt="펫투게더">
               </div>
               <div class="nav_right">
                 <li><a href="/contact/">LOGIN</a></li> <br/>
@@ -44,16 +43,10 @@
         </nav>
       </header>
 
-      <section>
-        <div class="top_con_zone" id="fixNextTag">
-
-        </div>
-      </section>
 
       <script>
         $(document).ready(function() {
           var topBar = $("#topBar").offset();
-          console.log("!2323")
 
           $(window).scroll(function(){
 

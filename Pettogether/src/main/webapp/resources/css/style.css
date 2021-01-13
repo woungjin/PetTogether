@@ -1,3 +1,10 @@
+﻿<<<< HEAD
+=======
+﻿
+/* ==== 이진웅의 CSS ↓ ====  */
+
+/* -----웹폰트 선언----- */
+>>>>>>> master
 
 /* -----����Ʈ ����----- */
 
@@ -5,15 +12,19 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap'); */
 
+<<<<<<< HEAD
 /*=======������ ���۽� ���� ����========*/
+=======
+/*=======디자인 시작시 전역 설정 ========*/
+
+/* 로고화면 01/13 12:14분 Header Footer 수정 */
+>>>>>>> master
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box; /*�ڽ��� border-box����*/
 
 }
-
-
 input, textarea, button, select {
   /*�����ϰ� ����Ǿ� �ִ� form���� ��ҵ��� �����ؼ� 
   ���� ������������ ������ form���� �±� �������� ���̵��� ó��.
@@ -29,18 +40,23 @@ ul, li, ol, dl{
   list-style: none;
 }
 
+<<<<<<< HEAD
 
 /*=============form, btn ����===============*/
+=======
+/*=============form, btn 윤곽===============*/
+>>>>>>> master
 .form-control, .btn{
   border-radius: 0;
-
 }
 
-#abc {
+body {
   width: 100%;
-  height: 2000px;
+  height: 1300px;
 }
 /*======================header=====================*/
+
+
 
 /* 로고화면 */
 .logo {
@@ -120,7 +136,7 @@ section {margin-top: 50px;}
   margin-top: -100px;
   margin-left: -30px;
   width: 120%;
-  padding-right:300px;
+  padding-right:550px;
 
 }
 .nav li {
@@ -147,8 +163,24 @@ section {margin-top: 50px;}
 .container-fluid .top_con_zone{height:100px; background:#ededed; color:#888; text-align:center; font-size:70px;}
 
 
+
 /* �������� */
+
+@media (max-width: 414px) {
+  .nav li a{float:left; width: 25%;}
+}
+
+
+
+
+/*=============form, btn 윤곽===============*/
+.form-control, .btn{
+  border-radius: 0;
+}
+/* 가상선택자 */
+
 .nav>li>a:focus, .nav>li>a:hover {
+
   background-color: #304047;
 }
 
@@ -156,6 +188,7 @@ section {margin-top: 50px;}
   background-color: #304047;
 
 }
+
 
 
 /*============Map Style================*/
@@ -175,4 +208,55 @@ section {margin-top: 50px;}
 .info .link {color: #5085BB;}
 #map {width:80%;height:450px; margin: 0 auto;}
 
+
+
+
+
+/* =====================footer==================== */
+footer {
+	margin-top: 70px;
+  background-color: rgba(235,170,80);
+  padding: 20px;
+  padding-left: 100px;
+
+}
+
+footer .copyright {
+	font-size: 13px;
+	line-height: 20px;
+  color: #f1f1f1;
+
+}
+
+.footer-menu{
+  background-color: rgba(235,170,80);
+}
+.footer-copyright img {
+  width: 200px;
+  height: 150px;
+
+}
+
+footer .footer-menu li {
+  padding: 0 10px;
+  
+}
+
+footer .footer-menu li a {
+  display: block;
+	color: #f1f1f1;
+  font-size: 18px;
+  padding-top: 5px;
+  padding-left: 60px;
+  
+}
+
+.created_by {
+  font-size: 20px;
+  color: white;
+  padding-left: 50px;
+}
+
+
+/* ==== 이진웅의 CSS ↑ ====  */
 
