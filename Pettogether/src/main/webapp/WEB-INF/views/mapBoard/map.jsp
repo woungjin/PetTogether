@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     <section>
     	<!-- kakao api key -->
@@ -9,10 +9,10 @@
         <h1 style="text-align: center; font-size: 50px;">Map Point!</h1>
         <div style="text-align: center;">
             <select name="" id="">
-                <option value="">¼­¿ïÆ¯º°½Ã</option>
-                <option value="">ÀÎÃµ±¤¿ª½Ã</option>
-                <option value="">°æ±âµµ</option>
-                <option value="">ÃæÃ»µµ</option>
+                <option value="">ì„œìš¸íŠ¹ë³„ì‹œ</option>
+                <option value="">ì¸ì²œê´‘ì—­ì‹œ</option>
+                <option value="">ê²½ê¸°ë„</option>
+                <option value="">ì¶©ì²­ë„</option>
             </select>
         </div>
         <br/>
@@ -22,49 +22,49 @@
 
 
     <script>
-        var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+        var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
             mapOption = { 
-                center: new kakao.maps.LatLng(37.54699, 127.09598), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-                level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+                center: new kakao.maps.LatLng(37.54699, 127.09598), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+                level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
             };
 
-        // Áöµµ¸¦ Ç¥½ÃÇÒ div¿Í  Áöµµ ¿É¼ÇÀ¸·Î  Áöµµ¸¦ »ý¼ºÇÕ´Ï´Ù
+        // ì§€ë„ë¥¼ í‘œì‹œí•  divì™€  ì§€ë„ ì˜µì…˜ìœ¼ë¡œ  ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
         var map = new kakao.maps.Map(mapContainer, mapOption);        
 
-        var imageSrc = 'img/cafe.jpg', // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ÁÖ¼ÒÀÔ´Ï´Ù    
-            imageSize = new kakao.maps.Size(30, 40), // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ Å©±âÀÔ´Ï´Ù
-            imageOption = {offset: new kakao.maps.Point(27, 69)}; // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ¿É¼ÇÀÔ´Ï´Ù. ¸¶Ä¿ÀÇ ÁÂÇ¥¿Í ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ¾È¿¡¼­ÀÇ ÁÂÇ¥¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+        var imageSrc = 'img/cafe.jpg', // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì£¼ì†Œìž…ë‹ˆë‹¤    
+            imageSize = new kakao.maps.Size(30, 40), // ë§ˆì»¤ì´ë¯¸ì§€ì˜ í¬ê¸°ìž…ë‹ˆë‹¤
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì˜µì…˜ìž…ë‹ˆë‹¤. ë§ˆì»¤ì˜ ì¢Œí‘œì™€ ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ì•ˆì—ì„œì˜ ì¢Œí‘œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
             
-        // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁöÁ¤º¸¸¦ °¡Áö°í ÀÖ´Â ¸¶Ä¿ÀÌ¹ÌÁö¸¦ »ý¼ºÇÕ´Ï´Ù
+        // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ì •ë³´ë¥¼ ê°€ì§€ê³  ìžˆëŠ” ë§ˆì»¤ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-            markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // ¸¶Ä¿°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù
+            markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ìž…ë‹ˆë‹¤
 
-        // ¸¶Ä¿¸¦ »ý¼ºÇÕ´Ï´Ù
+        // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
         var marker = new kakao.maps.Marker({
             position: markerPosition, 
-            image: markerImage // ¸¶Ä¿ÀÌ¹ÌÁö ¼³Á¤ 
+            image: markerImage // ë§ˆì»¤ì´ë¯¸ì§€ ì„¤ì • 
         });
 
-        // ¸¶Ä¿°¡ Áöµµ À§¿¡ Ç¥½ÃµÇµµ·Ï ¼³Á¤ÇÕ´Ï´Ù
+        // ë§ˆì»¤ê°€ ì§€ë„ ìœ„ì— í‘œì‹œë˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤
         marker.setMap(map);
 
-        // Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¿¡ Ç¥½ÃÇÒ ÄÁÅÙÃ÷ ÀÔ´Ï´Ù
-        // Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ´Â ¾Æ·¡¿Í °°ÀÌ »ç¿ëÀÚ°¡ ÀÚÀ¯·Ó°Ô ÄÁÅÙÃ÷¸¦ ±¸¼ºÇÏ°í ÀÌº¥Æ®¸¦ Á¦¾îÇÒ ¼ö ÀÖ±â ¶§¹®¿¡
-        // º°µµÀÇ ÀÌº¥Æ® ¸Þ¼Òµå¸¦ Á¦°øÇÏÁö ¾Ê½À´Ï´Ù 
+        // ì»¤ìŠ¤í…€ ì˜¤ë²„ë ˆì´ì— í‘œì‹œí•  ì»¨í…ì¸  ìž…ë‹ˆë‹¤
+        // ì»¤ìŠ¤í…€ ì˜¤ë²„ë ˆì´ëŠ” ì•„ëž˜ì™€ ê°™ì´ ì‚¬ìš©ìžê°€ ìžìœ ë¡­ê²Œ ì»¨í…ì¸ ë¥¼ êµ¬ì„±í•˜ê³  ì´ë²¤íŠ¸ë¥¼ ì œì–´í•  ìˆ˜ ìžˆê¸° ë•Œë¬¸ì—
+        // ë³„ë„ì˜ ì´ë²¤íŠ¸ ë©”ì†Œë“œë¥¼ ì œê³µí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤ 
         var content = '<div class="wrap">' + 
                     '    <div class="info">' + 
                     '        <div class="title">' + 
-                    '            Ä«Ä«¿À ½ºÆäÀÌ½º´å¿ø' + 
-                    '            <div class="close" onclick="closeOverlay()" title="´Ý±â"></div>' + 
+                    '            ì¹´ì¹´ì˜¤ ìŠ¤íŽ˜ì´ìŠ¤ë‹·ì›' + 
+                    '            <div class="close" onclick="closeOverlay()" title="ë‹«ê¸°"></div>' + 
                     '        </div>' + 
                     '        <div class="body">' + 
                     '            <div class="img">' +
                     '                <img src="img/pet1.png" width="73" height="70">' +
                     '           </div>' + 
                     '            <div class="desc">' + 
-                    '                <div class="ellipsis">Á¦ÁÖÆ¯º°ÀÚÄ¡µµ Á¦ÁÖ½Ã Ã·´Ü·Î 242</div>' + 
-                    '                <div class="jibun ellipsis">(¿ì) 63309 (Áö¹ø) ¿µÆòµ¿ 2181</div>' + 
-                    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">È¨ÆäÀÌÁö</a></div>' + 
+                    '                <div class="ellipsis">ì œì£¼íŠ¹ë³„ìžì¹˜ë„ ì œì£¼ì‹œ ì²¨ë‹¨ë¡œ 242</div>' + 
+                    '                <div class="jibun ellipsis">(ìš°) 63309 (ì§€ë²ˆ) ì˜í‰ë™ 2181</div>' + 
+                    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">í™ˆíŽ˜ì´ì§€</a></div>' + 
                     '            </div>' + 
                     '        </div>' + 
                     '    </div>' +    
@@ -76,12 +76,12 @@
             position: new kakao.maps.LatLng(37.54699, 127.09598)       
         });
 
-        // ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¸¦ Ç¥½ÃÇÕ´Ï´Ù
+        // ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ ì»¤ìŠ¤í…€ ì˜¤ë²„ë ˆì´ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
         kakao.maps.event.addListener(marker, 'click', function() {
             overlay.setMap(map);
         });
 
-        // Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¸¦ ´Ý±â À§ÇØ È£ÃâµÇ´Â ÇÔ¼öÀÔ´Ï´Ù 
+        // ì»¤ìŠ¤í…€ ì˜¤ë²„ë ˆì´ë¥¼ ë‹«ê¸° ìœ„í•´ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ìž…ë‹ˆë‹¤ 
         function closeOverlay() {
             overlay.setMap(null);     
         }
