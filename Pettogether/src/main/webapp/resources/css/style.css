@@ -1,33 +1,23 @@
-﻿<<<< HEAD
-=======
-﻿
-/* ==== 이진웅의 CSS ↓ ====  */
+﻿/* ==== 이진웅의 CSS ↓ ====  */
 
 /* -----웹폰트 선언----- */
->>>>>>> master
 
-/* -----����Ʈ ����----- */
-
-/*css ��Ʈ url(css������ <style> �Է� ����)*/
+/*css 폰트 url(css에서는 <style> 입력 안함)*/
 
 /* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap'); */
 
-<<<<<<< HEAD
-/*=======������ ���۽� ���� ����========*/
-=======
 /*=======디자인 시작시 전역 설정 ========*/
 
 /* 로고화면 01/13 12:14분 Header Footer 수정 */
->>>>>>> master
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; /*�ڽ��� border-box����*/
+  box-sizing: border-box; /*박스에 border-box설정*/
 
 }
 input, textarea, button, select {
-  /*�����ϰ� ����Ǿ� �ִ� form���� ��ҵ��� �����ؼ� 
-  ���� ������������ ������ form���� �±� �������� ���̵��� ó��.
+  /*고유하게 적용되어 있는 form관련 요소들을 제거해서 
+  여러 ＊브라우저에서 동일한 form관련 태그 디자인이 보이도록 처리.
   */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -40,12 +30,7 @@ ul, li, ol, dl{
   list-style: none;
 }
 
-<<<<<<< HEAD
-
-/*=============form, btn ����===============*/
-=======
 /*=============form, btn 윤곽===============*/
->>>>>>> master
 .form-control, .btn{
   border-radius: 0;
 }
@@ -64,46 +49,6 @@ body {
   margin: -90px;
 }
 .logo img {
-  width: 700px;
-  height: 400px;
-}
-
-
-/*=============form, btn ����===============*/
-.form-control, .btn{
-  border-radius: 0;
-}
-
-/*======================header=====================*/
-
-section {margin-top: 50px;}
-.my-header{
-  position: fixed; /*boby�������� ��� ����*/
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50; /*z������ 50*/
-
-}
-.my-header a {color: white; font-size: 15px; position: relative;}
-
-.nav {
-  background-color:rgba(235,170,80);
-  padding-left: 6px;
-  text-align: center;
-  
-}
-
-.nav li{
-  display: inline-block;
-  padding: 0px 40px;
-}
-
-.nav li a {
-  font-size: 23px;
-}
-
-.navbar {
   position: relative;
   height: 400px;
   width: 550px;
@@ -163,9 +108,6 @@ section {margin-top: 50px;}
 .container-fluid .top_con_zone{height:100px; background:#ededed; color:#888; text-align:center; font-size:70px;}
 
 
-
-/* �������� */
-
 @media (max-width: 414px) {
   .nav li a{float:left; width: 25%;}
 }
@@ -178,7 +120,6 @@ section {margin-top: 50px;}
   border-radius: 0;
 }
 /* 가상선택자 */
-
 .nav>li>a:focus, .nav>li>a:hover {
 
   background-color: #304047;
@@ -188,26 +129,6 @@ section {margin-top: 50px;}
   background-color: #304047;
 
 }
-
-
-
-/*============Map Style================*/
-.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '����', sans-serif;line-height: 1.5; margin-bottom: 35px; margin-right: 30px;}
-.wrap * {padding: 0;margin: 0;}
-.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-.info .close:hover {cursor: pointer;}
-.info .body {position: relative;overflow: hidden;}
-.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-.info .link {color: #5085BB;}
-#map {width:80%;height:450px; margin: 0 auto;}
-
 
 
 
@@ -259,4 +180,56 @@ footer .footer-menu li a {
 
 
 /* ==== 이진웅의 CSS ↑ ====  */
+
+
+
+/*============Map Style================*/
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5; margin-bottom: 35px; margin-right: 30px;}
+        .wrap * {padding: 0;margin: 0;}
+        .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+        .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+        .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold; height: 36px;}
+        .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+        .info .close:hover {cursor: pointer;}
+        .info .body {position: relative;overflow: hidden;}
+        .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+        .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+        .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+        .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+        .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+        .info .link {color: #5085BB;}        
+        #map {width:80%;height:450px; margin: 0 auto;}
+
+
+select {    
+    color: -internal-light-dark(black, white);    
+    text-transform: none;    
+    appearance: menulist;
+    box-sizing: border-box;   
+    margin: 0em;
+    font: 400 13.3333px Arial;    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

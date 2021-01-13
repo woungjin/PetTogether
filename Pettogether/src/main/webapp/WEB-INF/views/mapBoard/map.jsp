@@ -16,8 +16,9 @@
             </select>
         </div>
         <br/>
-        <div id="map" ></div>
-        
+        <div id = "boxmap">
+        	<div id="map" ></div>
+        </div>
     </section>
 
 
