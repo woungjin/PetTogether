@@ -5,7 +5,280 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-13T05:13:00Z</updated>
+  <updated>2021-01-13T20:21:00Z</updated>
+  <entry>
+    <title>The latest on Azure Active Directory integration</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/13/the-latest-on-azure-active-directory-integration" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Andy Clement</name>
+    </author>
+    <id>tag:spring.io,2021-01-13:4334</id>
+    <updated>2021-01-13T20:21:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Whether you are building a web API, mobile front end or a good-old fashioned desktop application, identity and access management will always be foundational pieces that are front and center in writing software. Azure offers a great platform to democratize your application development journey, as it not only offers a cloud-base identity service, but also deep integration with the rest of the Azure ecosystem. Spring Security has made it easy to secure your Spring based applications with powerful abstractions and extensible interfaces. However as powerful as the Spring framework can be, it is not tailored to a specific identity provider. The Azure Spring Boot Starter for Azure Active Directory is the result of collaborative efforts from Microsoft and VMware to provide the most optimal way to connect your application to an Azure AD tenant and protect resource APIs with Azure Active Directory. Case in point, there are scenarios where you may want to authorize against multiple resource servers, and you can simply do that by including multiple authorization clients in your application configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To get started with the Azure Spring boot starter for Azure Active Directory, connect your application to an Azure AD tenant, and include the following configuration in your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    tenant-id: xxxxxx-your-tenant-id-xxxxxx
+    client-id: xxxxxx-your-client-id-xxxxxx
+    client-secret: xxxxxx-your-client-secret-xxxxxx
+    authorization-clients:
+      graph:
+        scopes:
+            - https://graph.microsoft.com/User.Read
+            - https://graph.microsoft.com/Directory.AccessAsUser.All&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Get the &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt; in your Controller:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@GetMapping("/graph")
+@ResponseBody
+public String graph(
+    @RegisteredOAuth2AuthorizedClient("graph") OAuth2AuthorizedClient client
+) {
+// Now you can use the access token to access a graph URI
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For more detail see our  &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-webapp"&gt;sample project&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s look at some of the recent enhancements in the starter:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="web-applications"&gt;&lt;a class="anchor" href="#web-applications"&gt;&lt;/a&gt;Web applications&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="integration-with-microsoft-api"&gt;&lt;a class="anchor" href="#integration-with-microsoft-api"&gt;&lt;/a&gt;Integration with Microsoft API&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The identity platform provides Microsoft APIs to interact with many well-known Microsoft SaaS applications. For example, use the graph API to interact with Office 365, Azure DevOps to talk to with Azure DevOps server and Azure Batch to schedule HPC applications in the cloud. To use the graph API
+First configure your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    authorization-clients:
+      graph:
+        scopes:
+            - https://graph.microsoft.com/User.Read
+            - https://graph.microsoft.com/Directory.AccessAsUser.All&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;And then get the &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt; in your Controller.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="incremental-consent"&gt;&lt;a class="anchor" href="#incremental-consent"&gt;&lt;/a&gt;Incremental consent&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can incrementally approve your application access to resources and APIs as needed. This type of behavior is desirable when you want to have finer control of access management, as opposed to granting all scopes upfront. To utilize incremental consent in a web application, configure your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    authorization-clients:
+      arm:
+        on-demand: true
+        scopes: https://management.core.windows.net/user_impersonation&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Incremental consent is triggered when an application tries to get corresponding &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt;. It can also be triggered by accessing the URL: &lt;code&gt;/login/oauth2/code/{authorization-client}&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="integrate-with-aad-for-logout"&gt;&lt;a class="anchor" href="#integrate-with-aad-for-logout"&gt;&lt;/a&gt;Integrate with AAD for logout&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Add &lt;code&gt;azure.activedirectory.post-logout-redirect-uri&lt;/code&gt; in your configuration properties and your application will automatically log out all active sessions when the user performs a log out, and then redirect the user to the &lt;code&gt;logout-redirect-uri&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-webapp"&gt;this web application sample project&lt;/a&gt; for more detail. (This sample includes all 3 scenarios)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="resource-server"&gt;&lt;a class="anchor" href="#resource-server"&gt;&lt;/a&gt;Resource server&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="aad-protected-resource-server"&gt;&lt;a class="anchor" href="#aad-protected-resource-server"&gt;&lt;/a&gt;AAD protected resource server&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In OAuth 2.0, a resource server is an application that protects underlying resources with a token. In this release we¡¯ve added validation for Audience and Issuer to ensure intended audience and issuer are respected.
+See the &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-resource-server"&gt;resource server sample project&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="on-behalf-of-flow-with-spring-resource-server"&gt;&lt;a class="anchor" href="#on-behalf-of-flow-with-spring-resource-server"&gt;&lt;/a&gt;On Behalf-of-flow with spring resource server&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;When your application calls API A with a token, and API A in turn calls API B, a different token is required before API B can be accessed. OAuth 2.0 provides an On-Behalf-Of (OBO) flow that is designed to handle this common scenario. With the Azure Spring Boot Starter for Azure Active Directory, you can delegate a user identity request and propagate through the request chain.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-resource-server-obo"&gt;the resource server with OBO sample project&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="other-notable-changes"&gt;&lt;a class="anchor" href="#other-notable-changes"&gt;&lt;/a&gt;Other notable changes&lt;/h3&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="pack-id-change"&gt;&lt;a class="anchor" href="#pack-id-change"&gt;&lt;/a&gt;Pack ID change:&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To align with the rest of Azure SDKs, starting from 3.x, the package ID for Azure Spring Boot starters has been renamed from &lt;code&gt;azure-[startername]-spring-boot&lt;/code&gt; to &lt;code&gt;azure-spring-boot-[startername]&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="latest-versions"&gt;&lt;a class="anchor" href="#latest-versions"&gt;&lt;/a&gt;Latest versions:&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version 3.0.0 is released and includes support for Spring boot 2.2.x and 2.3.x&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>YMNNALFT: Express Yourself with SpEL</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/13/ymnnalft-express-yourself-with-spel" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-12-30:4319</id>
+    <updated>2021-01-13T11:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
+&lt;p&gt;Do your users want a convenient, bite-sized way to customize the behavior of your application? Expression Languages are purpose-built to allow low-touch customization of application behavior. Expression languages have a ton of applications. They can help you evaluate things! Perhaps they could run simple predicate logic that a user has configured. An expression language can dereference environment values, glue things together, support templating, customize access control and authorization predicates, support customized messaging flow routing and workflow event handler logic, and so much more. A good expression language is so useful that we built the Spring Expression Language (SpEL) and shipped it with Spring Framework 3.0 &lt;em&gt;waaaaay&lt;/em&gt; back in 2009! &lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll never forget &lt;em&gt;that&lt;/em&gt; addition! I was trawling the source code in Subversion, and I observed that &lt;a href="http://twitter.com/andy_clement"&gt;Andy Clement&lt;/a&gt; (one of our resident mad scientists and genuinely one of the neatest human beings I know) had added a &lt;em&gt;brand new&lt;/em&gt; expression language to Spring. &lt;/p&gt;
+&lt;p&gt;Of &lt;em&gt;course&lt;/em&gt; he did. &lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s worth noting here that the expression was a &lt;em&gt;superset&lt;/em&gt; of existing expression languages like &lt;a href="https://commons.apache.org/proper/commons-ognl/language-guide.html"&gt;OGNL&lt;/a&gt; and &lt;a href="https://docs.jboss.org/seam/2.3.1.Final/reference/html/elenhancements.html"&gt;JBoss EL&lt;/a&gt; (both of which provided more features than other expression languages of the day like those you&amp;rsquo;d find in Java Server Pages or Java Server Faces, for example). Andy had developed this new expression language over a few weeks. So, when I tell you that Andy Clement had (in a matter of weeks!) checked in a brand Expression Language that exceeded brand X, what that &lt;em&gt;should&lt;/em&gt; say to you is that Andy Clement can do anything and that we should all be delighted that&amp;rsquo;ll be on our side when the machines attack! &lt;/p&gt;
+&lt;p&gt;This new expression language used &lt;a href="https://www.antlr.org/"&gt;ANTLR&lt;/a&gt;, which is an awesome, powerful parser generator that, given a grammar definition, will generate Java code that knows how to parse whatever is defined in that grammar. So, you could use the ANTLR grammar to teach ANTLR about how to parse, let&amp;rsquo;s say, a hashtag (&lt;code&gt;#&lt;/code&gt; + &lt;code&gt;A_LABEL&lt;/code&gt;) or an ISO 8601 date or Java source code, or a SQL query, and ANTLR will generate Java code to parse text that complies with that grammar. It invokes callbacks when it encounters elements of that grammar. It is basically the JVM ecosystem equivalent of the classic Yacc / Lex toolchain, and you&amp;rsquo;re no doubt using software that in turn uses ANTLR to provide a parser. ANTLR is &lt;em&gt;awesome&lt;/em&gt;. You could write a Java compiler. A SQL parser. An email validator. An HTML parser. The sky&amp;rsquo;s the limit! It&amp;rsquo;s used by the best and brightest and so you can be assured that it &lt;em&gt;will&lt;/em&gt; work! It&amp;rsquo;s used in Groovy, Jython, Hibernate, MySQL Workbench, Apache Cassandra, Processing, Presto, Salesforce&amp;rsquo;s Apex, and countless other projects besides. &lt;/p&gt;
+&lt;p&gt;I was &lt;em&gt;impressed&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;This expression language was looking great, and ANTLR is excellent, and it was solid engineering all around. &lt;/p&gt;
+&lt;p&gt;So, naturally, Andy removed ANTLR and replaced it with his own hand-written his own hand-rolled recursive descent parser! Amazing! (Who &lt;em&gt;DOES&lt;/em&gt; that?) &lt;/p&gt;
+&lt;p&gt;I was &lt;em&gt;SO&lt;/em&gt; impressed! &lt;/p&gt;
+&lt;img src ="https://i.imgflip.com/18xaq7.jpg"  /&gt;
+&lt;p&gt;SpEL is boss-sauce software, friends. It&amp;rsquo;s used all over the Spring ecosystem, in Spring Framework for evaluation purposes; in Spring Security for certain kinds of access control rules; in Spring Integration to evaluate expressions against messages; in Spring Data to tie specific queries to other contexts (like Spring Security). The list goes on. &lt;/p&gt;
+&lt;p&gt;In the intervening decade, SpEL has grown even more magical. It even has a compiler! That&amp;rsquo;s bananas because that compilation step can be entirely transparent to the user. And you can use it for whatever you&amp;rsquo;d like, both in Spring configuration and by itself, as a standalone library. &lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at an example. &lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll need the following dependencies.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;This is included by default in every Spring Boot project on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.el;&#xD;
+&#xD;
+import lombok.Data;&#xD;
+import org.springframework.beans.factory.annotation.Value;&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
+import org.springframework.context.ApplicationListener;&#xD;
+import org.springframework.context.annotation.Bean;&#xD;
+import org.springframework.expression.EvaluationContext;&#xD;
+import org.springframework.expression.Expression;&#xD;
+import org.springframework.expression.ExpressionParser;&#xD;
+import org.springframework.expression.spel.SpelCompilerMode;&#xD;
+import org.springframework.expression.spel.SpelParserConfiguration;&#xD;
+import org.springframework.expression.spel.standard.SpelExpressionParser;&#xD;
+import org.springframework.expression.spel.support.StandardEvaluationContext;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class BootifulApplication {&#xD;
+&#xD;
+	@Bean&#xD;
+	Bar bar(@Value(&amp;quot;#{ foo.name }&amp;quot;) String name) {&#xD;
+		return new Bar(name);&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	Foo foo() {&#xD;
+		return new Foo();&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; ready() {&#xD;
+		return event -&amp;gt; {&#xD;
+&#xD;
+			SpelParserConfiguration configuration = new SpelParserConfiguration(//&#xD;
+					SpelCompilerMode.IMMEDIATE, ClassLoader.getSystemClassLoader());&#xD;
+			ExpressionParser expressionParser = new SpelExpressionParser(configuration);&#xD;
+&#xD;
+			double randomProperty = evaluate(expressionParser, &amp;quot;randomProperty&amp;quot;, new MyContext());&#xD;
+			System.out.println(&amp;quot;randomProperty: &amp;quot; + randomProperty);&#xD;
+&#xD;
+			String uppercase = evaluate(expressionParser, &amp;quot;&amp;#39;andy clement for president&amp;#39;.toUpperCase()&amp;quot;, null);&#xD;
+			System.out.println(&amp;quot;uppercase: &amp;quot; + uppercase);&#xD;
+		};&#xD;
+	}&#xD;
+&#xD;
+	@SuppressWarnings(&amp;quot;unchecked&amp;quot;)&#xD;
+	private static &amp;lt;T&amp;gt; T evaluate(ExpressionParser expressionParser, String expression, Object context) {&#xD;
+		Expression expression2 = expressionParser.parseExpression(expression);&#xD;
+		if (context != null) {&#xD;
+			EvaluationContext evaluationContext = new StandardEvaluationContext(context);&#xD;
+			return (T) expression2.getValue(evaluationContext);&#xD;
+		} //&#xD;
+		else {&#xD;
+			return (T) expression2.getValue();&#xD;
+		}&#xD;
+	}&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		System.setProperty(&amp;quot;spring.profiles.active&amp;quot;, &amp;quot;el&amp;quot;);&#xD;
+		SpringApplication.run(BootifulApplication.class, args);&#xD;
+	}&#xD;
+&#xD;
+}&#xD;
+&#xD;
+@Data&#xD;
+class Foo {&#xD;
+&#xD;
+	private String name = getClass().getName();&#xD;
+&#xD;
+}&#xD;
+&#xD;
+@Data&#xD;
+class Bar {&#xD;
+&#xD;
+	Bar(@Value(&amp;quot;#{ foo.name }&amp;quot;) String name) {&#xD;
+		System.out.println(&amp;quot;name: &amp;quot; + name);&#xD;
+	}&#xD;
+&#xD;
+}&#xD;
+&#xD;
+@Data&#xD;
+class MyContext {&#xD;
+&#xD;
+	private final double randomProperty = Math.random();&#xD;
+&#xD;
+	public int factorial(int n) {&#xD;
+		if (n == 0)&#xD;
+			return 1;&#xD;
+		else&#xD;
+			return (n * factorial(n - 1));&#xD;
+	}&#xD;
+&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s what I put into my &lt;code&gt;application.properties&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.main.web-application-type=none
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are two things to look for in this application: using SpEL in a standalone context and using SpEL as part of your Spring application. &lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt;&lt;/code&gt; I manually instantiate an instance of &lt;code&gt;SpelExpressionParser&lt;/code&gt;, against which I can evaluate SpEL expressions. I show how to configure a custom context (an object against which the expression may invoke methods and dereference properties) and use the expression language to call a method on a &lt;code&gt;String&lt;/code&gt; literal. &lt;/p&gt;
+&lt;p&gt;I also configure two beans, &lt;code&gt;Foo&lt;/code&gt; and &lt;code&gt;Bar&lt;/code&gt;. &lt;code&gt;Bar&lt;/code&gt; depends on a property in &lt;code&gt;Foo&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, which dereferences that property using SpEL and then references other beans in the Spring application context.&lt;/p&gt;
+&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - January 12th, 2021</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/12/this-week-in-spring-january-12th-2021" />
@@ -1252,374 +1525,6 @@ dependencies {&#xD;
 &lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2020-12-16-490-release-incl-language-servers-version-1240"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2020-12-16-490-release-incl-language-servers-version-1240&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Spring Tools 4.9.1 is scheduled to be released in early Feb 2021.&lt;/p&gt;
 &lt;p&gt;Enjoy!&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 15th, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/16/this-week-in-spring-december-15th-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-16:4306</id>
-    <updated>2020-12-16T02:21:19Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! Can you believe it&amp;rsquo;s already December 15th? Me either! Another few weeks and this soul annhilating year will be over with and we&amp;rsquo;ll be staring down 2021 filled with new hopes and possibilities! How are you? (Have you dipped into the eggnog yet?) I&amp;rsquo;m doing alright, thanks! I&amp;rsquo;ve been busy, as usual. &lt;/p&gt;
-&lt;p&gt;Most of that was fun stuff. But, some of that, I confess, was a mess of my own making. I spent Monday cleaning up a fire I&amp;rsquo;d set for myself. You see, I got a little sloppy with last week&amp;rsquo;s podcast episode. Last week, I was editing the audio for an episode with Spring Batch colead Mahmoud Ben Hassine and - in the middle of that - was pushing an interview I&amp;rsquo;d done with Dion Almaer out the door for publication that week. So, two episodes: one with Dion, one with Mahmoud. Dion was slated for last week. Mahmoud&amp;rsquo;s was slated for a future week. On top of that I&amp;rsquo;ve been toiling night and day it feels like on &lt;a href="http://github.com/bootiful-podcast"&gt;the production pipeline for my podcasts&lt;/a&gt;, living that &lt;code&gt;kubectl apply -k $WORKING_DIR&lt;/code&gt; life, and I was tired of some of the issues still lingering but figured I could, basically trust the system. So I published the episode with Dion. I got everything right, &lt;em&gt;except&lt;/em&gt; the interview was with Mahmoud. Not Dion. So it said Dion. But I&amp;rsquo;d accidentally sent out the wrong episode. Awkward. Worse, after I published that episode, figuring I had a week to make a mess before I&amp;rsquo;d next have to publish an episode, I started making a mess of the codebase. I broke stuff. Would&amp;rsquo;ve been no big deal. I would&amp;rsquo;ve sorted it out! But yesterday, Monday, I realize people are complaining that I&amp;rsquo;d bungled the audio: published the preface and description for Dion but published the audio interview with Mahmoud. So I raced to fix it, except production was down! So I spent Monday dodging between meetings and calls and trying to get the system restored. I finally got the system on its feet again late last night - both episodes with the correct titling and audio and links and photos went out and it was good. Thank you so much for your patience, community. I have egg on my face. &lt;/p&gt;
-&lt;p&gt;Anyway, everything&amp;rsquo;s fine now. I&amp;rsquo;m not gonna touch a thing until the new episode, due later this week, rolls out! And, bonus, you get not one, but &lt;em&gt;two&lt;/em&gt; episodes this week: I published both episodes last night. So, in total, you&amp;rsquo;ll get three episodes in a seven-day period, not one. Huzzah. &lt;/p&gt;
-&lt;p&gt;This morning I had the privilege of speaking at the Warsaw JUG at their last meeting for the year. Thank you so much for a lively crowd and a wonderful event, Warsaw! &lt;/p&gt;
-&lt;p&gt;Now then, we&amp;rsquo;ve got a lot of good stuff to get to this week so, without further ado&amp;hellip; &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/a-bootiful-podcast-spring-batch-co-lead-mahmoud-ben-hassine"&gt;A Bootiful Podcast: Spring Batch co-lead Mahmoud Ben Hassine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/14/a-bootiful-podcast-open-web-legend-dion-almaer"&gt;A Bootiful Podcast: open-web legend Dion Almaer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blog.frankel.ch/hack-ease-usage-log4j2-spring-boot/"&gt;A dirty hack to ease the usage of Log4J2 in Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/14/case-study-change-data-capture-cdc-analysis-with-cdc-debezium-source-and-analytics-sink-in-real-time"&gt;Case Study: Change Data Capture (CDC) Analysis with CDC Debezium source and Analytics sink in Real-Time&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/cloud-events-and-spring-part-1"&gt;Cloud Events and Spring - part 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/65254112/correct-usage-of-loadbalancersocketclient-with-springs-rsocketrequester/65268468#65268468"&gt;Correct usage of LoadbalanceRSocketClient with Spring&amp;rsquo;s RSocketRequester - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/11/podcast-009/"&gt;Episode 9 ¡°Project Panama - The Foreign Memory Access API¡± with Maurizio Cimadamore and Jorn Vernee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blog.jetbrains.com/kotlin/2020/12/expedia-group-bootiful-apis-with-graphql-and-kotlin/"&gt;Expedia Group: Bootiful APIs With GraphQL and Kotlin ? Kotlin Blog | JetBrains&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/first-milestone-of-spring-data-2021-0-0-released"&gt;First milestone of Spring Data 2021.0.0 released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/KotlinKbug/status/1337328725348716546"&gt;Kotlin Belfast User Group (KBUG) on Twitter: &amp;quot;In lieu of a Dec event please accept our Kotlin Christmas Stocking. 16 sets of recommendations, from recognised experts, to improve your @kotlin coding. We hope you enjoy. Thanks to all our contributors. Merry&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.infoq.com/news/2020/12/kubernetes-120-rickard/"&gt;Kubernetes 1.20: Q&amp;amp;A with Release Lead and VMware Engineer Jeremy Rickard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=cEjU6-WOb3Q&amp;list=PLKKQHTLcxDVbJtlef15003TYaEkq1ZY8c&amp;index=15"&gt;Reactive Summit 2020: Josh Long, Bootiful RSocket - YouTube&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blogs.vmware.com/opensource/2020/12/09/salt-open-source-projects/"&gt;Salt Enhances a Number of Key Open Source Projects&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/14/spring-session-redis"&gt;Scaling Secure Applications with Spring Session and Redis | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-boot-2-2-12-available-now"&gt;Spring Boot 2.2.12 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-boot-2-3-7-available-now"&gt;Spring Boot 2.3.7 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-boot-2-4-1-available-now"&gt;Spring Boot 2.4.1 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/spring-cloud-2020-0-0-rc1-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0-RC1 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/07/spring-cloud-config"&gt;Spring Cloud Config for Shared Microservice Configuration | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/07/spring-cloud-config?fbclid=IwAR05sW4ucHtjyqKIpzFn7OS6tjaaYzj86Ll3Y1aaUPi-X1HhztW_uix3BAs"&gt;Spring Cloud Config for Shared Microservice Configuration | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://tanzu.vmware.com/content/blog/spring-cloud-data-flow-for-kubernetes-1-2-offers-real-time-alerts-and-new-dashboard"&gt;Spring Cloud Data Flow for Kubernetes 1.2 is now available for desert&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/spring-data-2020-0-2-neumann-sr6-and-moore-sr12-available"&gt;Spring Data 2020.0.2, Neumann-SR6, and Moore-SR12 available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/spring-framework-5-3-2-5-2-12-5-1-20-5-0-20-and-4-3-30-available-now"&gt;Spring Framework 5.3.2, 5.2.12, 5.1.20, 5.0.20, and 4.3.30 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-statemachine-3-0-0-rc1-released"&gt;Spring Statemachine 3.0.0-RC1 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-vault-2-2-3-release-available"&gt;Spring Vault 2.2.3.RELEASE available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-vault-2-3-0-rc1-available"&gt;Spring Vault 2.3.0 RC1 available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-1"&gt;Testing Spring Cloud Stream Applications - Part 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-2"&gt;Testing Spring Cloud Stream Applications - Part 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?app=desktop&amp;v=rWNYPRxihno"&gt;vSphere With Tanzu DDS - Ep 5 - Exploring a Tanzu Kubernetes Cluster - YouTube&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Testing Spring Cloud Stream Applications - Part 2</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-2" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>David Turanski</name>
-    </author>
-    <id>tag:spring.io,2020-12-11:4301</id>
-    <updated>2020-12-15T18:05:52Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;This is Part 2 of Testing Stream Applications. In &lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-1"&gt;Part 1&lt;/a&gt; we implemented and tested the core function needed for our sample &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-samples/tree/master/function-based-stream-app-samples/couchbase-stream-applications"&gt;couchbase-sink&lt;/a&gt; application. The tests at the function level covered expected success and error scenarios and relied on &lt;a href="https://www.testcontainers.org/"&gt;Testcontainers&lt;/a&gt; to provision a Couchbase cluster. This post assumes you have read Part 1 and continues where it left off.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="couchbase-sink"&gt;&lt;a class="anchor" href="#couchbase-sink"&gt;&lt;/a&gt;Couchbase Sink&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In Part 1 we verified that the function we wrote for upserting data into Couchbase works as expected.  We can now use the function,  exposed as a &lt;code&gt;java.util.Consumer&lt;/code&gt;,  to implement a sink to use in a data pipeline built with Spring Cloud Stream. Like most of the pre-packaged stream applications, we simply embed the function configuration into a Spring Boot application. Unlike the pre-packaged applications which generate identical applications configured for Kafka and Rabbit, we will roll our own to use the Kafka binder.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Here&amp;#8217;s the main application class:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@SpringBootApplication
-@Import(CouchbaseConsumerConfiguration.class)
-public class CouchbaseSinkApplication {
-	public static void main(String... args) {
-		new SpringApplication(CouchbaseSinkApplication.class).run(args);
-	}
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We also need to add some dependencies: The function, Spring Cloud Stream, and the Kafka binder.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;io.spring.example&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;couchbase-consumer&amp;lt;/artifactId&amp;gt;
-    &amp;lt;/dependency&amp;gt;
-    &amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-cloud-stream&amp;lt;/artifactId&amp;gt;
-    &amp;lt;/dependency&amp;gt;
-    &amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-boot-starter-actuator&amp;lt;/artifactId&amp;gt;
-    &amp;lt;/dependency&amp;gt;
-    &amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-cloud-stream-binder-kafka&amp;lt;/artifactId&amp;gt;
-    &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;And, since we are rolling our own, we can set some required properties in &lt;code&gt;application.properties&lt;/code&gt;. Since &lt;code&gt;couchbase-consumer&lt;/code&gt; includes 2 candidate functions, we need to tell Spring Cloud Stream to use the &lt;code&gt;Consumer&lt;/code&gt; wrapper. Also, we alias the default consumer input binding name &lt;code&gt;couchbaseConsumer-in-0&lt;/code&gt; to &lt;code&gt;input&lt;/code&gt; so the sink to work with Spring Cloud Data Flow.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;spring.cloud.function.definition=couchbaseConsumer
-spring.cloud.stream.function.bindings.couchbaseConsumer-in-0=input&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;That&amp;#8217;s literally it! At least we think so. How can we be sure? The kind of tests we need, not surprisingly, are similar to the function level tests. But we don&amp;#8217;t really need to run every test case, since we already know how the function will behave within a boot application with various property settings. But we haven&amp;#8217;t actually invoked the function via Spring Cloud Stream yet. Also, it doesn&amp;#8217;t cost so much since we can reuse much of the test code we wrote for the function. So we only need a "smoke test" to run the happy path to make sure we didn&amp;#8217;t leave out some required dependency, or that there are typos in our configuration properties, are that there are no gotchas now, or whenever we upgrade some dependency down the road. Here we configure a Couchbase TestContainer, as we did to test the function. But instead of invoking the function directly, we will let Spring Cloud Stream do it when we send a message to an input destination configured for the sink. For this test, we use the &lt;code&gt;TestChannelBinder&lt;/code&gt;, an in-memory binder provided by the following dependency:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-cloud-stream&amp;lt;/artifactId&amp;gt;
-        &amp;lt;type&amp;gt;test-jar&amp;lt;/type&amp;gt;
-        &amp;lt;classifier&amp;gt;test-binder&amp;lt;/classifier&amp;gt;
-        &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We use &lt;code&gt;TestChannelBinderConfiguration.getCompleteConfiguration(CouchbaseSinkApplication.class)&lt;/code&gt; to add the TestChannelBinder to our application context for our test.
-This gives us an &lt;code&gt;InputDestination&lt;/code&gt; bean to send messages to the sink. As in the function test, we use the &lt;code&gt;Cluster&lt;/code&gt; object to verify the data is present in Couchbase.
-Since the &lt;em&gt;upsert&lt;/em&gt; operation is asynchronous, we need to poll the data store for some time until the data is there.
-The &lt;a href="https://github.com/awaitility/awaitility"&gt;awaitility&lt;/a&gt; library is great for testing asynchronous systems.
-In this case, we&amp;#8217;ll give it 10 seconds before we assume the operation has failed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@Testcontainers
-public class CouchbaseSinkApplicationTests {
-  @Container
-  static CouchbaseContainer container =
-          new CouchbaseContainer("couchbase/server:6.6.0")
-             .withBucket(new BucketDefinition("test"));
-
-  static Map&amp;lt;String, Object&amp;gt; connectProperties = new HashMap&amp;lt;&amp;gt;();
-
-  @BeforeAll
-  static void initialize() {
-    connectProperties.put("spring.couchbase.connection-string", container.getConnectionString());
-    connectProperties.put("spring.couchbase.username", container.getUsername());
-    connectProperties.put("spring.couchbase.password", container.getPassword());
-  }
-
-  @Test
-  void test() {
-    try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
-      TestChannelBinderConfiguration
-        .getCompleteConfiguration(CouchbaseSinkApplication.class))
-	.web(WebApplicationType.NONE)
-        .properties(connectProperties)
-        .run("--couchbase.consumer.bucketExpression='test'",
-               "--couchbase.consumer.keyExpression=payload.email")) {
-        InputDestination inputDestination = context.getBean(InputDestination.class);
-        Cluster cluster = context.getBean(Cluster.class);
-        inputDestination.send(new GenericMessage&amp;lt;&amp;gt;(
-           new User("Bart Simpson", "bart@simpsons.com")));
-
-       await().atMost(Duration.ofSeconds(10)).untilAsserted(() -&amp;gt; {
-          User user = cluster.bucket("test")
-                .defaultCollection().get("bart@simpsons.com")
-                .contentAs(User.class);
-         assertThat(user).isNotNull();
-         assertThat(user.getName()).isEqualTo("Bart Simpson");
-       });
-     }
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="integration-testing"&gt;&lt;a class="anchor" href="#integration-testing"&gt;&lt;/a&gt;Integration Testing&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;At this point, we have good test coverage between the application and function tests. But we have not yet verified that the application binary that we want to build and deploy works in a true integration environment.
-Since the sink application uses the Kafka binder, the integration test environment requires a Kafka broker, a Couchbase cluster, and our deployed application.
-We can deploy and run the Spring Boot executable jar directly. More often these days, it is a container image.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Generally, it is not too risky to assume that the sink built as a container will work, but we at least want to make sure that we know how to configure the application to use an external Kafka broker and Couchbase cluster, and that we built our image correctly.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For the pre-built Spring Cloud Stream applications, we have further reason to test the built artifacts. The core applications do not provide any additional code. Instead, we use the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-apps-plugin/tree/master/spring-cloud-dataflow-apps-generator-plugin"&gt;spring-cloud-dataflow-apps-generator-plugin&lt;/a&gt; to automatically generate identical applications that can run with either Kafka or  RabbitMQ. The plugin requires Maven configuration which we manually add for each application. Just because our function works with the TestChannelBinder, we can&amp;#8217;t be sure that the built artifact works until we run it. Misconfiguring the apps generator plugin, changes to the plugin itself, or the base image, or any dependencies, may break something. Testcontainers and Junit 5 give us a relatively straightforward way to integration test the pre-built applications with both Kafka and RabbitMQ. To help us write integration tests, we provide additional support in &lt;a href="https://github.com/spring-cloud/stream-applications/tree/master/applications/stream-applications-core/stream-applications-test-support#stream-application-integration-testing"&gt;stream-applications-test-suport&lt;/a&gt;. This library is available to the community by adding the dependency:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud.stream.app&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;stream-applications-test-support&amp;lt;/artifactId&amp;gt;
-    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The sample includes an integration test to test the built image, in this case built with the &lt;a href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#goals-build-image"&gt;Spring Boot Maven plugin&lt;/a&gt;.
-Like the application test, we will just plug in Kafka, Couchbase, and our image, turn on the power, and make sure we don&amp;#8217;t see or smell any smoke.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The complete integration test is:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@KafkaStreamAppTest
-@Tag("integration")
-public class CouchbaseSinkIntegrationTests {
-
-  static StreamAppContainer sink =
-        new KafkaStreamAppContainer("couchbase-sink:0.0.1-SNAPSHOT");
-
-  @Container
-  static CouchbaseContainer container =
-      new CouchbaseContainer("couchbase/server:6.6.0")
-          .withNetwork(KafkaConfig.kafka.getNetwork())
-          .withNetworkAliases("couchbase-server")
-          .withBucket(new BucketDefinition("test"));
-
-  static Cluster cluster;
-
-  @Autowired
-  TestTopicSender testTopicSender;
-
-  @BeforeAll
-  static void initialize() {
-    await().until(() -&amp;gt; container.isRunning());
-    String connectionString = "couchbase://couchbase-server";
-    sink.waitingFor(Wait.forLogMessage(".*Started CouchbaseSink.*", 1))
-          .withLogConsumer(appLog("couchbase-sink"))
-          .withCommand(
-            "--spring.couchbase.connection-string=couchbase://couchbase-server",
-            "--spring.couchbase.username=" + container.getUsername(),
-            "--spring.couchbase.password=" + container.getPassword(),
-            "--couchbase.consumer.bucket-expression='test'",
-            "--couchbase.consumer.key-expression=payload.email")
-          .start();
-
-    cluster = Cluster.connect(container.getConnectionString(),
-    ClusterOptions.clusterOptions(container.getUsername(), container.getPassword()));
-  }
-  @AfterAll
-  static void stop() {
-    sink.stop();
-  }
-
-  @Test
-  void test() throws JsonProcessingException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    testTopicSender.send(sink.getInputDestination(),
-    objectMapper.writeValueAsString(
-       new User("Bart Simpson", "bart@simpsons.com")));
-
-    await().atMost(Duration.ofSeconds(10)).untilAsserted(() -&amp;gt; {
-       ExistsResult result = cluster.bucket("test")
-         .defaultCollection().exists("bart@simpsons.com");
-      assertThat(result.exists()).isTrue();
-    });
-
-    User user = objectMapper.readValue(
-    cluster.bucket("test").defaultCollection().get("bart@simpsons.com")
-   .contentAs(String.class), User.class);
-
-    assertThat(user.getName()).isEqualTo("Bart Simpson");
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To unpack this, let&amp;#8217;s start with the &lt;code&gt;@KafkaStreamAppTest&lt;/code&gt; class annotation. This starts a Kafka test container, and configures Kafka components, using Spring for Apache Kafka, that we can use to produce and consume messages with Kafka. The Kafka container is started in a static initializer, which makes it a true singleton, allowing every test that runs in a JVM to use it. In addition to Spring configuration, the annotation includes &lt;code&gt;@TestContainers&lt;/code&gt; as a meta annotation. For this test, we do not let Testcontainers manage the lifecycle of the &lt;code&gt;StreamAppContainer&lt;/code&gt;, since we want to start it after we know the Couchbase cluster is running. The Couchbase container has some additional configuration. For convenience, it shares a virtual network with the &lt;code&gt;StreamAppContainer&lt;/code&gt; (automatically configured to use the same network as the Kafka container). This allows the Stream App Container to connect to the Couchbase server using an alias of our choosing, &lt;code&gt;couchbase-server&lt;/code&gt; (remember, &lt;code&gt;localhost&lt;/code&gt; inside a container refers to its own IP address).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@Container
-static CouchbaseContainer container = new CouchbaseContainer("couchbase/server:6.6.0")
-        .withNetwork(KafkaConfig.kafka.getNetwork())
-        .withNetworkAliases("couchbase-server")
-        .withBucket(new BucketDefinition("test"));&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The StreamAppContainer is a &lt;a href="https://www.testcontainers.org/features/creating_container/"&gt;GenericContainer&lt;/a&gt; with the required configuration to connect to Kafka and use the Kafka binder.
-The Spring Configuration also sets up a listener on a known topic to consume any output from the container. This is not used in this case, since we only have an input for the sink.
-The input destination is randomly generated and accessed via &lt;code&gt;getInputDestination()&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;static StreamAppContainer sink = new KafkaStreamAppContainer("couchbase-sink:0.0.1-SNAPSHOT");
-...
-
-@BeforeAll
-static void initialize() {
-    await().until(() -&amp;gt; container.isRunning());
-    String connectionString = "couchbase://couchbase-server";
-    sink.waitingFor(Wait.forLogMessage(".*Started CouchbaseSink.*", 1))
-            .withLogConsumer(appLog("couchbase-sink"))
-            .withCommand(
-                    "--spring.couchbase.connection-string=couchbase://couchbase-server",
-                    "--spring.couchbase.username=" + container.getUsername(),
-                    "--spring.couchbase.password=" + container.getPassword(),
-                    "--couchbase.consumer.bucket-expression='test'",
-                    "--couchbase.consumer.key-expression=payload.email")
-            .start();&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Once the Couchbase container is running, we will start the sink. We wait for the standard Spring Boot start up message to confirm the sink has started.
-We also add a LogConsumer to output all the log messages in case there is an error. Note the connection string is simply using the Couchbase container&amp;#8217;s network alias.
-This is possible because the sink and Couchbase are using the same virtual network.
-Here, we pass all properties on the command line, but we could just as well set them as environment variables, via &lt;code&gt;withEnvironment()&lt;/code&gt;.
-Since we control the sink lifecycle, we need to stop it after all the tests are complete.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The test uses an autowired &lt;code&gt;TestTopicSender&lt;/code&gt;. This is a middleware agnostic interface, backed by KafkaTemplate in this case.
-This interface is useful for run the same test cases for Kafka and Rabbit. Here, we could just as well autowire the &lt;code&gt;KafkaTemplate&lt;/code&gt;.
-At the time of this writing, only the String serdes are configured for the Kafka template, so we use an &lt;code&gt;ObjectMapper&lt;/code&gt; to work with Strings.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@Test
-  void test() throws JsonProcessingException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    testTopicSender.send(sink.getInputDestination(),
-    objectMapper.writeValueAsString(
-       new User("Bart Simpson", "bart@simpsons.com")));
-
-    await().atMost(Duration.ofSeconds(10)).untilAsserted(() -&amp;gt; {
-       ExistsResult result = cluster.bucket("test")
-         .defaultCollection().exists("bart@simpsons.com");
-      assertThat(result.exists()).isTrue();
-    });
-
-    User user = objectMapper.readValue(
-    cluster.bucket("test").defaultCollection().get("bart@simpsons.com")
-   .contentAs(String.class), User.class);
-
-    assertThat(user.getName()).isEqualTo("Bart Simpson");
-  }&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Since this tests requires the sink image, we use the Junit 5 &lt;code&gt;@Tag&lt;/code&gt; annotation to mark it as an integration test.
-We also configured Maven to exclude this from the normal build, and only build the image and run it when the &lt;em&gt;integration&lt;/em&gt; profile is set.
-The complete source code is &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-samples/tree/master/function-based-stream-app-samples/couchbase-stream-applications"&gt;here&lt;/a&gt; and requires Java 8+ and Docker.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="conclusion"&gt;&lt;a class="anchor" href="#conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this post we explored strategies for testing Spring Cloud Stream applications that integrate with external services, such as Couchbase. The majority of the testing, described in Part 1, was done at the function level. The application and integration tests are really smoke tests to verify that we have everything built, configured and integrated correctly. We also showed how to use TestContainers for testing Stream Applications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="stay-tuned"&gt;&lt;a class="anchor" href="#stay-tuned"&gt;&lt;/a&gt;Stay tuned&amp;#8230;&amp;#8203;&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Thanks for coming! We hope you found this content helpful. We have a couple more posts until we conclude this series.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
