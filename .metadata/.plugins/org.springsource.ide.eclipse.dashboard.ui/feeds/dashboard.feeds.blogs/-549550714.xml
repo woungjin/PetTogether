@@ -5,7 +5,148 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-13T11:00:00Z</updated>
+  <updated>2021-01-13T20:21:00Z</updated>
+  <entry>
+    <title>The latest on Azure Active Directory integration</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/13/the-latest-on-azure-active-directory-integration" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Andy Clement</name>
+    </author>
+    <id>tag:spring.io,2021-01-13:4334</id>
+    <updated>2021-01-13T20:21:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Whether you are building a web API, mobile front end or a good-old fashioned desktop application, identity and access management will always be foundational pieces that are front and center in writing software. Azure offers a great platform to democratize your application development journey, as it not only offers a cloud-base identity service, but also deep integration with the rest of the Azure ecosystem. Spring Security has made it easy to secure your Spring based applications with powerful abstractions and extensible interfaces. However as powerful as the Spring framework can be, it is not tailored to a specific identity provider. The Azure Spring Boot Starter for Azure Active Directory is the result of collaborative efforts from Microsoft and VMware to provide the most optimal way to connect your application to an Azure AD tenant and protect resource APIs with Azure Active Directory. Case in point, there are scenarios where you may want to authorize against multiple resource servers, and you can simply do that by including multiple authorization clients in your application configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To get started with the Azure Spring boot starter for Azure Active Directory, connect your application to an Azure AD tenant, and include the following configuration in your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    tenant-id: xxxxxx-your-tenant-id-xxxxxx
+    client-id: xxxxxx-your-client-id-xxxxxx
+    client-secret: xxxxxx-your-client-secret-xxxxxx
+    authorization-clients:
+      graph:
+        scopes:
+            - https://graph.microsoft.com/User.Read
+            - https://graph.microsoft.com/Directory.AccessAsUser.All&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Get the &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt; in your Controller:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="java"&gt;@GetMapping("/graph")
+@ResponseBody
+public String graph(
+    @RegisteredOAuth2AuthorizedClient("graph") OAuth2AuthorizedClient client
+) {
+// Now you can use the access token to access a graph URI
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For more detail see our  &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-webapp"&gt;sample project&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s look at some of the recent enhancements in the starter:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="web-applications"&gt;&lt;a class="anchor" href="#web-applications"&gt;&lt;/a&gt;Web applications&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="integration-with-microsoft-api"&gt;&lt;a class="anchor" href="#integration-with-microsoft-api"&gt;&lt;/a&gt;Integration with Microsoft API&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The identity platform provides Microsoft APIs to interact with many well-known Microsoft SaaS applications. For example, use the graph API to interact with Office 365, Azure DevOps to talk to with Azure DevOps server and Azure Batch to schedule HPC applications in the cloud. To use the graph API
+First configure your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    authorization-clients:
+      graph:
+        scopes:
+            - https://graph.microsoft.com/User.Read
+            - https://graph.microsoft.com/Directory.AccessAsUser.All&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;And then get the &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt; in your Controller.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="incremental-consent"&gt;&lt;a class="anchor" href="#incremental-consent"&gt;&lt;/a&gt;Incremental consent&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can incrementally approve your application access to resources and APIs as needed. This type of behavior is desirable when you want to have finer control of access management, as opposed to granting all scopes upfront. To utilize incremental consent in a web application, configure your &lt;code&gt;application.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="yml"&gt;azure:
+  activedirectory:
+    authorization-clients:
+      arm:
+        on-demand: true
+        scopes: https://management.core.windows.net/user_impersonation&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Incremental consent is triggered when an application tries to get corresponding &lt;code&gt;OAuth2AuthorizedClient&lt;/code&gt;. It can also be triggered by accessing the URL: &lt;code&gt;/login/oauth2/code/{authorization-client}&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="integrate-with-aad-for-logout"&gt;&lt;a class="anchor" href="#integrate-with-aad-for-logout"&gt;&lt;/a&gt;Integrate with AAD for logout&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Add &lt;code&gt;azure.activedirectory.post-logout-redirect-uri&lt;/code&gt; in your configuration properties and your application will automatically log out all active sessions when the user performs a log out, and then redirect the user to the &lt;code&gt;logout-redirect-uri&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-webapp"&gt;this web application sample project&lt;/a&gt; for more detail. (This sample includes all 3 scenarios)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="resource-server"&gt;&lt;a class="anchor" href="#resource-server"&gt;&lt;/a&gt;Resource server&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="aad-protected-resource-server"&gt;&lt;a class="anchor" href="#aad-protected-resource-server"&gt;&lt;/a&gt;AAD protected resource server&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In OAuth 2.0, a resource server is an application that protects underlying resources with a token. In this release we¡¯ve added validation for Audience and Issuer to ensure intended audience and issuer are respected.
+See the &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-resource-server"&gt;resource server sample project&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="on-behalf-of-flow-with-spring-resource-server"&gt;&lt;a class="anchor" href="#on-behalf-of-flow-with-spring-resource-server"&gt;&lt;/a&gt;On Behalf-of-flow with spring resource server&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;When your application calls API A with a token, and API A in turn calls API B, a different token is required before API B can be accessed. OAuth 2.0 provides an On-Behalf-Of (OBO) flow that is designed to handle this common scenario. With the Azure Spring Boot Starter for Azure Active Directory, you can delegate a user identity request and propagate through the request chain.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See &lt;a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-boot-sample-active-directory-resource-server-obo"&gt;the resource server with OBO sample project&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="other-notable-changes"&gt;&lt;a class="anchor" href="#other-notable-changes"&gt;&lt;/a&gt;Other notable changes&lt;/h3&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="pack-id-change"&gt;&lt;a class="anchor" href="#pack-id-change"&gt;&lt;/a&gt;Pack ID change:&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To align with the rest of Azure SDKs, starting from 3.x, the package ID for Azure Spring Boot starters has been renamed from &lt;code&gt;azure-[startername]-spring-boot&lt;/code&gt; to &lt;code&gt;azure-spring-boot-[startername]&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="latest-versions"&gt;&lt;a class="anchor" href="#latest-versions"&gt;&lt;/a&gt;Latest versions:&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Version 3.0.0 is released and includes support for Spring boot 2.2.x and 2.3.x&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>YMNNALFT: Express Yourself with SpEL</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/13/ymnnalft-express-yourself-with-spel" />
@@ -1384,53 +1525,6 @@ dependencies {&#xD;
 &lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2020-12-16-490-release-incl-language-servers-version-1240"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2020-12-16-490-release-incl-language-servers-version-1240&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Spring Tools 4.9.1 is scheduled to be released in early Feb 2021.&lt;/p&gt;
 &lt;p&gt;Enjoy!&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 15th, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/16/this-week-in-spring-december-15th-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-16:4306</id>
-    <updated>2020-12-16T02:21:19Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! Can you believe it&amp;rsquo;s already December 15th? Me either! Another few weeks and this soul annhilating year will be over with and we&amp;rsquo;ll be staring down 2021 filled with new hopes and possibilities! How are you? (Have you dipped into the eggnog yet?) I&amp;rsquo;m doing alright, thanks! I&amp;rsquo;ve been busy, as usual. &lt;/p&gt;
-&lt;p&gt;Most of that was fun stuff. But, some of that, I confess, was a mess of my own making. I spent Monday cleaning up a fire I&amp;rsquo;d set for myself. You see, I got a little sloppy with last week&amp;rsquo;s podcast episode. Last week, I was editing the audio for an episode with Spring Batch colead Mahmoud Ben Hassine and - in the middle of that - was pushing an interview I&amp;rsquo;d done with Dion Almaer out the door for publication that week. So, two episodes: one with Dion, one with Mahmoud. Dion was slated for last week. Mahmoud&amp;rsquo;s was slated for a future week. On top of that I&amp;rsquo;ve been toiling night and day it feels like on &lt;a href="http://github.com/bootiful-podcast"&gt;the production pipeline for my podcasts&lt;/a&gt;, living that &lt;code&gt;kubectl apply -k $WORKING_DIR&lt;/code&gt; life, and I was tired of some of the issues still lingering but figured I could, basically trust the system. So I published the episode with Dion. I got everything right, &lt;em&gt;except&lt;/em&gt; the interview was with Mahmoud. Not Dion. So it said Dion. But I&amp;rsquo;d accidentally sent out the wrong episode. Awkward. Worse, after I published that episode, figuring I had a week to make a mess before I&amp;rsquo;d next have to publish an episode, I started making a mess of the codebase. I broke stuff. Would&amp;rsquo;ve been no big deal. I would&amp;rsquo;ve sorted it out! But yesterday, Monday, I realize people are complaining that I&amp;rsquo;d bungled the audio: published the preface and description for Dion but published the audio interview with Mahmoud. So I raced to fix it, except production was down! So I spent Monday dodging between meetings and calls and trying to get the system restored. I finally got the system on its feet again late last night - both episodes with the correct titling and audio and links and photos went out and it was good. Thank you so much for your patience, community. I have egg on my face. &lt;/p&gt;
-&lt;p&gt;Anyway, everything&amp;rsquo;s fine now. I&amp;rsquo;m not gonna touch a thing until the new episode, due later this week, rolls out! And, bonus, you get not one, but &lt;em&gt;two&lt;/em&gt; episodes this week: I published both episodes last night. So, in total, you&amp;rsquo;ll get three episodes in a seven-day period, not one. Huzzah. &lt;/p&gt;
-&lt;p&gt;This morning I had the privilege of speaking at the Warsaw JUG at their last meeting for the year. Thank you so much for a lively crowd and a wonderful event, Warsaw! &lt;/p&gt;
-&lt;p&gt;Now then, we&amp;rsquo;ve got a lot of good stuff to get to this week so, without further ado&amp;hellip; &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/a-bootiful-podcast-spring-batch-co-lead-mahmoud-ben-hassine"&gt;A Bootiful Podcast: Spring Batch co-lead Mahmoud Ben Hassine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/14/a-bootiful-podcast-open-web-legend-dion-almaer"&gt;A Bootiful Podcast: open-web legend Dion Almaer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blog.frankel.ch/hack-ease-usage-log4j2-spring-boot/"&gt;A dirty hack to ease the usage of Log4J2 in Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/14/case-study-change-data-capture-cdc-analysis-with-cdc-debezium-source-and-analytics-sink-in-real-time"&gt;Case Study: Change Data Capture (CDC) Analysis with CDC Debezium source and Analytics sink in Real-Time&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/cloud-events-and-spring-part-1"&gt;Cloud Events and Spring - part 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/65254112/correct-usage-of-loadbalancersocketclient-with-springs-rsocketrequester/65268468#65268468"&gt;Correct usage of LoadbalanceRSocketClient with Spring&amp;rsquo;s RSocketRequester - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/11/podcast-009/"&gt;Episode 9 ¡°Project Panama - The Foreign Memory Access API¡± with Maurizio Cimadamore and Jorn Vernee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blog.jetbrains.com/kotlin/2020/12/expedia-group-bootiful-apis-with-graphql-and-kotlin/"&gt;Expedia Group: Bootiful APIs With GraphQL and Kotlin ? Kotlin Blog | JetBrains&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/first-milestone-of-spring-data-2021-0-0-released"&gt;First milestone of Spring Data 2021.0.0 released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/KotlinKbug/status/1337328725348716546"&gt;Kotlin Belfast User Group (KBUG) on Twitter: &amp;quot;In lieu of a Dec event please accept our Kotlin Christmas Stocking. 16 sets of recommendations, from recognised experts, to improve your @kotlin coding. We hope you enjoy. Thanks to all our contributors. Merry&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.infoq.com/news/2020/12/kubernetes-120-rickard/"&gt;Kubernetes 1.20: Q&amp;amp;A with Release Lead and VMware Engineer Jeremy Rickard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=cEjU6-WOb3Q&amp;list=PLKKQHTLcxDVbJtlef15003TYaEkq1ZY8c&amp;index=15"&gt;Reactive Summit 2020: Josh Long, Bootiful RSocket - YouTube&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blogs.vmware.com/opensource/2020/12/09/salt-open-source-projects/"&gt;Salt Enhances a Number of Key Open Source Projects&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/14/spring-session-redis"&gt;Scaling Secure Applications with Spring Session and Redis | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-boot-2-2-12-available-now"&gt;Spring Boot 2.2.12 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-boot-2-3-7-available-now"&gt;Spring Boot 2.3.7 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-boot-2-4-1-available-now"&gt;Spring Boot 2.4.1 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/spring-cloud-2020-0-0-rc1-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0-RC1 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/07/spring-cloud-config"&gt;Spring Cloud Config for Shared Microservice Configuration | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2020/12/07/spring-cloud-config?fbclid=IwAR05sW4ucHtjyqKIpzFn7OS6tjaaYzj86Ll3Y1aaUPi-X1HhztW_uix3BAs"&gt;Spring Cloud Config for Shared Microservice Configuration | Okta Developer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://tanzu.vmware.com/content/blog/spring-cloud-data-flow-for-kubernetes-1-2-offers-real-time-alerts-and-new-dashboard"&gt;Spring Cloud Data Flow for Kubernetes 1.2 is now available for desert&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/spring-data-2020-0-2-neumann-sr6-and-moore-sr12-available"&gt;Spring Data 2020.0.2, Neumann-SR6, and Moore-SR12 available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/09/spring-framework-5-3-2-5-2-12-5-1-20-5-0-20-and-4-3-30-available-now"&gt;Spring Framework 5.3.2, 5.2.12, 5.1.20, 5.0.20, and 4.3.30 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/11/spring-statemachine-3-0-0-rc1-released"&gt;Spring Statemachine 3.0.0-RC1 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-vault-2-2-3-release-available"&gt;Spring Vault 2.2.3.RELEASE available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/10/spring-vault-2-3-0-rc1-available"&gt;Spring Vault 2.3.0 RC1 available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-1"&gt;Testing Spring Cloud Stream Applications - Part 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-2"&gt;Testing Spring Cloud Stream Applications - Part 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?app=desktop&amp;v=rWNYPRxihno"&gt;vSphere With Tanzu DDS - Ep 5 - Exploring a Tanzu Kubernetes Cluster - YouTube&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
