@@ -240,7 +240,11 @@ select {
         .category {text-align: center; margin: 0 auto; display: inline-block;}
         .category_set{margin: 0 auto ; text-align: center; }
 
-        .content-review{overflow: hidden;}
+        .content-review{
+        overflow: hidden;
+        
+        
+         }
         .content-left{float: left; }
 		.list-img img{width : 178px; height : 210px;}    
         
@@ -259,7 +263,7 @@ select {
         }
 
         .good{display: none;}
-        .content-img img{position: relative;}
+        .content-img img{position: relative; width:195px;}
         .bad img , .good img{width: 20px; height: 20px;}
         .good{position: absolute; top: 16px; left: 36px;}
         .bad{position: absolute; top:16px ; left: 36px;}
@@ -387,6 +391,98 @@ select {
 .page-nav{text-align: center;}
 .page-nav ul li a{color: black;}
 
+
+/*리뷰게시판 디자인= ===================================================*/
+.replyReview{position: relative;}
+
+.reviewReplyBtn{
+    position: absolute; 
+    right: 22px;
+    bottom: 25px;
+}
+
+.review-board {
+	margin-top : 3px;
+	border-top: 1px solid #cccc;
+}
+.review-board ul{overflow: hidden;}
+.review-board ul li{
+    float: left; padding: 3px;
+    width: auto;
+}
+.review-board img{
+    width: 30px;
+    height: 30px;
+}
+.review-board textarea {
+    resize: none;
+    width: 144px;
+    height: 37px;
+    border: none;
+}
+
+/*여기는 리뷰작성  입니다 ===========================*/
+
+	.section-inner {
+		border-right: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+		background-color: white;
+	}
+	
+	.section-inner p {
+		margin: 0;
+	}
+	
+
+
+/*파일업로드 ===========================================*/
+	/* 파일업로드 버튼 바꾸기 */
+	.filebox label {
+		display: inline-block;
+		padding: 6px 10px;
+		color: #fff;
+		font-size: inherit;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #5cb85c;
+		cursor: pointer;
+		border: 1px solid #4cae4c;
+		border-radius: none;
+		-webkit-transition: background-color 0.2s;
+		transition: background-color 0.2s;
+	}
+	
+	.filebox label:hover {
+		background-color: #6ed36e;
+	}
+	
+	.filebox label:active {
+		background-color: #367c36;
+	}
+	
+	.filebox input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	
+	/* sns파일 업로드시 미리보기  */
+	.fileDiv {
+		height: 100px;
+		width: 200px;
+		display: none;
+		margin-bottom: 10px;
+	}
+	
+	.fileDiv img {
+		width: 100%;
+		height: 100%;
+	}
 
 
 

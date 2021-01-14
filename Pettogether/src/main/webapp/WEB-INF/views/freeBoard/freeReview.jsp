@@ -10,8 +10,8 @@
 
 
 <section class="content">
-        <div class="container">
-            <div class="row">
+        <div class="container ">
+            <div class="row ">
                 <h3 style="text-align: center;">여기는 리뷰 top4</h3>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
@@ -20,7 +20,7 @@
                         <div class="list-img">
                             
                             <a href="#">
-                                <img src="img/img_01.jpg"  data-toggle="modal" data-target="#myModal">
+                                <img src="${pageContext.request.contextPath }/resources/img/freeBoard/img_02.jpg"  data-toggle="modal" data-target="#myModal">
                             </a>
                             
 
@@ -30,17 +30,31 @@
                     
                         <div class="list-content">
                             
-                            <p >청남대 애견동반 버스패키지</p>
-                            <div class="content-reivew">
+                            <p style="border-bottom : 1px solid #cccc">청남대 애견동반 버스패키지</p>
+                            <div class="content-reivew" style="margin-top : 4px;">
+                            
                                 <p id="star_grade" class="content-left">
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                </p>
-                                <p class="content-left">리뷰수 120</p>
+                                   <strong>김계환 </strong>&nbsp;
+                                </p>&nbsp;
+                                <p class="content-left"><small>2020-10-10</small></p> <br/>
                             </div>
+                            
+                            <div class="review-board">
+                               <ul >
+                                   <li>
+                                       <a href="#">
+                                           <img src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt="">
+                                        </a>
+                                   </li>
+                                   <li>
+                                      
+                                       <textarea>몇글자까지가능하라나</textarea>
+                                       
+                                   </li>
+                               </ul>
+                                
+                            </div>
+                            
                             
                            
                         </div>
@@ -50,134 +64,9 @@
 
 
                 </div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
-
-                    <div class="list">
-                        <div class="list-img">
-                            
-                            <a href="#">
-                                <img src="img/img_01.jpg"  data-toggle="modal" data-target="#myModal">
-                            </a>
-                            
-
-                        </div>
-                            
-                         
-                    
-                        <div class="list-content">
-                            
-                            <p >청남대 애견동반 버스패키지</p>
-                            <div class="content-reivew">
-                                <p id="star_grade" class="content-left">
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                </p>
-                                <p class="content-left">리뷰수 120</p>
-                            </div>
-                           
-                           
-                        </div>
-                        
-                    </div>
+               
 
 
-
-                </div>
-
-
-                <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
-
-                    <div class="list">
-                        <div class="list-img">
-                            
-                            <a href="#">
-                                <img src="img/img_01.jpg"  data-toggle="modal" data-target="#myModal">
-                            </a>
-                            
-
-                        </div>
-                            
-                         
-                    
-                        <div class="list-content">
-                            
-                            <p >청남대 애견동반 버스패키지</p>
-                            <div class="content-reivew">
-                                <p id="star_grade" class="content-left">
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                </p>
-                                <p class="content-left">리뷰수 120</p>
-                            </div>
-                           
-                           
-                        </div>
-                        
-                    </div>
-
-
-
-                </div>
-
-
-                <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
-
-                    <div class="list">
-                        <div class="list-img">
-                            
-                            <a href="#">
-                                <img src="img/img_01.jpg"  data-toggle="modal" data-target="#myModal">
-                            </a>
-                            
-
-                        </div>
-                            
-                         
-                    
-                        <div class="list-content">
-                            
-                            <p >청남대 애견동반 버스패키지</p>
-                            <div class="content-reivew">
-                                <p id="star_grade" class="content-left">
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                    <a href="#">★</a>
-                                </p>
-                                <p class="content-left">리뷰수 120</p>
-                            </div>
-                            
-                           
-                        </div>
-                        
-                    </div>
-
-
-
-                </div>
-
-
-
-                <!--페이지 네이션 -->
-                <div class="container page-nav">
-                    <ul class="pagination">
-                        <li class="previous"><a href="#">Previous</a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li class="next"><a href="#">Next</a></li>
-                    </ul>
-                  </div>
 
               
                 <!-- 모달창  -->
@@ -232,7 +121,6 @@
 
                         </div>
                         
-                            
                         
                       </div>
                       <div class="modal-footer">
@@ -246,7 +134,20 @@
                 
                 
             </div>
-        </div>
+        
+                <!--페이지 네이션 -->
+                <div class="container page-nav replyReview">
+                    <ul class="pagination">
+                        <li class="previous"><a href="#">Previous</a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li class="next"><a href="#">Next</a></li>
+                    </ul>
+                  <button type="button"  class="btn btn-default reviewReplyBtn">후기글쓰기</button>
+                  </div>
         
     </section>
 

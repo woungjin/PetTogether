@@ -21,19 +21,18 @@
                         <p># 강아지 #고양이</p>
                     </div>
                     <div class="img-inner">
-                        <img src="img/img_01.jpg"  alt="이미지">
+                        <img src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png"  alt="이미지">
                     </div>
                     
                     <div class="mid-review-content">
 
                         <p class="mid-review-star">
-                            
-                            <a href="#">★</a> 
-                            <a href="#">★</a>
-                            <a href="#">★</a>
-                            <a href="#">★</a>
-                            <a href="#">★</a>&nbsp;
-                            <span>(후기:128개)</span>
+                            <i>★</i>
+                            <i>★</i>
+                            <i>★</i>
+                            <i>★</i>
+                            <i>★</i> 
+                            &nbsp;<span>(후기:128개)</span>
                             <span>소형견에게 추천 !</span>                           
                         </p>
                         
@@ -69,7 +68,11 @@
                                     <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
                                 </div>
                             <p>
-                                <a href="#">★</a>  <a href="#">★</a>  <a href="#">★</a>  <a href="#">★</a>  <a href="#">★</a> 
+                                <i>★</i>
+                                <i>★</i>
+                                <i>★</i>
+                                <i>★</i>
+                                <i>★</i> 
                             </p>
                                 <p class='clearfix'>여기는 댓글영역</p>
                             </div>
