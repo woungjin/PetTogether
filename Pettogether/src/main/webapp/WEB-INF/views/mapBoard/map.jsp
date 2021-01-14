@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <section>
-    	<!-- kakao api key -->
-    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe9c4f49446ea70ac05193ca8f70f694&libraries=services"></script>
-    	
-    	
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe9c4f49446ea70ac05193ca8f70f694&libraries=services"></script>
         <h1 style="text-align: center; font-size: 50px;">Map Point!</h1>
         <div style="text-align: center;">
             <select name="" id="">
@@ -16,78 +13,102 @@
             </select>
         </div>
         <br/>
-        <div id = "boxmap">
-        	<div id="map" ></div>
-        </div>
+        <div id="map" ></div>
+        
     </section>
 
 
     <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = { 
-                center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+          mapOption = { 
+              center: new kakao.maps.LatLng(37.583597, 127.082697), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+          };
 
-        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption);        
+      // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+      
+      var imageSrc = 'img/cafe.jpg', // 마커이미지의 주소입니다    
+          imageSize = new kakao.maps.Size(30, 40), // 마커이미지의 크기입니다
+          imageOption = {offset: new kakao.maps.Point(15, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+      // 주소-좌표 변환 객체를 생성합니다
+      var geocoder = new kakao.maps.services.Geocoder();
+      
+      // 주소로 좌표를 검색합니다
+      geocoder.addressSearch('서울특별시 중랑구 면목동 156-23', function(result, status) {
 
-        var imageSrc = 'img/cafe.jpg', // 마커이미지의 주소입니다    
-            imageSize = new kakao.maps.Size(30, 40), // 마커이미지의 크기입니다
-            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-            
-        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-            markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+      // 정상적으로 검색이 완료됐으면 
+      if (status === kakao.maps.services.Status.OK) {
 
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            position: markerPosition, 
-            image: markerImage // 마커이미지 설정 
-        });
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
+          // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+          markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-        // 커스텀 오버레이에 표시할 컨텐츠 입니다
-        // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-        // 별도의 이벤트 메소드를 제공하지 않습니다 
-        var content = '<div class="wrap">' + 
-                    '    <div class="info">' + 
-                    '        <div class="title">' + 
-                    '            카카오 스페이스닷원' + 
-                    '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-                    '        </div>' + 
-                    '        <div class="body">' + 
-                    '            <div class="img">' +
-                    '                <img src="img/pet1.png" width="73" height="70">' +
-                    '           </div>' + 
-                    '            <div class="desc">' + 
-                    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-                    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-                    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-                    '            </div>' + 
-                    '        </div>' + 
-                    '    </div>' +    
-                    '</div>';
+          // 결과값으로 받은 위치를 마커로 표시합니다
+          var marker = new kakao.maps.Marker({
+              map: map,
+              position: coords,
+              image: markerImage
+          });
 
-        var overlay = new kakao.maps.CustomOverlay({
-            content: content,
-            map: map,
-            position: new kakao.maps.LatLng(37.54699, 127.09598)       
-        });
+          // 커스텀 오버레이에 표시할 컨텐츠         
+          var content = document.createElement('div');
+          content.className = 'wrap';
+          var info = document.createElement("div");
+          var title = document.createElement("div");
+          var close = document.createElement("div");
+          var body = document.createElement("div");
+          var image = document.createElement("div");
+          var desc = document.createElement("div");
+          var ellipsis = document.createElement("div");
+          var jibun = document.createElement("div");
+          var link = document.createElement("div");
+          var a = document.createElement("a");
+          var img = document.createElement("img");
+          content.appendChild(info).className = 'info';          
+          info.appendChild(title).className = 'title';          
+          title.innerHTML = '씨유 중랑센트럴아이파크점';
+          title.appendChild(close).className = 'close';   
+          close.onclick = function(){
+            overlay.setMap(null); 
+          }       
+          close.title = '닫기';            
+          info.appendChild(body).className = "body";          
+          body.appendChild(image).className = "img";
+          image.appendChild(img).src = 'img/pet1.png';
+          img.width = '73';
+          img.height = '70';
+          body.appendChild(desc).className = 'desc';          
+          desc.appendChild(ellipsis).className = 'ellipsis';
+          ellipsis.innerHTML = '서울특별시 중랑구 면목동 156-23';
+          desc.appendChild(jibun).className = 'jibun';
+          jibun.innerHTML = '(우) 131821 (지번) 면목동 156-23';
+          desc.appendChild(link)
+          link.appendChild(a).className = 'link';
+          a.href = 'https://www.kakaocorp.com/main';
+          a.innerHTML = '홈페이지';         
 
-        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-        kakao.maps.event.addListener(marker, 'click', function() {
-            overlay.setMap(map);
-        });
+          var overlay = new kakao.maps.CustomOverlay({
+              content: content,
+              map: map,
+              position: new kakao.maps.LatLng(result[0].y, result[0].x)       
+          });
 
-        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-        function closeOverlay() {
-            overlay.setMap(null);     
-        }
+          // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+          kakao.maps.event.addListener(marker, 'click', function() {
+              overlay.setMap(map);
+          });          
+          
+          // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+          map.setCenter(coords);
+        } 
+
+      });     
 
 
-    </script>
+  </script>
 </body>
 </html>
