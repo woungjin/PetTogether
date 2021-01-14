@@ -26,7 +26,10 @@
     <!--
     <Manager pathname="" />
     -->
+<<<<<<< HEAD
     <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="300" maxWait="1000" name="jdbc/mysql" password="jsp" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul" username="jsp"/>
     
     
+=======
+>>>>>>> cc3f834ad27ce08d822d0ce4ef8fcfa8579824e8
 </Context>

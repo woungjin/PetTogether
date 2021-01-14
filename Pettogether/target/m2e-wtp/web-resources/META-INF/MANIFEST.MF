@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: a5740
 Build-Jdk: 15.0.1
+=======
+Built-By: DGWEE
+Build-Jdk: 1.8.0_271
+>>>>>>> cc3f834ad27ce08d822d0ce4ef8fcfa8579824e8
 Created-By: Maven Integration for Eclipse
 
