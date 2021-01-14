@@ -10741,3 +10741,9 @@ org.eclipse.core.runtime.AssertionFailedException: null argument:
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-14 14:39:21.234
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-14 14:42:16.042
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-14 14:42:16.062
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
