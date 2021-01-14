@@ -624,9 +624,9 @@ select {
 }
 
 
+/* 
 
-
-/* 김계의 그 뭐야 그거 보드게시판 css */
+김계의 그 뭐야 그거 보드게시판 css
  
         section{display: block;} 
        
@@ -643,7 +643,7 @@ select {
         .list .list-content {overflow: hidden; }
 
 
-        /*여기는 카테고리*/
+        여기는 카테고리
         
 
         .category ul {text-align: center ; background-color: white; margin: 0; overflow: hidden; background-color: rgb(250, 186, 91);}
@@ -683,8 +683,8 @@ select {
         
         
         
- /*===========================================================*/
- /*김계환읜 보드 딕테일 =========================*/
+ ===========================================================
+ 김계환읜 보드 딕테일 =========================
  
  
  .section-facebook {
@@ -731,16 +731,16 @@ select {
 
 
 
-        /*댓글*/
+        댓글
         .reply-wrap {
 	background-color: white;
 	padding: 15px;
 	border: 1px solid #ddd;
-	position: relative; /*부모에 relative*/
+	position: relative; 부모에 relative
 }
 
 .reply-wrap .reply-image {
-	position: absolute; /*자식에서 absolute로 부모요소 위치로 조정*/
+	position: absolute; 자식에서 absolute로 부모요소 위치로 조정
 	left: 15px;
 	top: 15px;
 }
@@ -748,11 +748,11 @@ select {
 .reply-wrap .reply-content {
 	padding-left: 60px;
 }
-/*부트스트랩의 form-control 조정 */
+부트스트랩의 form-control 조정
 .reply-content>.form-control {
-	resize: vertical; /*세로로만 조정가능*/
-	width: 94%; /*최대 100%*/
-	min-height: 80px; /*최대 넓이*/
+	resize: vertical; 세로로만 조정가능
+	width: 94%; 최대 100%
+	min-height: 80px; 최대 넓이
     margin-bottom: 10px;
     
 }
@@ -774,7 +774,7 @@ select {
 	float: right;
 }
 
-/*댓글 영역*/
+댓글 영역
 .reply-group small {
 	margin-left: 10px;
 	height: 20px;
@@ -790,7 +790,7 @@ select {
 	color: #777;
 	float: right;
 }
-/*댓글창 포커스시 서서히 보이기 */
+댓글창 포커스시 서서히 보이기
 .reply-content textarea {
 	height: 50px;
 	transition: height .4s ease-in-out;
@@ -800,12 +800,12 @@ select {
 	height: 150px;
 }
 
-/*페이지 네이션 디자인 ( 김계환 )*/
+페이지 네이션 디자인 ( 김계환 )
 .page-nav{text-align: center;}
 .page-nav ul li a{color: black;}
 
 
-/*리뷰게시판 디자인= ===================================================*/
+리뷰게시판 디자인= ===================================================
 .replyReview{position: relative;}
 
 .reviewReplyBtn{
@@ -834,7 +834,7 @@ select {
     border: none;
 }
 
-/*여기는 리뷰작성  입니다 ===========================*/
+여기는 리뷰작성  입니다 ===========================
 
 	.section-inner {
 		border-right: 1px solid #ddd;
@@ -848,8 +848,8 @@ select {
 	
 
 
-/*파일업로드 ===========================================*/
-	/* 파일업로드 버튼 바꾸기 */
+파일업로드 ===========================================
+	파일업로드 버튼 바꾸기
 	.filebox label {
 		display: inline-block;
 		padding: 6px 10px;
@@ -884,7 +884,7 @@ select {
 		border: 0;
 	}
 	
-	/* sns파일 업로드시 미리보기  */
+	sns파일 업로드시 미리보기 
 	.fileDiv {
 		height: 100px;
 		width: 200px;
@@ -896,7 +896,7 @@ select {
 		width: 100%;
 		height: 100%;
 	}
-
+ */
 
 
 
