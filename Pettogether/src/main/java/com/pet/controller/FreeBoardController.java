@@ -25,4 +25,9 @@ public class FreeBoardController {
 		return "freeBoard/freeReview";
 	}
 	
+	@RequestMapping("/freeReviewRegist")
+	public String freeReviewRegist() {
+		return "freeBoard/freeReviewRegist";
+	}
+	
 }
