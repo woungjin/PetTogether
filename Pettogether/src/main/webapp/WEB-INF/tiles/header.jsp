@@ -2,67 +2,44 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
     <header class="my-header">
-        <nav class="navbar">
-          <div class="container-fluid">
-            
-            <div class="logo">
-              <div class="logo_img">
-                <img src="${pageContext.request.contextPath}/resources/img/home/petLogo.svg" alt="펫투게더">
-              </div>
-              <div class="nav_right">
-                <li><a href="/contact/">LOGIN</a></li> <br/>
-                  <div class="bar">
-                    ㅡ
-                  </div>
-                <li><a href="/contact/">JOIN</a></li>
-              </div>
+      <div class="header2">
+              
+        <!-- 로고 -->
+        <div class="top">
+          <div class="logo_login">
+            <a href="#"><img class="logo" src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더"></a>
+              <a href="/contact/">LOGIN </a> 
+              <span> | </span>
+              <a href="/contact/"> JOIN</a>
             </div>
-            
-            <div class="collapse navbar-collapse" id="topBar">
-              <ul class="nav", id="topBar">
-                <li><a href="/about/">HOME</a></li>
-                <li><a href="/about/">CATEGORY</a></li>
-                <li><a href="/work/">MAP</a></li>
-                <li><a href="/clients/">REVIEW</a></li>
-              </ul>
-            </div>
-            <div class="navbar-header" >
-              <!-- 휴대폰사이즈로 줄었을 때 버튼나오는 기능 -->
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-  
-            <!-- 메뉴작성 부분 -->
-            
+        </div>
 
-          </div>
-        </nav>
-      </header>
+        <!-- 메뉴바  -->
+        <div class="mid" id="midBar">
+          <ul class="nav">
+            <li><a href="/about/">HOME</a></li>
+            <li><a href="/about/">CATEGORY</a></li>
+            <li><a href="/work/">MAP</a></li>
+            <li><a href="/clients/">REVIEW</a></li>
+          </ul>
+        </div>
+    </div>
+  </header>
 
 
-      <script>
-        $(document).ready(function() {
-          var topBar = $("#topBar").offset();
+  <script>
+      $( document ).ready( function() {
+        var jbOffset = $('#midBar').offset();
+        $( window ).scroll( function() {
+          if ( $( document ).scrollTop() > jbOffset.top ) {
+            $( '#midBar' ).addClass( 'jbFixed' );
+          }
+          else {
+            $( '#midBar' ).removeClass( 'jbFixed' );
+          }
+        });
+      });
 
-          $(window).scroll(function(){
-
-            var docScrollY = $(document).scrollTop()
-            var barThis = $("#topBar")
-            var fixNext = $("#fixNextTag")
-
-            if(docScrollY > 200) {
-              barThis.addClass("top_bar_fix")
-              fixNext.addClass("pd_top_80");
-            } else {
-              barThis.removeClass("top_bar_fix");
-              fixNext.removeClass("pd_top_80");
-            }
-
-          });
-        })
-
-      </script> 
+  </script>
