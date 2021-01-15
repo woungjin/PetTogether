@@ -102,7 +102,9 @@
 					 $.getJSON(
 						"../freeBoard/goodDelete/" + bno  + "/" + user_id ,
 						function(data) {
-							console.log(data);
+							if(data !== 1) {
+								alert("찜실패!");
+							}
 						}
 					 );
 					 
@@ -118,14 +120,12 @@
 					$.getJSON(
 							"../freeBoard/goodInsert/" + bno + "/" + user_id,
 							function(data) {
-								console.log(data);
+								if(data !== 1){
+									alert("찜실패 !");
+								} 
 							}
 						);
-					
-					
-					
-					
-                    return;
+					 return;
                 }else{
                     return ;
                 }

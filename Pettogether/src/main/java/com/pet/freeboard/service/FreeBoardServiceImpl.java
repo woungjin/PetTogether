@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pet.command.MyGoodVO;
+import com.pet.command.ReviewRegistVO;
 import com.pet.freeboard.mapper.FreeBoardMapper;
 
 @Service("freeBoardService")
@@ -28,6 +29,13 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return result; 
 	}
 
+
+	
+
+	 public boolean fileInsert(ReviewRegistVO vo) {
+	  
+	 return freeBoardMapper.fileInsert(vo); }
+	 
 	
 	
 	

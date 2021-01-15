@@ -17,12 +17,19 @@
 						
 						<div class="reply-group">
 							<div class="filebox pull-left">
-								<label for="file">이미지업로드</label> 
-                            
+								<label for="file" style="display: inline-block;
+													padding: 6px 10px;
+													color: #fff;
+													font-size: inherit;
+													line-height: normal;
+													vertical-align: middle;
+													background-color: #5cb85c;
+													cursor: pointer;
+													border: 1px solid #4cae4c;
+													border-radius: none;
+													-webkit-transition: background-color 0.2s;
+													transition: background-color 0.2s;" >이미지업로드</label> 
                                 <input type="file" name="file" id="file">
-                                
-                               
-                                
                             </div>
                             
                             
@@ -36,15 +43,82 @@
 			</div>
 		</div>
 	</section>
-
-
+	
+	
+	<script>
+	$(document).ready(function() {
+		/*이곳은 파일을 업로드하는 움직임입니다*/
+		$("#uploadBtn").click(reviewRegist);
+		
+		function reviewRegist() {
+			var writer = "test"/*"${sessionScope.userVO.userId}"*/;
+			var file = $("#file").val();
+			var content = $("#content").val();
+			
+			//파일확장자를 체크합니다 
+			file = file.substring(file.lastIndexOf(".") , file.length).toLowerCase();
+			console.log(file);
+			
+			if(file != ".png" && file != ".jpg" && file != "jpeg"){
+				alert("이미지 형식의 파일을 선택해주세요 !");
+				return; 
+			}else if (writer == null) {
+				alert("로그인이 필요합니다");
+			}
+			
+			var data = $("#file");
+			console.log(data);
+			console.log(data[0]);
+			console.log(data[0].files); // 파일 태그에 담긴 파일을 확인하는 키값
+			console.log(data[0].files[0]);// 전송해야하는 파일데이터정보
+	
+			var formData = new FormData();
+			formData.append("file", data[0].files[0]);	
+			formData.append("content" , content);	
+			
+			$.ajax({
+				type : "POST",
+				url : "reviewUpload",
+				processData : false , 
+				contentType : false ,
+				data : formData ,
+				success : function(result) {
+					$("#file").val(""); // 파일데이터 초기화
+					$("#content").val(""); // content초기화
+					$(".fileDiv").css("display" , "none"); //미리보기 숨기기
+					alert(result);
+					
+					location.href="freeReview";
+					
+				},
+				error : function(error) {
+					alert("실패하였습니다");	
+				}
+				
+			})
+			
+			
+			
+			
+			
+			
+			
+			
+		}; // reviewRegist() 종효
+		
+	});// document ready 함수 종료
+		
+		
+		
+		
+	</script>
 
 
 
 
     <script>
-
-
+	
+	
 		//자바 스크립트 파일 미리보기 기능
 		function readURL(input) {
         	if (input.files && input.files[0]) {

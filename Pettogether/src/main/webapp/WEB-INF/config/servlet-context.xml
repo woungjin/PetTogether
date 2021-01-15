@@ -49,6 +49,15 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 	
+	<!-- 파일업로드설정 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 가능한 바이트크기 -->
+		<beans:property name="maxUploadSize" value="52428800" />
+		<!-- defaultEncoding -->
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
+	
 	
 	
 </beans:beans>

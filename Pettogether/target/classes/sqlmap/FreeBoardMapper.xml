@@ -15,7 +15,11 @@
   		
   	</delete>
   
-  
+  	<insert id="fileInsert">
+		insert into reviewboard(review_bno , writer , content , uploadPath, fileloca , filename , filerealname)
+		values( 1, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
+  	</insert>
+ 
   
   
   </mapper>

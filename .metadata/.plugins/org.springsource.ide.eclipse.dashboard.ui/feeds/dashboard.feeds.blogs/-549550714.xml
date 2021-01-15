@@ -5,7 +5,22 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-15T01:58:00Z</updated>
+  <updated>2021-01-15T05:36:00Z</updated>
+  <entry>
+    <title>Spring Boot 2.4.2 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/14/spring-boot-2-4-2-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2021-01-15:4338</id>
+    <updated>2021-01-15T05:36:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.4.2 has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.4.2"&gt;a number bug fixes and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.4.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast - Spring Cloud Stream lead Oleg Zhurakousky</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/14/a-bootiful-podcast-spring-cloud-stream-lead-oleg-zhurakousky" />
@@ -1120,45 +1135,6 @@ rsocketRequesterBuilder.tcp(&amp;quot;localhost&amp;quot;, 55555)&#xD;
 &lt;p&gt;These are just a few that are relevant to the context of this post, but there are more.&lt;/p&gt;
 &lt;p&gt;Established and proven patterns, frameworks that implement those patterns, and layered and opinionated Spring Boot auto-configuration(s) make it all possible. Layers are important, as they let you compartmentalize your problem into a solution that can be re-used in other projects and integrations where the same problem exists. This effectively made current Cloud Event integration rather a simple effort, since most of the non-functional aspects that are not related to Cloud Event (that is, connect, send, receive, convert, retry, and so on) were already addressed by the individual frameworks behind both Spring Cloud Function and Spring Cloud Stream.&lt;/p&gt;
 &lt;p&gt;And last but not least there is an alternative way of dealing with Cloud Events and Spring and that is via &lt;a href="https://github.com/cloudevents/sdk-java"&gt;Cloud Events Java SDK&lt;/a&gt; where you can also find an &lt;a href="https://github.com/cloudevents/sdk-java/tree/master/examples/spring-reactive"&gt;example&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 22nd, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/22/this-week-in-spring-december-22nd-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-22:4312</id>
-    <updated>2020-12-22T22:04:17Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring!&lt;/em&gt; &lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s December 22nd, 2020, as I write this and I &lt;em&gt;can not&lt;/em&gt; believe we&amp;rsquo;re smack dab in the middle of the week and only have two shopping days until Christmas! I don&amp;rsquo;t know if it&amp;rsquo;s just that time of year and I&amp;rsquo;m flush with the normal amount of warm-n-fuzzies or if it&amp;rsquo;s just that, after a year like 2020, I&amp;rsquo;m very keen on savoring this precious reprieve. Either way, couldn&amp;rsquo;t be happier. I&amp;rsquo;ve got a cold! I&amp;rsquo;m sick and sneezing and my nose is running, but at least it&amp;rsquo;s not COVID-19, and at least I&amp;rsquo;ve got my family and my job, and - all things considered - I feel very, &lt;em&gt;very&lt;/em&gt;, &lt;em&gt;veery&lt;/em&gt; fortunate. &lt;/p&gt;
-&lt;p&gt;And yes, that&amp;rsquo;s right, I enumerated my health, my family, and my job because - after ten wonderful years (and counting) - I feel like the Spring team are family and I feel like working with you, dear community, is a true and exceptional privilege. I get so many wonderful messages from folks whenever I publish this weekly roundup or a blog or a video, and I appreciate that folks. I have always appreciated it, but especially this year when I, like so many in the world, am otherwise completely isolated from people. Thank you, and please let me wish you the warmest of greetings (if you don&amp;rsquo;t celebrate Christmas) and the happiest of holidays (if you do celebrate Christmas). &lt;/p&gt;
-&lt;p&gt;In that spirit, I was so happy when I assembled this week&amp;rsquo;s roundup and realized there&amp;rsquo;s a &lt;em&gt;ton&lt;/em&gt; of great stuff for us to dive into, so with that, let&amp;rsquo;s get to it! &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/18/a-bootiful-podcast-cloud-foundry-developer-advocate-shedrack-akintayo"&gt;A Bootiful Podcast: Cloud Foundry Developer Advocate Shedrack Akintayo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/21/announcing-spring-cloud-stream-applications-2020-0-0-ga-release"&gt;Announcing Spring Cloud Stream Applications 2020.0.0 GA Release&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/21/podcast-010/"&gt;Episode 10 ¡°Project Panama - The Foreign Linker API¡± with Maurizio Cimadamore and Jorn Vernee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/making/status/1339155831145648129?s=12"&gt;Help us develop Spring Socks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/barcelonajug/status/1339695591891349506?s=12"&gt;I¡¯ll be joining a fun panel for the Barcelona JUG on the 28th and I hope to see you there&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html?m=1#.X9mIqS3ZJ24.twitter"&gt;Javarevisited: How to enable HTTP Basic Authentication in Spring Security using Java and XML Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://netty.io/news/2020/12/09/quic-0-0-1-Final.html"&gt;Netty/Incubator/Codec/Quic 0.0.1.Final released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/16/new-panama-ea-builds/"&gt;New Panama/Foreign EA builds, December 2020 edition&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/18/security-roadmap-update/"&gt;Oracle JRE and JDK Cryptographic Roadmap&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/ljcjug/status/1339508388728889344?s=12"&gt;My &amp;ldquo;Reactive Spring&amp;rdquo; at the LJC talk&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.vinsguru.com/reactor-repeat-vs-reactor-retry/amp/?__twitter_impression=true"&gt;Reactor retry vs. repeat&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonashackt/status/1341305148061192192?s=12"&gt;Some cool Spring Boot and GraalVM native image support in this issue&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/22/spring-cloud-2020-0-0-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/16/spring-tools-4-9-0-released"&gt;Spring Tools 4.9.0 released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonatan_ivanov/status/1341477187455655936?s=12"&gt;Spring cloud sleuth OpenTelemetry support has been released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=jrCwx9qzutM&amp;feature=youtu.be"&gt;Tanzu GemFire for Kubernetes - Lets Review and Deploy an App - YouTube&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blogs.vmware.com/opensource/2020/12/22/the-top-open-source-blogs-of-2020/"&gt;The Top Open Source Blogs of 2020&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.thymeleaf.org/releasenotes.html#thymeleaf-3.0.12"&gt;Thymeleaf 3.0.1.2 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/17/troubleshooting-native-memory-leaks/"&gt;Troubleshooting Native Memory Leaks in Java Applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.training/understanding-inter-bean-method-reference-in-spring-configuration/"&gt;Understanding inter-bean method reference in Spring configuration ? Spring Training&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://google.dev/badges/playlists/cloud/springboot"&gt;Earn the &amp;ldquo;Use Spring Boot&amp;rdquo; on Google Cloud &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=1f10gr2pbvq&amp;feature=share"&gt;My GOTO 2019 ¡°Reactive Spring¡± video&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

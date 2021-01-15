@@ -179,7 +179,7 @@
                         <li><a href="#">5</a></li>
                         <li class="next"><a href="#">Next</a></li>
                     </ul>
-                  <button type="button"  class="btn btn-default reviewReplyBtn">후기글쓰기</button>
+                  <button type="button"  class="btn btn-default reviewReplyBtn" onclick="location.href='freeReviewRegist'">후기글쓰기</button>
                   </div>
         
     </section>
