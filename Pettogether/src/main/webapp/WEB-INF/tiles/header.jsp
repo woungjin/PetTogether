@@ -9,20 +9,22 @@
         <!-- 로고 -->
         <div class="top">
           <div class="logo_login">
-            <a href="#"><img class="logo" src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더"></a>
-              <a href="/contact/">LOGIN </a> 
+            <a href="${pageContext.request.contextPath }"><img class="logo" src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더"></a>
+              
+              <a href="${pageContext.request.contextPath}/user/userLogin">LOGIN </a> 
               <span> | </span>
-              <a href="/contact/"> JOIN</a>
+              <a href="${pageContext.request.contextPath }/user/userJoin"> JOIN</a>
+              
             </div>
         </div>
 
         <!-- 메뉴바  -->
         <div class="mid" id="midBar">
           <ul class="nav">
-            <li><a href="/about/">HOME</a></li>
+            <li><a href="${pageContext.request.contextPath }">HOME</a></li>
             <li><a href="/about/">CATEGORY</a></li>
             <li><a href="/work/">MAP</a></li>
-            <li><a href="/clients/">REVIEW</a></li>
+            <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>
     </div>

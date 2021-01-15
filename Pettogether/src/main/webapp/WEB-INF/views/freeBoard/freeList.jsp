@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 
-<section class="category_set">
+<section class="category_set" style="background-color: rgba(235,170,80);">
 	
 
-	<div class="category">
+	<div class="category" >
 
 		<ul>
 			<li><a href="#">진웅</a></li>
@@ -55,7 +55,7 @@
                                     
                                 <span class="bad"  id="bad" >
                                     
-                                    <img  src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg()">
+                                    <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg()">
                                    
                                 </span>
                        			</p>
@@ -66,13 +66,9 @@
                     </div>
 
 
-
                 </div>
 
 				
-                
-              
-
                 
                 
             </div>
@@ -97,12 +93,39 @@
 <script>
 			function changeImg() {
 				
+					var bno = 1;
+					var user_id = "test";
 				
 				if(event.target.attributes[0].nodeValue === "/project/resources/img/freeBoard/love2.png"){
-					event.target.attributes[0].nodeValue = "/project/resources/img/freeBoard/love.png";
+					 event.target.attributes[0].nodeValue = "/project/resources/img/freeBoard/love.png";
+					
+					 $.getJSON(
+						"../freeBoard/goodDelete/" + bno  + "/" + user_id ,
+						function(data) {
+							console.log(data);
+						}
+					 );
+					 
+					
+					return;
+					
                 }else if(event.target.attributes[0].nodeValue === "/project/resources/img/freeBoard/love.png") {
                 	event.target.attributes[0].nodeValue = "/project/resources/img/freeBoard/love2.png";
-                    
+                	
+					console.log(bno)
+					
+					
+					$.getJSON(
+							"../freeBoard/goodInsert/" + bno + "/" + user_id,
+							function(data) {
+								console.log(data);
+							}
+						);
+					
+					
+					
+					
+                    return;
                 }else{
                     return ;
                 }
