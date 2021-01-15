@@ -13,4 +13,17 @@ public class UserController {
 		return "user/userAdd";
 	}
 	
+	@RequestMapping("userLogin")
+	public String userLogin() {
+		return "user/userLogin";
+		
+	}
+	
+	@RequestMapping("userJoin")
+	public String userJoin() {
+		return "user/userJoin";
+	}
+	
+	
+	
 }
