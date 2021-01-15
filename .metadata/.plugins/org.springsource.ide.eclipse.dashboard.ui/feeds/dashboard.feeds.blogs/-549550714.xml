@@ -5,7 +5,65 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-13T20:21:00Z</updated>
+  <updated>2021-01-15T05:36:00Z</updated>
+  <entry>
+    <title>Spring Boot 2.4.2 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/14/spring-boot-2-4-2-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2021-01-15:4338</id>
+    <updated>2021-01-15T05:36:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.4.2 has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.4.2"&gt;a number bug fixes and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.4.2.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>A Bootiful Podcast - Spring Cloud Stream lead Oleg Zhurakousky</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/14/a-bootiful-podcast-spring-cloud-stream-lead-oleg-zhurakousky" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-15:4337</id>
+    <updated>2021-01-15T01:58:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;. This week, &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Spring Cloud Stream &lt;a href="https://twitter.com/z_oleg"&gt;lead Oleg Zhurakousky (@z_oleg)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;iframe title="Spring Cloud Stream lead Oleg Zhurakousky" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/gagc3-f79a60?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.3.8 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/14/spring-boot-2-3-8-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Scott Frederick</name>
+    </author>
+    <id>tag:spring.io,2021-01-14:4336</id>
+    <updated>2021-01-14T19:52:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.3.8 has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.3.8.RELEASE"&gt;35 bug fixes and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.3.8.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.2.13 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/14/spring-boot-2-2-13-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>St?phane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2021-01-14:4335</id>
+    <updated>2021-01-14T17:25:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.2.13 has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.2.13.RELEASE"&gt;19 bug fixes and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.2.13.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>The latest on Azure Active Directory integration</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/13/the-latest-on-azure-active-directory-integration" />
@@ -1077,466 +1135,6 @@ rsocketRequesterBuilder.tcp(&amp;quot;localhost&amp;quot;, 55555)&#xD;
 &lt;p&gt;These are just a few that are relevant to the context of this post, but there are more.&lt;/p&gt;
 &lt;p&gt;Established and proven patterns, frameworks that implement those patterns, and layered and opinionated Spring Boot auto-configuration(s) make it all possible. Layers are important, as they let you compartmentalize your problem into a solution that can be re-used in other projects and integrations where the same problem exists. This effectively made current Cloud Event integration rather a simple effort, since most of the non-functional aspects that are not related to Cloud Event (that is, connect, send, receive, convert, retry, and so on) were already addressed by the individual frameworks behind both Spring Cloud Function and Spring Cloud Stream.&lt;/p&gt;
 &lt;p&gt;And last but not least there is an alternative way of dealing with Cloud Events and Spring and that is via &lt;a href="https://github.com/cloudevents/sdk-java"&gt;Cloud Events Java SDK&lt;/a&gt; where you can also find an &lt;a href="https://github.com/cloudevents/sdk-java/tree/master/examples/spring-reactive"&gt;example&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 22nd, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/22/this-week-in-spring-december-22nd-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-22:4312</id>
-    <updated>2020-12-22T22:04:17Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring!&lt;/em&gt; &lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s December 22nd, 2020, as I write this and I &lt;em&gt;can not&lt;/em&gt; believe we&amp;rsquo;re smack dab in the middle of the week and only have two shopping days until Christmas! I don&amp;rsquo;t know if it&amp;rsquo;s just that time of year and I&amp;rsquo;m flush with the normal amount of warm-n-fuzzies or if it&amp;rsquo;s just that, after a year like 2020, I&amp;rsquo;m very keen on savoring this precious reprieve. Either way, couldn&amp;rsquo;t be happier. I&amp;rsquo;ve got a cold! I&amp;rsquo;m sick and sneezing and my nose is running, but at least it&amp;rsquo;s not COVID-19, and at least I&amp;rsquo;ve got my family and my job, and - all things considered - I feel very, &lt;em&gt;very&lt;/em&gt;, &lt;em&gt;veery&lt;/em&gt; fortunate. &lt;/p&gt;
-&lt;p&gt;And yes, that&amp;rsquo;s right, I enumerated my health, my family, and my job because - after ten wonderful years (and counting) - I feel like the Spring team are family and I feel like working with you, dear community, is a true and exceptional privilege. I get so many wonderful messages from folks whenever I publish this weekly roundup or a blog or a video, and I appreciate that folks. I have always appreciated it, but especially this year when I, like so many in the world, am otherwise completely isolated from people. Thank you, and please let me wish you the warmest of greetings (if you don&amp;rsquo;t celebrate Christmas) and the happiest of holidays (if you do celebrate Christmas). &lt;/p&gt;
-&lt;p&gt;In that spirit, I was so happy when I assembled this week&amp;rsquo;s roundup and realized there&amp;rsquo;s a &lt;em&gt;ton&lt;/em&gt; of great stuff for us to dive into, so with that, let&amp;rsquo;s get to it! &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/18/a-bootiful-podcast-cloud-foundry-developer-advocate-shedrack-akintayo"&gt;A Bootiful Podcast: Cloud Foundry Developer Advocate Shedrack Akintayo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/21/announcing-spring-cloud-stream-applications-2020-0-0-ga-release"&gt;Announcing Spring Cloud Stream Applications 2020.0.0 GA Release&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/21/podcast-010/"&gt;Episode 10 ¡°Project Panama - The Foreign Linker API¡± with Maurizio Cimadamore and Jorn Vernee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/making/status/1339155831145648129?s=12"&gt;Help us develop Spring Socks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/barcelonajug/status/1339695591891349506?s=12"&gt;I¡¯ll be joining a fun panel for the Barcelona JUG on the 28th and I hope to see you there&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html?m=1#.X9mIqS3ZJ24.twitter"&gt;Javarevisited: How to enable HTTP Basic Authentication in Spring Security using Java and XML Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://netty.io/news/2020/12/09/quic-0-0-1-Final.html"&gt;Netty/Incubator/Codec/Quic 0.0.1.Final released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/16/new-panama-ea-builds/"&gt;New Panama/Foreign EA builds, December 2020 edition&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/18/security-roadmap-update/"&gt;Oracle JRE and JDK Cryptographic Roadmap&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/ljcjug/status/1339508388728889344?s=12"&gt;My &amp;ldquo;Reactive Spring&amp;rdquo; at the LJC talk&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.vinsguru.com/reactor-repeat-vs-reactor-retry/amp/?__twitter_impression=true"&gt;Reactor retry vs. repeat&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonashackt/status/1341305148061192192?s=12"&gt;Some cool Spring Boot and GraalVM native image support in this issue&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/22/spring-cloud-2020-0-0-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/16/spring-tools-4-9-0-released"&gt;Spring Tools 4.9.0 released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonatan_ivanov/status/1341477187455655936?s=12"&gt;Spring cloud sleuth OpenTelemetry support has been released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=jrCwx9qzutM&amp;feature=youtu.be"&gt;Tanzu GemFire for Kubernetes - Lets Review and Deploy an App - YouTube&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blogs.vmware.com/opensource/2020/12/22/the-top-open-source-blogs-of-2020/"&gt;The Top Open Source Blogs of 2020&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.thymeleaf.org/releasenotes.html#thymeleaf-3.0.12"&gt;Thymeleaf 3.0.1.2 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://inside.java/2020/12/17/troubleshooting-native-memory-leaks/"&gt;Troubleshooting Native Memory Leaks in Java Applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.training/understanding-inter-bean-method-reference-in-spring-configuration/"&gt;Understanding inter-bean method reference in Spring configuration ? Spring Training&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://google.dev/badges/playlists/cloud/springboot"&gt;Earn the &amp;ldquo;Use Spring Boot&amp;rdquo; on Google Cloud &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=1f10gr2pbvq&amp;feature=share"&gt;My GOTO 2019 ¡°Reactive Spring¡± video&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud 2020.0.0 (aka Ilford) Is Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/22/spring-cloud-2020-0-0-aka-ilford-is-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Ryan Baxter</name>
-    </author>
-    <id>tag:spring.io,2020-12-22:4311</id>
-    <updated>2020-12-22T18:08:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that the GA release of the &lt;a href="https://cloud.spring.io"&gt;Spring Cloud 2020.0&lt;/a&gt; Release Train is available today. The release can be found in &lt;a href="https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-dependencies/2020.0.0/"&gt;Maven Central&lt;/a&gt;. You can check out the 2020.0 &lt;a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-2020.0-Release-Notes"&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#notable-changes-in-the-2020-0-release-train" class="anchor" name="notable-changes-in-the-2020-0-release-train"&gt;&lt;/a&gt;Notable Changes in the 2020.0 Release Train&lt;/h2&gt;
-&lt;p&gt;This release requires Spring Boot 2.4.1. In general, this release was to fix bugs prior to release.&lt;/p&gt;
-&lt;p&gt;See &lt;a href="https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2020.0-Release-Notes#known-issues"&gt;this page&lt;/a&gt; for a list of Known Issues.&lt;/p&gt;
-&lt;p&gt;See the &lt;a href="https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2020.0-Release-Notes#breaking-changes"&gt;wiki&lt;/a&gt; for a list of all breaking changes in this release train.&lt;/p&gt;
-&lt;p&gt;See all of the included issues and pull requests at the &lt;a href="https://github.com/orgs/spring-cloud/projects/51"&gt;Github project&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-commons" class="anchor" name="spring-cloud-commons"&gt;&lt;/a&gt;Spring Cloud Commons&lt;/h3&gt;
-&lt;p&gt;NOTE: Bootstrap has been disabled by default. The new way of importing configuration is via the new &lt;code&gt;spring.config.import&lt;/code&gt; functionality provided by Spring Boot 2.4. Please see the appropriate documentation for &lt;a href="https://docs.spring.io/spring-cloud-config/docs/3.0.0/reference/html/#config-data-import"&gt;Config Client&lt;/a&gt;, &lt;a href="https://docs.spring.io/spring-cloud-consul/docs/3.0.0/reference/html/#config-data-import"&gt;Consul&lt;/a&gt;, &lt;a href="https://docs.spring.io/spring-cloud-vault/docs/3.0.0/reference/html/#client-side-usage"&gt;Vault&lt;/a&gt;, and &lt;a href="https://docs.spring.io/spring-cloud-zookeeper/docs/3.0.0/reference/html/#config-data-import"&gt;Zookeeper&lt;/a&gt; for details on how to use them with the new config import.&lt;/p&gt;
-&lt;p&gt;If you require the legacy bootstrap functionality add the &lt;code&gt;org.springframework.cloud:spring-cloud-starter-bootstrap&lt;/code&gt; dependency to your project.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Cloud LoadBalancer now supports server statistics (&lt;a href="https://github.com/spring-cloud/spring-cloud-commons/issues/674"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;General Security functionality was moved here from the now defunct Spring Cloud Security project &lt;a href="https://github.com/spring-cloud/spring-cloud-commons/pull/870/files"&gt;PR&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Support for decryption with &lt;code&gt;spring.config.import&lt;/code&gt; was added (&lt;a href="https://github.com/spring-cloud/spring-cloud-commons/issues/815"&gt;issue&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-contract" class="anchor" name="spring-cloud-contract"&gt;&lt;/a&gt;Spring Cloud Contract&lt;/h3&gt;
-&lt;p&gt;Documented how to clone the project on windows.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-function" class="anchor" name="spring-cloud-function"&gt;&lt;/a&gt;Spring Cloud Function&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Support for Cloud Events. See &lt;a href="https://spring.io/blog/2020/12/10/cloud-events-and-spring-part-1"&gt;Cloud Events and Spring - part 1&lt;/a&gt; and &lt;a href="https://spring.io/blog/2020/12/23/cloud-events-and-spring-part-2"&gt;Cloud Events and Spring - part 2&lt;/a&gt;. You can also check out several samples available &lt;a href="https://github.com/spring-cloud/spring-cloud-function/tree/master/spring-cloud-function-samples"&gt;here&lt;/a&gt; and described in details in the blog posts mentioned before.&lt;/li&gt;
-  &lt;li&gt;Support for &lt;a href="https://github.com/spring-cloud/spring-cloud-function/tree/master/spring-cloud-function-rsocket"&gt;RSocket&lt;/a&gt;. Separate blog post will be published shortly however &lt;a href="https://spring.io/blog/2020/12/23/cloud-events-and-spring-part-2"&gt;Cloud Events and Spring - part 2&lt;/a&gt; provides an example that uses RSocket.&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-kubernetes" class="anchor" name="spring-cloud-kubernetes"&gt;&lt;/a&gt;Spring Cloud Kubernetes&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Added reactive discovery client implementation based on the Kubernetes Java Client (&lt;a href="https://github.com/spring-cloud/spring-cloud-kubernetes/pull/701"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Added Spring Cloud Loadbalancer implementation based on the Kubernetes Java Client (&lt;a href="https://github.com/spring-cloud/spring-cloud-kubernetes/pull/700"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-openfeign" class="anchor" name="spring-cloud-openfeign"&gt;&lt;/a&gt;Spring Cloud Openfeign&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Added support for wrapping feign clients in Spring Cloud CircuitBreakers (&lt;a href="https://github.com/spring-cloud/spring-cloud-openfeign/pull/446"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Spring Cloud OpenFeign security code moved from Spring Cloud Security to Spring Cloud OpenFeign (&lt;a href="https://github.com/spring-cloud/spring-cloud-openfeign/pull/445"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Support for LoadBalancer statistics has been added (&lt;a href="https://github.com/spring-cloud/spring-cloud-openfeign/pull/447"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-security" class="anchor" name="spring-cloud-security"&gt;&lt;/a&gt;Spring Cloud Security&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;This project was removed and code was moved to the individual Spring Cloud projects.&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-gateway" class="anchor" name="spring-cloud-gateway"&gt;&lt;/a&gt;Spring Cloud Gateway&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Support for LoadBalancer statistics has been added (&lt;a href="https://github.com/spring-cloud/spring-cloud-gateway/pull/2086"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-netflix" class="anchor" name="spring-cloud-netflix"&gt;&lt;/a&gt;Spring Cloud Netflix&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;A number of deprecated modules have been removed. See the &lt;a href="https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2020.0-Release-Notes#breaking-changes"&gt;wiki&lt;/a&gt; for details&lt;/li&gt;
-  &lt;li&gt;TLS properties now supported with the &lt;code&gt;RestTemplate&lt;/code&gt; based Eureka Client (&lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/3935"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#spring-cloud-task" class="anchor" name="spring-cloud-task"&gt;&lt;/a&gt;Spring Cloud Task&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Added documentation for single step batch jobs. (&lt;a href="https://github.com/spring-cloud/spring-cloud-task/issues/755"&gt;PR&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The following modules were updated as part of 2020.0.0:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Module &lt;/th&gt;
-      &lt;th&gt;Version &lt;/th&gt;
-      &lt;th&gt;Issues&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Circuitbreaker &lt;/td&gt;
-      &lt;td&gt;2.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Contract &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Kubernetes &lt;/td&gt;
-      &lt;td&gt;2.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Commons &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Openfeign &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Cloudfoundry &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Security &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Bus &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Cli &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Zookeeper &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Sleuth &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Consul &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Starter Build &lt;/td&gt;
-      &lt;td&gt;2020.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Gateway &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Netflix &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Vault &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Config &lt;/td&gt;
-      &lt;td&gt;3.0.0 &lt;/td&gt;
-      &lt;td&gt;&amp;nbsp;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Task &lt;/td&gt;
-      &lt;td&gt;2.3.0 &lt;/td&gt;
-      &lt;td&gt;(&lt;a href="https://github.com/spring-cloud/spring-cloud-task/releases/tag/2.3.0"&gt;issues&lt;/a&gt;)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;As always, we welcome feedback on &lt;a href="https://github.com/spring-cloud/"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;Gitter&lt;/a&gt;, on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloud"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;dependencyManagement&amp;gt;&#xD;
-    &amp;lt;dependencies&amp;gt;&#xD;
-        &amp;lt;dependency&amp;gt;&#xD;
-            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-            &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;&#xD;
-            &amp;lt;version&amp;gt;2020.0.0&amp;lt;/version&amp;gt;&#xD;
-            &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
-            &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
-        &amp;lt;/dependency&amp;gt;&#xD;
-    &amp;lt;/dependencies&amp;gt;&#xD;
-&amp;lt;/dependencyManagement&amp;gt;&#xD;
-&amp;lt;dependencies&amp;gt;&#xD;
-    &amp;lt;dependency&amp;gt;&#xD;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-        &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
-    &amp;lt;/dependency&amp;gt;&#xD;
-    &amp;lt;dependency&amp;gt;&#xD;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-        &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;&#xD;
-    &amp;lt;/dependency&amp;gt;&#xD;
-    ...&#xD;
-&amp;lt;/dependencies&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or with Gradle:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint groovy"&gt;buildscript {&#xD;
-  dependencies {&#xD;
-    classpath &amp;quot;io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE&amp;quot;&#xD;
-  }&#xD;
-}&#xD;
-&#xD;
-apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;&#xD;
-&#xD;
-dependencyManagement {&#xD;
-  imports {&#xD;
-    mavenBom &amp;#39;org.springframework.cloud:spring-cloud-dependencies:2020.0.0&amp;#39;&#xD;
-  }&#xD;
-}&#xD;
-&#xD;
-dependencies {&#xD;
-  compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
-  compile &amp;#39;org.springframework.cloud:spring-cloud-starter-netflix-eureka-client&amp;#39;&#xD;
-  //...&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Announcing  Spring Cloud Stream Applications 2020.0.0 GA Release</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/21/announcing-spring-cloud-stream-applications-2020-0-0-ga-release" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Soby Chacko</name>
-    </author>
-    <id>tag:spring.io,2020-12-21:4309</id>
-    <updated>2020-12-21T17:53:59Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;We are glad to announce the GA release of the newly redesigned Spring Cloud Stream applications - &lt;a href="https://github.com/spring-cloud/stream-applications/releases/tag/v2020.0.0"&gt;2020.0.0&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We would like to use this release announcement as an opportunity to wrap up the blog series that we started in the summer. Therefore, consider this as part 15 of the blog series. In this blog, we are going to give a rundown of all the previous episodes in the series, but first, let us go through some release details.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="release-overview"&gt;&lt;a class="anchor" href="#release-overview"&gt;&lt;/a&gt;Release Overview&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-cloud/stream-applications/releases/tag/v2020.0.0"&gt;2020.0.0 GA&lt;/a&gt; release contains the completely revamped functional foundation for the event-streaming applications. The old structure was based on an &lt;a href="https://github.com/spring-cloud-stream-app-starters"&gt;app starter&lt;/a&gt; model in which the critical logic for the applications is provided as part of a starter module. The starters then form the foundation for the applications. While it worked for the previous four generations of these app starters (Avogadro, Bacon, Celsius, Darwin, and Einstein), it deemed necessary to rewrite these starters as reusable functions so that they can be used for a wide array of use cases beyond what is required in the out of the box applications. Therefore, many of the old app starters were refactored and redesigned as functions, suppliers, and consumers. For the out of the box Spring Cloud Stream binder based applications, we take these functional components and use them as the base to build them. Other custom applications, even non-streaming use cases, can be designed using these functional components as a foundation. The functions can be &lt;a href="https://github.com/spring-cloud/stream-applications/blob/master/docs/FunctionComposition.adoc"&gt;composed&lt;/a&gt; together to implement many other data integration use cases.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;There is a new single &lt;a href="https://github.com/spring-cloud/stream-applications"&gt;mono repository&lt;/a&gt; that hosts all the stream application components. The source for all the currently available functions and applications can be found there. These collections comprise components that satisfy a wide spectrum of use cases such as data ingestion, ETL, machine learning, analytics, file processing, etc. among many others. Take a look at the &lt;a href="https://github.com/spring-cloud/stream-applications/blob/master/README.adoc"&gt;README&lt;/a&gt; to get more information on what is available.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="version-changes"&gt;&lt;a class="anchor" href="#version-changes"&gt;&lt;/a&gt;Version Changes&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Starting with this release, we are moving to a &lt;a href="https://calver.org/"&gt;Calendar&lt;/a&gt; based versioning scheme. This is different from the old release train names which used the alphabetical scheme (scientists names). The new version is named &lt;code&gt;2020.0.0&lt;/code&gt;. It follows from the pattern &lt;code&gt;YYYY.MINOR.MICRO&lt;/code&gt;, where &lt;code&gt;MINOR&lt;/code&gt; is an incrementing number that starts at zero each year. The MICRO segment represents the suffixes previously used, where .0 is the first GA release, &lt;code&gt;.1&lt;/code&gt; analogous to &lt;code&gt;.SR1&lt;/code&gt;,  &lt;code&gt;.2&lt;/code&gt; analogous to &lt;code&gt;.SR2&lt;/code&gt;, so on and so forth. It is worth noting that although the release train is following the calendar versioning, the individual components (functions and applications) in it are named using a numbering scheme. For example, the functions are starting from &lt;code&gt;1.0.0&lt;/code&gt; and the applications are starting from &lt;code&gt;3.0.0&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Here is the project site for the new &lt;a href="https://spring.io/projects/spring-cloud-stream-applications"&gt;Stream Applications&lt;/a&gt;. The &lt;a href="https://docs.spring.io/stream-applications/docs/2020.0.0/reference/html/"&gt;reference docs&lt;/a&gt; contain more details on the various aspects of the applications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Although noted on the release page, it is worth mentioning that the new applications are built using Spring Boot &lt;code&gt;2.3.7.RELEASE&lt;/code&gt;, Spring Cloud Stream &lt;code&gt;3.0.10.RELEASE&lt;/code&gt;, Spring Integration &lt;code&gt;5.3.4.RELEASE&lt;/code&gt;, and Spring Cloud Function &lt;code&gt;3.0.12.RELEASE&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="using-the-applications-on-spring-cloud-data-flow"&gt;&lt;a class="anchor" href="#using-the-applications-on-spring-cloud-data-flow"&gt;&lt;/a&gt;Using the Applications on Spring Cloud Data Flow&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The &lt;a href="https://github.com/spring-cloud/stream-applications/blob/master/README.adoc"&gt;out of the box applications&lt;/a&gt; in the release are primarily used to build data pipelines on &lt;a href="https://dataflow.spring.io/"&gt;Spring Cloud Data Flow&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For those who are using Spring Cloud Data Flow, here are the bulk update links for these new applications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://dataflow.spring.io/kafka-maven-latest-v2" class="bare"&gt;https://dataflow.spring.io/kafka-maven-latest-v2&lt;/a&gt; -  Maven artifacts for Kafka&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://dataflow.spring.io/rabbitmq-maven-latest-v2" class="bare"&gt;https://dataflow.spring.io/rabbitmq-maven-latest-v2&lt;/a&gt; - Maven artifacts for RabbitMQ&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://dataflow.spring.io/kafka-docker-latest-v2" class="bare"&gt;https://dataflow.spring.io/kafka-docker-latest-v2&lt;/a&gt; - Docker artifacts for Kafka&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://dataflow.spring.io/rabbitmq-docker-latest-v2" class="bare"&gt;https://dataflow.spring.io/rabbitmq-docker-latest-v2&lt;/a&gt; - Docker artifacts for Kafka&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Note that these new links have a &lt;code&gt;-v2&lt;/code&gt; attached to them, but that is temporary. As many users are still using the &lt;a href="https://github.com/spring-cloud-stream-app-starters/app-starters-release/releases/tag/vEinstein.SR9"&gt;Einstein&lt;/a&gt; version of the applications, we want them to continue accessing them using the old links. Eventually, in a few months, we will switch these &lt;code&gt;-v2&lt;/code&gt; links as the main links.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;These applications can also run as standalone deployments. Here are some handy links to use these applications as standalone. This is good for testing something really quick for example. You can just copy the URL for the application you want and download it using &lt;code&gt;wget&lt;/code&gt;, &lt;code&gt;curl&lt;/code&gt; etc.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://repo.maven.apache.org/maven2/org/springframework/cloud/stream/app/stream-applications-descriptor/2020.0.0/stream-applications-descriptor-2020.0.0.kafka-apps-maven-repo-url.properties"&gt;Kafka based maven applications&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://repo.maven.apache.org/maven2/org/springframework/cloud/stream/app/stream-applications-descriptor/2020.0.0/stream-applications-descriptor-2020.0.0.rabbit-apps-maven-repo-url.properties"&gt;RabbitMQ based maven applications&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="maven-plugin-for-generating-applications"&gt;&lt;a class="anchor" href="#maven-plugin-for-generating-applications"&gt;&lt;/a&gt;Maven Plugin for Generating Applications&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We use a &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-apps-plugin/tree/master/spring-cloud-dataflow-apps-generator-plugin"&gt;maven plugin&lt;/a&gt; to generate out of the box applications. This plugin is also redesigned from the ground up for this release. This &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-apps-plugin/blob/master/spring-cloud-dataflow-apps-generator-plugin/README.adoc"&gt;README&lt;/a&gt; contains instructions for how to use the plugin to generate applications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="building-custom-applications-using-a-github-template-repository"&gt;&lt;a class="anchor" href="#building-custom-applications-using-a-github-template-repository"&gt;&lt;/a&gt;Building Custom Applications Using a GitHub Template Repository&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We provide &lt;a href="https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template"&gt;GitHub template repositories&lt;/a&gt;, using which we can build custom stream applications that provide all the necessary infrastructure needed to run these applications on Spring Cloud Data Flow. In other words, when you use the template repositories for creating a custom application, you can take the application and run it on Spring Cloud Data Flow in the same way as the out of the box applications work.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Here are the links to the template repositories.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-cloud/dataflow-app-kafka"&gt;GitHub template repositories for Kafka binder based applications&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-cloud/dataflow-app-rabbit"&gt;GitHub template repositories for RabbitMQ binder based applications&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can click on the &lt;code&gt;Use this template&lt;/code&gt; at the top of the repository to create a new custom repository for the new application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="wrapping-up-the-blog-series"&gt;&lt;a class="anchor" href="#wrapping-up-the-blog-series"&gt;&lt;/a&gt;Wrapping up the Blog Series&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Now that we covered all the &lt;code&gt;2020.0.0&lt;/code&gt; release details, as mentioned before, let us use this as an opportunity to wrap up the blog series that we started in the summer. The series covered many different topics and use cases. Below, you can find links to all of them and a summary description of what was covered in each blog.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 1&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/07/13/introducing-java-functions-for-spring-cloud-stream-applications-part-0"&gt;Introducing Java Functions for Spring Cloud Stream Applications - Part 0&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The first blog in this series gives us an overall vision and direction for this project. It starts with some historical context of how we got here. It then set the stage for these new functions and the Spring Cloud Stream applications based on them.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 2&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/07/20/introducing-java-functions-for-spring-cloud-stream-applications-part-1"&gt;Introducing Java Functions for Spring Cloud Stream Applications - Part 1&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This episode gives a detailed analysis of functional composition and then delved deep into how function composition works in Spring Cloud Stream. This blog provides us some good directions on how we can use the existing source applications to make use of other functions bundled with them and auto-configured. It also demonstrates how task launch requests can be made from a source application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 3&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/07/27/creating-a-supplier-function-and-generating-spring-cloud-stream-source"&gt;Creating a Supplier Function and generating Spring Cloud Stream Source&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this part, we see how to write a new Supplier function from the ground up and use it to build a Spring Cloud Stream source. We used the existing RSS feed adapter in Spring Integration as an example to create a feed-supplier which we then used to build a feed source. This blog gives enough templates for new suppliers and sources.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 4&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/08/03/creating-a-function-for-consuming-data-and-generating-spring-cloud-stream-sink-applications"&gt;Creating a function for consuming data and generating Spring Cloud Stream Sink applications&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Similar to blog &lt;code&gt;#3&lt;/code&gt;, this one demonstrates writing a new consumer function and using that to build a Spring Cloud Stream sink application. We used RSocket as an example and built a consumer function using the fire-and-forget strategy in RSocket. This blog also gives enough recipes for creating new consumer functions and sinks.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 5&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/08/10/case-study-build-and-run-a-streaming-application-using-an-http-source-and-a-jdbc-sink"&gt;Case Study: Build and Run a Streaming Application Using an HTTP Source and a JDBC Sink&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this blog, we demonstrate a data pipeline using &lt;code&gt;HTTP | JDBC&lt;/code&gt;. This is a very detailed blog that shows invoking an HTTP POST endpoint and then inserts the data posted through the endpoint into a relational database. This one also is very interesting in that it demonstrates the full gamut of the lifecycle of these applications by going all the way from functions, applications and then finally showing how to deploy this pipeline on Spring Cloud Data Flow.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 6&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/08/17/case-study-http-request-function-and-processor"&gt;Case Study: HTTP Request Function and Processor&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This is a very intriguing blog in which we see how HTTP request functions are used. HTTP request function is a generic component that can be used to satisfy many different use cases that require the invocation of an HTTP endpoint. The function gives many different configuration options. This blog shows how this function works standalone and as part of a pipeline. The blog explores some image processing use cases and file sources.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 7&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/08/25/case-study-reading-from-a-file-and-writing-to-mongodb"&gt;Case Study: Reading from a file and writing to MongoDB&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This one looks at a simple data pipeline for &lt;code&gt;File | MongoDB&lt;/code&gt;. Data is received through a file source and then inserted into a MongoDB database. The blog looks at the underlying file supplier/source and MongoDB consumer/sink. Then it shows how to run the pipeline as standalone deployments. Finally, it shows how to orchestrate and run the pipeline on Spring Cloud Data Flow.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 8&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/09/10/case-study-relational-database-source-and-file-sink"&gt;Case Study: Relational Database Source and File Sink&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This blog looks at another use case in which a database is used as a source and the information extracted from it is sent to a destination file. It explores the supporting functions - JDBC supplier and file consumer&amp;#8201;&amp;#8212;&amp;#8201;and then shows us its configuration options. Then it shows, how the applications (JDBC source and File sink) from these components are used standalone. The blog ends by showing how commercial JDBC drivers can be added to customize the existing JDBC source application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 9&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/09/29/case-study-remote-file-ingest-with-spring-cloud-data-flow"&gt;Case Study: Remote File Ingest with Spring Cloud Data Flow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this part, we looked at another popular use case that we see in Spring Cloud Data Flow applications pipelines. It shows us how remote file ingest workloads are deployed on Spring Cloud Data Flow. As part of the use case, the blog touches on a handful of different functions and applications such as FTP and SFTP suppliers and sources, Amazon S3 supplier and source, task launcher function and its sink, etc. This blog teaches us several insights into how various components can be chained together to build powerful applications with demanding use cases. This blog ends by demonstrating the remote file ingest use case on Spring Cloud Data Flow using S3 buckets as an example.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 10&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/10/26/case-study-aggregator-function-and-processor"&gt;Case Study: Aggregator Function and Processor&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Data aggregation is yet another widely popular use case in data integration workloads. In this blog, we see how the aggregator function can act as a conduit to build applications that require data aggregation. It shows us how the aggregator pattern works using the support for this in Spring Integration. The blog teaches us how this function is configured using various options and how it is pre-loaded with the support for many different persistent stores for aggregation. This blog also demonstrates how the aggregator function can be composed with other functions such as splitter and other custom functions.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 11&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/11/16/case-study-elasticsearch-sink"&gt;Case Study: Elasticsearch sink&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this episode, we look at the consumer function for Elasticsearch and its corresponding sink application. It looks at the various configuration options and explains how the consumer can be used standalone in custom applications. The blog ends by demonstrating how the Elasticsearch sink can run as a standalone application deployment.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 12&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/12/14/case-study-change-data-capture-cdc-analysis-with-cdc-debezium-source-and-analytics-sink-in-real-time"&gt;Case Study: Change Data Capture (CDC) Analysis with CDC Debezium source and Analytics sink in Real-Time&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This is a very detailed blog in which we see the change data capture (CDC) pattern in live-action. The author gives us an analysis of how CDC works by diving deep into the CDC-debezium supplier and its internal intricacies. It then explains, how the CDC-debezium source is made from the supplier and used, by going over the various configuration options. This blog also looks at the analytics consumer function and its corresponding sink application. Finally, this blog goes into the depths of how the data pipeline of &lt;code&gt;CDC | analytics&lt;/code&gt; works on Spring Cloud Data Flow. Once deployed on Spring Cloud Data Flow and the pipeline is activated, it shows how the analytics from the CDC source application is displayed on a Grafana dashboard. This blog ends by giving us some pointers on the future direction of these particular classes of functions and applications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 13&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-1"&gt;Testing Spring Cloud Stream Applications - Part 1&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This is also another very detailed blog with two parts (series within a series) that expounds all things related to how testing works with the functions and applications. It jumps deep into the heart of testing by explaining various testing strategies and demonstrating how it works with &lt;a href="https://www.testcontainers.org/"&gt;testcontainers&lt;/a&gt; which is a technology we use a lot in testing the components in stream-applications. The blog demonstrates the concepts by developing a consumer for &lt;code&gt;Couchbase&lt;/code&gt; and its analogous sink. It ends the discussion by showing how Spring Cloud Stream test binder can function as a good testing strategy to integration test the sink application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 14&lt;/strong&gt;: &lt;a href="https://spring.io/blog/2020/12/15/testing-spring-cloud-stream-applications-part-2"&gt;Testing Spring Cloud Stream Applications - Part 2&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This is a continuation of blog #13 in which we now see how we can do the integration and acceptance testing for the sink application developed (Couchbase sink) with real environments rather than using the test binder. Reading together, blog #13 and #14 can give us a lot of invaluable insights into using good testing strategies not only for stream application components but to a greater extent for generic data integration use cases as well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;strong&gt;Blog 15&lt;/strong&gt;: The very blog that you are reading. If you are reading up to this point, you are now about to finish reading the 15th part of this blog series. This blog goes over the &lt;code&gt;2020.0.0&lt;/code&gt; release of the stream-applications that contain all the components and applications we discussed. As you see, we are also giving a rundown through all the blogs in the series in this final edition.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="in-conclusion"&gt;&lt;a class="anchor" href="#in-conclusion"&gt;&lt;/a&gt;In Conclusion&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;There are many other functions, applications, components, and use cases that we did not cover as part of this blog series. You can find them certainly in the &lt;a href="https://github.com/spring-cloud/stream-applications"&gt;stream-applications repository&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Thank you for coming with us on this journey through this blog series. We hope you enjoyed it. We certainly value your suggestions, opinions, and ideas. Please continue to engage with us by creating bug reports and feature requests on the &lt;a href="https://github.com/spring-cloud/stream-applications"&gt;Github repository&lt;/a&gt; and asking questions on StackOverflow using the &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;spring-cloud-stream&lt;/a&gt; or &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;spring-cloud-dataflow&lt;/a&gt; tag. Here are some &lt;a href="https://github.com/spring-cloud/stream-applications/blob/master/docs/Contributing.adoc"&gt;contribution guidelines&lt;/a&gt; for adding new features and components to the repository or modifying the existing ones. Speaking of contributions to the repository, we welcome any pull requests from the community.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: Cloud Foundry Developer Advocate Shedrack Akintayo</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/18/a-bootiful-podcast-cloud-foundry-developer-advocate-shedrack-akintayo" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-17:4308</id>
-    <updated>2020-12-17T23:52:25Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! In this episode, &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Cloud Foundry Developer Advocate &lt;a href="https://twitter.com/coder_blvck"&gt;Shedrack Akintayo (@coder_blvck) &lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Also: Happy Holidays! &lt;/p&gt;
-&lt;iframe title="Cloud Foundry Developer Advocate Shedrack Akintayo" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/apa96-f5559d?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
