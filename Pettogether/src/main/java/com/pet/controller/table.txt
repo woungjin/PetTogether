@@ -47,5 +47,49 @@ ALTER USER "PET" DEFAULT ROLE "CONNECT","RESOURCE";
 
 
 ========================= 계환이 ===========================
+-- 일반게시판 테이블입니다 
+create table starboard(
+    bno number(10),
+    title varchar2(50) not null, 
+    content varchar2(200) not null,
+    review_avg number(10) , 
+    tag varchar2(20) , 
+    hit number(30),
+    regdate date default sysdate
+);
 
+alter table starboard add constraint starboard_pk primary key (bno);
+create sequence starboard_seq start with 1 increment by 1 nocache;
+
+desc starboard;
+
+-- 이것은 찜 등록 테이블입니다 
+create table mygood (
+    bno number(10) not null, 
+    user_id varchar2(50) not null
+);
+insert into starboard values( 1, 'tset' , 'testcontent' , 3 , '강아지' ,100 ,sysdate);
+insert into mygood values(1 , 'tsetuser');
+
+select * from starboard;
+delete from mygood where bno = 1 and user_id = 'test';
+
+select * from mygood ;  
+
+
+
+
+-- 여기는 리뷰 작성 테이블 입니다
+create table reviewboard(
+    review_bno number(10),
+    writer varchar2(50) not null,
+    content  varchar2(200),
+    uploadpath varchar2(200) not null,
+    fileloca varchar2(50) not null,
+    filename varchar2(50) not null,
+    filerealname varchar2(50) not null,
+    regdate date default sysdate
+);
+create sequence reviewboard_seq start with 1 increment by 1 nocache;
+select * from reviewboard;
 
