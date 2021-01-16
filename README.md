@@ -1,6 +1,7 @@
 <div align=center> 
- <img width="150" src="https://user-images.githubusercontent.com/74219139/104112803-7c14a800-5336-11eb-8326-9f69c35b41e0.PNG"> </img>
+ <img width="150" src="https://user-images.githubusercontent.com/74219139/104809832-7ede3400-5833-11eb-9a8e-41ff77ec6646.png"> </img>
 </div>
+
 
 
 # ＊ PET TOGETER (1/6 ~ 1/28)
