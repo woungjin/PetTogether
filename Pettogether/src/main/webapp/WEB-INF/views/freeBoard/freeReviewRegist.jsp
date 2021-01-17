@@ -9,11 +9,11 @@
 					<h4>리뷰 작성</h4>
 					<!-- 파일 업로드 폼입니다 -->
 					<div class="fileDiv">
-						<img id="fileImg" src="../resources/img/img_ready.png">
+						<img id="fileImg" >
 					</div>
 					<div class="reply-content">
 						<textarea class="form-control" rows="3" name="content"
-						id="content" placeholder="무슨 생각을 하고 계신가요?"></textarea>
+						id="content" placeholder="무슨 생각을 하고 계신가요?" style="resize : none;"></textarea>
 						
 						<div class="reply-group">
 							<div class="filebox pull-left">

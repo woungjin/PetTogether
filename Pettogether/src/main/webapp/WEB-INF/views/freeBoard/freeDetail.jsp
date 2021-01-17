@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 	
 	   
+     	   
     <section style="margin-top: 70px;">
         <div class="container">
             <div class="row">
@@ -18,7 +19,6 @@
 
 
                     <div class="content-inner">
-                        <p># 강아지 #고양이</p>
                     </div>
                     <div class="img-inner">
                         <img src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png"  alt="이미지">
@@ -37,13 +37,50 @@
                         </p>
                         
                     </div>
+                    
+                    <!-- 여기는 평점 넣기 , 그리고 추천할 강아지 !!!!!!!!! -->
+                 
+                        <div class="starAndRecom" id="starAndRecom">
+                            <!--star insert-->
+                            <div class="starInsert">
+                                <div class="starInsert-left">
+                                    별점등록 
+                                    <p style="margin: 0;" id="review_regist"><a href="#" id="1" >★</a>  <a href="#" id="2">★</a>  <a href="#" id="3">★</a>  <a href="#" id="4">★</a>  <a href="#" id="5">★</a> </p>
+                                </div>
+                                
+                                <div class="starInsert-right">
+                                    <button type="button" class="right btn btn-info">등록</button>
+                                </div>
+                            </div>
+
+                            <!-- Recom insert selectBox-->
+                            <div class="RecomInsert">
+                                <div class="RecomInsert-left">
+                                    추천종 &nbsp;
+                                    
+                                        <select >
+                                            <option value="">소형견</option>
+                                            <option value="">중형견</option>
+                                            <option value="">대형견</option>
+                                            <option value="">고양이</option>
+                                            <option value="">기타</option>
+                                        </select>
+                                   
+                                </div>
+
+                                <div class="RecomInsert-right">
+                                    <button type="button" class="right btn btn-info">등록</button>
+                                </div>
+                            </div>
+                        
+                        </div>
+                  
 
                     <!-- 댓글-->
                     <form class="reply-wrap">
                         
                         <div class="reply-content">
                             <textarea class="form-control" rows="3" id="reply"></textarea>
-                                <p style="margin: 0;" id="review_regist"><a href="#" id="1" style="color: red;">★</a>  <a href="#" id="2">★</a>  <a href="#" id="3">★</a>  <a href="#" id="4">★</a>  <a href="#" id="5">★</a> </p>
 
                             <div class="reply-group">
                                   <div class="reply-input">
@@ -67,13 +104,7 @@
                                     <a href='#' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
                                     <a href='#' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>
                                 </div>
-                            <p>
-                                <i>★</i>
-                                <i>★</i>
-                                <i>★</i>
-                                <i>★</i>
-                                <i>★</i> 
-                            </p>
+                            
                                 <p class='clearfix'>여기는 댓글영역</p>
                             </div>
                         </div>
