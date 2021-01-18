@@ -114,13 +114,11 @@
                 }else if(event.target.attributes[0].nodeValue === "/project/resources/img/freeBoard/love.png") {
                 	event.target.attributes[0].nodeValue = "/project/resources/img/freeBoard/love2.png";
                 	
-					console.log(bno)
-					
 					
 					$.getJSON(
 							"../freeBoard/goodInsert/" + bno + "/" + user_id,
 							function(data) {
-								if(data !== 1){
+								if(data !== true){
 									alert("찜실패 !");
 								} 
 							}
