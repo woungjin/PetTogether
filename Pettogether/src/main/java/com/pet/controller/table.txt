@@ -34,17 +34,24 @@ ALTER USER "PET" DEFAULT ROLE "CONNECT","RESOURCE";
 
 ========================= 동건이형 ===========================
 
+create table users(
+    id varchar2(50) not null,
+    pw varchar2(50) not null,
+    name varchar2(50) not null,
+    phone1 varchar2(50),
+    phone2 varchar2(50),
+    email1 varchar2(50),
+    email2 varchar2(50),
+    basicAdd varchar2(300),
+    detailAdd varchar2(300),
+    zipNum varchar2(50),
+    quiz varchar2(300) not null,
+    answer varchar2(300) not null,
+    petTag varchar2(50) not null,
+    regdate date default sysdate
+);
 
-
-
-
-
-
-
-
-
-
-
+alter table users add CONSTRAINT id_pk PRIMARY KEY (id)
 
 ========================= 계환이 ===========================
 -- 일반게시판 테이블입니다 
