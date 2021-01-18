@@ -10,10 +10,9 @@
         <!-- 로고 -->
         <div class="top">
           <div class="logo_login">
-          <c:choose>
-             <c:when test="${sessionScope.userVO == null }">
             <a href="${pageContext.request.contextPath }"><img class="logo" src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더"></a>
-              
+	          <c:choose>
+             <c:when test="${sessionScope.userVO == null }">
               <a href="${pageContext.request.contextPath}/user/userLogin">LOGIN </a> 
               <span> | </span>
               <a href="${pageContext.request.contextPath }/user/userJoin"> JOIN</a>
@@ -36,10 +35,10 @@
               <div class="dropdown">
               <button class="dropbtn">CATEGORY</button>
               <div class="dropdown-content">
-                <a href="http://localhost:8383/project/freeBoard/freeList">Link 1</a>
-                <a href="http://localhost:8383/project/freeBoard/freeList">Link 2</a>
-                <a href="http://localhost:8383/project/freeBoard/freeList">Link 3</a>
-                <a href="http://localhost:8383/project/freeBoard/freeList">Link 4</a>
+                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 1</a>
+                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 2</a>
+                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 3</a>
+                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 4</a>
               </div>
               </div>
 

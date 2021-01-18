@@ -50,7 +50,7 @@
       </div>
       <div class="item">
         <div class="item-count text-md">
-          <a href="#">
+          <a href="">
             <div class="item-header text-md">
               회원탈퇴
             </div>
