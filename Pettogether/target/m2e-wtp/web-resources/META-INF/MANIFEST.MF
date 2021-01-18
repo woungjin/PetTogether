@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: a5678
+Built-By: DGWEE
 Build-Jdk: 1.8.0_271
-=======
-Built-By: jin
-Build-Jdk: 15.0.1
->>>>>>> master
 Created-By: Maven Integration for Eclipse
 
