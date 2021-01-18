@@ -7,5 +7,6 @@
 <configuration>
  	<typeAliases>
 			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO"/>
+			<typeAlias type="com.pet.command.UserVO" alias="UserVO" />
  	</typeAliases>   
 </configuration>
