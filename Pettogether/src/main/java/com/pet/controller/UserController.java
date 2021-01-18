@@ -39,10 +39,26 @@ public class UserController {
 		return "user/userJoin";
 	}
 
-
-	@RequestMapping("/userMypage")
+	// 유저 마이페이지
+	@RequestMapping("userMypage")
 	public String userMypage() {
 		return "user/userMypage";
+	}
+	// 마이페지이안에서 수정부분
+	@RequestMapping("userMypageModify")
+	public String userMyModify() {
+		return "user/userMypageModify";
+	}
+	// 마이페이지 안에서 찜 목록 부분
+	@RequestMapping("userMypageHeart")
+	public String userMypageHeart() {
+		return "user/userMypageHeart";
+	}
+
+	// 마이페이지 안에서 리뷰 글 부분
+	@RequestMapping("userMypageReview")
+	public String userMypageReview() {
+		return "user/userMypageReview";
 	}
 
 	@ResponseBody	// 응답요청을 뷰 리졸버가 아닌 요청이 들어온곳으로 response header정보를 만들어서 보내준다.

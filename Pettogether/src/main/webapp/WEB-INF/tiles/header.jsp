@@ -10,21 +10,41 @@
         <!-- 로고 -->
         <div class="top">
           <div class="logo_login">
+          <c:choose>
+             <c:when test="${sessionScope.userVO == null }">
             <a href="${pageContext.request.contextPath }"><img class="logo" src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg" alt="펫투게더"></a>
               
               <a href="${pageContext.request.contextPath}/user/userLogin">LOGIN </a> 
               <span> | </span>
               <a href="${pageContext.request.contextPath }/user/userJoin"> JOIN</a>
+              </c:when>
+              <c:otherwise>
+              <a href="${pageContext.request.contextPath }/user/userMypage">MYPAGE</a> 
+	          <span>|</span>
+	          <a href="${pageContext.request.contextPath }/user/userLogout">LOGOUT</a>
+              </c:otherwise>
+              </c:choose>
               
             </div>
         </div>
 
-        <!-- 메뉴바  -->
+ <!-- 메뉴바  -->
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
-            <li><a href="/about/">CATEGORY</a></li>
-            <li><a href="/work/">MAP</a></li>
+            <li>
+              <div class="dropdown">
+              <button class="dropbtn">CATEGORY</button>
+              <div class="dropdown-content">
+                <a href="http://localhost:8383/project/freeBoard/freeList">Link 1</a>
+                <a href="http://localhost:8383/project/freeBoard/freeList">Link 2</a>
+                <a href="http://localhost:8383/project/freeBoard/freeList">Link 3</a>
+                <a href="http://localhost:8383/project/freeBoard/freeList">Link 4</a>
+              </div>
+              </div>
+
+            </li>
+            <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>
