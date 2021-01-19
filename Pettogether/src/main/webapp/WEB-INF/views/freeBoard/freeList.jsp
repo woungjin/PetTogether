@@ -28,7 +28,7 @@
                     <div class="list">
                         <div class="list-img">
                             
-                                <a href="#">
+                                <a href="../starBoard/freeDetail?bno=1">
                                     <img src="${pageContext.request.contextPath }/resources/img/freeBoard/img_02.jpg" alt="">
                                 </a>
                             
@@ -102,6 +102,7 @@
 					 $.getJSON(
 						"../freeBoard/goodDelete/" + bno  + "/" + user_id ,
 						function(data) {
+						
 							if(data !== 1) {
 								alert("찜실패!");
 							}

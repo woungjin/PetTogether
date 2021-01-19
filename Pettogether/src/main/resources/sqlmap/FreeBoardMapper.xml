@@ -5,21 +5,98 @@
   
   
   <mapper namespace="com.pet.freeboard.mapper.FreeBoardMapper">
-  	
+  	<!-- 찜등록 -->
   	<insert id="myGoodInsert">
   		insert into mygood values(#{bno} , #{user_id}) 
   	</insert>
-  	
+  	<!-- 찜삭제 -->
   	<delete id="myGoodDelete">
   		delete from mygood where bno = #{bno} and user_id = #{user_id}
   		
   	</delete>
   
+  
+  <!-- 리뷰 인써트  -->
   	<insert id="fileInsert">
-		insert into reviewboard(review_bno , writer , content , uploadPath, fileloca , filename , filerealname)
-		values( 1, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
+		insert into reviewboard(review_bno ,bno, writer , content , uploadPath, fileloca , filename , filerealname)
+		values( #{review_bno},#{bno}, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
   	</insert>
  
-  
+ <!-- 별점등록 -->
+ 	<insert id="starInsert">
+ 		insert into starpoint values(#{bno} , #{point} ,#{user_id} )
+ 	</insert>
+ 	
+ 	<!-- 추천등록 -->
+	<insert id="recomInsert">
+		insert into recom(recom_bno , user_id , recom) values(#{bno} ,#{user_id} , #{recom})
+	</insert>
+	
+	<!-- 리뷰 리스트 얻어오기 -->
+	<select id="getReviewList" resultType="HashMap">
+	
+<!-- 	select s.title
+		r.*
+		from(
+		select * from (
+select rownum as rn,
+        a.* from(
+select * from reviewboard order by review_bno desc) a ) where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount}
+) r
+left join starboard s on r.bno = s.bno
+ -->
+	
+<![CDATA[
+	select s.title,
+    r.*
+    from(select * from (
+select rownum as rn,
+        a.* from(
+select * from reviewboard order by review_bno desc) a ) where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount} ) r 
+left join starboard s on r.bno = s.bno	 	
+ 
+ ]]>
+	</select>
+  	
+  	
+  	<!-- 리뷰 전체글 얻어오기  -->
+  	<select id="reviewGetTotal" resultType="int">
+		select count(*) as total from reviewboard  	
+  	</select>
+  	
+  	<!-- 리뷰 딕테일얻어오기 -->
+  	<select id="getReviewDetail" resultType="ReviewRegistVO">
+  		select * from reviewboard where review_bno = #{review_bno}
+  	</select>
+  	
+  	
+  	<insert id="reviewRplyInsert">
+  		insert into reviewreply(review_rno , review_bno , review_reply_writer , review_reply_pw, review_reply_content)
+  		values(reviewreply_seq.nextval , #{review_bno} , #{review_reply_writer} , #{review_reply_pw},#{review_reply_content})
+  	</insert>
+  	
+  	<!-- 리뷰댓들얻어오기 -->
+  	<select id="getReviewReply" resultType="ReviewReplyVO">
+  		<![CDATA[
+			select * from (
+select rownum as rn,
+        a.* from(
+select * from reviewreply where review_bno=#{review_bno} order by review_rno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount} 		
+  		]]>
+  		
+  	</select>
+  	
+  	<select id="pwCheck" resultType="int">
+  		select count(*) from reviewreply where review_rno = #{review_rno} and review_reply_pw = #{review_reply_pw}
+  	</select>
+  	
+  	<update id="reviewReplyUpdate">
+  		update reviewreply set review_reply_content = #{review_reply_content} where review_rno = #{review_rno}
+  	</update>
+  	
+  	<delete id="reviewReplyDelete">
+  		delete from reviewreply where review_rno = #{review_rno}
+  	</delete>
+  	
   
   </mapper>

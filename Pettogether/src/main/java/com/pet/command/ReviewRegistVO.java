@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ReviewRegistVO {
 	
 	private int review_bno;
+	private int bno; 
 	private String writer;
 	private String content;
 	private String uploadPath;

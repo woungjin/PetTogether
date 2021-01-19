@@ -926,12 +926,13 @@ select {
  
         section{display: block;} 
        
-    
+    	.myModal-left img {width : 100%;}
        
     
+        .content content-img{text-align: center; padding: 10px; }
         .content-img .list:hover ,
         .content-img .list-img:hover {opacity: 0.5;}  
-        .content content-img{text-align: center; padding: 10px;  }
+        .content-img > .list { height:350px; }
         .content content-img span {display: block;}
         
     
@@ -972,7 +973,7 @@ select {
         }
 
         .good{display: none;}
-        .content-img img{position: relative; width:195px;}
+        .content-img img{position: relative; width:100%;}
         .bad img , .good img{width: 20px; height: 20px;}
         .good{position: absolute; top: 16px; left: 36px;}
         .bad{position: absolute; top:16px ; left: 36px;}
@@ -1105,13 +1106,7 @@ select {
 
 
 /* 리뷰게시판 디자인= =================================================== */
-.replyReview{position: relative;}
 
-.reviewReplyBtn{
-    position: absolute; 
-    right: 22px;
-    bottom: 25px;
-}
 
 .review-board {
 	margin-top : 3px;

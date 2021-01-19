@@ -3,7 +3,7 @@ package com.pet.common.util;
 import lombok.Data;
 
 @Data
-public class pageVO {
+public class PageVO {
 	
 	private int startPage;
 	private int endPage ;
@@ -16,8 +16,8 @@ public class pageVO {
 	
 	private Criteria cri;
 	
-	public pageVO(Criteria cri , int total) {
-		this.startPage = cri.getPageNum();
+	public PageVO(Criteria cri , int total) {
+		this.pageNum = cri.getPageNum();
 		this.amount = cri.getAmount();
 		this.total =total;
 		this.cri = cri;

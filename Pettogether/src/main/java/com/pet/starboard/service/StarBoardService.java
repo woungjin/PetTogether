@@ -1,5 +1,5 @@
 package com.pet.starboard.service;
 
-public class sdfdfsdf {
+public interface StarBoardService {
 
 }
