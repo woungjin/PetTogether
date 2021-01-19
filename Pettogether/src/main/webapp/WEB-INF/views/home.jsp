@@ -1,40 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <!-- 배너 -->
 
-  <section class="home-banner">
+    <div class="TOP1">
+        <span>사용자가 뽑은 </span> <span class="TOP1_TOP1">TOP1</span>
+    </div>
+    <section class="home-banner">
+        
       <div id="wrapper">
         <div id="slider-wrap">
             <ul id="slider">
                <li>
                   <div>
-                      <h3>Slide #1</h3>
+                      <h3>여행지</h3>
                       <span>Sub-title #1</span>
                   </div>                
-  <img src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg">
+  <img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
                </li>
                
                <li>
                   <div>
-                      <h3>Slide #2</h3>
+                      <h3>애견카페</h3>
                       <span>Sub-title #2</span>
                   </div>
-  <img src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg">
+  <img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
                </li>
                
                <li>
                   <div>
-                      <h3>Slide #3</h3>
+                      <h3>애견펜션</h3>
                       <span>Sub-title #3</span>
                   </div>
-  <img src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg">
+  <img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
                </li>
                
                <li>
                   <div>
-                      <h3>Slide #4</h3>
+                      <h3>애견호텔</h3>
                       <span>Sub-title #4</span>
                   </div>
-  <img src="${pageContext.request.contextPath }/resources/img/home/petLogo.svg">
+  <img src="${pageContext.request.contextPath}/resources/img/home/petLogo.svg">
                </li>
                
                <!-- <li>
@@ -49,8 +55,13 @@
             </ul>
             
              <!--controls-->
-            <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-            <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+             <div class="btns" id="next">
+            	<!-- <i >  </i> --> 
+            	<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNDk1MDU2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTEwIDZsNiA2LjAwM0wxMC4wMDcgMTgiLz4KPC9zdmc+Cg==" alt="next">
+            </div>
+            <div class="btns" id="previous">
+            	<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNDk1MDU2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTE0IDZsLTYgNi4wMDNMMTMuOTkzIDE4Ii8+Cjwvc3ZnPgo=" alt="prev">
+			</div>
             <div id="counter"></div>
             
             <div id="pagination-wrap">
@@ -62,12 +73,9 @@
         </div>
 
      </div>
+
     </section>
 
-    <div class="text">
-        <p>혼자있는 당신을 위한 반려동물 동반여행 플랫폼</p>
-        <h4>주인을 데려가세요~!, <strong>펫투게더<span>!</span></strong></h4>
-    </div>
 
     <div class="tit">
         <h1>이렇게 좋은 곳을 안가보셨다구요? </h1>
@@ -83,19 +91,19 @@
                 <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
                     
                     <div class="swiper-slide swiper-slide-active">
-                        <h4><a href="">  <img src="${pageContext.request.contextPath }/resources/img/home/where_icon1.png"></a></h4>
+                        <h4><a href="http://localhost:8383/project/freeBoard/freeList"><img src="${pageContext.request.contextPath }/resources/img/home/where_icon1.png" alt=""></a></h4>
                         <p>여행지</p>
                     </div>
                     <div class="swiper-slide swiper-slide-next">
-                        <h4><a href="">  <img src="${pageContext.request.contextPath }/resources/img/home/where_icon2.png"></a></h4>
+                        <h4><a href="http://localhost:8383/project/freeBoard/freeList"><img src="${pageContext.request.contextPath }/resources/img/home/where_icon2.png" alt=""></a></h4>
                         <p>애견(동반)카페</p>
                     </div>
                     <div class="swiper-slide">
-                        <h4><a href="">  <img src="${pageContext.request.contextPath }/resources/img/home/where_icon3.png"></a></h4>
+                        <h4><a href="http://localhost:8383/project/freeBoard/freeList"><img src="${pageContext.request.contextPath }/resources/img/home/where_icon3.png" alt=""></a></h4>
                         <p>애견펜션</p>
                     </div>
                     <div class="swiper-slide">
-                        <h4><a href="">  <img src="${pageContext.request.contextPath }/resources/img/home/where_icon5.png"></a></h4>
+                        <h4><a href="http://localhost:8383/project/freeBoard/freeList"><img src="${pageContext.request.contextPath }/resources/img/home/where_icon5.png" alt=""></a></h4>
                         <p>애견호텔</p>
                     </div>
                 </div>
@@ -114,7 +122,7 @@
 
 
                                     <!-- 여행 -->
-                                    <a href="1">
+                                    <a href="http://localhost:8383/project/freeBoard/freeList">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/4737_xlarge_square_1535949304.jpg?1535949304" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/4737_xlarge_square_1535949304.jpg?1535949304" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK"
                                     ></div>
@@ -122,13 +130,15 @@
                                         <div class="MainCityVideo-module__titleWrapper--2CvMR">
                                             <span class="MainCityVideo-module__title--15eaK">여행</span>
                                         </div>
-
+                                        <span class="MainCityVideo-module__desc--3kOvx">
+                                            <span style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">2,618여 개의 여행 상품</span>
+                                        </span>
                                     </div>
                                 </a>
                                 </div>
 
                                 <!-- 카페  -->
-                                <a href="2">
+                                <a href="http://localhost:8383/project/freeBoard/freeList">
                                 <div class="MainCityVideo-module__container--3bdht swiper-slide swiper-slide-next" style="width: 270px;">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/832_xlarge_square_1493257137.jpg?1493257137" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/832_xlarge_square_1493257137.jpg?1493257137" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK">
@@ -137,13 +147,15 @@
                                         <div class="MainCityVideo-module__titleWrapper--2CvMR">
                                             <span class="MainCityVideo-module__title--15eaK">카페</span>
                                         </div>
-                                        
+                                        <span class="MainCityVideo-module__desc--3kOvx">
+                                            <span style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">2,114여 개의 여행 상품</span>
+                                        </span>
                                     </div>
                                     </div>
                                 </a>
 
                                 <!-- 애견펜션 -->
-                                <a href="3">
+                                <a href="http://localhost:8383/project/freeBoard/freeList">
                                 <div class="MainCityVideo-module__container--3bdht swiper-slide" style="width: 270px;">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/4744_xlarge_square_1535960572.jpg?1535960572" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/4744_xlarge_square_1535960572.jpg?1535960572" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK">
@@ -152,12 +164,14 @@
                                         <div class="MainCityVideo-module__titleWrapper--2CvMR">
                                             <span class="MainCityVideo-module__title--15eaK">애견펜션</span>
                                         </div>
-                                       
+                                        <span class="MainCityVideo-module__desc--3kOvx">
+                                            <span style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">929여 개의 여행 상품</span>
+                                        </span>
                                     </div>
                                     </div>
                                     </a>
                                     <!-- 애견호텔 -->
-                                    <a href="4">
+                                    <a href="http://localhost:8383/project/freeBoard/freeList">
                                     <div class="MainCityVideo-module__container--3bdht swiper-slide" style="width: 270px;">
                                         <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/599_xlarge_square_1472227370.jpg?1472227370" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/599_xlarge_square_1472227370.jpg?1472227370" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                         <div class="MainCityVideo-module__gradientBackground--1dzKK"></div>
@@ -165,7 +179,9 @@
                                             <div class="MainCityVideo-module__titleWrapper--2CvMR">
                                                 <span class="MainCityVideo-module__title--15eaK">애견호텔</span>
                                             </div>
-                                          
+                                            <span class="MainCityVideo-module__desc--3kOvx">
+                                                <span style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">7여 개의 여행 상품</span>
+                                            </span>
                                         </div>
                             
                                     </div>
@@ -740,7 +756,27 @@
 </div>
 </div>
 
+
+<!-- 펫츠고 최신리뷰  -->
+
+
+
+</div>
+
+
+
+
+
+</div></div></div></div>
+
+
+
+
+
             </section>
+
+    </section>
+
 
 	<script>
 		// ---- 배너 슬라이드 ----

@@ -10,6 +10,7 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.util.UUID"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="com.pet.starboard.service.starBoardService"/>
@@ -23,6 +24,12 @@
     <fullyQualifiedTypeName name="com.pet.command.RecomVO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+=======
+    <fullyQualifiedTypeName name="com.pet.starboard.service.starBoardService"/>
+    <fullyQualifiedTypeName name="oracle.sql.OracleJdbc2SQLInput"/>
+    <fullyQualifiedTypeName name="com.pet.command.StarVO"/>
+    <fullyQualifiedTypeName name="com.pet.command.RecomVO"/>
+>>>>>>> master
     <fullyQualifiedTypeName name="com.google.common.net.HttpHeaders"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpHeaders"/>
     <fullyQualifiedTypeName name="com.google.common.io.Files"/>
@@ -31,10 +38,15 @@
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.pet.common.util.pageVO"/>
     <fullyQualifiedTypeName name="com.pet.common.util.PageVO"/>
     <fullyQualifiedTypeName name="com.pet.common.util.Criteria"/>
+=======
+    <fullyQualifiedTypeName name="com.pet.common.util.pageVO"/>
+    <fullyQualifiedTypeName name="com.pet.common.util.PageVO"/>
+>>>>>>> master
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="com.pet.command.ReviewRegistVO"/>
     <fullyQualifiedTypeName name="java.sql.Time"/>
@@ -42,8 +54,30 @@
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.pet.command.ReviewReplyVO"/>
+=======
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+    <fullyQualifiedTypeName name="com.pet.command.ReviewReplyVO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+    <fullyQualifiedTypeName name="oracle.jdbc.proxy.annotation.Post"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Qualifier"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.pet.starboard.service.StarBoardService"/>
+    <fullyQualifiedTypeName name="com.pet.starboard.mapper.StarBoardMapper"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="com.pet.common.util.Criteria"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+>>>>>>> master
 </qualifiedTypeNameHistroy>
