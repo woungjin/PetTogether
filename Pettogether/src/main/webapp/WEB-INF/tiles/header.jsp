@@ -22,8 +22,8 @@
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
-            <li><a href="/about/">CATEGORY</a></li>
-            <li><a href="/work/">MAP</a></li>
+            <li><a href="${pageContext.request.contextPath }/starBoard/freeList">CATEGORY</a></li>
+            <li><a href="${paegContext.request.contextPath }/mapBoard/map">MAP</a></li>
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>

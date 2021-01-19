@@ -55,6 +55,10 @@
 			var file = $("#file").val();
 			var content = $("#content").val();
 			
+			if(writer === "" | content === ""){
+				alert("공백을 주의해주세요 ^_^");
+			}
+			
 			//파일확장자를 체크합니다 
 			file = file.substring(file.lastIndexOf(".") , file.length).toLowerCase();
 			console.log(file);
@@ -119,7 +123,7 @@
     <script>
 	
 	
-		//자바 스크립트 파일 미리보기 기능
+		//자바 스크립트 파일 미리보기 기능=======================================================
 		function readURL(input) {
         	if (input.files && input.files[0]) {
         		
@@ -138,7 +142,7 @@
 		$("#file").change(function() {
 	        readURL(this); //this는 #file자신 태그를 의미
 	    });
-		
+// ===============================================================		
 		
 		
 		
