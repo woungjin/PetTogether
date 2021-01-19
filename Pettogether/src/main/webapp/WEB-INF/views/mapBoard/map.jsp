@@ -66,9 +66,9 @@
         map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
         // ======================= API ========================================      
-        var arr = []; //api의 데이터중 구분한 데이터를 담는곳
-        var arr1 = [];         
-
+        var Apiarr = []; //api의 데이터중 구분한 데이터를 담는곳
+        var Overlayarr = [];         
+        var Markerarr = [];    
         var gu = document.querySelector('.gu');
         gu.addEventListener("change", function(){
             var guName = event.target.value
@@ -104,8 +104,8 @@
                 var j = 0;
                 for(var i = 0; i < list.length; i ++){
                     if(list[i].RDNWHLADDR.indexOf(guName) != -1){
-                        arr[j] = list[i]
-                        console.log(arr[j])                 
+                        Apiarr[j] = list[i]
+                        console.log(Apiarr[j])                 
                         j++;
                     }
                         
@@ -114,15 +114,18 @@
 
                 // 주소로 좌표를 검색, 반복문 활용 마커 여러개 찍기 
                 var no = 0;
-                arr.forEach(Element => {                  
-                    console.log(Element)
-                    geocoder.addressSearch(Element.SITEWHLADDR, function(result, status) {
-                        
-                    console.log(Element.BPLCNM)
-                // 정상적으로 검색이 완료됐으면 
+                var bounds = new kakao.maps.LatLngBounds()
+                Apiarr.forEach(function(Apiarr, index){                                     
+                    console.log(Apiarr)
+                    geocoder.addressSearch(Apiarr.SITEWHLADDR, function(result, status) {                            
+                            
+                        console.log(Apiarr.SITEWHLADDR)
+                        console.log(index)
+                        // 정상적으로 검색이 완료됐으면 
                 if (status === kakao.maps.services.Status.OK) {
-
+                    
                     var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    bounds.extend(coords)
 
                     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
                     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
@@ -134,6 +137,8 @@
                         position: coords,
                         image: markerImage
                     });
+                    
+                    Markerarr[index] = marker;
 
                     // 커스텀 오버레이에 표시할 컨텐츠  
                     // content를 문자열로 만들면 이벤트 등록이 불가능 element 이벤트리스너 기능이용       
@@ -152,7 +157,7 @@
                     var img = document.createElement("img");
                     content.appendChild(info).className = 'info';          
                     info.appendChild(title).className = 'title';          
-                    title.innerHTML = Element.BPLCNM;
+                    title.innerHTML = Apiarr.BPLCNM;
                     title.appendChild(close).className = 'close';   
                     close.onclick = function(){
                     overlay.setMap(null); 
@@ -165,38 +170,35 @@
                     img.height = '70';
                     body.appendChild(desc).className = 'desc';          
                     desc.appendChild(ellipsis).className = 'ellipsis';
-                    ellipsis.innerHTML = Element.SITEWHLADDR;
+                    ellipsis.innerHTML = Apiarr.SITEWHLADDR;
                     desc.appendChild(jibun).className = 'jibun';
-                    jibun.innerHTML = '(우)' + Element.RDNPOSTNO + '(지번) 면목동 156-23';
+                    jibun.innerHTML = '(우)' + Apiarr.RDNPOSTNO ;
                     desc.appendChild(link)
                     link.appendChild(a).className = 'link';
                     a.href = 'https://www.kakaocorp.com/main';
                     a.innerHTML = '홈페이지';         
                     
                     var overlay = new kakao.maps.CustomOverlay({
-                        content: content,
-                        map: map,
+                        content: content,                                                
                         zIndex:1,                        
                         position: new kakao.maps.LatLng(result[0].y, result[0].x)                        
                     });                    
                         
-                    arr1[no] = overlay
-
-                    console.log(arr1[no])
+                    Overlayarr[index] = overlay
+                    
                         
                     // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-                    kakao.maps.event.addListener(marker, 'click', function() {
-                        arr1[no].setMap(map);
+                    kakao.maps.event.addListener(Markerarr[index], 'click', function() {
+                        Overlayarr[index].setMap(map);                        
                     });          
                         
                     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                    map.setCenter(coords);
-                } 
-
+                    map.setBounds(bounds);
+                    } 
                     }); 
-                    no++;
-                    });
-                    arr.length = 0;
+                });       
+        
+                    Apiarr.length = 0;
                         
                 })
             }
@@ -406,6 +408,5 @@
        
         
   </script>
-  
 </body>
 </html>
