@@ -31,19 +31,27 @@
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             <li>
               <div class="dropdown">
               <button class="dropbtn">CATEGORY</button>
               <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 1</a>
-                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 2</a>
-                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 3</a>
-                <a href="${pageContext.request.contextPath }/freeBoard/freeList">Link 4</a>
+                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 1</a>
+                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 2</a>
+                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 3</a>
+                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 4</a>
               </div>
               </div>
 
             </li>
             <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>
