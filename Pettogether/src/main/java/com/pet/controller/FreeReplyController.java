@@ -1,4 +1,4 @@
-`	`	`	`	package com.pet.controller;
+package com.pet.controller;
 
 public class FreeReplyController {
 

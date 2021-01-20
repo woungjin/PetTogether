@@ -5,7 +5,37 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-18T11:00:00Z</updated>
+  <updated>2021-01-19T21:53:00Z</updated>
+  <entry>
+    <title>This Week in Spring - January 19th, 2021</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/19/this-week-in-spring-january-19th-2021" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-19:4340</id>
+    <updated>2021-01-19T21:53:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! We&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=lgyo9c9zdrg&amp;feature=share"&gt;What¡¯s new in Spring Boot 2.4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/a-bootiful-podcast-spring-cloud-stream-lead-oleg-zhurakousky"&gt;A Bootiful Podcast - Spring Cloud Stream lead Oleg Zhurakousky&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/18/ymnnalft-easy-rpc-with-rsocket"&gt;YMNNALFT: Easy RPC with RSocket&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/ymnnalft-express-yourself-with-spel"&gt;YMNNALFT: Express Yourself with SpEL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/brungarc/status/1349910675561324549?s=12"&gt;Check out the Sentry Spring Boot starter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vg7rw4upn3a&amp;feature=share"&gt;Developing Spring Boot applications with Kotlin on Google Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://openjdk.java.net/jeps/8251554"&gt;JEP draft: Primitive Objects (Preview)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/stilkov/status/1351162660453310468?s=12"&gt;@__jpr has integrated Hotwire into a Spring Boot environment &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://inside.java/2021/01/16/new-loom-ea-builds/"&gt;New Loom Early Access Build&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=UJVyGUaHUEg"&gt;No matter what the usecase, Azure has your Java apps covered&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://blog.jetbrains.com/kotlin/2021/01/results-of-the-first-kotlin-multiplatform-survey/"&gt;On the JetBrains Blog: Results of the First Kotlin Multiplatform Survey &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-2-13-available-now"&gt;Spring Boot 2.2.13 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-3-8-available-now"&gt;Spring Boot 2.3.8 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-4-2-available-now"&gt;Spring Boot 2.4.2 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/spring-data-2020-0-3-and-2021-0-m2-released"&gt;Spring Data 2020.0.3 and 2021.0-M2 released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/the-latest-on-azure-active-directory-integration"&gt;The latest on Azure Active Directory integration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>YMNNALFT: Easy RPC with RSocket</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/18/ymnnalft-easy-rpc-with-rsocket" />
@@ -1094,36 +1124,6 @@ public class BootifulApplication {&#xD;
 &lt;div&gt; &#xD;
  &lt;span style ="font-size: smaller"&gt; (You would &lt;em&gt;not&lt;/em&gt; believe how hard it is to find socially distant stock photos!)&lt;/span&gt;&#xD;
 &lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 29th, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/29/this-week-in-spring-december-29th-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-29:4314</id>
-    <updated>2020-12-29T17:06:20Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;!&lt;/p&gt;
-&lt;p&gt;How are you? How&amp;rsquo;re things? I spent this morning on a fun two-hour panel hosted by the Barcelona JUG (who run the JBCN conference, among other things) talking about all sorts of things including GraalVM native images, new features in the Java language, cloud-native applications, and so much more. Thanks for having me! &lt;/p&gt;
-&lt;p&gt;I am so happy about this week&amp;rsquo;s roundup and we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/24/a-bootiful-podcast-alibaba-s-san-hong-li-on-tuning-openjdk-for-alibaba-scale"&gt;A Bootiful Podcast: Alibaba&amp;rsquo;s San-Hong Li on tuning OpenJDK for Alibaba Scale&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/23/cloud-events-and-spring-part-2"&gt;Cloud Events and Spring - part 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/Cosium/spring-data-jpa-entity-graph"&gt;Cosium/spring-data-jpa-entity-graph: Spring Data JPA extension allowing full dynamic usage of EntityGraph on repositories&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Hah! This is so interesting! &lt;a href="https://github.com/SolarEdgeTech/pyctuator"&gt;Give Python applications Spring Boot Actuator endpoints&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/arttom/cqs-spring-boot-starter"&gt;Interesting! A third party library to allow people to easily follow CQS principles in Spring Boot.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/qaware/openapi-generator-for-spring"&gt;Interesting: Open API v3 Generator for Spring Boot applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.mitchellbosecke.com/post/java-proxies-from-dog-to-transactionaldog"&gt;Java Proxies: From Dog to TransactionalDog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://sizovs.net/2020/11/24/java-libraries-i-like/"&gt;Java libraries I like ? Eduards Sizovs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.javaadvent.com/2020/12/resilient-applications-spring-resilience4j.html"&gt;Resilient applications with Spring and Resilience4J - JVM Advent&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://piotrminkowski.com/2019/12/06/spring-boot-best-practices-for-microservices/"&gt;Spring Boot Best Practices for Microservices - Piotr&amp;rsquo;s TechBlog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/22/spring-cloud-2020-0-0-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonatan_ivanov/status/1341477187455655936?s=12"&gt;Spring cloud sleuth OpenTelemetry support has been released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.infoq.com/minibooks/java-innovations/"&gt;The InfoQ eMag - Java Innovations That Are on Their Way&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.reddit.com/r/java/comments/khflbg/what_courses_both_free_and_paid_on_spring_boot/"&gt;What courses (both free and paid) on Spring Boot would you recommend? : java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

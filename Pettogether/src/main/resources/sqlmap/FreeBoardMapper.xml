@@ -27,10 +27,11 @@
  		insert into starpoint values(#{bno} , #{point} ,#{user_id} )
  	</insert>
  	
- 	<!-- 추천등록 -->
-	<insert id="recomInsert">
-		insert into recom(recom_bno , user_id , recom) values(#{bno} ,#{user_id} , #{recom})
-	</insert>
+ 	<select id="getStar" resultType="StarVo">
+ 		select * from starpoint where starpoint_bno = #{bno}
+ 	</select>
+ 	
+ 	
 	
 	<!-- 리뷰 리스트 얻어오기 -->
 	<select id="getReviewList" resultType="HashMap">
@@ -97,6 +98,15 @@ select * from reviewreply where review_bno=#{review_bno} order by review_rno des
   	<delete id="reviewReplyDelete">
   		delete from reviewreply where review_rno = #{review_rno}
   	</delete>
+  	
+  	<update id="UpdateStarBoard">
+  		update starboard set review_avg = #{avg} , review_total = #{sum} where bno = #{bno}
+  	</update>
+  	
+  	<select id="userCheck" resultType="int">
+  		select count(*) as total from starpoint where starpoint_bno = #{bno}and user_id = #{user_id}
+  	</select>
+  	
   	
   
   </mapper>

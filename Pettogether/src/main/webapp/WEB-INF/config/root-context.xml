@@ -44,5 +44,6 @@
 
 	<!-- 메퍼 인터페이스 생성경로 -->
 	<mybatis-spring:scan base-package="com.pet.*.mapper" />
+	
 
 </beans>

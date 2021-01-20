@@ -2,10 +2,47 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="com.pet.starBoard.mapper.StarBoardMapper">
 
+ <mapper namespace="com.pet.starboard.mapper.StarBoardMapper">
  
+	<insert id="starReplyInsert">
+		insert into starboardreply(rno ,bno , writer, pw , content)
+		values(starboard_reply_seq.nextval , #{bno} , #{writer} , #{pw} , #{content})
+	</insert>
+
+	
+	<select id="getStarReply" resultType="StarBoardReplyVO">
+		<![CDATA[
+			select * from (
+select rownum as rn,
+        a.* from(
+select * from starboardreply where bno=#{bno} order by rno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount} 		
+  		]]>
+  		
+	</select>
+	
+	
+	<select id="pwCheck" resultType="int">
+		select count(*) as total from starboardreply where rno =#{rno}  and pw = #{pw}
+ 	</select>
+ 	
+ 	<update id="starReplyUpdate">
+ 		update starboardreply set content =#{content}where rno = #{rno}
+ 	</update>
+	
+	<delete id="starReplyDelete">
+		delete from starboardreply where rno = #{rno}		
+	</delete>
+
+	<select id="getList" resultType="StarBoardVO">
+		select * from starboard
+	</select>
+	
+	
+	<select id="getBoardDetail" resultType="StarBoardVO">
+		select * from starboard where bno = #{bno}
+	</select>
+
  </mapper>
 
   

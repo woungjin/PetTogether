@@ -1,18 +1,14 @@
 INDEX VERSION 1.4+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-<<<<<<< HEAD
-3676268747.index
-3856510703.index
-3041138483.index
-=======
 1075760701.index
-1427095054.index
-1113699873.index
-2240305686.index
-1308349953.index
-3041138483.index
-3676268747.index
 3856510703.index
->>>>>>> master
-731924712.index
+3676268747.index
+1075760701.index
+3041138483.index
+1308349953.index
+1427095054.index
+2123453590.index
 1353589166.index
+1113699873.index
+731924712.index
 661311277.index
+2240305686.index

@@ -31,10 +31,6 @@
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
-<<<<<<< HEAD
-            <li><a href="${pageContext.request.contextPath }/starBoard/freeList">CATEGORY</a></li>
-            <li><a href="${paegContext.request.contextPath }/mapBoard/map">MAP</a></li>
-=======
             <li>
               <div class="dropdown">
               <button class="dropbtn">CATEGORY</button>
@@ -48,7 +44,6 @@
 
             </li>
             <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
->>>>>>> master
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>
