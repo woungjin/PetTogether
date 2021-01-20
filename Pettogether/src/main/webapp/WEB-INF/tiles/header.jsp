@@ -31,7 +31,10 @@
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
             <li>
               <div class="dropdown">
               <button class="dropbtn">CATEGORY</button>
@@ -45,7 +48,10 @@
 
             </li>
             <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>

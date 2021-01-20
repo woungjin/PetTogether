@@ -111,23 +111,37 @@ public class FreeBoardController {
 	@ResponseBody
 	@PostMapping("/starInsert")
 	public int starInsert(@RequestBody StarVO vo) {
-		System.out.println(vo.toString());
 		
+		// userCheck
+		int userResult = freeBoardService.userCheck(vo);
+		if(userResult == 0) {
+			
+		
+		
+		System.out.println(vo.toString());
 		int result = freeBoardService.starInsert(vo);
 		System.out.println(result);
+		// 별점에 따른 스타보드를 업데이트 해줍니다
+		ArrayList<StarVO> list = freeBoardService.getStar(vo.getBno());
+		int sum = 0;
+		int avg = 0;
+		for(int i =0 ; i < list.size(); i++) {
+			sum +=list.get(i).getPoint();
+		}
 		
+		avg =(int) sum / list.size();
+		System.out.println("sum : " + sum  + "avg : "  + avg);
+		
+		freeBoardService.UpdateStarBoard(vo.getBno(), list.size(), avg);
 		return result; 
-	}
-	// ======================================== 추천견종 =============================================
-	@ResponseBody
-	@PostMapping("/recomInsert")
-	public int recomInsert(@RequestBody RecomVO vo) {
-		System.out.println(vo.toString());
+		}else {
+			return 0;
+		}
 		
-		return freeBoardService.recomInsert(vo);
 		
 		
 	}
+	
 	
 	
 	// =========================================================== 리뷰겟리스트 =========================================

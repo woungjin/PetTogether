@@ -50,13 +50,13 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 		return freeBoardMapper.starInsert(vo);
 	}
-
-
-	
-	public int recomInsert(RecomVO vo) {
-		return freeBoardMapper.recomInsert(vo);
+	// 별점에 따른 스타보드업데이
+	public ArrayList<StarVO> getStar(int bno) {
+		
+		return freeBoardMapper.getStar(bno);
 	}
-
+	
+	
 
 
 	
@@ -126,6 +126,18 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 		
 		return freeBoardMapper.reviewReplyDelete(vo);
+	}
+
+
+	@Override
+	public int UpdateStarBoard(int bno, int sum, int avg) {
+		return freeBoardMapper.UpdateStarBoard(bno, sum, avg);
+	}
+
+
+	@Override
+	public int userCheck(StarVO vo) {
+		return freeBoardMapper.userCheck(vo);
 	}
 
 

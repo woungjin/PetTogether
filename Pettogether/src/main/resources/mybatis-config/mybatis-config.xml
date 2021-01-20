@@ -7,6 +7,15 @@
 <configuration>
  	<typeAliases>
 			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO"/>
+<<<<<<< HEAD
+	 		<typeAlias type="com.pet.command.ReviewRegistVO" alias="ReviewRegistVO"/>
+	 		<typeAlias type="com.pet.command.RecomVO" alias="RecomVO"/>
+	 		<typeAlias type="com.pet.command.ReviewReplyVO" alias="ReviewReplyVO"/>
+			<typeAlias type="com.pet.command.UserVO" alias="UserVO" />
+			<typeAlias type="com.pet.command.StarBoardReplyVO" alias="StarBoardReplyVO" />
+			<typeAlias type="com.pet.command.StarBoardVO" alias="StarBoardVO" />
+			<typeAlias type="com.pet.command.StarVO" alias="StarVO" />
+=======
 
 	 		<typeAlias type="com.pet.command.ReviewRegistVO" alias="ReviewRegistVO"/>
 	 		<typeAlias type="com.pet.command.RecomVO" alias="RecomVO"/>
@@ -14,5 +23,6 @@
 
 			<typeAlias type="com.pet.command.UserVO" alias="UserVO" />
 
+>>>>>>> master
  	</typeAliases>   
 </configuration>

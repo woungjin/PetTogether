@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <section class="category_set" style="background-color: rgba(235,170,80);">
 	
@@ -23,13 +24,14 @@
                 <h3 style="text-align: center;">여기는 리뷰 top4</h3>
 
 
+				<c:forEach var="vo" items="${list }">
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
 
                     <div class="list">
                         <div class="list-img">
                             
-                                <a href="../starBoard/freeDetail?bno=1">
-                                    <img src="${pageContext.request.contextPath }/resources/img/freeBoard/img_02.jpg" alt="">
+                                <a href="../starBoard/freeDetail?bno=${vo.bno }">
+                                    <img src="${pageContext.request.contextPath }/resources/img/starboard/${vo.bno }.jpg" alt="">
                                 </a>
                             
 
@@ -39,7 +41,7 @@
                     
                         <div class="list-content">
                             
-                            <p >청남대 애견동반 버스패키지</p>
+                            <p >${vo.title }</p>
                             <div class="content-reivew">
                                 <p id="star_grade" class="content-left">
                                    <i>★</i>
@@ -48,7 +50,7 @@
                                    <i>★</i>
                                    <i>★</i>
                                 </p>
-                                <p class="content-left">리뷰수 120</p>
+                                <p class="content-left">리뷰수 ${vo.review_total }</p>
                             </div>
                             	
                             	<p>
@@ -68,6 +70,7 @@
 
                 </div>
 
+				</c:forEach>
 				
                 
                 

@@ -17,6 +17,10 @@ public interface FreeBoardMapper {
 	public int myGoodDelete(MyGoodVO vo);
 	public boolean fileInsert(ReviewRegistVO vo);
 	public int starInsert(StarVO vo); // 별점등록메서드
+	public ArrayList<StarVO> getStar(int bno);
+	public int UpdateStarBoard(@Param("bno") int bno ,@Param("sum")  int sum ,@Param("avg") int avg);
+	public int userCheck(StarVO vo);
+	
 	public int recomInsert(RecomVO vo);
 	
 	

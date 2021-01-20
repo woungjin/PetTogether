@@ -2,35 +2,8 @@
 <section name="Workbench">
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ExternalProject"/>
-		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
-		</list>
-		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
-			<item value="org.eclipse.ui.Basic"/>
-		</list>
-	</section>
-	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>
-		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
-			<item value="org.eclipse.jst.ws.ui.new"/>
-			<item value="org.eclipse.wst.XMLCategory"/>
-		</list>
-	</section>
-	<section name="ZipFileExportWizard">
-		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
-		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
-		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
-<<<<<<< HEAD
-=======
-			<item value="C:\course\jsp\woekspace\리뷰게시판완성.zip"/>
->>>>>>> master
-			<item value="C:\Users\a5740\OneDrive\바탕 화면\리뷰댓글등록까지.zip"/>
-			<item value="C:\Users\a5740\OneDrive\바탕 화면\피드백후 수정.zip"/>
-			<item value="C:\Users\a5740\OneDrive\바탕 화면\최종 백업본.zip"/>
-			<item value="C:\Users\a5740\OneDrive\바탕 화면\댓글이안돼고 리뷰에있는 댓글 수정 , 삭제 기능.zip"/>
-			<item value="C:\Users\a5740\OneDrive\바탕 화면\보드디자인백업본.zip"/>
 		</list>
 	</section>
 </section>

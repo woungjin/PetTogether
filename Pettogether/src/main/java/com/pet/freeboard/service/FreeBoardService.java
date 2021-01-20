@@ -16,7 +16,7 @@ public interface FreeBoardService {
 	public int myGoodDelete(MyGoodVO vo);
 	public boolean fileInsert(ReviewRegistVO vo);
 	public int starInsert(StarVO vo); // 별점등록메서드
-	public int recomInsert(RecomVO vo); // 추천메소드
+	
 	
 	
 	
@@ -33,5 +33,8 @@ public interface FreeBoardService {
 	public int pwCheck(ReviewReplyVO vo); // 리뷰 댓글 삭제 전 비밀번호 확인
 	public int reviewReplyUpdate(ReviewReplyVO vo);// 리뷰댓글 업데이트
 	public int reviewReplyDelete(ReviewReplyVO vo); // 리뷰댓글삭제
+	public ArrayList<StarVO> getStar(int bno);
+	public int UpdateStarBoard(int bno , int sum , int avg);
+	public int userCheck(StarVO vo);
 	
 }
