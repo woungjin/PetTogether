@@ -20,8 +20,8 @@
                 <div class="footer-icon">
                   <li><a href="#"><img alt="White Twitter Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/01ab6619093f45388d66736ec22e5885.webp"></a></li>
                     <li><a href="#"><img alt="White Facebook Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.webp"> </a> </li>
-                    <li><a href="#"><img alt="White YouTube Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/203dcdc2ac8b48de89313f90d2a4cda1.webp"></a></li>
-                    <li><a href="#"><img alt="White Instagram Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/81af6121f84c41a5b4391d7d37fce12a.webp"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCXiyuCYo4dUqM556XpgqAcQ"><img alt="White YouTube Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/203dcdc2ac8b48de89313f90d2a4cda1.webp"></a></li>
+                    <li><a href="http://coding404.com/"><img alt="White Instagram Icon" style="width: 27px; height: 27px; object-fit: cover;" src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01/81af6121f84c41a5b4391d7d37fce12a.webp"></a></li>
                     <div class="footer-create">
                       Created By.
                       <div class="footer-git">
