@@ -122,7 +122,7 @@
 
 
                                     <!-- 여행 -->
-                                    <a href="http://localhost:8383/project/freeBoard/freeList">
+                                    <a href="${pageContext.request.contextPath}/starBoard/freeList">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/4737_xlarge_square_1535949304.jpg?1535949304" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/4737_xlarge_square_1535949304.jpg?1535949304" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK"
                                     ></div>
@@ -138,7 +138,7 @@
                                 </div>
 
                                 <!-- 카페  -->
-                                <a href="http://localhost:8383/project/freeBoard/freeList">
+                                <a href="${pageContext.request.contextPath}/starBoard/freeList">
                                 <div class="MainCityVideo-module__container--3bdht swiper-slide swiper-slide-next" style="width: 270px;">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/832_xlarge_square_1493257137.jpg?1493257137" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/832_xlarge_square_1493257137.jpg?1493257137" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK">
@@ -155,7 +155,7 @@
                                 </a>
 
                                 <!-- 애견펜션 -->
-                                <a href="http://localhost:8383/project/freeBoard/freeList">
+                                <a href="${pageContext.request.contextPath}/starBoard/freeList">
                                 <div class="MainCityVideo-module__container--3bdht swiper-slide" style="width: 270px;">
                                     <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/4744_xlarge_square_1535960572.jpg?1535960572" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/4744_xlarge_square_1535960572.jpg?1535960572" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                     <div class="MainCityVideo-module__gradientBackground--1dzKK">
@@ -171,7 +171,7 @@
                                     </div>
                                     </a>
                                     <!-- 애견호텔 -->
-                                    <a href="http://localhost:8383/project/freeBoard/freeList">
+                                    <a href="${pageContext.request.contextPath}/starBoard/freeList">
                                     <div class="MainCityVideo-module__container--3bdht swiper-slide" style="width: 270px;">
                                         <img src="https://d2ur7st6jjikze.cloudfront.net/landscapes/599_xlarge_square_1472227370.jpg?1472227370" alt="https://d2ur7st6jjikze.cloudfront.net/landscapes/599_xlarge_square_1472227370.jpg?1472227370" class="MainCityVideo-module__imageZoomOutAnimation--1VyM4 ResponsiveImage-module__image--35A4X ResponsiveImage-module__targetHeight--23NtX">
                                         <div class="MainCityVideo-module__gradientBackground--1dzKK"></div>
