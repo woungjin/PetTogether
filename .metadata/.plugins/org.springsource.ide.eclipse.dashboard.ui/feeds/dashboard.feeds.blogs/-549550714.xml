@@ -5,7 +5,133 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-18T11:00:00Z</updated>
+  <updated>2021-01-20T11:00:00Z</updated>
+  <entry>
+    <title>YMNNALFT:  Dimensional Metrics Accumulation with Micrometer</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/20/ymnnalft-dimensional-metrics-accumulation-with-micrometer" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-12-30:4321</id>
+    <updated>2021-01-20T11:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s 3 AM. Do you know where your production KPI Metrics are? You can&amp;rsquo;t improve that you can&amp;rsquo;t measure, and metrics are an important part of this. Without metrics, we&amp;rsquo;re utterly and hopelessly lost, trapped in a spiraling death-march project with no sign or hope of any improvement! Tremble, ye wretched and miserable developer! Without metrics, we&amp;rsquo;re blind, and there&amp;rsquo;s nothing funny about that, so instead, here&amp;rsquo;s a photo of my daughter&amp;rsquo;s adorable little guinea pig, Kai:&lt;/p&gt;
+&lt;img src="https://pbs.twimg.com/media/Ef7FS3yUEAEE5oF?format=jpg&amp;name=large" width = "500" /&gt;
+&lt;p&gt;Metrics give us a way to describe specific facts about our system - it lets us quantify essential data, which is nice since there are all sorts of things to count and quantify: &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;how many people have clicked the &amp;lsquo;check out&amp;rsquo; button?&lt;/li&gt;
+  &lt;li&gt;How many people have signed up?&lt;/li&gt;
+  &lt;li&gt;How long are requests to a particular endpoint taking?&lt;/li&gt;
+  &lt;li&gt;How many people are experiencing errors?&lt;/li&gt;
+  &lt;li&gt;What is the average time for a given request? (Or, more usefully, what&amp;rsquo;s the 99th percentile of a given request?&lt;/li&gt;
+  &lt;li&gt;Bob, did you get your TPS reports in? Oh _ c&amp;rsquo;mon_, Bob! We talked about this! You said you&amp;rsquo;d get it in by close-of-business Tuesday, you absolute scoundrel!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There&amp;rsquo;s a real art to learning about which metrics to capture and which are irrelevant. Whole careers, even! &amp;ldquo;Growth hacker,&amp;rdquo; anyone? Not all metrics are created equal. &lt;em&gt;Growth hackers&lt;/em&gt; care about metrics. Product managers will care about metrics. The business will care about metrics. Your platform can care about metrics. &lt;em&gt;You&lt;/em&gt; should care about metrics. And why not? All the data&amp;rsquo;s there for the taking, but you&amp;rsquo;ll need a robust framework to help you. Writing code to instrument your code and capture metrics is only half the battle. Once captured, you&amp;rsquo;ll want (need!) to store and analyze the metrics. To do so, you&amp;rsquo;ll use a time series database - something like &lt;a href="https://tanzu.vmware.com/observability"&gt;VMWare&amp;rsquo;s Wavefront&lt;/a&gt;, &lt;a href="https://prometheus.io/"&gt;Prometheus&lt;/a&gt;, &lt;a href="https://github.com/Netflix/atlas"&gt;Netflix Atlas&lt;/a&gt;, &lt;a href="https://www.datadoghq.com/"&gt;DataDog&lt;/a&gt;, &lt;a href="http://instana.com"&gt;Instana&lt;/a&gt;, etc., to then visualize and analyze that data. You&amp;rsquo;ll need a robust framework that supports capturing all sorts of metrics (timers, counters, histograms, averages, etc.) in all sorts of contexts and then emitting those metrics to all sorts of time series databases (TSDBs). &lt;/p&gt;
+&lt;p&gt;Enter &lt;a href="http://micrometer.io"&gt;Micrometer&lt;/a&gt;. Micrometer allows you to instrument your code with dimensional metrics with a vendor-neutral interface and decide at the last step which monitoring system you&amp;rsquo;d like to use. Instrumenting your core library code with Micrometer allows the libraries to be included in applications that ship metrics to different backends. Spring Boot provides the Actuator module to support capturing and observing different aspects of an application. It sports endpoints of things like an application&amp;rsquo;s health, the thread dumps, and countless other things. It has an endpoint, &lt;code&gt;/actuator/metrics&lt;/code&gt;, that depends on Micrometer, giving you an at-a-glance view of the metrics being captured by your Spring Boot application, independent of whether you&amp;rsquo;re also publishing those metrics to a TSBD. &lt;/p&gt;
+&lt;p&gt;Keep in mind that Spring depends on Micrometer, but Micrometer does not depend on Spring. Many libraries instrument themselves using the Micrometer SPI. All you need to do is add integration with a TSDB. Here are some of the third-party libraries that emit metrics with Micrometer: Javalin, HikariCP, the RabbitMQ Java client, Redisson, the Brave distributed tracing client, Netflix Spinnaker, the Netty-powered, non-blocking, Armeria framework, the Alibaba Nacos client, Apache Geode, the Microsoft Azure Spring Boot integrations, Resilience4J, the reactive Playtika Feign-client, Openrewrite, Apache Camel, the Couchbase Java DCP client, and literally hundreds of others. Oh, did I mention that countless modules in the Spring ecosystem support it as well? Yes, Micrometer truly is &lt;em&gt;everywhere&lt;/em&gt; you want to be! &lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re using Spring, of course, so it&amp;rsquo;s easier to just add the Spring Boot Actuator module to the build. If you want to support a particular TSBD, you&amp;rsquo;ll have to bring in the specific module for that particular integration. Some Micrometer integrations come complete with a full Spring Boot integration, too, so you can use those if you want in lieu of the direct Micrometer integration. VMware Wavefront is one such TSDB that ships with extensive and rich integration with Spring Boot, so I&amp;rsquo;ll bring in that superset integration here.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at a simple service. &lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll need the following dependencies.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+  &lt;p&gt;RSocket on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-actuator&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+  &lt;p&gt;Wavefront on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;com.wavefront&lt;/code&gt; : &lt;code&gt;wavefront-spring-boot-starter&lt;/code&gt; &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In this example, I create two counter metrics for the statistic about my coffee consumption for the day. I add one extra dimension to the data: whether the coffee had caffeine or not.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.metrics;&#xD;
+&#xD;
+import io.micrometer.core.instrument.Counter;&#xD;
+import io.micrometer.core.instrument.MeterRegistry;&#xD;
+import io.micrometer.core.instrument.Timer;&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
+import org.springframework.context.ApplicationListener;&#xD;
+import org.springframework.context.annotation.Bean;&#xD;
+&#xD;
+import java.time.Duration;&#xD;
+import java.util.concurrent.TimeUnit;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class BootifulApplication {&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		System.setProperty(&amp;quot;spring.profiles.active&amp;quot;, &amp;quot;metrics&amp;quot;);&#xD;
+		SpringApplication.run(BootifulApplication.class, args);&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; ready(MeterRegistry registry) {&#xD;
+		return event -&amp;gt; {&#xD;
+&#xD;
+			// http://localhost:8080/actuator/metrics/coffees&#xD;
+			String metricsKey = &amp;quot;coffees&amp;quot;;&#xD;
+			Counter decaffeinated = registry.counter(metricsKey, &amp;quot;caffeine&amp;quot;, &amp;quot;false&amp;quot;);&#xD;
+			Counter caffeinated = registry.counter(metricsKey, &amp;quot;caffeine&amp;quot;, &amp;quot;true&amp;quot;);&#xD;
+&#xD;
+			for (int i = 0; i &amp;lt; (int) (Math.random() * 10); i++)&#xD;
+				caffeinated.increment();&#xD;
+&#xD;
+			for (int i = 0; i &amp;lt; (int) (Math.random() * 10); i++)&#xD;
+				decaffeinated.increment();&#xD;
+&#xD;
+			System.out.println(&amp;quot;caffeinated: &amp;quot; + caffeinated.count());&#xD;
+			System.out.println(&amp;quot;decaffeinated: &amp;quot; + decaffeinated.count());&#xD;
+&#xD;
+			// http://localhost:8080/actuator/metrics/message-print&#xD;
+			Timer timer = registry.timer(&amp;quot;message-print&amp;quot;);&#xD;
+&#xD;
+			for (int i = 0; i &amp;lt; 10; i++)&#xD;
+				timer.record(Duration.ofMillis((long) (Math.random() * (10 * 1000))));&#xD;
+&#xD;
+			System.out.println(&amp;quot;message-print: &amp;quot; + timer.totalTime(TimeUnit.SECONDS));&#xD;
+		};&#xD;
+	}&#xD;
+&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s what I put into my &lt;code&gt;application.properties&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.main.web-application-type=reactive&#xD;
+management.endpoints.web.exposure.include=*&#xD;
+management.endpoint.metrics.enabled=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In most entries in this series, I mention possible alternatives to the library under discussion. I don&amp;rsquo;t want to do that here because I haven&amp;rsquo;t really found anything that comes close to Micrometer, and it&amp;rsquo;d be disingenuous if I said I had. Micrometer is a much better solution. Most of the other metrics frameworks you&amp;rsquo;ll find either fail to integrate with as many solutions as Micrometer or, worse, don&amp;rsquo;t support &lt;em&gt;dimensional metrics&lt;/em&gt;. Dimensional metrics refer to metric data that has a variety of attributes (dimensions) attached. These attributes could include duration-related attributes (start and stop time), IDs, metadata attached with the client context, the region of the request, information about the client, information about the endpoint being invoked, host, status code, etc. This amount of detail allows for in-depth analysis and querying. Dimensional metrics mean that it&amp;rsquo;s easier to capture metrics, and it&amp;rsquo;s easier to then drill down into the metrics in an unforeseen way later. Win-win! &lt;/p&gt;
+&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - January 19th, 2021</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/19/this-week-in-spring-january-19th-2021" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-19:4340</id>
+    <updated>2021-01-19T21:53:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! We&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=lgyo9c9zdrg&amp;feature=share"&gt;What¡¯s new in Spring Boot 2.4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/a-bootiful-podcast-spring-cloud-stream-lead-oleg-zhurakousky"&gt;A Bootiful Podcast - Spring Cloud Stream lead Oleg Zhurakousky&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/18/ymnnalft-easy-rpc-with-rsocket"&gt;YMNNALFT: Easy RPC with RSocket&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/ymnnalft-express-yourself-with-spel"&gt;YMNNALFT: Express Yourself with SpEL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/brungarc/status/1349910675561324549?s=12"&gt;Check out the Sentry Spring Boot starter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vg7rw4upn3a&amp;feature=share"&gt;Developing Spring Boot applications with Kotlin on Google Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://openjdk.java.net/jeps/8251554"&gt;JEP draft: Primitive Objects (Preview)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/stilkov/status/1351162660453310468?s=12"&gt;@__jpr has integrated Hotwire into a Spring Boot environment &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://inside.java/2021/01/16/new-loom-ea-builds/"&gt;New Loom Early Access Build&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=UJVyGUaHUEg"&gt;No matter what the usecase, Azure has your Java apps covered&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://blog.jetbrains.com/kotlin/2021/01/results-of-the-first-kotlin-multiplatform-survey/"&gt;On the JetBrains Blog: Results of the First Kotlin Multiplatform Survey &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-2-13-available-now"&gt;Spring Boot 2.2.13 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-3-8-available-now"&gt;Spring Boot 2.3.8 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/14/spring-boot-2-4-2-available-now"&gt;Spring Boot 2.4.2 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/spring-data-2020-0-3-and-2021-0-m2-released"&gt;Spring Data 2020.0.3 and 2021.0-M2 released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/13/the-latest-on-azure-active-directory-integration"&gt;The latest on Azure Active Directory integration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>YMNNALFT: Easy RPC with RSocket</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/18/ymnnalft-easy-rpc-with-rsocket" />
@@ -1047,83 +1173,6 @@ public class BootifulApplication {&#xD;
     <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of A Bootiful Podcast and happy new year! In this episode, &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Google&amp;rsquo;s &lt;a href="https://github.com/dzou"&gt;Daniel Zou &lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Happy New Year! &lt;/p&gt;
 &lt;iframe title="Google's Daniel Zou on Spring Cloud GCP, GraalVM and more" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/kkk5w-f64f08?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Year in Spring - 2020 Edition</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/31/this-year-in-spring-2020-edition" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-30:4325</id>
-    <updated>2020-12-30T23:23:56Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! &lt;/p&gt;
-&lt;p&gt;You know what I did? I goofed, people. I accidentally &lt;a href="https://spring.io/blog/2020/12/29/this-week-in-spring-december-29th-2020"&gt;released &lt;em&gt;This Week in Spring&lt;/em&gt;&lt;/a&gt; on this the last week of December, the last month of the year! And I shouldn&amp;rsquo;t have. I should &lt;em&gt;not&lt;/em&gt; have done that. Usually, you see, I turn the final installment of &lt;em&gt;This Week in Spring&lt;/em&gt; for a given year into the aptly named &lt;em&gt;This Year in Spring&lt;/em&gt;, a celebration of the big tentpole themes that have defined the year (well, from my perspective, anyway). Then I include the usual &lt;em&gt;This Week in Spring&lt;/em&gt; roundup inline. I forgot to do that first part, so I am publishing this as a separate post. Hey, &lt;em&gt;it&amp;rsquo;s tradition&lt;/em&gt;. &lt;/p&gt;
-&lt;p&gt;Ah, 2020. The year that just keeps on giving. This was the year of Tiger King. If you&amp;rsquo;d told me in 2019 that in 2020 I&amp;rsquo;d be glued to my couch watching the adventures of a Tiger trainer on Netflix, afraid of my delivery groceries, and that I&amp;rsquo;d be eager to get on a plane for the first time in ten months, I would&amp;rsquo;ve laughed off of my chair! &lt;/p&gt;
-&lt;p&gt;This year, 2020, started off fabulous. 2020 is the Spring team&amp;rsquo;s first year (or so) back in the fold after VMware acquired Pivotal. Some of you might know that the Spring team was at VMware for a few years before we spun out in 2013 to form Pivotal. And now we&amp;rsquo;re back. You&amp;rsquo;d &lt;em&gt;think&lt;/em&gt; that would be disruptive, but it simply wasn&amp;rsquo;t. Pivotal and VMware are cut from the same help-customers-get-to-production cloth. We hit the ground running and have continued to deliver big things and deliver often. &lt;/p&gt;
-&lt;p&gt;This excitement was most palpable in the epic &lt;a href="https://springone.io/2020/speakers"&gt;SpringOne 2020&lt;/a&gt; (virtual) event this year, which drew around 40,000 people from all walks of life, creeds, countries, and continents. It was such sweet nectar, and I&amp;rsquo;ll never forget it. &lt;/p&gt;
-&lt;p&gt;It helps that the Spring team has always been pretty geographically distributed. I, for example, have technically been a work-from-home employee since 2010. While this year was extra stressful and just plain &lt;em&gt;extra&lt;/em&gt; for &lt;em&gt;plenty&lt;/em&gt; of reasons, having to figure out a work-from-home routine simply wasn&amp;rsquo;t one of them for a lot of us.&lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s December 30th, 2020, as I write this, one year since the pandemic news started trickling into the west. I don&amp;rsquo;t be mean to be &lt;em&gt;that&lt;/em&gt; guy, but I&amp;rsquo;ve lost family from COVID-19 this year. I&amp;rsquo;ve got friends that spent time on a ventilator this year. I know people who&amp;rsquo;ve lost family and friends, too. It&amp;rsquo;s been an absolute horror show for so many people worldwide. And yet, somehow, I&amp;rsquo;ve been privileged enough to continue writing blogs about software. That&amp;rsquo;s because of you, dear community. While I have always been very grateful for you, I am especially so this year. It&amp;rsquo;s a privilege to work for you. &lt;/p&gt;
-&lt;p&gt;The pandemic has spread like wildfire (some things should &lt;em&gt;not&lt;/em&gt; be open source!), and it has drowned out so much other, sometimes more positive, news. In that spirit, I&amp;rsquo;d like to review some of the highlights - some tentpole themes - from the year that was 2020.&lt;/p&gt;&lt;h2&gt;&lt;a href="#kubernetes" class="anchor" name="kubernetes"&gt;&lt;/a&gt;Kubernetes&lt;/h2&gt;
-&lt;p&gt;You may have heard of &lt;a href="https://tanzu.vmware.com/tanzu"&gt;VMware Tanzu&lt;/a&gt;. You may have heard that the Spring team is part of Tanzu. Did you also know that two of the three founders of Kubernetes are also part of Tanzu? Did you know that VMware is the &lt;a href="https://k8s.devstats.cncf.io/d/9/companies-table?orgId=1&amp;var-period_name=Last%20decade&amp;var-metric=contributions"&gt;third-largest contributor to Kubernetes&lt;/a&gt;? We are cuckoo for Kubernetes!&lt;/p&gt;
-&lt;p&gt;Tanzu Kubernetes Grid is our extra awesome Kubernetes distribution that works on-prem or on public infrastructure. Harbor is an enterprise-grade container registry. &lt;a href="https://tanzu.vmware.com/mission-control"&gt;Tanzu Mission Control&lt;/a&gt; provides multi-cluster Kubernetes management across clouds. VMware is also a significant contributor to &lt;a href="https://carvel.dev/"&gt;Carvell&lt;/a&gt;, which provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to Kubernetes. We&amp;rsquo;ve got &lt;a href="https://tanzu.vmware.com/build-service"&gt;the Tanzu Build Service&lt;/a&gt;, which automates container creation, management, and governance at enterprise scale. I&amp;rsquo;m sure I&amp;rsquo;m missing a zillion other things.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;ve even retrofitted &lt;a href="http://cloudfoundry.org"&gt;Cloud Foundry&lt;/a&gt;, our platform-as-a-service offering, to work on top of Kubernetes. Same silky-smooth developer-centric workflow taste with whole-fat Kubernetes container orchestration. &lt;/p&gt;
-&lt;img src = "https://pbs.twimg.com/media/EqhnSM7U0AAhnYO?format=jpg&amp;name=4096x4096"/&gt;
-&lt;p&gt;There&amp;rsquo;s been a &lt;em&gt;ton&lt;/em&gt; of work in recent years to make Java and Spring even more relevant in containerized cloud infrastructure like Kubernetes.&lt;/p&gt;
-&lt;p&gt;This year, Spring Boot introduced built-in support for buildpacks through the CNCF Paketo buildpacks project. Got a Spring Boot project using 2.3 or later? Try this out: &lt;code&gt;mvn spring-boot:build-image&lt;/code&gt; (there&amp;rsquo;s a Gradle equivalent, too), and you&amp;rsquo;ll have a containerized application in about a minute. You can then &lt;code&gt;docker tag&lt;/code&gt; and &lt;code&gt;docker push&lt;/code&gt; that containerized application to your Kubernetes cluster of choice. Or, really, to anything that supports OCI/Docker images.&lt;/p&gt;
-&lt;p&gt;Spring Boot itself can now draw configuration from &lt;em&gt;config trees&lt;/em&gt;. A config tree is the directory of configuration you get when you mount a Kubernetes &lt;code&gt;ConfigMap&lt;/code&gt; as a volume in Kubernetes. It&amp;rsquo;s yet another kind of configuration source, like classpath configuration (&lt;code&gt;application.properties&lt;/code&gt;, &lt;code&gt;application.yaml&lt;/code&gt;, etc.), environment variables, files (&lt;code&gt;file://${user.home}/config/my-config.properties&lt;/code&gt;) and so on. &lt;/p&gt;
-&lt;p&gt;Spring Boot&amp;rsquo;s Actuator module can expose endpoints to serve as Kubernetes liveness and readiness probes. The readiness probe tells Kubernetes whether a just-launched service is ready to be put into rotation. The liveness probe tells Kubernetes whether the service is still alive. If the service, for whatever reason, should fall sick, it&amp;rsquo;ll be taken out of the rotation. &lt;/p&gt;
-&lt;p&gt;The question the application faces then is: should Kubernetes destroy the application immediately, or should it wait a configured interval to allow in-flight transactions to finish? This behavior is configurable in Kubernetes. Spring Boot supports draining off any inflight transactions and rejecting any new requests with a new feature we call graceful shutdowns.&lt;/p&gt;
-&lt;p&gt;Spring Boot and the ecosystem around it, including Spring Cloud for Kubernetes, are the best ways to build software designed for a cloud-native Kubernetes environment, and things are only improving every day. We&amp;rsquo;ve only really just gotten started, though, so stay tuned!&lt;/p&gt;&lt;h2&gt;&lt;a href="#reactive-programming" class="anchor" name="reactive-programming"&gt;&lt;/a&gt;Reactive Programming&lt;/h2&gt;
-&lt;p&gt;Reactive programming is a programming paradigm that delivers three benefits: resource efficiency, consistency and composability of data APIs, and robustness. It delivers better resource efficiency by making it trivial to write code that does a good job of freeing up otherwise idle threads for reuse. It delivers consistency because it gives us one abstraction, one way to think disparate streams of data. Got data coming in as a Java 8 &lt;code&gt;Stream&amp;lt;T&amp;gt;&lt;/code&gt;? A &lt;code&gt;Collection&amp;lt;T&amp;gt;&lt;/code&gt;? A &lt;code&gt;CompletableFuture&amp;lt;T&amp;gt;&lt;/code&gt;? A single value or an array? No problem. Reactive programming gives us a way to describe data flow pipelines in terms of all these APIs in a consistent fashion. &lt;/p&gt;
-&lt;p&gt;There&amp;rsquo;s a slight uphill battle in learning the reactive types. Still, amortized over all the possible applications of those types across the ecosystem, I think you&amp;rsquo;ll find that you will be able to &lt;em&gt;forget&lt;/em&gt; a lot of other abstractions and APIs. The Spring ecosystem has (modestly) supported reactive programming since 2011, but the real leap forward came in 2017 when we introduced reactive programming support in Spring Framework 5. Since then, reactive programming has permeated every aspect of the Spring ecosystem. I don&amp;rsquo;t remember the last time I&amp;rsquo;ve reached for something in the reactive world, only to be told that it was still under development. It certainly hasn&amp;rsquo;t happened in 2020! &lt;/p&gt;
-&lt;p&gt;Everything I could want is here and generally available. Transactions, SQL data access, messaging and integration, reactive client-side load-balancing, retries, rate-limiting, API gateways, NoSQL data access, HTTP, WebSocket, RPC, metrics, distributed tracing, observability: &lt;em&gt;all&lt;/em&gt; of it (and everything else I can think of) &lt;em&gt;just work&lt;/em&gt;, now, out of the box. The future is non-blocking, and Spring, as it&amp;rsquo;s designed today, will be right there with you at the forefront. I wrote and released a book about &lt;a href="http://ReactiveSpring.io"&gt;this stuff&lt;/a&gt;, so please believe me when I say it&amp;rsquo;s extra dope. Reactive programming is a powerful way to make our services behave (and scale!) better in the cloud. &lt;/p&gt;&lt;h2&gt;&lt;a href="#native-images-with-graalvm" class="anchor" name="native-images-with-graalvm"&gt;&lt;/a&gt;Native Images with GraalVM&lt;/h2&gt;
-&lt;p&gt;Native images are here to stay, and they are &lt;em&gt;awesome&lt;/em&gt;. It all seemed so simple. What if we took Java&amp;rsquo;s legendary just-in-time compiler (HotSpot) used it to compile the whole application, ahead of time, proactively? It seems absurdly simple. This process - of converting source into native code - is simply called &lt;em&gt;compilation&lt;/em&gt; in numerous other languages. The indirection introduced by the compilation into bytecode has forced us to adopt a new term for that new straight-pass journey: &lt;em&gt;ahead-of-time-compilation&lt;/em&gt; (AOT). Oooh. Ahhhh. &lt;/p&gt;
-&lt;p&gt;Simple. Except, it turns out that it&amp;rsquo;s not. Because once compiled to a native image, the application doesn&amp;rsquo;t have the same runtime as it would&amp;rsquo;ve had were it running in a JVM. Once compiled to a native image, the runtime won&amp;rsquo;t be able to do some of the more dynamic party tricks that we&amp;rsquo;ve come to expect from the JVM. Want to load a class into a classloader? Use CGlib proxies? Do reflection on a class without &lt;em&gt;a priori&lt;/em&gt; runtime awareness? Load a resource (say, a &lt;code&gt;banner.txt&lt;/code&gt; file) from the class loader? All of that goes out the window in this wacky but wonderful world of GraalVM AOT compilation. &lt;/p&gt;
-&lt;p&gt;The Spring GraalVM project can help you here. It&amp;rsquo;s got support for identifying all the places where a Spring application may want to do these sorts of things and provides help in registering anything you might do that needs configuration. The project is growing by leaps and bounds, and the goal is that by Spring Boot 3 and Spring Framework 6, all of this will just be built-in and working out of the box. &lt;/p&gt;
-&lt;p&gt;GraalVM returns manifold increases in startup speed and a significantly reduced memory footprint in return for all this incidental complexity. This makes GraalVM a (much) better bin-packer, especially in containerized cloud environments, where resource consumption costs. I can&amp;rsquo;t wait to see what the future holds for Project Leydon, too! &lt;/p&gt;&lt;h2&gt;&lt;a href="#rsocket" class="anchor" name="rsocket"&gt;&lt;/a&gt;RSocket&lt;/h2&gt;
-&lt;p&gt;RSocket is a binary protocol that makes message exchange between microservices a breeze. It reifies the reactive streams concepts for the network, supporting backpressure over the wire. I love RSocket. Its got new support built into Spring Framework and Spring Boot themselves, of course, and there&amp;rsquo;s also Spring Security support and Spring Batch support. &lt;/p&gt;
-&lt;p&gt;RSocket is the first project we, along with Alibaba, Facebook, and Lightbend, collectively donated to the nascent Reactive Foundation. It&amp;rsquo;s a better HTTP 2 or gRPC right now, and that alone should pique your curiosity, but I&amp;rsquo;m equally excited about the future. One of the most exciting prospects is the new RSocket broker on which the Soring team and others have worked. This broker could obviate some of the use cases for service registries like Netflix Eureka, message buses like RabbitMQ. The RSocket JVM client uses Reactor, which gives it superpowers: easy retries, error handling, back pressure, etc. &lt;/p&gt;
-&lt;p&gt;Organizations like Facebook and Alibaba are already using it at scale, and Spring makes it easier than ever. I can&amp;rsquo;t wait to see what people build with RSocket in the weeks, months, and years to come.&lt;/p&gt;&lt;h2&gt;&lt;a href="#java-and-kotlin" class="anchor" name="java-and-kotlin"&gt;&lt;/a&gt;Java and Kotlin&lt;/h2&gt;
-&lt;p&gt;The last thing I&amp;rsquo;ve been very excited about is the deep integration with the latest versions of Java and Kotlin in the latest versions of Spring. Spring Boot releases every six months, lining up nicely with the Java release cadence. Using Spring Boot with Java 15 is a &lt;em&gt;dream&lt;/em&gt;. I did a video on Java 14 that looked at a ton of the new features in that release, including a ton of &lt;em&gt;preview&lt;/em&gt; features. But you don&amp;rsquo;t even need to look at all that. Just look at the stuff that&amp;rsquo;s included out of the box in Java 15! Multiline text strings and &lt;code&gt;var&lt;/code&gt; alone make life considerably more manageable. The new versions of Java are excellent, and let&amp;rsquo;s not even talk about all the under-the-hood stuff from the last several generations that make Java faster, more robust, more container-friendly, more secure, etc. &lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m using one of those new-fangled Apple Silicon M1 MacBook Pros and am using the Microsoft OpenJDK port support ARM chips. It is &lt;em&gt;fast&lt;/em&gt;. Most of my applications start in around 0.8 seconds! Remember, these chips were announced just a few months ago! The idea that Microsoft/Azul Systems have already got a working port of OpenJDK out there is a testament to the ecosystem&amp;rsquo;s vibrancy. Java is the name of fantastic technology and an even more fantastic community, and I love Java.&lt;/p&gt;
-&lt;p&gt;Kotlin is another high point for me this year. I was made a Kotlin Google Developer Expert earlier this year, so I may be biased. Kotlin has this concept of coroutines. A coroutine in Kotlin is one language keyword that allows you to tag a particular piece of code as performing an asynchronous thing whose thread the runtime can reschedule. It&amp;rsquo;s effortless. Spring builds on this mechanism, integrating reactive programming through coroutines. So, you get the best of both worlds there: easy, imperative-style programming that benefits from the non-blocking nature of reactive code. Anywhere Spring supports reactive APIs, Spring and Kotlin now support coroutines. &lt;/p&gt;&lt;h2&gt;&lt;a href="#here-rsquo-s-to-the-year-ahead" class="anchor" name="here-rsquo-s-to-the-year-ahead"&gt;&lt;/a&gt;Here&amp;rsquo;s to the Year Ahead&lt;/h2&gt;
-&lt;p&gt;My friends, I hope you&amp;rsquo;re persuaded as to the opportunity that 2020 represents. I look forward to talking with you all in the year ahead. And who knows, maybe, science and logistics permitting, we&amp;rsquo;ll even see each other. (Three cheers for doctors!) It&amp;rsquo;s going to be a fun one, indeed. I hope you are all taking care of yourself, keeping socially distant, wearing masks, etc., and I am sure that I can speak on behalf of the entire Spring team when I wish you and yours a very &lt;em&gt;Happy New Year&lt;/em&gt;! &lt;/p&gt;
-&lt;img src="https://pbs.twimg.com/media/EqhjmSKVQAIdKuJ?format=jpg&amp;name=medium" /&gt;
-&lt;div&gt; &#xD;
- &lt;span style ="font-size: smaller"&gt; (You would &lt;em&gt;not&lt;/em&gt; believe how hard it is to find socially distant stock photos!)&lt;/span&gt;&#xD;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 29th, 2020</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/29/this-week-in-spring-december-29th-2020" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-29:4314</id>
-    <updated>2020-12-29T17:06:20Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;!&lt;/p&gt;
-&lt;p&gt;How are you? How&amp;rsquo;re things? I spent this morning on a fun two-hour panel hosted by the Barcelona JUG (who run the JBCN conference, among other things) talking about all sorts of things including GraalVM native images, new features in the Java language, cloud-native applications, and so much more. Thanks for having me! &lt;/p&gt;
-&lt;p&gt;I am so happy about this week&amp;rsquo;s roundup and we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/24/a-bootiful-podcast-alibaba-s-san-hong-li-on-tuning-openjdk-for-alibaba-scale"&gt;A Bootiful Podcast: Alibaba&amp;rsquo;s San-Hong Li on tuning OpenJDK for Alibaba Scale&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/23/cloud-events-and-spring-part-2"&gt;Cloud Events and Spring - part 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/Cosium/spring-data-jpa-entity-graph"&gt;Cosium/spring-data-jpa-entity-graph: Spring Data JPA extension allowing full dynamic usage of EntityGraph on repositories&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Hah! This is so interesting! &lt;a href="https://github.com/SolarEdgeTech/pyctuator"&gt;Give Python applications Spring Boot Actuator endpoints&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/arttom/cqs-spring-boot-starter"&gt;Interesting! A third party library to allow people to easily follow CQS principles in Spring Boot.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/qaware/openapi-generator-for-spring"&gt;Interesting: Open API v3 Generator for Spring Boot applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.mitchellbosecke.com/post/java-proxies-from-dog-to-transactionaldog"&gt;Java Proxies: From Dog to TransactionalDog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://sizovs.net/2020/11/24/java-libraries-i-like/"&gt;Java libraries I like ? Eduards Sizovs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.javaadvent.com/2020/12/resilient-applications-spring-resilience4j.html"&gt;Resilient applications with Spring and Resilience4J - JVM Advent&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://piotrminkowski.com/2019/12/06/spring-boot-best-practices-for-microservices/"&gt;Spring Boot Best Practices for Microservices - Piotr&amp;rsquo;s TechBlog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/22/spring-cloud-2020-0-0-aka-ilford-is-available"&gt;Spring Cloud 2020.0.0 (aka Ilford) Is Available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jonatan_ivanov/status/1341477187455655936?s=12"&gt;Spring cloud sleuth OpenTelemetry support has been released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.infoq.com/minibooks/java-innovations/"&gt;The InfoQ eMag - Java Innovations That Are on Their Way&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.reddit.com/r/java/comments/khflbg/what_courses_both_free_and_paid_on_spring_boot/"&gt;What courses (both free and paid) on Spring Boot would you recommend? : java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

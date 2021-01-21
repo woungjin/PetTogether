@@ -47,7 +47,7 @@ create table users(
     zipNum varchar2(50),
     quiz varchar2(300) not null,
     answer varchar2(300) not null,
-    petTag varchar2(50) not null,
+    petTag varchar2(50) not null,    
     regdate date default sysdate
 );
 
@@ -57,10 +57,14 @@ alter table users add CONSTRAINT id_pk PRIMARY KEY (id)
 -- 일반게시판 테이블입니다 
 create table starboard(
     bno number(10),
-    title varchar2(50) not null, 
-    content varchar2(200) not null,
-    review_avg number(10) , 
-    tag varchar2(20) , 
+    category varchar2(50) not null,
+    title varchar2(50) not null,    
+    content varchar2(2000) not null,
+    review_avg number(10) ,
+    review_total number(10), 
+    petTag varchar2(50) not null,
+    Address varchar2(200) not null,
+    Postal varchar2(20),
     hit number(30),
     regdate date default sysdate
 );

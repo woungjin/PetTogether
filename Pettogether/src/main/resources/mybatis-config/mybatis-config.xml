@@ -8,5 +8,6 @@
  	<typeAliases>
 			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO"/>
 			<typeAlias type="com.pet.command.UserVO" alias="UserVO" />
+			<typeAlias type="com.pet.command.StarBoardVO" alias="StarBoardVO" />
  	</typeAliases>   
 </configuration>
