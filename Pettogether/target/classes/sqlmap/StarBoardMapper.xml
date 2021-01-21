@@ -35,12 +35,41 @@ select * from starboardreply where bno=#{bno} order by rno desc) a ) where rn > 
 	</delete>
 
 	<select id="getList" resultType="StarBoardVO">
-		select * from starboard
+		<![CDATA[
+			select * from (
+select rownum as rn,
+        a.* from(
+select * from starboard order by bno desc) a ) where rn > (#{pageNum} - 1 ) * #{amount}and rn <= #{pageNum} * #{amount} 		
+  		]]>
 	</select>
 	
 	
 	<select id="getBoardDetail" resultType="StarBoardVO">
 		select * from starboard where bno = #{bno}
+	</select>
+	
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from starboard	
+	</select>
+	
+	<update id="hit">
+		update starboard set hit = hit + 1 where bno = #{bno}
+	</update>
+
+	<select id="getcate" resultType="StarBoardVO">
+	<![CDATA[
+			select * from (
+select rownum as rn,
+        a.* from(
+select * from starboard where category = #{cate}  order by bno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount}
+  		]]>
+	
+	</select>
+	
+	
+	<select id="cateToal" resultType="int">
+		select count(*) as total from starboard where category = #{cate}
 	</select>
 
  </mapper>

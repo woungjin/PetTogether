@@ -31,27 +31,21 @@
         <div class="mid" id="midBar">
           <ul class="nav">
             <li><a href="${pageContext.request.contextPath }">HOME</a></li>
-<<<<<<< HEAD
-=======
 
->>>>>>> master
             <li>
               <div class="dropdown">
-              <button class="dropbtn">CATEGORY</button>
+              <button class="dropbtn" onclick="location.href='${pageContext.request.contextPath }/starBoard/freeList'">CATEGORY</button>
               <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 1</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 2</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 3</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 4</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=호텔">호텔</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=카페">카페</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=공원">공원</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=병원">병원</a>
               </div>
               </div>
 
             </li>
             <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
-<<<<<<< HEAD
-=======
 
->>>>>>> master
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
           </ul>
         </div>
