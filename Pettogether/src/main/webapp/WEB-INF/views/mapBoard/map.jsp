@@ -7,7 +7,7 @@
             	<img src="${pageContext.request.contextPath }/resources/img/mapBoard/map.png">
             </div>
             <div style="width:500px;height:50px; margin:0 auto; overflow: hidden; ">
-            	<div style="float:left; width:300px; margin-right: 100px">
+            	<div style="float:left; width:300px; margin-right: 48px">
             		<img style="width:300px; " src="${pageContext.request.contextPath }/resources/img/mapBoard/petRecom.png">
             	</div>
             	<div style=" float:left; margin-top: 18px">	            
@@ -41,23 +41,15 @@
         
     </section>
 
-    <script>       
-    $(window).on('load', function ()
-    		{
-    			$('.selectpicker').selectpicker(
-    			{
-    				'selectedText': 'cat'
-    		 	});
-    		});
-    
+    <script>      
          // 마커를 담을 배열
          var markers = [];
-         var overlayArr = [];         
          var markerArr = []; 
+         var overlayArr = [];         
          var dataArr = [];
 
         // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성
-        var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+        var infowindow = new kakao.maps.InfoWindow({zIndex:1});        
 
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = { 
@@ -66,12 +58,7 @@
             };
 
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
-        
-        var imageSrc = 'img/cafe.jpg', // 마커이미지의 주소입니다    
-            imageSize = new kakao.maps.Size(30, 40), // 마커이미지의 크기입니다
-            imageOption = {offset: new kakao.maps.Point(15, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-        
+        var map = new kakao.maps.Map(mapContainer, mapOption);        
 
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();        
@@ -111,6 +98,7 @@
     			if(data.length == 0){
     				//선택을 선택시 중심이동 올 초기화
     				panTo();
+    				removeMarker();
     			}else{						
 				
 				for(var i = 0; i < data.length; i ++){
@@ -119,8 +107,18 @@
 
                 // 주소로 좌표를 검색, 반복문 활용 마커 여러개 찍기                 
                 var bounds = new kakao.maps.LatLngBounds();                
-                Apiarr.forEach(function(Apiarr, index){                                    
-                    
+                Apiarr.forEach(function(Apiarr, index){  
+                	
+                    //마커이미지 설정
+                    if(index < 15){
+	                	var imageSrc = '${pageContext.request.contextPath }/resources/img/mapBoard/marker.png', //    
+	    	            imageSize = new kakao.maps.Size(40, 40), 
+	    	            imageOption = {offset: new kakao.maps.Point(20, 69)};                     	
+                    }else{
+                    	var imageSrc = '${pageContext.request.contextPath }/resources/img/mapBoard/marker'+ index +'.png',    
+	    	            imageSize = new kakao.maps.Size(60, 50), 
+	    	            imageOption = {offset: new kakao.maps.Point(31, 69)};
+                    }
                     
                     geocoder.addressSearch(Apiarr.address, function(result, status) {           
                       
@@ -168,19 +166,34 @@
 		                    }       
 		                    close.title = '닫기';            
 		                    info.appendChild(body).className = "body";          
-		                    body.appendChild(image).className = "img";
-		                    image.appendChild(img).src = 'img/pet1.png';
+		                    body.appendChild(image).className = "img";		                    
+		                    console.log(Apiarr.bno)		                    		                    	
+		                    image.appendChild(img).src = '${pageContext.request.contextPath }/resources/img/starboard/'+ Apiarr.bno + '.jpg';		                   
 		                    img.width = '73';
 		                    img.height = '70';
 		                    body.appendChild(desc).className = 'desc';          
 		                    desc.appendChild(ellipsis).className = 'ellipsis';
 		                    ellipsis.innerHTML = Apiarr.address;
 		                    desc.appendChild(jibun).className = 'jibun';
-		                    jibun.innerHTML = '(우)' + Apiarr.postal;
+		                    
+		                    if(Apiarr.postal == null){
+		                    	jibun.innerHTML = '(우)';
+		                    }else{
+			                    jibun.innerHTML = '(우)' + Apiarr.postal;		                    	
+		                    }
+		                    
 		                    desc.appendChild(link)
 		                    link.appendChild(a).className = 'link';
-		                    a.href = 'https://www.kakaocorp.com/main';
+		                    a.href = '${pageContext.request.contextPath }';
 		                    a.innerHTML = '홈페이지';         
+		                    
+		                    var iwContent = document.createElement('div');
+		                    iwContent.style = 'padding:5px;';
+		                    iwContent.innerHTML = Apiarr.title;
+		                    
+		                    var infowindowOver = new kakao.maps.InfoWindow({
+		                        content : iwContent
+		                    });
 		                    
 		                    var overlay = new kakao.maps.CustomOverlay({
 		                        content: content,                                                
@@ -188,15 +201,24 @@
 		                        position: new kakao.maps.LatLng(result[0].y, result[0].x)                        
 		                    });                    
 		                        
-		                    overlayArr[index] = overlay
-		                    
-		                    
-		                    
+		                    overlayArr[index] = overlay		                    	                    
 		                        
 		                    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 		                    kakao.maps.event.addListener(markerArr[index], 'click', function() {
 		                        overlayArr[index].setMap(map);                        
-		                    });          
+		                    }); 
+		                    
+		                 	// 마커에 마우스오버 이벤트를 등록합니다
+		                    kakao.maps.event.addListener(markerArr[index], 'mouseover', function() {
+		                      	// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+		                        infowindowOver.open(map, markerArr[index]);
+		                    });
+		                	 // 마커에 마우스아웃 이벤트를 등록합니다
+		                    kakao.maps.event.addListener(markerArr[index], 'mouseout', function() {
+		                        // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+		                        infowindowOver.close();
+		                    });
+		                 	
 		                        
 		                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		                    map.setBounds(bounds);
@@ -233,8 +255,7 @@
 
         // 키워드 검색을 요청하는 함수입니다
         function searchPlaces() {
-            var keyword = document.getElementById('keyword').value;
-            console.log(keyword)
+            var keyword = document.getElementById('keyword').value;            
 
             if (!keyword.replace(/^\s+|\s+$/g, '')) {                
                 return false;
