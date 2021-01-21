@@ -22,4 +22,5 @@ public class StarBoardVO {
 	private String postal;
 	private int hit;
 	private Timestamp regdate;
+
 }
