@@ -1,0 +1,144 @@
+=========================진웅이의 Hikari User 생성 테이블 ===========================
+-- DB 유저 생성 SQL문
+-- USER SQL
+CREATE USER "PET" IDENTIFIED BY "PET"
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+
+-- QUOTAS
+ALTER USER "PET" QUOTA UNLIMITED ON "USERS";
+
+-- ROLES
+GRANT "CONNECT" TO "PET" ;
+GRANT "RESOURCE" TO "PET" ;
+ALTER USER "PET" DEFAULT ROLE "CONNECT","RESOURCE";
+
+-- SYSTEM PRIVILEGES
+
+
+
+=========================  대영이형  ===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================= 동건이형 ===========================
+
+create table users(
+    id varchar2(50) not null,
+    pw varchar2(50) not null,
+    name varchar2(50) not null,
+    phone1 varchar2(50),
+    phone2 varchar2(50),
+    email1 varchar2(50),
+    email2 varchar2(50),
+    basicAdd varchar2(300),
+    detailAdd varchar2(300),
+    zipNum varchar2(50),
+    quiz varchar2(300) not null,
+    answer varchar2(300) not null,
+    petTag varchar2(50) not null,
+    regdate date default sysdate
+);
+
+alter table users add CONSTRAINT id_pk PRIMARY KEY (id)
+
+========================= 계환이 ===========================
+-- 일반게시판 테이블입니다 
+create table starboard(
+    bno number(10),
+    category varchar2(50) not null,
+    title varchar2(50) not null,
+    content varchar2(200) not null,
+    review_avg number(10) ,
+    review_total number(10),
+    petTag varchar2(50) not null,
+    Address varchar2(200) not null,
+    Postal number(10),
+    hit number(30),
+    regdate date default sysdate
+);
+
+-----------게시판에대한 댓글 테이블
+create table starboardreply(
+    rno number(10) not null, 
+    bno number(10) not null,
+    writer varchar(20) not null,
+    pw varchar(20) not null,
+    content varchar(100) not null,
+    regdate date default sysdate,
+    updatedate date default sysdate
+);
+
+
+
+alter table starboard add constraint starboard_pk primary key (bno);
+create sequence starboard_seq start with 1 increment by 1 nocache;
+
+
+-- 이것은 찜 등록 테이블입니다 
+create table mygood (
+    bno number(10) not null, 
+    user_id varchar2(50) not null
+);
+insert into starboard values( 1, 'tset' , 'testcontent' , 3 , '강아지' ,100 ,sysdate);
+insert into mygood values(1 , 'tsetuser');
+
+select * from starboard;
+delete from mygood where bno = 1 and user_id = 'test';
+
+select * from mygood ;  
+
+
+
+
+-- 여기는 리뷰 작성 테이블 입니다
+create table reviewboard(
+    review_bno number(10),
+    writer varchar2(50) not null,
+    content  varchar2(200),
+    uploadpath varchar2(200) not null,
+    fileloca varchar2(50) not null,
+    filename varchar2(50) not null,
+    filerealname varchar2(50) not null,
+    regdate date default sysdate
+);
+create sequence reviewboard_seq start with 1 increment by 1 nocache;
+select * from reviewboard;
+
+-- reviewboard의 댓글테이블
+create table reviewreply(
+    review_rno number(10) NOT NULL,
+    review_bno number(10) NOT NULL,
+    review_reply_writer varchar2(50) ,
+    review_reply_pw varchar2(50),
+    review_reply_content varchar2(100),
+    regdate date default sysdate,
+    updatedate date default sysdate
+    
+);
+
+-- 별점 들록 테이블 ----------------
+create table starpoint(
+    starpoint_bno number(10),
+    point number(10),
+    user_id varchar2(50)
+);
+
+
+
+
+
+
+
+
