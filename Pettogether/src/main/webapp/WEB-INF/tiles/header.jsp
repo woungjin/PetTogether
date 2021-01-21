@@ -27,14 +27,16 @@
             </div>
         </div>
 
- <!-- 메뉴바  -->
+
+        <!-- 메뉴바  -->
         <div class="mid" id="midBar">
           <ul class="nav">
-            <li><a href="${pageContext.request.contextPath }">HOME</a></li>
+            <div class="dropdown">
+              <a href="${pageContext.request.contextPath }"><button class="dropbtn">HOME</button></a>
+            </div>
 
-            <li>
               <div class="dropdown">
-              <button class="dropbtn" onclick="location.href='${pageContext.request.contextPath }/starBoard/freeList'">CATEGORY</button>
+              <a href="${pageContext.request.contextPath }/starBoard/freeList"><button class="dropbtn">CATEGORY</button></a>
               <div class="dropdown-content">
                 <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=호텔">호텔</a>
                 <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=카페">카페</a>
@@ -47,6 +49,12 @@
             <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
 
             <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
+            <div class="dropdown">
+              <a href="${pageContext.request.contextPath }/mapBoard/map"><button class="dropbtn">MAP</button></a>
+              </div>
+              <div class="dropdown">
+                <a href="${pageContext.request.contextPath }/freeBoard/freeReview"><button class="dropbtn">FREE BOARD</button></a>
+              </div>
           </ul>
         </div>
     </div>

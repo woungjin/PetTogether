@@ -15,5 +15,8 @@
 			<typeAlias type="com.pet.command.StarBoardVO" alias="StarBoardVO" />
 			<typeAlias type="com.pet.command.StarVO" alias="StarVO" />
 
+
+
+
  	</typeAliases>   
 </configuration>
