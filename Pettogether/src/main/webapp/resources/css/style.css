@@ -238,11 +238,15 @@ body {
   #slider-wrap ul#slider li > div h3{
     font-size:36px;
     text-transform:uppercase; 
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 제목 글자 크기  */
   #slider-wrap ul#slider li > div span{
     font-family: Neucha, Arial, sans serif;
     font-size:20px;
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 배너 속 이미지 크기 고정 */
   #slider-wrap ul#slider li img{
@@ -259,7 +263,10 @@ body {
  margin-top: 10px;
  margin-bottom: 60px;
 }
-
+.TOP1_TOP1 {
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
+  }
 /* 배너 버튼 및 자동 슬라이드  */
 .btns {
     position: absolute;
@@ -295,6 +302,8 @@ body {
     right:35px; 
     width:auto;
     position:absolute;
+        color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 배너에 마우스 올릴시 위치 변경 */
   #slider-wrap.active #next{right:0px;}
@@ -1256,6 +1265,7 @@ select {
 }
 
 
+/* ==== 위동건의 CSS ↓ ====  */
 
 /* ==== 위동건의 CSS ↓ ====  */
 
@@ -1331,6 +1341,76 @@ select {
 	border:none; 
 	background:none;
 }      
+
+/* ==== 위동건의 CSS ↑ ====  */
+
+
+.join-form {
+            /* 하나의 그리드 상자를 정가운데 정렬방법 */
+            margin: 0 auto; /* 가운데 정렬이 안되는 이유가 col 관련된 클래스 float을 가지고 있기 때문에 */
+            float: none;
+        }
+.join-form form {
+           
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0,0.335); /* 박스의 그림자(가로 간격,세로 간격,흐림정도,색상) */
+            padding: 50px;
+            margin-top:200px;
+            margin-bottom:200px;
+        }
+@media(max-width: 767px) {/*767px 미만일 때 적용(col-xs가 동작하는 픽셀과 같음)*/
+
+.join-form form{
+                padding: 50px 10px;
+            }
+        }
+.login-form {
+            /* 하나의 그리드 상자를 정가운데 정렬방법 */
+            margin: 0 auto; /* 가운데 정렬이 안되는 이유가 col 관련된 클래스 float을 가지고 있기 때문에 */
+            float: none;
+        }
+.login-form form {
+           
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0,0.335); /* 박스의 그림자(가로 간격,세로 간격,흐림정도,색상) */
+            padding: 50px;
+            margin-top:200px;
+            margin-bottom:200px;
+            
+        }
+         
+.login-form form{
+                padding: 50px 10px;
+            }
+        }       
+
+.title-box {
+            width: 250px;
+            margin: 60px auto; /* 박스 정렬 */
+            text-align: center; /* 글씨 정렬 */
+            padding: 20px 40px;
+            border-bottom: 1px solid #E1E1E1;
+            border-top: 1px solid #E1E1E1;
+            
+        }
+
+.btn-primary {
+            color: #fff;
+            background-color: #dc7d1e;
+            border-color: #dc7d1e;
+        }
+
+.btn-default {
+            color: #fff;
+            background-color: #ebaa50;
+            border-color: #ebaa50;
+        }
+        
+.btn-info {
+            color: #fff;
+            background-color: #ebaa50;
+            border-color: #ebaa50;
+        }        
 
 /* ==== 위동건의 CSS ↑ ====  */
 

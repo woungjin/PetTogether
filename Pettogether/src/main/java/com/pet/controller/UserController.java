@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pet.command.UserVO;
@@ -40,6 +42,7 @@ public class UserController {
 	public String userJoin() {
 		return "user/userJoin";
 	}
+
 
 	// 유저 마이페이지
 	@RequestMapping("userMypage")
@@ -74,6 +77,7 @@ public class UserController {
 	public String userMypageDelete() {
 		return "user/userMypageDelete";
 	}
+
 
 	@ResponseBody	// 응답요청을 뷰 리졸버가 아닌 요청이 들어온곳으로 response header정보를 만들어서 보내준다.
 	@RequestMapping(value="/idCheck",method=RequestMethod.POST)
@@ -185,8 +189,8 @@ public class UserController {
 			return "redirect:/user/userMypageDelete";
 		}
 		
+
 	}
 
-		
-	
+
 }
