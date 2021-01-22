@@ -32,9 +32,12 @@
     </author>
     <id>tag:spring.io,2021-01-22:4342</id>
     <updated>2021-01-22T02:36:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I am pleased to announce that the first milestone of Spring Boot 2.5 has been released and is available from our &lt;a href="https://repo.spring.io/milestone/"&gt;milestone repository&lt;/a&gt;. This release closes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.5.0-M1"&gt;over 160 issues and pull requests&lt;/a&gt;.&lt;/p&gt;
+    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I am pleased to announce that the first milestone of Spring Boot 2.5 has been released and is available from our &lt;a href="https://repo.spring.io/milestone/"&gt;milestone repository&lt;/a&gt;. This release closes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.5.0-M1"&gt;over 130 issues and pull requests&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Highlights of this first milestone include:&lt;/p&gt;
 &lt;ul&gt;
+  &lt;li&gt;Support for GET requests to the startup endpoint&lt;/li&gt;
+  &lt;li&gt;Security improvements to the info endpoint&lt;/li&gt;
+  &lt;li&gt;Preliminary support for Java 16&lt;/li&gt;
   &lt;li&gt;Spring Integration 5.5.0 M1&lt;/li&gt;
   &lt;li&gt;Spring Data 2021.0.0 M1&lt;/li&gt;
   &lt;li&gt;Spring Security 5.5.0 M1&lt;/li&gt;

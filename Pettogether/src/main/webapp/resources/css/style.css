@@ -1325,7 +1325,12 @@ select {
             color: #fff;
             background-color: #ebaa50;
             border-color: #ebaa50;
-        }        
+        }  
+
+.mypageBtn {
+	border:none; 
+	background:none;
+}      
 
 /* ==== 위동건의 CSS ↑ ====  */
 

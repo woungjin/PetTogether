@@ -26,10 +26,19 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserVO userLogin(UserVO vo) {
+	public UserVO login(UserVO vo) {
+		return userMapper.login(vo);
 		
-		System.out.println(vo.toString()+"로그인서비스");
-		return userMapper.userLogin(vo);
+		
 	}
 
+//	@Override
+//	public UserVO getInfo(String userId) {
+//		return userMapper.getInfo(userId);
+//	}
+
+	@Override
+	public int update(UserVO vo) {
+		return userMapper.update(vo);
+	}
 }
