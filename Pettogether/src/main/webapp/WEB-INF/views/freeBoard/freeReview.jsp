@@ -41,12 +41,12 @@
                                <ul >
                                    <li>
                                   
-                                       <a href="../starBoard/freeList?bno=${vo['BNO']}">
-                                           <img src="display/${vo['FILELOCA'] }/${vo['FILENAME']}" alt="">
+                                       <a href="../starBoard/freeDetail?bno=${vo['BNO']}">
+                                           <img src="${pageContext.request.contextPath }/resources/img/starboard/${vo['BNO'] }.jpg" alt="">
                                         </a>
                                    </li>
                                    <li>
-                                       <textarea>${vo['TITLE']} </textarea>
+                                       <textarea style="resize : none;" readonly>${vo['TITLE']} </textarea>
                                    </li>
                                </ul>
                             </div>
@@ -307,7 +307,7 @@
     			var review_reply_writer = $("#replyId").val();
     			var review_reply_pw = $("#replyPw").val();
     			console.log(review_reply_content + review_reply_writer + review_reply_pw);
-				if(review_reply_content == '' && review_reply_writer == '' && review_reply_pw ==''){
+				if(review_reply_content == '' || review_reply_writer == '' || review_reply_pw ==''){
 					alert("빈칸에 주의하세요");
 					return;
 				}    		
@@ -325,7 +325,7 @@
     			  				$("#replyId").val("");
     			  				$("#replyPw").val("");
     			  				alert("댓글달기 성공 !");
-    			  				getReviewReply(1,false);
+    			  				getReviewReply(1,true);
     			  				
     			  			}else{
     			  				alert("실패하였습니다");

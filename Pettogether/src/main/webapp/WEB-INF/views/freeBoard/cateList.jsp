@@ -3,25 +3,12 @@
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<section class="category_set" style="margin-top: 50px;">
-	
 
-	<div class="category" >
-
-		<ul>
-			<li><a href="cateList?cate=호텔">호텔</a></li>
-			<li><a href="cateList?cate=카페">카페</a></li>
-			<li><a href="cateList?cate=공원">공원</a></li>
-			<li><a href="cateList?cate=병원">병원</a></li>
-		</ul>
-	</div>
-
-</section>
 
 <section class="content">
         <div class="container">
             <div class="row">
-                <h3 style="text-align: center;">여기는 리뷰 top4</h3>
+                <h3 style="text-align: center;">여기는 ${cate}</h3>
 
 
 				<c:forEach var="vo" items="${list }">
@@ -81,7 +68,7 @@
             </div>
         </div>
                 
-                <form action="freeList" name="listForm">
+                <form action="cateList" name="listForm">
                 <div class="container page-nav">
                     <ul class="pagination">
                     	<c:if test="${pageVO.prev }">
@@ -100,6 +87,8 @@
                   </div>
                   <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
 				<input type="hidden" name="amount" value="${pageVO.cri.amount}"> 
+				<input type="hidden" name="cate" value="${cate}"> 
+				
                 </form>
         
     </section>
@@ -107,7 +96,8 @@
 
 
 <script>
-		
+
+
 			function changeImg(bno) {
 					
 					

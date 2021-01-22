@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pet.command.StarBoardReplyVO;
 import com.pet.command.StarBoardVO;
 import com.pet.common.util.Criteria;
+import com.pet.common.util.PageVO;
 import com.pet.freeboard.service.FreeBoardService;
 import com.pet.starboard.service.StarBoardService;
 
@@ -30,18 +31,45 @@ public class StarBoardController {
 	
 	
 	@RequestMapping("/freeList")
-	public String freeList(Model model) {
-		
-		ArrayList<StarBoardVO> list = starBoardService.getList();
-		System.out.println(list.toString());
+	public String freeList(Model model , Criteria cri ) {
+		 
+		ArrayList<StarBoardVO> list = starBoardService.getList(cri);
+		int total =starBoardService.getTotal();
+		PageVO pageVO = new PageVO(cri, total);
 		
 		model.addAttribute("list",list );
+		model.addAttribute("pageVO", pageVO);
 		return "freeBoard/freeList";
 	}
+	
+	@RequestMapping("/cateList")
+	public String cateFreeList(Model model , Criteria cri ,String cate) {
+
+		System.out.println("cate : "  + cate);
+		ArrayList<StarBoardVO> list = starBoardService.getcate(cate, cri);
+		System.out.println(list.toString());
+		int cateTotal = starBoardService.cateToal(cate);
+		
+		PageVO pageVO = new PageVO(cri, cateTotal);
+		model.addAttribute("list",list );
+		model.addAttribute("pageVO", pageVO);
+		model.addAttribute("cate" , cate);
+		
+		return "freeBoard/cateList";
+	}
+	
+	
+	
 	
 	@RequestMapping("/freeDetail")
 	public String freeDetail(@RequestParam("bno") int bno, Model model) {
 		
+		int result = starBoardService.hit(bno);
+		if(result == 1) {
+			System.out.println("hit 없데이트 성공");
+		}else {
+			System.out.println("hit 업데이트 실패");
+		}
 		StarBoardVO vo = starBoardService.getBoardDetail(bno);
 		
 		model.addAttribute("vo" , vo);

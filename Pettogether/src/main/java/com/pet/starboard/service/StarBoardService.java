@@ -13,7 +13,11 @@ public interface StarBoardService {
 	public int pwCheck(StarBoardReplyVO vo); // 수정삭제시 비밀번호 검사
 	public int starReplyUpdate(StarBoardReplyVO vo); // 댓글 수정 메서드
 	public int starReplyDelete(StarBoardReplyVO vo);
-	public ArrayList<StarBoardVO> getList();// 전체게시글
+	public ArrayList<StarBoardVO> getList(Criteria cri);// 전체게시글
 	public StarBoardVO getBoardDetail(int bno);
+	public int getTotal();
+	public int hit(int bno);
+	public ArrayList<StarBoardVO> getcate(String cate , Criteria cri);
+	public int cateToal(String cate);
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,7 +63,7 @@ public class FreeBoardController {
 		for(int i=0 ;  i< list.size(); i++) {
 			
 			String content = (String) list.get(i).get("CONTENT");
-			String content2 = content.substring(1, 8);
+			String content2 = content.substring(0,3);
 			
 			list.get(i).put("CONTENT", content2  + "...");
 			
@@ -76,7 +77,9 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping("/freeReviewRegist")
-	public String freeReviewRegist() {
+	public String freeReviewRegist(@RequestParam("bno") int bno , Model model) {
+		System.out.println(bno);
+		model.addAttribute("bno" , bno);
 		return "freeBoard/freeReviewRegist";
 	}
 	
@@ -169,6 +172,8 @@ public class FreeBoardController {
 	@ResponseBody
 	public String reviewUpload(@RequestParam("file") MultipartFile file,
 								@RequestParam("content") String content,
+								@RequestParam("writer")String writer,
+								@RequestParam("bno") int bno,
 								HttpSession session) {
 		System.out.println("들어왔습니다");
 		
@@ -178,7 +183,8 @@ public class FreeBoardController {
 			 UserVO vo = (UserVO) session.getAttribute("userVO");
 			 String wrtier = userVO.getUserId();
 			  */
-			String writer = "test";
+			
+			System.out.println(writer + bno);
 			// 1. 날짜별로 폴더관리 
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -214,7 +220,7 @@ public class FreeBoardController {
 			file.transferTo(saveFile);
 			System.out.println(5);
 			// 5. DB에 insert작업
-			ReviewRegistVO vo = new ReviewRegistVO(3,3, writer, content, uploadPath, fileLoca, fileName, fileRealName, null);
+			ReviewRegistVO vo = new ReviewRegistVO(0,bno, writer, content, uploadPath, fileLoca, fileName, fileRealName, null);
 			boolean result = freeBoardService.fileInsert(vo);
 			System.out.println(6);
 			if(result) {
