@@ -184,7 +184,7 @@
 		                    
 		                    desc.appendChild(link)
 		                    link.appendChild(a).className = 'link';
-		                    a.href = '${pageContext.request.contextPath }';
+		                    a.href = '${pageContext.request.contextPath }/starBoard/freeDetail?bno=' + Apiarr.bno ;
 		                    a.innerHTML = '홈페이지';         
 		                    
 		                    var iwContent = document.createElement('div');
