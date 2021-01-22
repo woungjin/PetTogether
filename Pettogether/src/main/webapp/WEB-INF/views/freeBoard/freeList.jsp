@@ -3,16 +3,16 @@
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<section class="category_set" style="background-color: rgba(235,170,80);">
+<section class="category_set" style="margin-top: 50px;">
 	
 
 	<div class="category" >
 
 		<ul>
-			<li><a href="#">진웅</a></li>
-			<li><a href="#">계환</a></li>
-			<li><a href="#">동건</a></li>
-			<li><a href="#">대영</a></li>
+			<li><a href="cateList?cate=호텔">호텔</a></li>
+			<li><a href="cateList?cate=카페">카페</a></li>
+			<li><a href="cateList?cate=공원">공원</a></li>
+			<li><a href="cateList?cate=병원">병원</a></li>
 		</ul>
 	</div>
 
@@ -26,7 +26,7 @@
 
 				<c:forEach var="vo" items="${list }">
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
-
+					
                     <div class="list">
                         <div class="list-img">
                             
@@ -44,20 +44,24 @@
                             <p >${vo.title }</p>
                             <div class="content-reivew">
                                 <p id="star_grade" class="content-left">
-                                   <i>★</i>
-                                   <i>★</i>
-                                   <i>★</i>
-                                   <i>★</i>
-                                   <i>★</i>
+                                
+                                <c:forEach var="num" begin="1" end="5">
+									<c:choose>
+										<c:when test="${vo.review_avg >= num}"><i style=" color : red;">★</i></c:when>                                	
+										<c:when test="${vo.review_avg <= num }"><i>★</i></c:when>
+                                	</c:choose> 
+                                	                            
+                                </c:forEach>
+                                
                                 </p>
-                                <p class="content-left">리뷰수 ${vo.review_total }</p>
+                                <p class="content-left"> &nbsp; <small>리뷰수</small> ${vo.review_total }</p>
                             </div>
                             	
                             	<p>
                                     
                                 <span class="bad"  id="bad" >
                                     
-                                    <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg()">
+                                    <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg(${vo.bno})" >
                                    
                                 </span>
                        			</p>
@@ -77,27 +81,42 @@
             </div>
         </div>
                 
+                <form action="freeList" name="listForm">
                 <div class="container page-nav">
                     <ul class="pagination">
-                        <li class="previous"><a href="#">Previous</a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li class="next"><a href="#">Next</a></li>
+                    	<c:if test="${pageVO.prev }">
+                        	<li class="previous">
+                        		<a href="${pageVO.statPage-1}" data-page="${pageVO.startPage-1 }">이전</a>
+                        	</li>
+                    	</c:if>
+                    	<c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }" >
+                        <li class="${num == pageVO.pageNum? 'active' : '' }"><a href="" data-page="${num }">${num }</a></li>
+                    	</c:forEach>
+                        
+                    	<c:if test="${pageVO.next}">
+                        <li class="next"><a href="#" data-page="${pageVO.endPage + 1 }">다음</a></li>
+                    	</c:if>
                     </ul>
                   </div>
+                  <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
+				<input type="hidden" name="amount" value="${pageVO.cri.amount}"> 
+                </form>
         
     </section>
 
 
 
 <script>
-			function changeImg() {
-				
-					var bno = 1;
-					var user_id = "test";
+		
+			function changeImg(bno) {
+					
+					
+					var user_id = "${sessionScope.userVO.id}";
+					
+					if(user_id == ''){
+						alert("회원만 등록이가능하빈다");
+						return;
+					}
 				
 				if(event.target.attributes[0].nodeValue === "/project/resources/img/freeBoard/love2.png"){
 					 event.target.attributes[0].nodeValue = "/project/resources/img/freeBoard/love.png";
@@ -137,7 +156,18 @@
 			
 			
 
-            
+            var pagenation = document.querySelector(".pagination");
+            pagenation.onclick = function() {
+            	event.preventDefault(); 
+            	if(event.target.tagName !== 'A') return;
+            	
+            	var pageNum = event.target.dataset.page;
+            	console.log(pageNum);
+            	
+            	document.listForm.pageNum.value = pageNum;
+            	
+            	document.listForm.submit();
+            }// list Form end
             
            
 

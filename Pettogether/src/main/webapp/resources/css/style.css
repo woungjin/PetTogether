@@ -1,5 +1,4 @@
-﻿/* ==== 이진웅의 CSS ↓ ====  */
-
+﻿
 /* -----웹폰트 선언----- */
 
 /*css 폰트 url(css에서는 <style> 입력 안함)*/
@@ -57,23 +56,22 @@ body {
   z-index: 999;
 } */
 
-.basicBtnTop {
-  position: fixed;
-  right: 20px;
-  bottom: 64px;
-  z-index: 99999;
-}
+
 /* 기본 DOWN 버튼 위치 */
-.basicBtnBottom {
+/* .basicBtnBottom {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 99999;
-}
-/* 카테고리 */
+} */
+
+/* --카테고리-- */
+
+/* home과 카테고리의 거리 */
 .dropdown {
   padding-left: 100px ;
 }
+/* 메뉴바 형태 */
 .dropbtn {
   background-color: rgba(235,170,80);
   color: white;
@@ -82,18 +80,20 @@ body {
   border: none;
   cursor: pointer;
 }
+/* 메뉴바 가로정렬 */
 .dropdown {
-  position: relative;
   display: inline-block;
 }
+/* 카테고리 밑에 메뉴들 */
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: rgba(235,170,80);
   min-width: 14px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 9998;
 }
+/* 카테고리 밑에 메뉴들 모양 */
 .dropdown-content a {
   color: white;
   padding: 12px 16px;
@@ -117,15 +117,14 @@ body {
 .top{
   text-align: center;
 }
-/* 이미지와 LOgin 박스 */
+/* 맨위 검은색 배경 */
 .logo_login {
   background-color: rgb(41, 41, 41); 
   height: 200px;
   padding: 20px;
 }
-/* 이미지 */
+/* 펫투게더 로고 */
 .top img {
-
   position: relative;
   text-align: center;
   width: 450px;
@@ -134,18 +133,20 @@ body {
   margin-left: 200px;
   padding-top: 200px;
 }
-/* LOGIN | JOIN  */
 
-/* LOGIN a태그 */
+/* LOGIN / JOIN 위치조정 */
 .logo_login{
   padding-left: 60px;
 }
+/* LOGIN / JOIN 색상 및 형태 */
 .logo_login a {
   margin-left: 20px;
   color: rgba(235,170,80);
   display: inline-block;
   font-size: 30px;
+  
 }
+/* | 색상 및 형태 */
 .logo_login span {
   color: rgb(48, 48, 48);
   font-size: 30px;
@@ -160,19 +161,16 @@ body {
   width: 100%;
   text-align: center;
 }
-.mid li {
+/* .mid li {
   display: inline-block;
-  font-size: 20px;
+  font-size: 4000px;
   padding: 0 20px;
-}
-.mid li a {
-  color: white;
-}
+} */
+/* .mid li a {
+  color: black;
+} */
 
-/* 스크롤계산 */
-.jbContent {
-  height: 2000px;
-}
+/* 스크롤시 메뉴바 위치  */
 .jbFixed {
   position: fixed;
   top: 0px;
@@ -194,58 +192,65 @@ body {
 
 }
   /*==================배너영역 ↓ ====================*/
-
+  /* 배너위치 */
   .home-banner{
-    margin-top: -50px;
-
+    margin-top: -50px
   }
+  /* 배너크기 */
   #wrapper{
     width:600px;
     margin:50px auto;
     height:400px;
     position:relative;
     color: black;
-    text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;  
+    text-shadow:rgba(0,0,0,0.1) 2px 2px 0px; 
+    margin-top: -380px;
   }
+  
   #slider-wrap{
     width:600px;
     height:400px;
     position:relative;
-    overflow:hidden;
+    /* overflow:hidden; */
   }
   #slider-wrap ul#slider{
-    width:100%;
+    /* width:100%;
     height:100%;
-    
+     */
     position:absolute;
-    top:0;
-    left:0;   
+    /* top:0;
+    left:0;    */
   }
+  /* 배너 사진들 좌로 정렬 */
   #slider-wrap ul#slider li{
     float:left;
     position:relative;
     width:600px;
     height:400px; 
   }
+  /*  배너 속 글자 위치 지정*/
   #slider-wrap ul#slider li > div{
     position:absolute;
     top:20px;
     left:35px;  
   }
+  /*  배너 속 글자 크기 지정*/
   #slider-wrap ul#slider li > div h3{
     font-size:36px;
     text-transform:uppercase; 
   }
+  /* 제목 글자 크기  */
   #slider-wrap ul#slider li > div span{
     font-family: Neucha, Arial, sans serif;
-    font-size:21px;
+    font-size:20px;
   }
+  /* 배너 속 이미지 크기 고정 */
   #slider-wrap ul#slider li img{
     display:block;
     width:100%;
     height: 100%;
   }
-  /*배너 영역*/
+  /*사용자가 뽑은 top1*/
 .TOP1 {
  text-align: center;
  font-size: 50px;
@@ -255,6 +260,7 @@ body {
  margin-bottom: 60px;
 }
 
+/* 배너 버튼 및 자동 슬라이드  */
 .btns {
     position: absolute;
     width: 50px;
@@ -270,30 +276,33 @@ body {
     -moz-user-select: none;
     -khtml-user-select: none;
     -ms-user-select: none;
-    -webkit-transition: all 0.1s ease;
-    -moz-transition: all 0.1s ease;
-    -o-transition: all 0.1s ease;
-    -ms-transition: all 0.1s ease;
-    transition: all 0.1s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
-
+/* 버튼 색상 */
   .btns:hover{
     background:rgba(0,0,0,0.3); 
   }
+  /* 버튼모양 */
   #next{right:-50px; border-radius:7px 0px 0px 7px;}
   #previous{left:-50px; border-radius:0px 7px 7px 7px;}
+  /* 배너 위치 고정 */
   #counter{
     top: 30px; 
     right:35px; 
     width:auto;
     position:absolute;
   }
+  /* 배너에 마우스 올릴시 위치 변경 */
   #slider-wrap.active #next{right:0px;}
   #slider-wrap.active #previous{left:0px;}
-  /*bar*/
+  /*이것도 배너 위치 */
   #pagination-wrap{
     min-width:20px;
-    margin-top:350px;
+    margin-top:400px;
     margin-left: auto; 
     margin-right: auto;
     height:15px;
@@ -303,7 +312,7 @@ body {
   #pagination-wrap ul {
     width:100%;
   }
-  #pagination-wrap ul li{
+  /* #pagination-wrap ul li{
     margin: 0 4px;
     display: inline-block;
     width:5px;
@@ -313,14 +322,14 @@ body {
     opacity:0.5;
     position:relative;
     top:0;
-  }
-  #pagination-wrap ul li.active{
+  } */
+  /* #pagination-wrap ul li.active{
     width:12px;
     height:12px;
     top:3px;
     opacity:1;
     box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
-  }
+  } */
   /*Header*/
   h1, h2{text-shadow:none; text-align:center;}
   h1{ color: #666; text-transform:uppercase;  font-size:36px;}
@@ -336,12 +345,13 @@ body {
 /* background-image: none도 가능*/
   /*==================배너영역 ↑====================*/
   /*==================태그 ↓====================*/
-
+/* 이렇게 좋은곳을 안가보셨다구요? */
   .tit h1 {
     font-size: 50px;
     color: rgb(41, 41, 41); 
     font-weight: 1000;
   }
+  /* 당신의 동물과 함께하세요! */
   .tit h2 {
    color: rgb(41, 41, 41); 
    font-size: 25px;
@@ -359,10 +369,12 @@ body {
   transition-property: transform;
   box-sizing: content-box;
 }
+/* 아이콘 가로정렬 */
 .swiper-slide {
   display: inline-block;
   padding : 30px;
 }
+/* hover 애니메이션 */
 .swiper-slide:hover {
   box-shadow: 0 2px 8px rgba(102,109,117,.32);
   -ms-transform: translateY(-2px);
@@ -372,12 +384,12 @@ body {
 
 
 /* 마이리얼트립 */
-.MainCityVideo-module__container--3bdht swiper-slide swiper-slide-active:hover{
+/* .MainCityVideo-module__container--3bdht swiper-slide swiper-slide-active:hover{
   box-shadow: 0 2px 8px rgba(102,109,117,.32);
   -ms-transform: translateY(-2px);
   transform: translateY(-2px);
-}
-
+} */
+/* 각 카테고리의 사진 크기 지정 */
 .ResponsiveImage-module__image--35A4X {
   position: relative;
   top: 50%;
@@ -385,6 +397,7 @@ body {
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
+/* 카테고리의 글자 색상 */
 .MainCityVideo-module__header--_YDeH {
   position: absolute;
   top: 32px;
@@ -392,18 +405,21 @@ body {
   right: 24px;
   color: #fff;
 }
+/* 카테고리의 글자 위치 */
 .MainCityVideo-module__titleWrapper--2CvMR {
   text-align: left;
   margin-bottom: 8px;
 }
+/* 카테고리의 글자 크기 및 그림자*/
 .MainCityVideo-module__title--15eaK {
   font-size: 28px;
   line-height: 1.29;
   font-weight: 700;
-  text-shadow: 0 1px 8px rgba(33,37,41,.6);
+  text-shadow: 0 1px 8px rgba(41, 33, 33, 0.6);
   margin-right: 8px;
   vertical-align: middle;
 }
+/* 카테고리의 글자 크기 및 그림자*/
 .MainCityVideo-module__desc--3kOvx {
   font-size: 18px;
   line-height: 1.44;
@@ -411,16 +427,18 @@ body {
   text-align: left;
   text-shadow: 0 1px 8px rgba(33,37,41,.6);
 }
-.Button-module__outline--Aoo5C {
+/* .Button-module__outline--Aoo5C {
   border: 1px solid #ced4da;
   background-color: #fff;
   color: #495056;
-}
+} */
 
-.Grid-module__container--1Vs_H {
+/* .Grid-module__container--1Vs_H {
   position: relative;
   width: 100%;
-}
+} */
+/*  */
+/* 최근본 상품 위치 지정 */
 .Grid-module__row--338xw {
   margin: 0 auto;
   position: relative;
@@ -438,13 +456,7 @@ body {
   z-index: 0;
   cursor: pointer;
 }
-.Button-module__outline--Aoo5C {
-  border: 1px solid #ced4da;
-  background-color: #fff;
-  color: #495056;
-}
-
-
+/* 사용자들의 최신 리뷰글  */
 .SectionHeader-module__title--2JM-O {
   color: #343a40;
   font-size: 30px;
@@ -471,15 +483,15 @@ body {
   border-bottom-right-radius: 4px;
   padding: 10px 18px 50px;
   position: relative;
-  
 }
+
 /* hover */
-.CardContainer-module__container--15PwL:hover {
+/* .CardContainer-module__container--15PwL:hover {
   box-shadow: 0 2px 8px rgba(102,109,117,.32);
   -ms-transform: translateY(-2px);
   transform: translateY(-2px);
-}
-
+} */
+/* 별점위치 */
 .starRating {
   border: none;
   display: inline-block;
@@ -490,7 +502,7 @@ body {
 }
 
 /* 사지크기 */
-/* 사진내의 박스크기  */
+/* 사진내의 박스크기 정렬 */
 .CardContainer-module__container--15PwL {
   position: relative;
   display: inline-block;
@@ -503,11 +515,12 @@ body {
   cursor: pointer;
   margin-right: 7px;
 }
-
+/* 게시글 박스 패딩 */
 .CardShare-module__container--3ENNV {
   padding: 1px;
 }
-/* 별점의 위치 */
+
+/* 글자와 글자 사이의 위치 */
 .OfferVerticalCard-module__info--307P8 {
   top: 80px;
   left: 100px;
@@ -515,31 +528,26 @@ body {
   position: absolute;
   text-align: center;
 }
-.LazyImageLoader-module__image--34Ldw img{
+/* .LazyImageLoader-module__image--34Ldw img{
   width: 200px;
   height: 100px;
-}
+} */
+/* 게시글 사진 크기 고정 */
 .CardThumbnail-module__container--1YPw8.CardThumbnail-module__vertical--3Jyvq {
   height: 240px;
   width: 100%;
 }
+/* 게시글 사진 크기 고정 */
 .CardThumbnail-module__image--2YicN {
   height: 100%;
   width: 100%;
 }
+/* 게시글 사진 크기 고정 */
 .LazyImageLoader-module__container--rusqc {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
-/* sdfdsf */
-* {
-  box-sizing: border-box;
-  outline: none;
-}
-
-
 /* 제목 글씨체  */
 .CardTitle-module__container--IY9rw.CardTitle-module__vertical--Ij9WD {
   font-size: 15px;
@@ -563,13 +571,13 @@ footer {
   color: white;
   min-width: 1500px;
 }
-footer .copyright {
-  font-size: 13px;
+/* footer .copyright {
+  font-size: 100px;
 	line-height: 20px;
-}
-.footer-menu{
-  background-color: rgba(235,170,80);
-}
+} */
+/* .footer-menu{
+  background-color: black;
+} */
 /* 로고 */
 .footer-copyright img {
   width: 200px;
@@ -579,7 +587,7 @@ footer .copyright {
 }
 .footer-content {
   width: 180px;
-  position: absolute;
+
   top:-10px;
   left: 25px;
   padding-top: 100px;
@@ -610,18 +618,13 @@ footer .copyright {
   color: white;
 }
 
-.footer-menu {
-  position: relative;
-
-}
 .footer-menu a img {
   position: absolute;
   width: 120px;
   height: 85px;
-  top: 80px;
+  top: 91px;
   right: 170px;
 }
-
 /* 오른쪽 사진 */
 
 
@@ -951,8 +954,9 @@ select {
 
         .category ul {text-align: center ; background-color: white; margin: 0; overflow: hidden; background-color: rgb(250, 186, 91);}
         .category ul li {padding: 10px 20px;display: inline-block; border: 1px solid white; float: left;  padding: 15px 100px}
-        .category ul li a{color: white; font-weight: 400; text-decoration: none; font-weight: 900; font-size: 20px;}
+        .category ul li a{color: black; font-weight: 400; text-decoration: none; font-weight: 900; font-size: 20px;}
         .category ul li:hover{background-color:rgb(220,125,30);}   
+        .category ul li a.active{background-color:rgb(220,125,30);}   
         .category {text-align: center; margin: 0 auto; display: inline-block;}
         .category_set{margin: 0 auto ; text-align: center; }
 
@@ -975,7 +979,7 @@ select {
             color: red;
         }
         .good img ,.bad img {
-            width: 20px ;height: 20px;
+            width: 30px ;height: 30px;
         }
 
         .good{display: none;}

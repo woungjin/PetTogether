@@ -7,6 +7,7 @@ public class Criteria {
 	
 	private int pageNum;
 	private int amount;
+	private String cate;
 
 	public Criteria() {
 		this(1 , 8);

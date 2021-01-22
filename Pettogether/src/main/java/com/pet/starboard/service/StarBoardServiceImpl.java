@@ -45,15 +45,40 @@ public class StarBoardServiceImpl implements StarBoardService{
 
 
 	@Override
-	public ArrayList<StarBoardVO> getList() {
+	public ArrayList<StarBoardVO> getList(Criteria cri) {
 		
-		return starBoardMapper.getList();
+		return starBoardMapper.getList(cri);
 	}
 
 
 	@Override
 	public StarBoardVO getBoardDetail(int bno) {
 		return starBoardMapper.getBoardDetail(bno);
+	}
+
+
+	@Override
+	public int getTotal() {
+		return starBoardMapper.getTotal();
+	}
+
+
+	@Override
+	public int hit(int bno) {
+		return starBoardMapper.hit(bno);
+	}
+
+
+	@Override
+	public ArrayList<StarBoardVO> getcate(String cate ,Criteria cri) {
+		return starBoardMapper.getcate(cate, cri);
+	}
+
+
+	@Override
+	public int cateToal(String cate) {
+		System.out.println("cate :값 " + cate);
+		return starBoardMapper.cateToal(cate);
 	}
 
 	
