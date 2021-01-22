@@ -7,21 +7,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class StarBoardVO {
 	
-	private int bno ;
+	private int bno;
 	private String category;
-	private String title ;
+	private String title;
 	private String content;
 	private int review_avg;
 	private int review_total;
-	private String petTag;
+	private String pettag;
 	private String address;
 	private String postal;
 	private int hit;
 	private Timestamp regdate;
-	
 
 }
