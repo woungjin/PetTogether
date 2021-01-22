@@ -15,7 +15,7 @@
       <img alt="여행자 사진" class="img-circle" src="//d2yoing0loi5gh.cloudfront.net/assets/default/user_profile_image-414acc60b27f0a258bec14c82b70dc361fc6768da9289f924f887bec1fc33849.png" width="80">
       </div>
       <div class="username">
-      이진웅
+    ${userVO.name }
       </div>
       <div class="text-md setting hide-on-mobile">
       <img alt="프로필 관리" class="icon item-inline" height="11px" src="https://d2yoing0loi5gh.cloudfront.net/assets/kitty/traveler/reservation/ic_setting@2x-832c08d9d38f208502f94e8d35e78a320024fc5f61630f2eba7801845e1eda78.png" width="11px">
@@ -23,39 +23,41 @@
       </div>
       </div>
       <div class="promotion-container box clearfix">
-        <div class="item">
-          <div class="item-count text-md">
-            <a href="${pageContext.request.contextPath }/user/userMypageModify">
-              <div class="item-header text-md">
-                회원 정보 수정
-              </div>
-            </a>
-        </div>
-        </div>
-      <div class="item">
-        <div class="item-count text-md">
-          <a href="${pageContext.request.contextPath }/user/userMypageReview">
-            <div class="item-header text-md">내가 쓴 리뷰</div>
-      </a>
-      </div>
+       <div class="item">
+	        <div class="item-count text-md">
+		        <form action="userMypageModify" method="post">
+			          <div class="item-header text-md">
+			           <button class="mypageBtn" type="submit"  >회원정보수정</button>		            
+			          </div>
+		        </form>
+	      	</div>
       </div>
       <div class="item">
-        <div class="item-count text-md">
-          <a href="${pageContext.request.contextPath }/user/userMypageHeart">
-            <div class="item-header text-md">
-              찜 목록
-            </div>
-          </a>
-      </div>
+	        <div class="item-count text-md">
+		        <form action="userMypageReview" method="post">
+			          <div class="item-header text-md">
+			           <button type="submit" class="mypageBtn">내가 쓴 리뷰</button>		            
+			          </div>
+		        </form>
+	      	</div>
       </div>
       <div class="item">
-        <div class="item-count text-md">
-          <a href="">
-            <div class="item-header text-md">
-              회원탈퇴
-            </div>
-          </a>
+	        <div class="item-count text-md">
+		        <form action="userMypageHeart" method="post">
+			          <div class="item-header text-md">
+			           <button type="submit" class="mypageBtn">찜 목록</button>		            
+			          </div>
+		        </form>
+	      	</div>
       </div>
+      <div class="item">
+	        <div class="item-count text-md">
+		        <form action="userMypageDelete" method="post">
+			          <div class="item-header text-md">
+			           <button type="submit" class="mypageBtn">회원탈퇴</button>		            
+			          </div>
+		        </form>
+	      	</div>
       </div>
       </div>
       <a href="/invite_friends">
@@ -80,13 +82,13 @@
       </span><span class="ladda-spinner"></span></div>
       </form>
       
-      <div class="text">이진웅</div>
+      <div class="text">${userVO.name }</div>
       </div>
       <div class="member-wrapper">
       <form id="account-edit-form" data-validation="true" action="/traveler/account" accept-charset="UTF-8" method="post" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none;width: 0px;height: 0px;"></button><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="bVCA1jNJRizRMP2x7RIMX5S72JxT/YutHaDsN+x23bsw9QppPCcZJPMPv5Gqa5utRUXVvtR12TMwhHR2tZgYSg==">
       <div class="form-group form-input-group">
         <div class="title text-middle">이름</div>
-        <div class="input-wrapper text-middle">wou6570@naver.com</div>
+        <div class="input-wrapper text-middle">${userVO.name }</div>
       <div class="input-wrapper text-middle">
       <div class="row">
       <div class="col-xs-12">
@@ -97,7 +99,7 @@
       </div>
       <div class="form-group">
       <div class="title text-middle">이메일</div>
-      <div class="input-wrapper text-middle">wou6570@naver.com</div>
+      <div class="input-wrapper text-middle">${userVO.email1 }${userVO.email2 }</div>
       <input type="hidden" value="wou6570@naver.com">
       <div class="label-verified hide-on-editable">
 
@@ -106,8 +108,7 @@
       <div class="form-group">
       <div class="title text-middle">연락처</div>
       <div class="input-wrapper text-middle">
-      +82
-      01031986570
+      ${userVO.phone1 }${userVO.phone2 }
       </div>
       <div class="label-verified hide-on-editable">
 
@@ -130,7 +131,7 @@
         <div class="form-group">
           <div class="title text-middle">우편번호</div>
           <div class="input-wrapper hide-on-editable text-middle">
-            <p>sdfds</p>
+            <p>${userVO.zipNum }</p>
           </div>
           <div class="input-wrapper show-on-editable">
          
@@ -139,7 +140,7 @@
           <div class="form-group">
             <div class="title text-middle">기본주소</div>
             <div class="input-wrapper hide-on-editable text-middle">
-              <p>sdfds</p>
+              <p>${userVO.basicAdd }</p>
             </div>
             <div class="input-wrapper show-on-editable">
            
@@ -148,7 +149,7 @@
             <div class="form-group">
               <div class="title text-middle">상세주소</div>
               <div class="input-wrapper hide-on-editable text-middle">
-                <p>sdfds</p>
+                <p>${userVO.detailAdd }</p>
               </div>
               <div class="input-wrapper show-on-editable">
              
@@ -157,7 +158,7 @@
                 
 
      
-      <div class="recent-edit-text show-on-editable">최근 수정일: 2021-01-14</div>
+      <div class="recent-edit-text show-on-editable">${userVO.regdate }</div>
       </div>
       </div>
       
