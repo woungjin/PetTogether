@@ -15,6 +15,7 @@
 	  	values(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},#{answer},#{petTag})
 	  </insert>
 	  
+<<<<<<< HEAD
 	  <select id="login" resultType="UserVO">
 	  	select * from users where id = #{id} and pw = #{pw}
 	  </select>
@@ -57,6 +58,12 @@
   		where id = #{id}
   	</update>
   	
+=======
+	  <select id="userLogin" resultType="UserVO">
+	  	select * from users where id = #{id} and pw = #{pw}
+	  </select>
+  
+>>>>>>> c9f84d91242e411ff872c951b0b90da2da8f5e66
   
   
   </mapper>
