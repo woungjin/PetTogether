@@ -17,7 +17,7 @@ public class StarBoardVO {
 	private String content;
 	private int review_avg;
 	private int review_total;
-	private String pettag;
+	private String petTag;
 	private String address;
 	private String postal;
 	private int hit;
