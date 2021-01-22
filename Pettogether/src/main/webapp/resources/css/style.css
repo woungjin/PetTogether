@@ -238,11 +238,15 @@ body {
   #slider-wrap ul#slider li > div h3{
     font-size:36px;
     text-transform:uppercase; 
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 제목 글자 크기  */
   #slider-wrap ul#slider li > div span{
     font-family: Neucha, Arial, sans serif;
     font-size:20px;
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 배너 속 이미지 크기 고정 */
   #slider-wrap ul#slider li img{
@@ -259,7 +263,10 @@ body {
  margin-top: 10px;
  margin-bottom: 60px;
 }
-
+.TOP1_TOP1 {
+    color: rgb(255, 97, 97);
+    font-weight: 1000;
+  }
 /* 배너 버튼 및 자동 슬라이드  */
 .btns {
     position: absolute;
@@ -295,6 +302,8 @@ body {
     right:35px; 
     width:auto;
     position:absolute;
+        color: rgb(255, 97, 97);
+    font-weight: 1000;
   }
   /* 배너에 마우스 올릴시 위치 변경 */
   #slider-wrap.active #next{right:0px;}

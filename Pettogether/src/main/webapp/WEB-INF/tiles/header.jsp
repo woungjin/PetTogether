@@ -4,7 +4,7 @@
 
 
 
-     <header class="my-header">
+    <header class="my-header">
       <div class="header2">
               
         <!-- 로고 -->
@@ -45,7 +45,6 @@
               </div>
               </div>
 
-            </li>
             <div class="dropdown">
               <a href="${pageContext.request.contextPath }/mapBoard/map"><button class="dropbtn">MAP</button></a>
               </div>
@@ -55,8 +54,7 @@
           </ul>
         </div>
     </div>
-  </header>         
-         
+  </header>
 
      <!-- 위 아래 버튼 -->
       <!-- <a id="MOVE_TOP_BTN" href="#">TOP</a>
