@@ -34,6 +34,7 @@
                             
                             
 							<button type="button" class="right btn btn-info" id="uploadBtn">등록하기</button>
+							<input type="hidden" value="${bno }" id="boardBno">
 						</div>
 					</div>
 				</div>
@@ -51,12 +52,19 @@
 		$("#uploadBtn").click(reviewRegist);
 		
 		function reviewRegist() {
-			var writer = "test"/*"${sessionScope.userVO.userId}"*/;
+			var bno = "${bno}";
+			var writer = "${sessionScope.userVO.id}";
 			var file = $("#file").val();
 			var content = $("#content").val();
 			
-			if(writer === "" | content === ""){
+			if(writer == ''){
+				alert("로그인회원만 가능합니다 ")
+				return;
+			}
+			
+			if( content === ""){
 				alert("공백을 주의해주세요 ^_^");
+				return ;
 			}
 			
 			//파일확장자를 체크합니다 
@@ -79,7 +87,8 @@
 			var formData = new FormData();
 			formData.append("file", data[0].files[0]);	
 			formData.append("content" , content);	
-			
+			formData.append("writer" , writer);
+			formData.append("bno" , bno);
 			$.ajax({
 				type : "POST",
 				url : "reviewUpload",

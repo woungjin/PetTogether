@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	
 	   
      	   
@@ -10,7 +12,7 @@
                     <div class="title-inner">
                         <div class="profile">
                             <p class="location">
-                                 어딘지모를공원
+                                 ${vo.title }
                                 <small style="font-size: 20px;">조회수 : ${vo.hit }</small>
                             </p>
 
@@ -49,14 +51,15 @@
                                 </div>
                             </div>
 
-                            <!-- Recom insert selectBox-->
+                         
                             <div class="RecomInsert">
                                  <div class="RecomInsert-left">
-                                    <i>★</i>
-                                    <i>★</i>
-                                    <i>★</i>
-                                    <i>★</i>
-                                    <i>★</i> 
+                                   <c:forEach var="num" begin="1" end="5">
+									<c:choose>
+										<c:when test="${vo.review_avg >= num}"><i style=" color : red;">★</i></c:when>                                	
+										<c:when test="${vo.review_avg <= num }"><i>★</i></c:when>
+                                	</c:choose> 
+                                </c:forEach>
                                     &nbsp;<span>(후기:${vo.review_total }개)</span>
                                     <span>'${vo.petTag } '에게 추천합니다</span>      
                                    
@@ -83,7 +86,7 @@
                                   </div>
                                   
                                   <button type="button" class="right btn btn-info" id="replyRegist">댓글 등록</button>
-                                  <button type="button" class="right btn btn-info" style="background-color:rgba(235,170,80) ;"  onclick="location.href='../freeBoard/freeReviewRegist'">게시글 남기기</button>
+                                  <button type="button" class="right btn btn-info" style="background-color:rgba(235,170,80) ;"  onclick="location.href='../freeBoard/freeReviewRegist?bno=${vo.bno}'">게시글 남기기</button>
                             </div>
     
                         </div>
@@ -143,6 +146,8 @@
         
         
         $(document).ready(function(){
+        	user_id =  "${sessionScope.userVO.id}";
+        	
         	
         	// 댓글 삭제 +======================================
         	$("#modalDelBtn").click(function() {
@@ -329,6 +334,7 @@
         	var starInsert = document.getElementById("starInsert");
         	console.log(starInsert);
         	starInsert.onclick = function() {
+        		
         		var point = 0 ;
         		var stars = document.querySelectorAll("#review_regist > a");
         		for(var i = 0; i < stars.length ; i++){
@@ -338,7 +344,12 @@
         		}
         		
         		var bno = ${vo.bno}; 
-        		var user_id = "test";
+        		var user_id = "${sessionScope.userVO.id}";
+        		if(user_id ==''){
+        			alert("로그인 후 이용해주세요");
+        			return;
+        			
+        		}
         		
         		$.ajax({
         			type : "POST",

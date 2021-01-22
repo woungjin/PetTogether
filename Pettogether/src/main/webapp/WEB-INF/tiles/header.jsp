@@ -38,13 +38,17 @@
               <div class="dropdown">
               <a href="${pageContext.request.contextPath }/starBoard/freeList"><button class="dropbtn">CATEGORY</button></a>
               <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 1</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 2</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 3</a>
-                <a href="${pageContext.request.contextPath }/starBoard/freeList">Link 4</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=호텔">호텔</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=카페">카페</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=공원">공원</a>
+                <a href="${pageContext.request.contextPath }/starBoard/cateList?cate=병원">병원</a>
               </div>
               </div>
 
+            </li>
+            <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
+
+            <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
             <div class="dropdown">
               <a href="${pageContext.request.contextPath }/mapBoard/map"><button class="dropbtn">MAP</button></a>
               </div>

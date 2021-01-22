@@ -19,7 +19,7 @@
   <!-- 리뷰 인써트  -->
   	<insert id="fileInsert">
 		insert into reviewboard(review_bno ,bno, writer , content , uploadPath, fileloca , filename , filerealname)
-		values( #{review_bno},#{bno}, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
+		values(reviewboard_seq.nextval ,#{bno}, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
   	</insert>
  
  <!-- 별점등록 -->
