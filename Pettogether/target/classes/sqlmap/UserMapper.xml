@@ -57,6 +57,8 @@
   		where id = #{id}
   	</update>
   	
-  
+  	<delete id="delete">
+  		delete from users where id = #{id} and pw = #{pw}
+  	</delete>
   
   </mapper>

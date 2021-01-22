@@ -15,7 +15,7 @@
                             <img alt="여행자 사진" class="img-circle" src="//d2yoing0loi5gh.cloudfront.net/assets/default/user_profile_image-414acc60b27f0a258bec14c82b70dc361fc6768da9289f924f887bec1fc33849.png" width="80">
                         </div>
                         <div class="username">
-                            	이진웅
+                            ${sessionScope.userVO.name}
                         </div>
                         <div class="text-md setting hide-on-mobile">
                             <img alt="프로필 관리" class="icon item-inline" height="11px" src="https://d2yoing0loi5gh.cloudfront.net/assets/kitty/traveler/reservation/ic_setting@2x-832c08d9d38f208502f94e8d35e78a320024fc5f61630f2eba7801845e1eda78.png" width="11px">
@@ -51,15 +51,11 @@
 					      	</div>
                         </div>
                     </div>
-                    <a href="/invite_friends"></a>
-                        <div class="box invite-friends-container">
-                            <!-- <img alt="intive_friends" height="24px" src="https://d2yoing0loi5gh.cloudfront.net/assets/kitty/invite_friends/ic_wishlistbox@2x-80048ea84a241b58b254fdfeb18c9cc87eb8417f43f9e0628fb0454881b25be4.png" width="24px">
-                            </a>
-                            <div class="text"><span>친구 초대하고</span><span class="accent">&nbsp;2,000포인트&nbsp;</span><span>받기!</span></div> -->
-                        </div>
+                    
                     </div>
                     
                 </div>
+                
                 <div class="traveler-body">
                     <main class="member-box box mode-readonly clearfix" id="member">
                         <div class="member-container with-edit-btn">
@@ -265,6 +261,7 @@
       }
   }  
   
+  /*회원정보 수정*/
   $("#userUpdate").click(function(){
   	
   	if($("#pw").val() ==''||$("#pw").val() != $("#pwCheck").val() ){

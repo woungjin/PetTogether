@@ -10,4 +10,5 @@ public interface UserMapper {
 	public UserVO login(UserVO vo);
 //	public UserVO getInfo(String userId);
 	public int update(UserVO vo);
+	public int delete(UserVO vo);
 }

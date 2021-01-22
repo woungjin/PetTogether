@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -66,6 +67,12 @@ public class UserController {
 	@RequestMapping("userMypageReview")
 	public String userMypageReview() {
 		return "user/userMypageReview";
+	}
+	
+	// 마이페이지 안에서 회원 탈퇴 부분
+	@RequestMapping("userMypageDelete")
+	public String userMypageDelete() {
+		return "user/userMypageDelete";
 	}
 
 	@ResponseBody	// 응답요청을 뷰 리졸버가 아닌 요청이 들어온곳으로 response header정보를 만들어서 보내준다.
@@ -164,10 +171,20 @@ public class UserController {
 		
 		
 	// 회원탈퇴
-	@RequestMapping("/userDelete")
-	public String userDelete() {
+	@RequestMapping(value="/Delete", method = RequestMethod.POST)
+	public String userDelete(UserVO vo,
+							RedirectAttributes RA,HttpSession session) {
+		System.out.println(vo + "삭제");
+		int result = userService.delete(vo);
 		
-		return "";
+		if(result == 1) {			
+			session.invalidate();
+			return "redirect:/";
+		}else {
+			RA.addFlashAttribute("msg", "비밀번호가 다릅니다. 비밀번호를 확인하세요.");
+			return "redirect:/user/userMypageDelete";
+		}
+		
 	}
 
 		
