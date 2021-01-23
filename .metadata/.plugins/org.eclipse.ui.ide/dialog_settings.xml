@@ -7,28 +7,10 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-<<<<<<< HEAD
-			<item value="D:\project\PetTogether\Pettogether"/>
-=======
-<<<<<<< HEAD
->>>>>>> master
-			<item value="D:\project\PetTogether"/>
-=======
-			<item value="D:\project\PetTogether\Pettogether"/>
->>>>>>> c9f84d91242e411ff872c951b0b90da2da8f5e66
-			<item value="C:\course\project\PetTogether\Pettogether"/>
 			<item value="D:\java\project\PetTogether\Pettogether"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
-		</list>
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="612"/>
-		<item key="DIALOG_Y_ORIGIN" value="274"/>
-	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
 </section>
