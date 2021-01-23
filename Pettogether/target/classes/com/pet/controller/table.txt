@@ -47,11 +47,7 @@ create table users(
     zipNum varchar2(50),
     quiz varchar2(300) not null,
     answer varchar2(300) not null,
-<<<<<<< HEAD
-    petTag varchar2(50) not null,    
-=======
-    petTag varchar2(50) not null,
->>>>>>> c9f84d91242e411ff872c951b0b90da2da8f5e66
+    petTag varchar2(50) not null, 
     regdate date default sysdate
 );
 
