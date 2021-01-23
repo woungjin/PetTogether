@@ -1,5 +1,7 @@
 package com.pet.home.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +66,12 @@ public class HomeServiceImpl implements HomeService {
 	public int parkTotal() {
 
 		return homeMapper.parkTotal();
+	}
+
+	@Override
+	public ArrayList<StarBoardVO> getRandom() {
+	
+		return homeMapper.getRandom();
 	}
 
 

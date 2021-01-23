@@ -58,5 +58,16 @@
 		select count(*) from starboard where category='공원'
 	</select>
 	
+	<!-- 이달의 추천지역  -->
+	<select id="getRandom" resultType="StarBoardVO">
+		<![CDATA[
+			SELECT * 
+			  FROM
+			     (SELECT * 
+			        FROM starboard 
+			       ORDER BY DBMS_RANDOM.RANDOM()) 
+			 WHERE ROWNUM <= 4
+		]]>
+	</select>
 
  </mapper>
