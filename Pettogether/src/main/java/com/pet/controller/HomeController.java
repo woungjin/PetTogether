@@ -49,10 +49,11 @@ public class HomeController {
 		
 		Cookie[] ck = request.getCookies();
 		
-		
+		if (ck != null) {
 		for(int i = ck.length-1 ; i>0; i--) {
 			if(ck != null && !ck[i].getName().substring(0,1).equals("r"))  {
 				list.add(homeService.getBoard(Integer.parseInt(ck[i].getValue())));
+				}
 			}
 		}
 
@@ -85,10 +86,12 @@ public class HomeController {
 
 		// 최신리뷰
 		boolean checkrandom = false;
+		if(ck !=null) {
 		for(int i = 0 ; i <ck.length; i++ ) {
 			if(ck[i].getName().substring(0,1).equals("r")) {
 				checkrandom = true;
 			} 
+		}
 		}
 		if(!checkrandom) {
 			random.addAll(homeService.getRandom());
@@ -105,12 +108,13 @@ public class HomeController {
 			}
 			
 		}
+		if(ck != null) {
 		for(int i = 0; i< ck.length; i++) {
 			if(ck != null && ck[i].getName().substring(0,1).equals("r"))  {
 				randomList.add(homeService.getBoard(Integer.parseInt(ck[i].getValue())));
 			}
 		}
-		
+		}
 		model.addAttribute("ran",randomList);
 		System.out.println("randomList의 값 : "+ randomList.toString());
 
