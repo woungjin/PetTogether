@@ -15,6 +15,7 @@
 	  	values(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},#{answer},#{petTag})
 	  </insert>
 	  
+
 	  <select id="login" resultType="UserVO">
 	  	select * from users where id = #{id} and pw = #{pw}
 	  </select>
@@ -57,6 +58,15 @@
   		where id = #{id}
   	</update>
   	
+
+  	<delete id="delete">
+  		delete from users where id = #{id} and pw = #{pw}
+  	</delete>
+
+	  <select id="userLogin" resultType="UserVO">
+	  	select * from users where id = #{id} and pw = #{pw}
+	  </select>
   
+
   
   </mapper>
