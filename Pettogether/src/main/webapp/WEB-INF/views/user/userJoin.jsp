@@ -122,6 +122,12 @@
 	
 	<!-- 아이디 중복체크 -->
     <script type="text/javascript">
+
+    var msg = "${login}";
+	if(msg != ""){
+		alert(msg);
+	}
+
 		
     $("#idCheckBtn").click(function(){
     	

@@ -15,10 +15,58 @@
 	  	values(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},#{answer},#{petTag})
 	  </insert>
 	  
+
+	  <select id="login" resultType="UserVO">
+	  	select * from users where id = #{id} and pw = #{pw}
+	  </select>
+	  
+	  <!-- 마이페이지 회원정보 -->
+	<!-- 조인의 결과로 1:N 관계의 형태를 map으로 처리하는 방식에서 resultMap속성을 이용합니다. -->
+	<!-- <select id="getInfo" resultMap="userInfo">
+		select id,
+		        name,
+		        phone1,
+		        phone2,
+		        email1,
+		        email2,
+		        basicAdd,
+		        detailAdd,
+		        zipNum,
+		        f.bno,
+		        f.title,
+		        f.regdate
+		from USERS u left outer join REVIEWBOARD r
+		on u.id = r.writer
+		where u.id = {#id}
+		order by r.review_bno desc
+	</select> -->
+  
+  	<update id="update">
+  		update users set 
+  		name = #{name}, 
+  		pw = #{pw}, 
+  		email1 = #{email1}, 
+  		email2 = #{email2}, 
+  		phone1 = #{phone1},
+  		phone2 = #{phone2},
+  		basicAdd = #{basicAdd},
+  		detailAdd = #{detailAdd},
+  		zipNum = #{zipNum},
+  		quiz = #{quiz},
+  		answer = #{answer},
+  		petTag = #{petTag}
+  		where id = #{id}
+  	</update>
+  	
+
+  	<delete id="delete">
+  		delete from users where id = #{id} and pw = #{pw}
+  	</delete>
+
 	  <select id="userLogin" resultType="UserVO">
 	  	select * from users where id = #{id} and pw = #{pw}
 	  </select>
   
-  
+
   
   </mapper>

@@ -145,7 +145,7 @@
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
-		    <version>5.3.2</version>
+		    <version>${org.springframework-version}</version>
 		</dependency>
 		
 		<!-- HikariCP 2.7.8  -->
@@ -225,8 +225,7 @@
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
 		    <version>2.4</version>
-		</dependency>
-		
+		</dependency>		
 		
 		
 						

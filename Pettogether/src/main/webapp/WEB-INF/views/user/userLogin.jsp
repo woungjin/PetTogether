@@ -10,6 +10,9 @@
                     </div>
                     <form action="login" method="post" >
                         <div class="form-group"><!--사용자클래스선언-->
+
+                        	<span id="msg"></span>
+
                             <label for="id">아이디</label>
                             <input type="text" class="form-control" name="id" id="id" placeholder="아이디">
                          </div>
@@ -28,11 +31,11 @@
     </section>
 
     <script>
-    	var msg="${msg}";
-    	
-    	if(msg != ""){
-    		alert(msg);
-    	}
+
+	    var msg = "${login}";
+		if(msg != ""){
+			alert(msg);
+		}
     	
     	<%-- 
     	$("#loginBtn").click(function(){

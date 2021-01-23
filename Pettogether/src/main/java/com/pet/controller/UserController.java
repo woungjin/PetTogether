@@ -9,7 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pet.command.UserVO;
@@ -39,6 +43,7 @@ public class UserController {
 		return "user/userJoin";
 	}
 
+
 	// 유저 마이페이지
 	@RequestMapping("userMypage")
 	public String userMypage() {
@@ -51,7 +56,13 @@ public class UserController {
 	}
 	// 마이페이지 안에서 찜 목록 부분
 	@RequestMapping("userMypageHeart")
-	public String userMypageHeart() {
+	public String userMypageHeart(HttpSession session) {
+			
+			UserVO result = (UserVO) session.getAttribute("userVO");
+			System.out.println(result + "찜");
+			String userId = result.getId();
+			System.out.println(userId);
+			
 		return "user/userMypageHeart";
 	}
 
@@ -60,6 +71,13 @@ public class UserController {
 	public String userMypageReview() {
 		return "user/userMypageReview";
 	}
+	
+	// 마이페이지 안에서 회원 탈퇴 부분
+	@RequestMapping("userMypageDelete")
+	public String userMypageDelete() {
+		return "user/userMypageDelete";
+	}
+
 
 	@ResponseBody	// 응답요청을 뷰 리졸버가 아닌 요청이 들어온곳으로 response header정보를 만들어서 보내준다.
 	@RequestMapping(value="/idCheck",method=RequestMethod.POST)
@@ -92,8 +110,8 @@ public class UserController {
 								Model model,
 								HttpSession session) {
 			// 로그인 성공시 회원정보를 받아오고, 로그인 실패시 null을 반환
-			UserVO result = userService.userLogin(vo);
-			System.out.println(vo.toString()+"로그인");
+			UserVO result = userService.login(vo);
+			
 			
 			if(result == null) {
 				model.addAttribute("msg", "아이디 비밀번호를 확인하세요");
@@ -102,8 +120,77 @@ public class UserController {
 				// 세션에 회원정보 저장
 				
 				session.setAttribute("userVO", result);
+				UserVO se = (UserVO) session.getAttribute("userVO");
+				
+				
 				return "redirect:/";
 			}
-		}	
+		}
 	
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)  
+//	public ModelAndView login(UserVO vo, Model model,
+//						HttpSession session) {
+//		// 로그인 성공시 회원정보를 받아오고, 로그인 실패시 null을 반환
+//		UserVO result = userService.login(vo);
+//		System.out.println("컨트롤러" + result);
+//		ModelAndView mv = new ModelAndView(); // view와 model 정보를 동시에 저장하는 객체
+//		mv.setViewName("/user/userJoin");
+//		
+//		if(result != null) {  // 로그인 성공 
+//			mv.addObject("login", result);
+//		} else {  // 로그인 실패
+//			mv.addObject("msg", "아이디, 비밀번호를 확인하세요");
+//		}
+//		
+//		return mv;
+//	}
+	
+	// 로그아웃
+		@RequestMapping("/userLogout")
+		public String userLogout(HttpSession session) {
+			session.invalidate();   // 세션정보 삭제
+			return "redirect:/";  // home화면으로 이동
+		}
+	
+	// 회원정보 수정
+	
+		@RequestMapping(value="/userMypageUpdate", method = RequestMethod.POST)
+		public String userUpdate(UserVO vo,RedirectAttributes RA, HttpSession session) {
+			
+			int result = userService.update(vo);
+			
+			if(result == 1) {
+				RA.addFlashAttribute("msg", "정보 수정이 완료되었습니다");
+				session.setAttribute("userVO", vo);
+				return "redirect:/user/userMypage";
+			}else {
+				RA.addFlashAttribute("msg", "수정에 실패했습니다.다시 시도해주세요.");
+				return "redirect:/user/userMypageModify";
+			}
+			
+			
+			
+		}
+		
+		
+		
+	// 회원탈퇴
+	@RequestMapping(value="/Delete", method = RequestMethod.POST)
+	public String userDelete(UserVO vo,
+							RedirectAttributes RA,HttpSession session) {
+		System.out.println(vo + "삭제");
+		int result = userService.delete(vo);
+		
+		if(result == 1) {			
+			session.invalidate();
+			return "redirect:/";
+		}else {
+			RA.addFlashAttribute("msg", "비밀번호가 다릅니다. 비밀번호를 확인하세요.");
+			return "redirect:/user/userMypageDelete";
+		}
+		
+
+	}
+
+
 }

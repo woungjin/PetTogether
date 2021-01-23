@@ -2,6 +2,10 @@ package com.pet.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -62,7 +66,52 @@ public class StarBoardController {
 	
 	
 	@RequestMapping("/freeDetail")
-	public String freeDetail(@RequestParam("bno") int bno, Model model) {
+	public String freeDetail(@RequestParam("bno") int bno, Model model, HttpServletResponse response, HttpServletRequest request) {
+		
+		// 오늘본 게시글
+		ArrayList<Cookie> cookieList = new ArrayList<>();
+		
+		String bno2 = Integer.toString(bno);
+		Cookie[] ck = request.getCookies();		
+
+		String value = null;
+		boolean checkCookie = false;
+
+		for(int i = 0 ; i<ck.length; i++) {
+			if(ck[i].getValue().equals(bno2)) {
+				checkCookie = true;
+				value = ck[i].getValue();
+				System.out.println("value 값 : "+ value);
+				Cookie kc = new Cookie(ck[i].getValue(),null);
+				kc.setMaxAge(0);
+				kc.setPath("/");
+				response.addCookie(kc);
+			
+				Cookie cookie1 = new Cookie(value,value);
+				cookie1.setMaxAge(60*60*24); // 하루
+				cookie1.setPath("/");
+				response.addCookie(cookie1);
+				
+				
+			}
+		}
+
+//		5개 이상이라면 삭제
+		if(ck.length >= 8 && !checkCookie ) {
+			Cookie kc = new Cookie(ck[5].getValue(),null);
+			kc.setMaxAge(0);
+			kc.setPath("/");
+			response.addCookie(kc);
+		}
+		
+		if(!checkCookie ) {			
+			Cookie cookie2 = new Cookie(bno2,bno2 );
+			cookie2.setMaxAge(60*60*24); // 하루
+			cookie2.setPath("/");
+			response.addCookie(cookie2);
+		}
+
+		
 		
 		int result = starBoardService.hit(bno);
 		if(result == 1) {
@@ -77,6 +126,7 @@ public class StarBoardController {
 		
 		return "freeBoard/freeDetail";
 	}
+
 	
 	// 게시판에 댓글 달기 ===============================================================
 	@ResponseBody

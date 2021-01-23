@@ -45,10 +45,6 @@
               </div>
               </div>
 
-            </li>
-            <li><a href="${pageContext.request.contextPath }/mapBoard/map">MAP</a></li>
-
-            <li><a href="${pageContext.request.contextPath }/freeBoard/freeReview">REVIEW</a></li>
             <div class="dropdown">
               <a href="${pageContext.request.contextPath }/mapBoard/map"><button class="dropbtn">MAP</button></a>
               </div>
