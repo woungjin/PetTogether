@@ -5,7 +5,136 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-20T11:00:00Z</updated>
+  <updated>2021-01-22T03:26:00Z</updated>
+  <entry>
+    <title>A Bootiful Podcast - Spring Tools lead Martin Lippert on sustainable software</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/21/a-bootiful-podcast-spring-tools-lead-martin-lippert-on-sustainable-software" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-22:4343</id>
+    <updated>2021-01-22T03:26:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Spring Tools lead &lt;a href="https://twitter.com/martinlippert"&gt;Martin Lippert (@martinlippert)&lt;/a&gt; about sustainability in software, specifically, and I.T., generally. &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the slides to Martin&amp;rsquo;s talk &lt;a href="https://speakerdeck.com/martinlippert/sustainability-in-software-engineering-eclipsecon-2020-edition"&gt;&lt;em&gt;Sustainability in Software Engineering&lt;/em&gt;&lt;/a&gt;, as presented at EclipseCON 2020&lt;/li&gt;
+  &lt;li&gt;and &lt;a href="https://www.youtube.com/watch?v=ZsJVhEy0ka4"&gt;here is the video for that talk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe title="Spring Tools lead Martin Lippert on sustainable software" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/frsdq-f846d9?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.5.0-M1 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/21/spring-boot-2-5-0-m1-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Madhura Bhave</name>
+    </author>
+    <id>tag:spring.io,2021-01-22:4342</id>
+    <updated>2021-01-22T02:36:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I am pleased to announce that the first milestone of Spring Boot 2.5 has been released and is available from our &lt;a href="https://repo.spring.io/milestone/"&gt;milestone repository&lt;/a&gt;. This release closes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.5.0-M1"&gt;over 130 issues and pull requests&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Highlights of this first milestone include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for GET requests to the startup endpoint&lt;/li&gt;
+  &lt;li&gt;Security improvements to the info endpoint&lt;/li&gt;
+  &lt;li&gt;Preliminary support for Java 16&lt;/li&gt;
+  &lt;li&gt;Spring Integration 5.5.0 M1&lt;/li&gt;
+  &lt;li&gt;Spring Data 2021.0.0 M1&lt;/li&gt;
+  &lt;li&gt;Spring Security 5.5.0 M1&lt;/li&gt;
+  &lt;li&gt;Spring Session 2021.0.0 M1&lt;/li&gt;
+  &lt;li&gt;Spring HATEOAS 1.3.0 M1&lt;/li&gt;
+  &lt;li&gt;Numerous other dependency upgrades&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a complete list of changes and upgrade instructions, please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.5.0-M1-Release-Notes"&gt;Spring Boot 2.5 Release Notes&lt;/a&gt; on the wiki and the &lt;a href="https://docs.spring.io/spring-boot/docs/2.5.0-M1/reference/html/"&gt;updated reference documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you want to get started with 2.5 and try out the new features, you can bootstrap a new project on &lt;a href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=2.5.0.M1&amp;packaging=jar&amp;jvmVersion=11&amp;groupId=com.example&amp;artifactId=demo&amp;name=demo&amp;description=Demo%20project%20for%20Spring%20Boot&amp;packageName=com.example.demo"&gt;start.spring.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-boot/docs/2.5.0-M1/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Bootiful Application Monitoring with Azure Spring Cloud</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/21/bootiful-application-monitoring-with-azure-spring-cloud" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-21:4341</id>
+    <updated>2021-01-21T18:15:00Z</updated>
+    <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;This is a guest post authored by our friend, Microsoft&amp;rsquo;s Asir Vedamuthu Selvasingh &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Hi, Spring fans! We are excited to announce that Application Performance Monitoring (APM) is now fully integrated into Azure Spring Cloud, powered by Application Insights.&lt;/p&gt;
+&lt;p&gt;Azure Spring Cloud is jointly built, operated, and supported by Microsoft and VMware. It is a fully managed service for Spring Boot applications that lets you focus on building the applications that run your business without the hassle of managing infrastructure. &lt;/p&gt;
+&lt;p&gt;APM in Azure Spring Cloud offers in-depth performance monitoring for your Spring applications without requiring ANY code changes, recompiling, retesting, or redeployment. APM on Azure Spring Cloud is so seamless that you get the insights on your applications just out of the box. You do not have to do ANYTHING - just deploy your applications and the monitoring data starts flowing. The benefits you get with application monitoring are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Visibility into all your applications with &lt;strong&gt;distributed tracing&lt;/strong&gt;, including paths of operation requests from origins to destinations and insights into applications that are operating correctly and those with bottlenecks.&lt;/li&gt;
+  &lt;li&gt;Logs, exceptions, and metrics in the context of call paths offer &lt;strong&gt;meaningful insights and actionable information&lt;/strong&gt; to speed root cause analysis.&lt;/li&gt;
+  &lt;li&gt;Insights into application &lt;strong&gt;dependencies&lt;/strong&gt; ? SQL Database, MySQL, PostgreSQL, MariaDB, JDBC, MongoDB, Cassandra, Redis, JMS, Kafka, Netty / WebFlux, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Performance data&lt;/strong&gt; for every call into operations exposed by applications, including data-like request counts, response times, CPU usage, and memory.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Custom metrics&lt;/strong&gt; conveniently auto-collected through Micrometer, allowing you to publish custom performance indicators or business-specific metrics and visualize deeper application and business insights.&lt;/li&gt;
+  &lt;li&gt;Ability to &lt;strong&gt;browse, query, and alert on application metrics and logs&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While both Azure Spring Cloud and Application Insights Java agent are generally available, their integration for out of the box monitoring is in preview.&lt;/p&gt;
+&lt;p&gt;You can enable the Java in-process monitoring agent when you create or update Azure Spring Cloud:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint shell"&gt;az spring-cloud create --name ${SPRING_CLOUD_SERVICE} &#xD;
+        --sku standard --enable-java-agent &#xD;
+        --resource-group ${RESOURCE_GROUP} &#xD;
+        --location ${REGION}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, you can open Application Insights created by Azure Spring Cloud and start monitoring applications and their dependencies ? we will illustrate this using a &lt;a href="https://github.com/Azure-Samples/spring-petclinic-microservices"&gt;distributed version of Spring Petclinic&lt;/a&gt;. Navigate to the &lt;code&gt;Application Map&lt;/code&gt; blade where you can see an incredible, holistic view of microservices that shows applications that are operating correctly (green) and those with bottlenecks (red) [Figure 1]. Developers can easily identify issues in their applications and quickly troubleshoot and fix them.&lt;/p&gt;
+&lt;figcaption &gt; Figure 1 - Microservice transactions in Application Insights &lt;/figcaption&gt;
+&lt;img  width="700" src ="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/distributed-tracking-new-ai-agent.jpg" /&gt;
+&lt;p&gt;Navigate to the &lt;code&gt;Performance&lt;/code&gt; blade where you can see response times and request counts for operations exposed by your applications [Figure 2]. &lt;/p&gt;
+&lt;figcaption &gt; &#xD;
+Figure 2 ? Performance of operations exposed by applications &lt;/figcaption&gt;
+&lt;img width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-performance.jpg" /&gt;
+&lt;p&gt;Navigate to the &lt;code&gt;Dependencies&lt;/code&gt; tab in the &lt;code&gt;Performance&lt;/code&gt; blade where you can see all your dependencies and their response times and request counts [Figure 3]. &lt;/p&gt;
+&lt;figcaption&gt;Figure 3 ? Performance of application dependencies&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-insights-on-dependencies.jpg" /&gt;
+&lt;p&gt;You can click a SQL call or a dependency to see the full end-to-end transaction in context [Figure 4].&lt;/p&gt;
+&lt;figcaption&gt;&#xD;
+Figure 4 ? End-to-end application to SQL call transaction details&#xD;
+&lt;/figcaption&gt;
+&lt;img width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-end-to-end-transaction-details.jpg" /&gt;
+&lt;p&gt;Navigate to the &lt;code&gt;Exceptions&lt;/code&gt; tab in the &lt;code&gt;Failures&lt;/code&gt; blade to see a collection of exceptions thrown by applications [Figure 5].&lt;/p&gt;
+&lt;figcaption&gt;Figure 5 ? Exceptions thrown by applications&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-failures-exceptions.jpg" /&gt;
+&lt;p&gt;Simply select an exception and drill in for meaningful insights and actionable stack trace [Figure 6].&lt;/p&gt;
+&lt;figcaption&gt;Figure 6 ? End-to-end transaction details for an application exception&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/end-to-end-transaction-details.jpg" /&gt;
+&lt;p&gt;Navigate to the &lt;code&gt;Metrics&lt;/code&gt; blade to see all the metrics contributed by Spring Boot applications, Spring Cloud modules, and their dependencies. The chart below showcases &lt;code&gt;gateway-requests&lt;/code&gt; contributed by Spring Cloud Gateway and &lt;code&gt;hikaricp_connections&lt;/code&gt; contributed by JDBC [Figure 7]. Similarly, you can aggregate Spring Cloud Resilience4J metrics and visualize them.&lt;/p&gt;
+&lt;figcaption&gt;Figure 7 ? Metrics contributed by Spring modules&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-metrics.jpg" /&gt;
+&lt;p&gt;Spring Boot applications register a lot of core metrics ? JVM, CPU, Tomcat, Logback, etc. You can use Micrometer to contribute your own custom metrics, say using the &lt;code&gt;@Timed&lt;/code&gt; Micrometer annotation at the class level. You can then visualize those custom metrics in Application Insights. As an example, see how pet owners, pets, and their clinical visits are tracked by custom metrics below ? you can also see how the pattern changes at 9 PM because applications are driving higher utilization when autoscaling kicked in [Figure 8].&lt;/p&gt;
+&lt;figcaption&gt;Figure 8 ? Custom metrics published by user applications&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-custom-metrics.jpg" /&gt;
+&lt;p&gt;You can use the Availability Test feature in Application Insights to monitor the availability of applications in Azure Spring Cloud. This is a recurring test to monitor the availability and responsiveness of applications at regular intervals from anywhere across the globe. It can proactively alert you if your applications are not responding or if they respond too slowly. The chart below shows availability tests from across North America ? West US, South Central, Central US and East US [Figure 9].&lt;/p&gt;
+&lt;figcaption&gt;Figure 9 ? Availability of application endpoints across time&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-availability.jpg" /&gt;
+&lt;p&gt;Navigate to the &lt;code&gt;Live Metrics&lt;/code&gt; blade where you can see live metrics practically in real-time, within only one second [Figure 10]. &lt;/p&gt;
+&lt;figcaption&gt;Figure 10 ? Real-time metrics&#xD;
+&lt;/figcaption&gt;
+&lt;img  width="700" src="https://github.com/Azure-Samples/spring-petclinic-microservices/raw/azure/media/petclinic-microservices-live-metrics.jpg" /&gt;
+&lt;p&gt;Application Insights Java agent is based on &lt;a href="https://opentelemetry.io/docs/java/automatic_instrumentation/"&gt;OpenTelemetry&lt;/a&gt; auto instrumentation effort, where Microsoft collaborates with other brightest minds of the APM space.&lt;/p&gt;&lt;h2&gt;&lt;a href="#build-your-solutions-and-monitor-them-today" class="anchor" name="build-your-solutions-and-monitor-them-today"&gt;&lt;/a&gt;Build your solutions and monitor them today!&lt;/h2&gt;
+&lt;p&gt;Azure Spring Cloud abstracts away the complexity of infrastructure management and Spring Cloud middleware management, so you can focus on building your business logic and let Azure take care of dynamic scaling, patches, security, compliance, and high availability. With a few steps, you can provision Azure Spring Cloud, create applications, deploy, and scale Spring Boot applications, and start monitoring in minutes. We will continue to bring more developer-friendly and enterprise-ready features to Azure Spring Cloud.&lt;/p&gt;
+&lt;p&gt;We would love to hear how you are building impactful solutions using Azure Spring Cloud. Get started today ? deploy Spring applications to Azure Spring Cloud using &lt;a href="https://docs.microsoft.com/en-us/azure/spring-cloud/spring-cloud-quickstart?tabs=Azure-CLI&amp;pivots=programming-language-java"&gt;quickstart&lt;/a&gt;!&lt;/p&gt;&lt;h2&gt;&lt;a href="#resources" class="anchor" name="resources"&gt;&lt;/a&gt;Resources:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Get started with your next Spring Boot-based project at &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Learn using an &lt;a href="https://docs.microsoft.com/en-us/learn/modules/azure-spring-cloud-workshop/"&gt;MS Learn module&lt;/a&gt; or &lt;a href="https://github.com/microsoft/azure-spring-cloud-training"&gt;self-paced workshop&lt;/a&gt; on GitHub&lt;/li&gt;
+  &lt;li&gt;Learn &lt;a href="https://docs.microsoft.com/en-us/azure/spring-cloud/"&gt;more&lt;/a&gt; about implementing solutions on Azure Spring Cloud&lt;/li&gt;
+  &lt;li&gt;Learn &lt;a href="https://docs.microsoft.com/en-us/azure/spring-cloud/spring-cloud-howto-application-insights"&gt;more&lt;/a&gt; about Application Insights &lt;a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-in-process-agent"&gt;Java in-process&lt;/a&gt; agent in Azure Spring Cloud, including &lt;a href="https://docs.microsoft.com/en-us/azure/spring-cloud/spring-cloud-howto-circuit-breaker-metrics"&gt;Spring Cloud Resilience4J Circuit Breaker&lt;/a&gt; metrics&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/Azure-Samples/spring-petclinic-microservices"&gt;Deploy&lt;/a&gt; a distributed version of Spring Petclinic built with Spring Cloud&lt;/li&gt;
+  &lt;li&gt;Migrate your &lt;a href="https://docs.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud"&gt;Spring Boot&lt;/a&gt;, &lt;a href="https://docs.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud"&gt;Spring Cloud&lt;/a&gt; and &lt;a href="https://docs.microsoft.com/en-us/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud"&gt;Tomcat&lt;/a&gt; applications to Azure Spring Cloud&lt;/li&gt;
+  &lt;li&gt;Wire Spring applications to &lt;a href="https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/"&gt;interact with Azure services&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;For feedback and questions, &lt;a href="mailto:AzureSpringCloud-Talk@service.microsoft.com"&gt;please e-mail us&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>YMNNALFT:  Dimensional Metrics Accumulation with Micrometer</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/20/ymnnalft-dimensional-metrics-accumulation-with-micrometer" />
@@ -28,14 +157,14 @@
   &lt;li&gt;Bob, did you get your TPS reports in? Oh _ c&amp;rsquo;mon_, Bob! We talked about this! You said you&amp;rsquo;d get it in by close-of-business Tuesday, you absolute scoundrel!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There&amp;rsquo;s a real art to learning about which metrics to capture and which are irrelevant. Whole careers, even! &amp;ldquo;Growth hacker,&amp;rdquo; anyone? Not all metrics are created equal. &lt;em&gt;Growth hackers&lt;/em&gt; care about metrics. Product managers will care about metrics. The business will care about metrics. Your platform can care about metrics. &lt;em&gt;You&lt;/em&gt; should care about metrics. And why not? All the data&amp;rsquo;s there for the taking, but you&amp;rsquo;ll need a robust framework to help you. Writing code to instrument your code and capture metrics is only half the battle. Once captured, you&amp;rsquo;ll want (need!) to store and analyze the metrics. To do so, you&amp;rsquo;ll use a time series database - something like &lt;a href="https://tanzu.vmware.com/observability"&gt;VMWare&amp;rsquo;s Wavefront&lt;/a&gt;, &lt;a href="https://prometheus.io/"&gt;Prometheus&lt;/a&gt;, &lt;a href="https://github.com/Netflix/atlas"&gt;Netflix Atlas&lt;/a&gt;, &lt;a href="https://www.datadoghq.com/"&gt;DataDog&lt;/a&gt;, &lt;a href="http://instana.com"&gt;Instana&lt;/a&gt;, etc., to then visualize and analyze that data. You&amp;rsquo;ll need a robust framework that supports capturing all sorts of metrics (timers, counters, histograms, averages, etc.) in all sorts of contexts and then emitting those metrics to all sorts of time series databases (TSDBs). &lt;/p&gt;
-&lt;p&gt;Enter &lt;a href="http://micrometer.io"&gt;Micrometer&lt;/a&gt;. Micrometer allows you to instrument your code with dimensional metrics with a vendor-neutral interface and decide at the last step which monitoring system you&amp;rsquo;d like to use. Instrumenting your core library code with Micrometer allows the libraries to be included in applications that ship metrics to different backends. Spring Boot provides the Actuator module to support capturing and observing different aspects of an application. It sports endpoints of things like an application&amp;rsquo;s health, the thread dumps, and countless other things. It has an endpoint, &lt;code&gt;/actuator/metrics&lt;/code&gt;, that depends on Micrometer, giving you an at-a-glance view of the metrics being captured by your Spring Boot application, independent of whether you&amp;rsquo;re also publishing those metrics to a TSBD. &lt;/p&gt;
+&lt;p&gt;Enter &lt;a href="http://micrometer.io"&gt;Micrometer&lt;/a&gt;. Micrometer allows you to instrument your code with dimensional metrics with a vendor-neutral interface and decide at the last step which monitoring system you&amp;rsquo;d like to use. Instrumenting your core library code with Micrometer allows the libraries to be included in applications that ship metrics to different backends. Spring Boot provides the Actuator module to support capturing and observing different aspects of an application. It sports endpoints of things like an application&amp;rsquo;s health, the thread dumps, and countless other things. It has an endpoint, &lt;code&gt;/actuator/metrics&lt;/code&gt;, that depends on Micrometer, giving you an at-a-glance view of the metrics being captured by your Spring Boot application, independent of whether you&amp;rsquo;re also publishing those metrics to a TSDB. &lt;/p&gt;
 &lt;p&gt;Keep in mind that Spring depends on Micrometer, but Micrometer does not depend on Spring. Many libraries instrument themselves using the Micrometer SPI. All you need to do is add integration with a TSDB. Here are some of the third-party libraries that emit metrics with Micrometer: Javalin, HikariCP, the RabbitMQ Java client, Redisson, the Brave distributed tracing client, Netflix Spinnaker, the Netty-powered, non-blocking, Armeria framework, the Alibaba Nacos client, Apache Geode, the Microsoft Azure Spring Boot integrations, Resilience4J, the reactive Playtika Feign-client, Openrewrite, Apache Camel, the Couchbase Java DCP client, and literally hundreds of others. Oh, did I mention that countless modules in the Spring ecosystem support it as well? Yes, Micrometer truly is &lt;em&gt;everywhere&lt;/em&gt; you want to be! &lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;re using Spring, of course, so it&amp;rsquo;s easier to just add the Spring Boot Actuator module to the build. If you want to support a particular TSBD, you&amp;rsquo;ll have to bring in the specific module for that particular integration. Some Micrometer integrations come complete with a full Spring Boot integration, too, so you can use those if you want in lieu of the direct Micrometer integration. VMware Wavefront is one such TSDB that ships with extensive and rich integration with Spring Boot, so I&amp;rsquo;ll bring in that superset integration here.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s look at a simple service. &lt;/p&gt;
 &lt;p&gt;You&amp;rsquo;ll need the following dependencies.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;
-  &lt;p&gt;RSocket on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-actuator&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;Actuator on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-actuator&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
   &lt;li&gt;
   &lt;p&gt;Wavefront on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;com.wavefront&lt;/code&gt; : &lt;code&gt;wavefront-spring-boot-starter&lt;/code&gt; &lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1089,90 +1218,6 @@ public class BootifulApplication {&#xD;
 &lt;p&gt;Do you know what else you get with Reactor? Operators supporting retries, error handling, timeouts, etc., all of which you would also farm out to yet another third-party library if they weren&amp;rsquo;t included in Project Reactor. Win-win. &lt;/p&gt;
 &lt;p&gt;I could go on and on about the opportunities that present themselves given something like Project Reactor. Indeed, I &lt;em&gt;did&lt;/em&gt;. Check out my book &lt;a href="http://ReactiveSpring.io"&gt;&lt;em&gt;Reactive Spring&lt;/em&gt;&lt;/a&gt; for (a lot) more. &lt;/p&gt;
 &lt;p&gt;Well? Did you have fun, and maybe learn something? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt; later this week, so be sure not to miss that. I&amp;rsquo;ve got installments on, among other things, Easy RPC, The Garden of &lt;code&gt;*Utils&lt;/code&gt; objects, Dimensional Metrics with Micrometer, and many, many more topics. &lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring, January 5th, 2020 - 10th Anniversary Edition</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/05/this-week-in-spring-january-5th-2020-10th-anniversary-edition" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2021-01-05:4328</id>
-    <updated>2021-01-05T20:10:37Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Happy new year! And welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! Today is a significant installment because it marks a decade of &lt;em&gt;This Week in Spring&lt;/em&gt;! &lt;/p&gt;
-&lt;p&gt;I started this roundup after a fun discussion with the legendarily nice guy and SpringSource co-founder Keith Donald in late 2010 over the holiday. Lo, the first &lt;a href="http://web.archive.org/web/20110107071916/http://www.springsource.org/node/2986"&gt;week of January 2011&lt;/a&gt;, the first edition of this roundup went out the door on the old SpringSource.org blog. &lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s been so much fun putting together this roundup, without fail, every Tuesday for the last decade. You wouldn&amp;rsquo;t believe the lengths to which I went to get this out on Tuesday, well, &lt;em&gt;my&lt;/em&gt; Tuesday, no matter where I was. I&amp;rsquo;d be on planes all the time and the original blog software on SpringSource.org didn&amp;rsquo;t support scheduling posts, so I&amp;rsquo;d either publish it a little early or - if I was going to be on a plane for the entirety of the useful day - I&amp;rsquo;d have my then manager &lt;a href="https://twitter.com/devrelchap"&gt;Adam Fitzgerald&lt;/a&gt; post it for me. He reviewed the content for the first few years of the blog, too. What a legend that guy is. I learned a ton (about everything really, but also writing in particular) working with him. Nowadays, most flights longer than an hour or two have wi-fi onboard; but not so back then. Nowadays the software we use to blog - custom, open-source software that we built with Spring back in 2013 that underpins the &lt;a href="https://github.com/spring-io/sagan"&gt;spring.io&lt;/a&gt;) experience - supports scheduled posts, as well, so it&amp;rsquo;s much easier to get this post out on time. &lt;/p&gt;
-&lt;p&gt;This Week in Spring has two other variants: &lt;em&gt;This Month in Spring&lt;/em&gt; is an email digest that goes out once a month; go to the blog page and find the &lt;a href="http://spring.io/blog"&gt;&lt;em&gt;Get the Spring Newsletter&lt;/em&gt;&lt;/a&gt; sign up form to get that digest. &lt;em&gt;This Year in Spring&lt;/em&gt; goes out as the last post of any given year, right here on the blog. &lt;/p&gt;
-&lt;p&gt;I love this roundup because it&amp;rsquo;s a constant, and much appreciated, reminder of just how vibrant this community is. Thank you, as usual, Spring fans, and here&amp;rsquo;s to another decade (at least) of &lt;em&gt;This Week in Spring&lt;/em&gt;!&lt;/p&gt;
-&lt;p&gt;Now, we&amp;rsquo;ve got a ton to get to this week so let&amp;rsquo;s get into it. &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Before we move forward, I&amp;rsquo;d like to briefly look back. 2020 had its share of struggles, generally, but Spring itself and its ambient communities continued to grow at breakneck speeds. Let&amp;rsquo;s look at the year that was in &lt;a href="https://spring.io/blog/2020/12/31/this-year-in-spring-2020-edition"&gt;&lt;em&gt;This Year in Spring - 2020 Edition&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/prattm/status/1344719453767008257?s=21"&gt;&amp;quot;Thanks for the reminder there was some good in 2020 @starbuxman! We successfully migrated @PedalPalApp to Kubernetes this year, and it was pretty simple with Spring Boot&amp;rsquo;s cloud-native support &#x1f60e; &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/12/31/a-bootiful-podcast-google-cloud-s-daniel-zou-on-spring-cloud-gcp-teaching-the-youths-and-happy-new-year"&gt;A Bootiful Podcast: Google Cloud&amp;rsquo;s Daniel Zou on Spring Cloud GCP, teaching the youths, and Happy New Year!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/Cosium/spring-data-jpa-entity-graph"&gt;Spring Data JPA extension allowing full dynamic usage of EntityGraph on repositories&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.infoq.com/presentations/measuring-service-level-objectives/?itm_source=infoq&amp;itm_medium=videos_homepage&amp;itm_campaign=videos_row1"&gt;Cultivating Production Excellence&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://blog.frankel.ch/feedback-log4j2-hack-spring-boot/"&gt;Feedback on the Log4J2 hack in Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://itmodel4dnadamagerepair.blogspot.com/"&gt;IT Model for DNA Damage Repair&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/arttom/cqs-spring-boot-starter"&gt;Interesting! A third party library to allow people to easily follow CQS principles in Spring Boot.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/qaware/openapi-generator-for-spring"&gt;Interesting: Open API v3 Generator for Spring Boot applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.mitchellbosecke.com/post/java-proxies-from-dog-to-transactionaldog"&gt;Java Proxies: From &lt;code&gt;Dog&lt;/code&gt; to &lt;code&gt;TransactionalDog&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://sizovs.net/2020/11/24/java-libraries-i-like/"&gt;Java libraries I like ? Eduards Sizovs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.javaadvent.com/2020/12/resilient-applications-spring-resilience4j.html"&gt;Resilient applications with Spring and Resilience4J - JVM Advent&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://piotrminkowski.com/2019/12/06/spring-boot-best-practices-for-microservices/"&gt;Spring Boot Best Practices for Microservices - Piotr&amp;rsquo;s TechBlog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=8sgi_xs5opw&amp;feature=share"&gt;This is a neat introduction to Spring Data JPA&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This isn&amp;rsquo;t, strictly speaking, Spring related, but it&amp;rsquo;s interesting. It&amp;rsquo;s an API to fluidly build up regular expressions. &lt;a href="https://github.com/VerbalExpressions/JavaVerbalExpressions"&gt;VerbalExpressions/JavaVerbalExpressions: Java regular expressions made easy.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.reddit.com/r/java/comments/khflbg/what_courses_both_free_and_paid_on_spring_boot/"&gt;What courses (both free and paid) on Spring Boot would you recommend? : java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>YMNNALFT: Easy Docker Image Creation with the Spring Boot Maven Plugin and Buildpacks</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/04/ymnnalft-easy-docker-image-creation-with-the-spring-boot-maven-plugin-and-buildpacks" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-30:4315</id>
-    <updated>2021-01-04T11:00:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (&lt;code&gt;#YMNNALFT&lt;/code&gt;)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
-&lt;p&gt;Have you tried out &lt;a href="https://paketo.io"&gt;Paketo&lt;/a&gt;? It&amp;rsquo;s neat-o! It alleviates one of the biggest pains of cloudy software these days:&lt;a href="https://docs.docker.com/engine/reference/builder/"&gt;Dockerfiles&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;As an aside: the &lt;em&gt;biggest&lt;/em&gt; pain point is, of course, YAML. YAML is why people leave IT! YAML: when you want the indentation-sensitive treachery of Python, with the nonexistent design-time validation of Python and &lt;em&gt;none&lt;/em&gt; of the benefits of Python. YAML: because life is, clearly, not hard enough. 9/10 dentists agree: YAML causes production rot!&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&amp;ldquo;Indeed it has been said that YAML is the best form of configuration except for all those other forms that have been tried from time to time.&amp;rdquo; - Not Winston Churchill &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;No pressure debugging YAML ;) &lt;a href="https://t.co/vwCCYKTZY2"&gt;pic.twitter.com/vwCCYKTZY2&lt;/a&gt;&lt;/p&gt;&amp;mdash; Arun Gupta (@arungupta) &lt;a href="https://twitter.com/arungupta/status/1340676192588890112?ref_src=twsrc%5Etfw"&gt;December 20, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;&lt;/p&gt;
-&lt;p&gt;Aaaanyway, YAML is a whole, other, &amp;ldquo;Oprah,&amp;rdquo; and we just don&amp;rsquo;t have a ton of time to get into it, so let&amp;rsquo;s move on: we want to simplify the creation of Dockerfiles. Dockerfiles are tedious and they require us to re-specify the complete environment required to run our applications in production. It&amp;rsquo;s possible to get something working in a fairly minimal number of lines, but as I learned while avoiding the COVID-19 virus, &amp;ldquo;minimal&amp;rdquo; is not &amp;ldquo;none!&amp;rdquo; And besides, something working does not a production environment make. We can do better.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://paketo.io/"&gt;Paketo&lt;/a&gt; is a Cloud Foundry foundation project based on the &lt;a href="https://buildpacks.io/"&gt;buildpacks project&lt;/a&gt; from &lt;a href="https://www.cncf.io/"&gt;CNCF&lt;/a&gt; (which stands for &amp;ldquo;Code Never Comes Finished,&amp;rdquo; or maybe it was &amp;ldquo;Common Network Code Foundation,&amp;rdquo; or was it &amp;ldquo;Cloud Native Computing Foundation&amp;rdquo;?). From the website: &amp;ldquo;buildpacks transform your application source code to images that can run on any cloud. Paketo Buildpacks provide language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure.&amp;rdquo; Basically: application in; container out. See? Neat!&lt;/p&gt;
-&lt;p&gt;Buildpacks come from the Heroku and Cloud Foundry Platform-as-a-service offerings. You give the buildpack an application artifact (like, say, a Java &lt;code&gt;.jar&lt;/code&gt;), and the buildpack gives you back your application in a container. More specifically, it&amp;rsquo;ll create a sensible filesystem containing your application artifact and everything needed to run that application artifact. So, given a &lt;code&gt;.jar&lt;/code&gt;, it might create a filesystem with a JVM configured with reasonable memory bounds and any required Java agents configured. All of &lt;em&gt;that&lt;/em&gt; is what eventually gets turned into a container. You&amp;rsquo;d be &lt;em&gt;shocked&lt;/em&gt; what you can get containerized with virtually no configuration at all! Buildpacks work because, no matter how much we may protest, most applications aren&amp;rsquo;t special. A &lt;code&gt;.jar&lt;/code&gt; is a &lt;code&gt;.jar&lt;/code&gt; for everybody, and a Node.js/NPM project builds the same for everybody. Buildpacks support several different languages and runtime (way too many to name). You can use the Paketo CLI to make short work of containerizing various applications, like this: &lt;code&gt;pack build .&lt;/code&gt;. &lt;/p&gt;
-&lt;p&gt;Or, anyway, that&amp;rsquo;s what you &lt;em&gt;would&lt;/em&gt; do if you were not using &lt;a href="https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/htmlsingle/#build-image"&gt;Spring Boot 2.3 or later&lt;/a&gt;. But, you are, _ aren&amp;rsquo;t you_? Buildpack support is now in the Spring Boot build plugins themselves. &lt;/p&gt;
-&lt;p&gt;If you were using Maven, you could type the following incantation: &lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=bootiful/demo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you were using Gradle, you could type the following incantation: &lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;./gradlew bootBuildImage --imageName=bootiful/demo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Stand back for a minute while it does all the work. It&amp;rsquo;ll dump out the Docker image at the end of its work. You can then &lt;code&gt;docker tag&lt;/code&gt; and then &lt;code&gt;docker push&lt;/code&gt; that image to your container registry of choice (&lt;a href="https://goharbor.io/"&gt;VMware Harbor&lt;/a&gt;, &lt;a href="https://cloud.google.com/container-registry/"&gt;Google Container Registry&lt;/a&gt;, &lt;a href="https://jfrog.com/container-registry/"&gt;JFrog Container Registry&lt;/a&gt;, &lt;a href="https://hub.docker.com/"&gt;DockerHub&lt;/a&gt;, etc.). &lt;/p&gt;
-&lt;p&gt;Do you want to take that to production? That&amp;rsquo;s pretty trivial, too! Here&amp;rsquo;s the right incantation for Kubernetes, assuming your image is on Google Container Registry, has an artifact ID of &lt;code&gt;demo&lt;/code&gt;. The version specified in &lt;code&gt;pom.xml&lt;/code&gt; becomes a tag for the version of the container, too.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;kubectl create deployment demo --image=gcr.io/bootiful/demo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Hopefully, this is enough to get you to production without so much as even having to configure something like Jib or the Spotify Maven plugin or crafting a long, byzantine shell script to do the &lt;code&gt;docker build&lt;/code&gt; itself. Now, don&amp;rsquo;t get me wrong. You &lt;em&gt;might&lt;/em&gt; still need to create your own `Dockerfile&amp;rsquo;s for whatever reason, as you might have something to say about the ordering or contents of particular layers, and if so, then Spring Boot &lt;a href="https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/htmlsingle/#build-image-customization"&gt;has your back here&lt;/a&gt;, too. &lt;/p&gt;
-&lt;p&gt;Alright, that&amp;rsquo;s more than enough to get going. Go to the &lt;a href="http://start.Spring.io"&gt;Spring Initializr&lt;/a&gt; (my second favorite place on the internet, &lt;em&gt;after&lt;/em&gt; production) and generate a new project and take your containerized application to the platform of your choice. &lt;/p&gt;
-&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt; later this week, so be sure not to miss that. I&amp;rsquo;ve got installments on, among other things, Easy RPC, The Garden of &lt;code&gt;*Utils&lt;/code&gt; objects, Dimensional Metrics with Micrometer, and many, many more topics. &lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: Google Cloud's Daniel Zou on Spring Cloud GCP, teaching the youths, and Happy New Year!</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/12/31/a-bootiful-podcast-google-cloud-s-daniel-zou-on-spring-cloud-gcp-teaching-the-youths-and-happy-new-year" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-31:4326</id>
-    <updated>2020-12-31T01:45:36Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of A Bootiful Podcast and happy new year! In this episode, &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Google&amp;rsquo;s &lt;a href="https://github.com/dzou"&gt;Daniel Zou &lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Happy New Year! &lt;/p&gt;
-&lt;iframe title="Google's Daniel Zou on Spring Cloud GCP, GraalVM and more" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/kkk5w-f64f08?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
