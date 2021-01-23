@@ -18,6 +18,7 @@ public interface HomeService {
 	public int hospitalTotal();
 	public int parkTotal();
 	
+	public ArrayList<StarBoardVO> getRandom();
 
 	
 }

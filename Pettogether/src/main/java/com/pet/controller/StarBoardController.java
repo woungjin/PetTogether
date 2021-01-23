@@ -76,13 +76,7 @@ public class StarBoardController {
 
 		String value = null;
 		boolean checkCookie = false;
-//		5개 이상이라면 삭제
-		if(ck.length == 5 ) {
-			Cookie kc = new Cookie(ck[1].getValue(),null);
-			kc.setMaxAge(0);
-			kc.setPath("/");
-			response.addCookie(kc);
-		}
+
 		for(int i = 0 ; i<ck.length; i++) {
 			if(ck[i].getValue().equals(bno2)) {
 				checkCookie = true;
@@ -102,7 +96,15 @@ public class StarBoardController {
 			}
 		}
 
-		if(!checkCookie) {			
+//		5개 이상이라면 삭제
+		if(ck.length >= 8 && !checkCookie ) {
+			Cookie kc = new Cookie(ck[5].getValue(),null);
+			kc.setMaxAge(0);
+			kc.setPath("/");
+			response.addCookie(kc);
+		}
+		
+		if(!checkCookie ) {			
 			Cookie cookie2 = new Cookie(bno2,bno2 );
 			cookie2.setMaxAge(60*60*24); // 하루
 			cookie2.setPath("/");

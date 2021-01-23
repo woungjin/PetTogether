@@ -1,6 +1,8 @@
 package com.pet.home.mapper;
 
 
+import java.util.ArrayList;
+
 import com.pet.command.StarBoardVO;
 
 public interface HomeMapper {
@@ -16,4 +18,5 @@ public interface HomeMapper {
 	public int hospitalTotal();
 	public int parkTotal();
 	
+	public ArrayList<StarBoardVO> getRandom();
 }
