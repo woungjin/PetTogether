@@ -76,7 +76,8 @@ public class StarBoardController {
 
 		String value = null;
 		boolean checkCookie = false;
-
+		
+		if(ck !=null) {
 		for(int i = 0 ; i<ck.length; i++) {
 			if(ck[i].getValue().equals(bno2)) {
 				checkCookie = true;
@@ -95,7 +96,7 @@ public class StarBoardController {
 				
 			}
 		}
-
+		}
 //		5개 이상이라면 삭제
 		if(ck.length >= 8 && !checkCookie ) {
 			Cookie kc = new Cookie(ck[5].getValue(),null);
