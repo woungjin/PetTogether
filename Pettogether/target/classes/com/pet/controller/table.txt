@@ -106,6 +106,7 @@ select * from mygood ;
 -- 여기는 리뷰 작성 테이블 입니다
 create table reviewboard(
     review_bno number(10),
+    bno number(10),
     writer varchar2(50) not null,
     content  varchar2(200),
     uploadpath varchar2(200) not null,

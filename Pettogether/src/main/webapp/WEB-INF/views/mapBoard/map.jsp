@@ -4,7 +4,7 @@
     <section>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe9c4f49446ea70ac05193ca8f70f694&libraries=services"></script>              
             <div style="text-align: center;">
-            	<img src="${pageContext.request.contextPath }/resources/img/mapBoard/map.png">
+            	<img style="width:640px" src="${pageContext.request.contextPath }/resources/img/mapBoard/map.png">
             </div>
             <div style="width:500px;height:50px; margin:0 auto; overflow: hidden; ">
             	<div style="float:left; width:300px; margin-right: 48px">
@@ -45,6 +45,7 @@
          // 마커를 담을 배열
          var markers = [];
          var markerArr = []; 
+         var searchMarker = [];
          var overlayArr = [];         
          var dataArr = [];
 
@@ -76,11 +77,13 @@
         var Apiarr = []; //api의 데이터중 구분한 데이터를 담는곳
         /* var Overlayarr = [];         
         var Markerarr = [];  */   
-        var category = document.querySelector('#category');
+        var category = document.querySelector('#category');        
         category.addEventListener("change", function(){
-            var category = event.target.value
-            console.log(category)
-            
+        	
+            var category = event.target.value                       
+            var ul = document.getElementById('placesList');
+            var li = document.querySelector('li');  
+            var page = document.querySelector('#pagination'); 
             
             $.ajax({
     		type: "POST",
@@ -99,6 +102,8 @@
     				//선택을 선택시 중심이동 올 초기화
     				panTo();
     				removeMarker();
+    				removeAllChildNods(ul);
+    				removeAllChildNods(page); 
     			}else{						
 				
 				for(var i = 0; i < data.length; i ++){
@@ -111,7 +116,7 @@
                 	
                     //마커이미지 설정
                     if(index < 15){
-	                	var imageSrc = '${pageContext.request.contextPath }/resources/img/mapBoard/marker.png', //    
+	                	var imageSrc = '${pageContext.request.contextPath }/resources/img/mapBoard/marker1.png',     
 	    	            imageSize = new kakao.maps.Size(40, 40), 
 	    	            imageOption = {offset: new kakao.maps.Point(20, 69)};                     	
                     }else{
@@ -166,8 +171,8 @@
 		                    }       
 		                    close.title = '닫기';            
 		                    info.appendChild(body).className = "body";          
-		                    body.appendChild(image).className = "img";		                    
-		                    console.log(Apiarr.bno)		                    		                    	
+		                    body.appendChild(image).className = "img";	                    
+		                    		                    		                    	
 		                    image.appendChild(img).src = '${pageContext.request.contextPath }/resources/img/starboard/'+ Apiarr.bno + '.jpg';		                   
 		                    img.width = '73';
 		                    img.height = '70';
@@ -268,7 +273,7 @@
             // 키워드 검색 완료 시 호출되는 콜백함수 입니다
         function placesSearchCB(data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
-
+			
                 // 정상적으로 검색이 완료됐으면
                 // 검색 목록과 마커를 표출합니다
                 displayPlaces(data);
@@ -303,15 +308,16 @@
 
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
-
-        for ( var i=0; i<places.length; i++ ) {
-            console.log(places[i].y)
+		
+		places.forEach(function(places, index){  
 
             // 마커를 생성하고 지도에 표시합니다
-            var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-                marker = addMarker(placePosition, i), 
-                itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
+            var placePosition = new kakao.maps.LatLng(places.y, places.x),
+                marker = addMarker(placePosition, index), 
+                itemEl = getListItem(index, places); // 검색 결과 항목 Element를 생성합니다
+            var coords = new kakao.maps.LatLng(places.y, places.x);
+            searchMarker[index] = marker
+            
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
             bounds.extend(placePosition);
@@ -320,25 +326,27 @@
             // 해당 장소에 인포윈도우에 장소명을 표시합니다
             // mouseout 했을 때는 인포윈도우를 닫습니다
             (function(marker, title) {
-                kakao.maps.event.addListener(marker, 'mouseover', function() {
-                    displayInfowindow(marker, title);
+                kakao.maps.event.addListener(searchMarker[index], 'mouseover', function() {
+                    displayInfowindow(searchMarker[index], title);
                 });
 
-                kakao.maps.event.addListener(marker, 'mouseout', function() {
+                kakao.maps.event.addListener(searchMarker[index], 'mouseout', function() {
                     infowindow.close();
                 });
 
                 itemEl.onmouseover =  function () {
-                    displayInfowindow(marker, title);
+                    displayInfowindow(searchMarker[index], title);
+                     map.setCenter(coords);
+                    map.setLevel(level = 2); 
                 };
 
                 itemEl.onmouseout =  function () {
                     infowindow.close();
                 };
-            })(marker, places[i].place_name);
+            })(searchMarker[index], places.place_name);
 
             fragment.appendChild(itemEl);
-        }
+        });
 
         // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
         listEl.appendChild(fragment);
@@ -374,20 +382,21 @@
 
         // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
         function addMarker(position, idx, title) {
-        var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-            imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-            imgOptions =  {
+        var imageSrc = '${pageContext.request.contextPath }/resources/img/mapBoard/markerwon.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+            imageSize = new kakao.maps.Size(20, 20),  // 마커 이미지의 크기
+            imgOptions =  {offset: new kakao.maps.Point(9, 69)}; 
+            	/* {
                 spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
                 spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
                 offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-            },
+            }, */
             markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
                 marker = new kakao.maps.Marker({
                 position: position, // 마커의 위치
                 image: markerImage 
             });
 
-        marker.setMap(map); // 지도 위에 마커를 표출합니다
+        marker.setMap(map);    // 지도 위에 마커를 표출합니다
         markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 
         return marker;
