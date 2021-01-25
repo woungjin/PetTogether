@@ -93,6 +93,7 @@
                                                         <option ${sessionScope.userVO.email2 == '@naver.com' ? 'selected' : ''}>naver.com</option>
                                                         <option ${sessionScope.userVO.email2 == '@gmail.com' ? 'selected' : ''}>gmail.com</option>
                                                         <option ${sessionScope.userVO.email2 == '@daum.net' ? 'selected' : '' }>daum.net</option>
+                                                        <option ${sessionScope.userVO.email2 == '@nate.com' ? 'selected' : '' }>nate.com</option>
                                                     </select>
                                                 </div>                                                
 											    
@@ -272,8 +273,15 @@
 		alert("질문 및 답변은 필수입니다.");
 		$("#answer").focus();
 		return;
+	}else if($("#name").val()==''){
+		alert("이름은 필수입니다.");
+		$("#name").focus();
+		return;
+	}else if($("#phone2").val()==''){
+		alert("연락처 입력은 필수입니다.");
+		$("#phone2").focus();
+		return;
 	}else{
-  		console.log('mm')
   		$("#updateForm").submit();	// 전송
   	}
   })
@@ -287,7 +295,7 @@
                 document.getElementById("msgPhone").innerHTML = "";
             } else {
                 document.getElementById("phone2").style.borderColor = "red";
-                document.getElementById("msgPhone").innerHTML = "8자리 입력해주세요";
+                document.getElementById("msgPhone").innerHTML = "숫자 8자리 입력해주세요";
             }
         }
 	

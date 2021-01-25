@@ -134,14 +134,6 @@
 									</div>
 
 
-									<div class="form-group">
-										<div class="title text-middle">비밀번호</div>
-										<div class="input-wrapper hide-on-editable text-middle">
-											*******</div>
-										<div class="input-wrapper show-on-editable"></div>
-									</div>
-									<div class="form-group form-subscription-group">
-
 										<div class="form-group">
 											<div class="title text-middle">우편번호</div>
 											<div class="input-wrapper hide-on-editable text-middle">
