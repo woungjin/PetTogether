@@ -86,8 +86,7 @@
 
                                         <div class="reply-input">
                                         <textarea style="margin: 0px; width: 441px;height: 53px; resize: none;" id="replycontent"></textarea>
-                                        <input type="text" class="form-control" id="replyId" placeholder="이름">
-                                        <input type="password" class="form-control" id="replyPw" placeholder="비밀번호">
+                                        <input type="text" class="form-control" id="replyId" placeholder="이름" readonly value="${sessionScope.userVO.id}">
                                         </div>
                                         
                                         <button type="button" class="right btn btn-info" id="reviewReplyRegist">등록하기</button>
@@ -210,8 +209,13 @@
     		
     		$.getJSON(
     			"getReviewReply/" + bno + "/" + reviewPage,
-    			function(list){
+    			function(datalist){
+    				var list = datalist.list;
+    				var total = datalist.total;
     				
+    				if(pageNum * 8 >= total){
+    					$("#moreList").css("display" , "none");
+    				}
     				for(var i =0 ; i<list.length; i++){
     					strAdd += '<div class="reply-content" style="padding: 0;">';
     					strAdd += '<div class="reply-group">';
@@ -305,19 +309,21 @@
     		$("#reviewReplyRegist").click(function() {
     			var review_reply_content = $("#replycontent").val();
     			var review_reply_writer = $("#replyId").val();
-    			var review_reply_pw = $("#replyPw").val();
-    			console.log(review_reply_content + review_reply_writer + review_reply_pw);
-				if(review_reply_content == '' || review_reply_writer == '' || review_reply_pw ==''){
+    			console.log(review_reply_content + review_reply_writer);
+				if(review_reply_content == '' ){
 					alert("빈칸에 주의하세요");
 					return;
-				}    		
+				}else if(review_reply_writer == '' ){
+					alert("로그인 후 이용해주세요");
+					return;
+				}
     			/* ${vo.review_bno} */
     			var bno = $("#reviewregistbno").val();
     		
     				$.ajax({
     			    	type : "POST",
     			    	url : "../freeBoard/reviewReplyRegist",
-    			    	data : JSON.stringify({"review_bno" : bno , "review_reply_content" : review_reply_content , "review_reply_writer" : review_reply_writer , "review_reply_pw" : review_reply_pw}),
+    			    	data : JSON.stringify({"review_bno" : bno , "review_reply_content" : review_reply_content , "review_reply_writer" : review_reply_writer}),
     			    	contentType : "application/json; charset=ytf-8",
     			    	success : function(data){
     			  			if(data === 1){

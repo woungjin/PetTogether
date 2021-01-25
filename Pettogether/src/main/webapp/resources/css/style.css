@@ -961,10 +961,10 @@ select {
       /*   여기는 카테고리 */
         
 
-        .category ul {text-align: center ; background-color: white; margin: 0; overflow: hidden; background-color: rgb(250, 186, 91);}
+        .category ul {text-align: center ; background-color: white; margin: 0; overflow: hidden; background-color:rgb(220,125,30);}
         .category ul li {padding: 10px 20px;display: inline-block; border: 1px solid white; float: left;  padding: 15px 100px}
         .category ul li a{color: black; font-weight: 400; text-decoration: none; font-weight: 900; font-size: 20px;}
-        .category ul li:hover{background-color:rgb(220,125,30);}   
+        .category ul li:hover{background-color: rgb(250, 186, 91);}   
         .category ul li a.active{background-color:rgb(220,125,30);}   
         .category {text-align: center; margin: 0 auto; display: inline-block;}
         .category_set{margin: 0 auto ; text-align: center; }
@@ -1382,7 +1382,7 @@ select {
 .login-form form{
                 padding: 50px 10px;
             }
-        }       
+               
 
 .title-box {
             width: 250px;

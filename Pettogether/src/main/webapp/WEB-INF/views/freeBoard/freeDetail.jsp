@@ -52,17 +52,23 @@
                             </div>
 
                          
-                            <div class="RecomInsert">
+                            <div class="RecomInsert" >
                                  <div class="RecomInsert-left">
+                                 <div id="starAdd">
                                    <c:forEach var="num" begin="1" end="5">
 									<c:choose>
 										<c:when test="${vo.review_avg >= num}"><i style=" color : red;">★</i></c:when>                                	
 										<c:when test="${vo.review_avg <= num }"><i>★</i></c:when>
                                 	</c:choose> 
                                 </c:forEach>
+                               
+                                
+                                
+                                
                                     &nbsp;<span>(후기:${vo.review_total }개)</span>
                                     <span>'${vo.petTag } '에게 추천합니다</span>      
                                    
+                                 </div>
                                 </div>
 
                             </div>
@@ -81,27 +87,26 @@
 
                             <div class="reply-group">
                                   <div class="reply-input">
-                                  <input type="text" class="form-control" id="replyId" placeholder="이름">
-                                  <input type="password" class="form-control" id="replyPw" placeholder="비밀번호">
+                                  <input type="text" class="form-control" id="replyId" placeholder="이름" value="${sessionScope.userVO.id}" readonly>
                                   </div>
                                   
                                   <button type="button" class="right btn btn-info" id="replyRegist">댓글 등록</button>
-                                  <button type="button" class="right btn btn-info" style="background-color:rgba(235,170,80) ;"  onclick="location.href='../freeBoard/freeReviewRegist?bno=${vo.bno}'">게시글 남기기</button>
+                                  <button type="button" class="right btn btn-success"   onclick="location.href='../freeBoard/freeReviewRegist?bno=${vo.bno}'">게시글 남기기</button>
                             </div>
     
                         </div>
                         </form>
     
                        		<div id="starReplyList">
-                            <div class='reply-content'>
+                            <!-- <div class='reply-content'>
                                 <div class='reply-group'>
                                     <strong class='left'>honggildong</strong> 
                                     <small class='left'>2019/12/10</small>
-                                    <!--a 태그에 bno -->
+                                    a 태그에 bno
                                     <a href='#' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
                                     <a href='#' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>
                                 </div>
-                       		</div>
+                       		</div> -->
                             
                                 <p class='clearfix'>여기는 댓글영역</p>
                             </div>
@@ -149,6 +154,9 @@
         	user_id =  "${sessionScope.userVO.id}";
         	
         	
+        	
+        	
+        	
         	// 댓글 삭제 +======================================
         	$("#modalDelBtn").click(function() {
         		var rno = $("#modalRno").val();
@@ -192,6 +200,7 @@
         	
         	
         	// 댓글 수정 ===========================================
+        		
         	$("#modalModBtn").click(function() {
         		
   	      		var rno = $("#modalRno").val();
@@ -237,7 +246,42 @@
   	      		
         		
         	});
-        	
+        	// 리뷰 남기면 리쏏기능 
+        	function resetStar(){
+        		
+        		var bno =${vo.bno};
+        		console.log("이것은 이것은 " + bno);
+        		var starAdd= '';
+        		
+        		$.getJSON(
+        				"../starBoard/getStarReset/" + bno,
+        				function(data) {
+        					
+        					console.log(data);
+        					for(var i =1; i<= 5 ; i++){
+        						
+        						if(data.review_avg >= i){
+        							starAdd += '<i style=" color : red;">★</i>';
+        						}else{
+        							starAdd += '<i>★</i>';
+        						}
+        						
+        					}
+        					
+        						  starAdd += '&nbsp;<span>(후기:'+data.review_total+'개)</span>';
+                                  starAdd += '<span>"'+data.petTag +'"에게 추천합니다</span>';      
+        						
+                                  $("#starAdd").html(starAdd);
+        					
+        					
+        					
+							
+							
+        					}
+        			)
+        		
+        	}
+
         	
         	
         	
@@ -257,11 +301,19 @@
     				strAdd = '';
     			}
     			
+    			
     			$.getJSON(
     				"../starBoard/getStarReply/" + bno + "/" + starPage ,
-    				function(list) {
-    					console.log(list);
-    					
+    				function(datalist) {
+    					console.log(datalist);
+    					var list = datalist.list;
+    					var total = datalist.total;
+    				
+    					if(pageNum * 8 >= total){ // 페이지번호 * 데이터개수가 전체글보다 크면더보기 비활성화
+							$("#moreList").css("display" , "none");
+						}
+						
+						replyNum = list.length;
     					for(var i =0 ; i< list.length ; i++){
     					 strAdd+= "<div class='reply-wrap'>";
     					 strAdd += "<div class='reply-content'>";
@@ -276,6 +328,7 @@
     					 strAdd += " </div>";
     					
     					}
+    					
     					
     					$("#starReplyList").html(strAdd);    					
     					
@@ -295,13 +348,15 @@
         	// 댓글등록 ===================================================================================
         	$("#replyRegist").click(function() {
         		var reply = $("#reply").val();
-        		var replyId = $("#replyId").val();
-        		var replyPw = $("#replyPw").val();
+        		var replyId = "${sessionScope.userVO.id}";
         		
-        		console.log(reply, replyId , replyPw);
+        		console.log(reply, replyId);
         		
-        		if(reply == '' || replyId == '' || replyPw == ''){
+        		if(reply == ''){
         			alert("공백을 주의 해주세요");	
+        			return;
+        		}else if(replyId == ''){
+        			alert("로그인 후 다시 시도해주세요");
         			return;
         		}
         		/*bno  여기에 처리하도록*/
@@ -309,7 +364,7 @@
         		$.ajax({
         			type : "POST",
         			url : "../starBoard/starBoardReplyInsert",
-        			data : JSON.stringify({"bno" : bno , "writer" : replyId , "pw" : replyPw  , "content" : reply}),
+        			data : JSON.stringify({"bno" : bno , "writer" : replyId  , "content" : reply}),
         			contentType : "application/json; charset=utf-8",
         			success : function(data ){
         				console.log(data);
@@ -318,6 +373,7 @@
         				$("#reply").val("");
                 		$("#replyId").val("");
                 		$("#replyPw").val("");
+         
         				
         			},
         			error :function(error){
@@ -361,8 +417,7 @@
         					$("#review_regist").html("리뷰등록 완료");
         					$("#star-title").html("");
         					$("#starInsert").css("display","none");
-        				
-        					
+        					resetStar();
         				}else{
         					alert("이미리뷰등록에 참가하셨습니다");
         				}

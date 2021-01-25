@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.pet.command.MyGoodVO;
 import com.pet.command.StarBoardReplyVO;
 import com.pet.command.StarBoardVO;
 import com.pet.common.util.Criteria;
@@ -20,4 +21,8 @@ public interface StarBoardMapper {
 	public int getTotal();
 	public ArrayList<StarBoardVO> getcate(@Param("cate") String cate ,@Param("cri") Criteria cri);
 	public int cateToal(String cate);
+	public StarBoardVO getStarReset(int bno);
+	public int starReplyTotal(int bno);
+	public String getUserPw(StarBoardReplyVO vo);
+	public ArrayList<MyGoodVO> getMygood(String user_id);
 }

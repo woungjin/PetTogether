@@ -20,7 +20,7 @@ public interface FreeBoardMapper {
 	public ArrayList<StarVO> getStar(int bno);
 	public int UpdateStarBoard(@Param("bno") int bno ,@Param("sum")  int sum ,@Param("avg") int avg);
 	public int userCheck(StarVO vo);
-	
+	public String getUserPw(ReviewReplyVO vo);
 	public int recomInsert(RecomVO vo);
 	
 	
@@ -48,5 +48,6 @@ public interface FreeBoardMapper {
 	public int reviewReplyUpdate(ReviewReplyVO vo);
 	public int reviewReplyDelete(ReviewReplyVO vo);
 	public int pwCheck(ReviewReplyVO vo);
+	public int replyTotal(int review_bno);
 	
 }

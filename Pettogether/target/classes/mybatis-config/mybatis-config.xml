@@ -6,7 +6,7 @@
 <!-- mapper에서 사용할 객체의 경로를 변수로 생성한다 -->
 <configuration>
  	<typeAliases>
-			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO"/>
+ 		
 
 	 		<typeAlias type="com.pet.command.ReviewRegistVO" alias="ReviewRegistVO"/>
 	 		<typeAlias type="com.pet.command.RecomVO" alias="RecomVO"/>
@@ -15,6 +15,7 @@
 			<typeAlias type="com.pet.command.StarBoardReplyVO" alias="StarBoardReplyVO" />
 			<typeAlias type="com.pet.command.StarBoardVO" alias="StarBoardVO" />
 			<typeAlias type="com.pet.command.StarVO" alias="StarVO" />
+			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO" />
 
 
 

@@ -287,22 +287,29 @@ public class FreeBoardController {
 	@ResponseBody
 	@PostMapping("/reviewReplyRegist")
 	public int reviewReplyRegist(@RequestBody ReviewReplyVO vo) {
-	
-		
+		System.out.println("리뷰 댓들 " + vo.toString());
+		String pw = freeBoardService.getUserPw(vo);
+		System.out.println("pw : " + pw);
+		vo.setReview_reply_pw(pw);
 		return freeBoardService.reviewRplyInsert(vo);
 	}
 	
 	// ==============================================리뷰댓글 가져오기 ==========================================
 	@ResponseBody
 	@GetMapping("/getReviewReply/{bno}/{reviewPageNum}")
-	public ArrayList<ReviewReplyVO> getReviewReply(@PathVariable("bno") int review_bno,
+	public  HashMap<String, Object> getReviewReply(@PathVariable("bno") int review_bno,
 													@PathVariable("reviewPageNum") int reviewPageNum) {
 		
 		System.out.println(reviewPageNum);
-		Criteria cri = new Criteria(reviewPageNum , 10);
+		Criteria cri = new Criteria(reviewPageNum , 8);
 		ArrayList<ReviewReplyVO> list =  freeBoardService.getReviewReply(review_bno ,cri);
+		int total = freeBoardService.replyTotal(review_bno);
 		
-		return list;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("total",total);
+		return map;
 	}
 	
 	// ================================= 리뷰 댓글 수정하기 ===========================================

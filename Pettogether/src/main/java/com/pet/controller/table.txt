@@ -87,6 +87,8 @@ create table starboardreply(
 );
 
 
+create sequence starboard_reply_seq start with 1 increment by 1 nocache;
+
 
 alter table starboard add constraint starboard_pk primary key (bno);
 create sequence starboard_seq start with 1 increment by 1 nocache;
@@ -133,6 +135,9 @@ create table reviewreply(
     updatedate date default sysdate
     
 );
+
+
+create sequence reviewreply_seq start with 1 increment by 1 nocache;
 
 -- 별점 들록 테이블 ----------------
 create table starpoint(
