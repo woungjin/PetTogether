@@ -78,7 +78,24 @@ public class UserController {
 		return "user/userMypageDelete";
 	}
 
-
+	// 아이디 찾기 페이지
+	@RequestMapping("userFindId")
+	public String userFindId() {
+		return "user/userFindId";
+	}
+	
+	// 비밀번호 찾기 페이지
+	@RequestMapping("userFindPw")
+	public String userFindPw() {
+		return "user/userFindPw";
+	}
+	
+	// 비밀번호 찾은 후 새 비밀번호 입력 페이지
+	@RequestMapping("userUpdatePw")
+	public String userUpdatePw() {
+		return "user/userUpdatePw";
+	}
+	
 	@ResponseBody	// 응답요청을 뷰 리졸버가 아닌 요청이 들어온곳으로 response header정보를 만들어서 보내준다.
 	@RequestMapping(value="/idCheck",method=RequestMethod.POST)
 	public int idCheck(@RequestBody UserVO vo) {		
@@ -114,7 +131,7 @@ public class UserController {
 			
 			
 			if(result == null) {
-				model.addAttribute("msg", "아이디 비밀번호를 확인하세요");
+				model.addAttribute("login", "아이디 비밀번호를 확인하세요");
 				return "user/userLogin";	// 다시 로그인 화면
 			}else {
 				// 세션에 회원정보 저장
@@ -192,5 +209,59 @@ public class UserController {
 
 	}
 
+	// 아이디 찾기
+	@RequestMapping(value="/findId", method = RequestMethod.POST)
+	public String userFindId(UserVO vo,RedirectAttributes RA,HttpSession session) {
+		
+		System.out.println(vo+"id 찾기");
+		UserVO result = userService.findId(vo);
+		
+		if(result == null) {
+			RA.addFlashAttribute("msg", "본인확인 실패.다시 확인하세요.");
+			return "redirect:/user/userFindId";
+		}else {
+			String userId = result.getId();
+			RA.addFlashAttribute("userId", userId);
+			return "redirect:/user/userLogin";
+		}
+		
+	}
+	
+	// 비밀번호 찾기
+	@RequestMapping(value="/findPw", method = RequestMethod.POST)
+	public String userFindPw(UserVO vo,RedirectAttributes RA,HttpSession session) {
+		
+		UserVO result = userService.findPw(vo);
+		System.out.println(result);
+		if(result == null) {
+			RA.addFlashAttribute("msg", "인증실패.다시 시도해주세요");
+			return "redirect:/user/userFindPw";
+		}else {
+			String userId = result.getId();
+			RA.addFlashAttribute("userId", userId);
+			return "redirect:/user/userUpdatePw";
+		}
+	}
+	
+	// 새 비밀번호로 업데이트
+	@RequestMapping(value="/updatePw",method = RequestMethod.POST)
+	public String userUpdatePw(UserVO vo,RedirectAttributes RA,Model model) {
+		
+		String userId = vo.getId();
+		int result = userService.updatePw(vo);
+		
+		if(result == 1) {
+			RA.addFlashAttribute("msg", "비밀번호가 변경되었습니다.");
+			model.addAttribute("userId", userId);
+			return "redirect:/user/userLogin";
+		}else {
+			RA.addFlashAttribute("msg", "변경실패.다시 시도해주세요");
+			return "redirect:/user/userFindPw";
+		}
+		
+	}
 
+	
+	
+	
 }

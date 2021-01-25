@@ -12,5 +12,7 @@ public interface UserService {
 //	public UserVO getInfo(String userId);
 	public int update(UserVO vo);
 	public int delete(UserVO vo);
-
+	public UserVO findId(UserVO vo);
+	public UserVO findPw(UserVO vo);
+	public int updatePw(UserVO vo);
 }

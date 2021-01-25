@@ -14,7 +14,7 @@
                         	<span id="msg"></span>
 
                             <label for="id">아이디</label>
-                            <input type="text" class="form-control" name="id" id="id" placeholder="아이디">
+                            <input type="text" class="form-control" name="id" id="id" placeholder="아이디" value="${userId }">
                          </div>
                          <div class="form-group"><!--사용자클래스선언-->
                             <label for="id">비밀번호</label>
@@ -24,7 +24,9 @@
                             <button type="submit" class="btn btn-info btn-block" id="loginBtn">로그인</button>
                             <button type="button" class="btn btn-primary btn-block" onclick="location.href='userJoin'">회원가입</button>
                          </div>
-                    </form>                
+	                    	<a href="../user/userFindId">아이디 찾기 </a>||
+	                    	<a href="../user/userFindPw">비밀번호 찾기</a>                              
+                    </form>
                 </div>
             </div>
         </div>
