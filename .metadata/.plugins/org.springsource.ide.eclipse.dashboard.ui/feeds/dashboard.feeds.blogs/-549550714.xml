@@ -5,7 +5,143 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-22T03:26:00Z</updated>
+  <updated>2021-01-25T11:00:00Z</updated>
+  <entry>
+    <title>YMNNALFT:  Websockets</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/25/ymnnalft-websockets" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-12-30:4322</id>
+    <updated>2021-01-25T11:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
+&lt;p&gt;The open web has long extended hope to those who wanted a commodity platform to build and deploy services and applications at a large scale. We knew that the web could be compelling once a few things were improved. People could deliver rich clients that would be upgradeable with the refresh of a browser page. They could deliver data-and-multimedia-centric, immersive experiences. We knew that people could do these things if they only had the right paradigm for building web sites and services. But they say that you can&amp;rsquo;t appreciate the sweet without the sour, so the community embarked on a mission to find the &lt;em&gt;absolute worst&lt;/em&gt; approach to building websites and services, and that, kids, is the story of how we got PHP. &lt;/p&gt;
+&lt;p&gt;The End.&lt;br/&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Alright, so there&amp;rsquo;s a &lt;em&gt;little&lt;/em&gt; more to it. In the beginning, there were severe limitations in both the backend and in the client. The problems with the client endured a lot longer than the issues with the backend, however. By the early 2000s, every significant programming language community could build HTTP services, but the client&amp;rsquo;s abilities stagnated. (It was almost like some major force was acting in bad faith to keep the open web from advancing. But why? And who? It&amp;rsquo;s a mystery, one I suppose we&amp;rsquo;ll never resolve&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;The open web evolved on its own. It HTTP &lt;code&gt;PATCH&lt;/code&gt; &amp;rsquo;ed itself. In the late 90s, we got PayPal to make secure commerce possible. In the early 2000s, we got the constraint on HTTP called REST (which stands for Really Easy Service Transactions, or was it REcent Software Trend? No. That&amp;rsquo;s not right. Representational State Transfer! That sounds right&amp;hellip;). And then &amp;ldquo;Ajax&amp;rdquo; (no, &lt;em&gt;not&lt;/em&gt; the cleaning product) &lt;a href="http://www.jjg.net/about/"&gt;arrived&lt;/a&gt;, which allowed the client to make requests of the service in-situ, without forcing another HTTP roundtrip to the service to fetch a new page. Lovely. Then we spent an agonizing five years or so trying to find ways to push data from the server to the client instead of sending data to a client in response to the client&amp;rsquo;s request. &lt;/p&gt;
+&lt;p&gt;And we did try &lt;em&gt;everything&lt;/em&gt;. There were kludges upon kludges. (Here&amp;rsquo;s a fun fact: janky JavaScript existed &lt;em&gt;years&lt;/em&gt; before Node.js arrived!) Eventually, in 2011, we got a standard that all the HTTP browser vendors and HTTP server vendors could support consistently, and that solved 70% of our needs: &lt;a href="https://en.wikipedia.org/wiki/WebSocket"&gt;WebSockets&lt;/a&gt;. Websockets are awesome! They&amp;rsquo;re the best way to introduce asynchronous communication to a browser-based application. They&amp;rsquo;re fast, they&amp;rsquo;re lightweight and easy to implement. &lt;/p&gt;
+&lt;p&gt;While there are many frameworks that you can use to implement WebSocket endpoints, you needn&amp;rsquo;t look any further than Spring as it&amp;rsquo;s supported out of the box for both reactive and non-reactive services. Let&amp;rsquo;s look at a service example using Spring Webflux, the reactive web runtime. &lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll need the following dependencies.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reactive Web on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-webflux&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s what I put into my &lt;code&gt;application.properties&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.main.web-application-type=reactive&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.websockets.service;&#xD;
+&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.context.annotation.Bean;&#xD;
+import org.springframework.web.reactive.HandlerMapping;&#xD;
+import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;&#xD;
+import org.springframework.web.reactive.socket.WebSocketHandler;&#xD;
+import org.springframework.web.reactive.socket.WebSocketMessage;&#xD;
+import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;&#xD;
+import reactor.core.publisher.Flux;&#xD;
+&#xD;
+import java.util.Map;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class BootifulApplication {&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		System.setProperty(&amp;quot;spring.profiles.active&amp;quot;, &amp;quot;wsserver&amp;quot;);&#xD;
+		SpringApplication.run(BootifulApplication.class, args);&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	SimpleUrlHandlerMapping greetingsHm() {&#xD;
+		return new SimpleUrlHandlerMapping(Map.of(&amp;quot;/ws/greetings&amp;quot;, greetingsWsh()), 10);&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	WebSocketHandler greetingsWsh() {&#xD;
+		return session -&amp;gt; {&#xD;
+&#xD;
+			Flux&amp;lt;WebSocketMessage&amp;gt; out = session.receive().map(WebSocketMessage::getPayloadAsText)&#xD;
+					.flatMap(name -&amp;gt; Flux.just(&amp;quot;Hi, &amp;quot; + name).map(session::textMessage));&#xD;
+&#xD;
+			return session.send(out);&#xD;
+		};&#xD;
+	}&#xD;
+&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;SimpleUrlHandlerMapping&lt;/code&gt; maps the &lt;code&gt;WebSocketHandler&lt;/code&gt; to an HTTP URI. The &lt;code&gt;WebSocketHandler&lt;/code&gt; provides the reactive WebSocket endpoint logic, turning the incoming payload (a name) into a greeting (&lt;code&gt;Hi, NAME!&lt;/code&gt;) to be sent to the client.&lt;/p&gt;
+&lt;p&gt;Now, I&amp;rsquo;m going to do something that I would not normally do. If there were &lt;em&gt;any&lt;/em&gt; other way, friends, I would surely prefer that alternative to this rather unbecoming way forward. I would not do this in polite company, but I feel there&amp;rsquo;s no other way to get this done, no other way to demonstrate how trivial it can be to communicate with a WebSocket endpoint. I do not do this lightly. &lt;/p&gt;
+&lt;p&gt;I.. am going to use JavaScript:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;    window.addEventListener(&amp;#39;load&amp;#39;, () =&amp;gt; {&#xD;
+        const ws = new WebSocket(&amp;#39;ws://localhost:8080/ws/greetings&amp;#39;)&#xD;
+        ws.addEventListener(&amp;#39;open&amp;#39;, () =&amp;gt; {&#xD;
+            ws.send(&amp;#39;JavaScript Fans&amp;#39;)&#xD;
+        })&#xD;
+        ws.addEventListener(&amp;#39;message&amp;#39;, (message) =&amp;gt; {&#xD;
+            console.log(message.data)&#xD;
+        })&#xD;
+    })&#xD;
+&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the example, we set up a &lt;code&gt;WebSocket&lt;/code&gt; object in JavaScript, register a callback to send data on the WebSocket when it was finally ready, and register another callback for any replies that arrive. Go to your browser&amp;rsquo;s &lt;em&gt;Developer Tools&lt;/em&gt; (instructions vary for each browser, but you might try &lt;code&gt;OPTION&lt;/code&gt; + &lt;code&gt;CMD&lt;/code&gt; + &lt;code&gt;I&lt;/code&gt; if you&amp;rsquo;re on a Mac and using Chrome or Firefox) and then choose &lt;code&gt;Console&lt;/code&gt;. You&amp;rsquo;ll see the response from the WebSocket endpoint there. &lt;/p&gt;
+&lt;p&gt;With more code, we can also talk to that service using the Spring &lt;code&gt;WebSocketClient&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll need the following dependencies.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reactive Web on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-webflux&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.websockets.client;&#xD;
+&#xD;
+import lombok.SneakyThrows;&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
+import org.springframework.context.ApplicationListener;&#xD;
+import org.springframework.context.annotation.Bean;&#xD;
+import org.springframework.web.reactive.socket.WebSocketMessage;&#xD;
+import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;&#xD;
+import org.springframework.web.reactive.socket.client.WebSocketClient;&#xD;
+import reactor.core.publisher.Mono;&#xD;
+&#xD;
+import java.net.URI;&#xD;
+&#xD;
+@SpringBootApplication&#xD;
+public class BootifulApplication {&#xD;
+&#xD;
+	@SneakyThrows&#xD;
+	public static void main(String[] args) {&#xD;
+		System.setProperty(&amp;quot;spring.profiles.active&amp;quot;, &amp;quot;wsclient&amp;quot;);&#xD;
+		SpringApplication.run(BootifulApplication.class, args);&#xD;
+		Thread.sleep(5_000);&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	WebSocketClient webSocketClient() {&#xD;
+		return new ReactorNettyWebSocketClient();&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; ready(WebSocketClient client) {&#xD;
+		return event -&amp;gt; client.execute(URI.create(&amp;quot;ws://localhost:8080/ws/greetings&amp;quot;), webSocketSession -&amp;gt; {&#xD;
+			WebSocketMessage world = webSocketSession.textMessage(&amp;quot;Spring Fans&amp;quot;);&#xD;
+			return webSocketSession.send(Mono.just(world))&#xD;
+					.thenMany(webSocketSession.receive().map(WebSocketMessage::getPayloadAsText).log()).then();&#xD;
+		})//&#xD;
+				.subscribe();&#xD;
+	}&#xD;
+&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s what I put into my &lt;code&gt;application.properties&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.main.web-application-type=none
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WebSockets make our browser-based clients more lively. I quite prefer RSocket for service-to-service communication, however. &lt;/p&gt;
+&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast - Spring Tools lead Martin Lippert on sustainable software</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/21/a-bootiful-podcast-spring-tools-lead-martin-lippert-on-sustainable-software" />
@@ -1136,88 +1272,6 @@ Closes #123
   &lt;li&gt;Chat with Trustin in the &lt;a href="https://armeria.dev/s/slack"&gt;Armeria Slack workspace&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;iframe title="Netty and Armeria founder Trustin Lee" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/4r7nq-f6fcf5?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>YMNNALFT: Reactive Dataflow with Project Reactor</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/06/ymnnalft-reactive-dataflow-with-project-reactor" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-30:4317</id>
-    <updated>2021-01-05T23:00:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
-&lt;p&gt;And it&amp;rsquo;s a good thing we&amp;rsquo;re covering some of these complexity-reducing gems, too, you see, because the world is a confusing, complex, and dizzying place, and nowhere is that more evident than in the world of reactive data stream composition. Life comes at you fast and data, even more so. Data originates from everything (network services, databases, in-memory computation, threaded code, etc.). Data comes in many different sizes and shapes (one record, ten records, infinite records, etc.). Data comes in different volumes, starving or overwhelming its consumers. Data arrives at different cadences and times: now, later, all at once, periodically, etc. It&amp;rsquo;s much more natural to talk about data that&amp;rsquo;s already in memory, in hand, so to speak, than data that hasn&amp;rsquo;t yet materialized. And it&amp;rsquo;s more natural to talk about data in the single-threaded case than to deal with it in the concurrent case. &lt;/p&gt;
-&lt;img src = "https://media1.tenor.com/images/e6494f3096cf60a3832e0775936bf9cb/tenor.gif" /&gt;
-&lt;p&gt;It&amp;rsquo;s confusing to think about! Historically, it&amp;rsquo;s been even more tedious to address the different data dimensions in code. That is, until reactive programming.&lt;/p&gt;
-&lt;p&gt;Reactive programming offers a unified world view, allowing us to think about the messy world of (potentially asynchronous and potentially concurrent) integration in terms of an easy to use DSL with operators. The operators support the definition and composition of reactive stream data flow pipelines. Reactive programming offers a structured concurrency paradigm, greatly simplifying writing safe, scalable, resource-efficient code. &lt;/p&gt;
-&lt;p&gt;There are some great libraries out there (like &lt;a href="https://github.com/ReactiveX/RxJava"&gt;RxJava&lt;/a&gt; and &lt;a href="https://doc.akka.io/docs/akka/current/stream/index.html"&gt;Akka Streams&lt;/a&gt;) that work in much the same way. If you haven&amp;rsquo;t got a particular one in mind but want a world-class option and are already using Spring, then you might as well use &lt;a href="http://ProjectReactor.io"&gt;Project Reactor&lt;/a&gt;. It&amp;rsquo;s included in the box!&lt;/p&gt;
-&lt;p&gt;The Spring team developed Project Reactor to support the reactive efforts in the Spring ecosystem. You don&amp;rsquo;t need Spring to use Project Reactor, but all the reactive APIs in the Spring ecosystem build on Project Reactor for the dataflow options. Microsoft &lt;a href="https://azure.github.io/azure-sdk/java_introduction.html#async-service-clients"&gt;mandates&lt;/a&gt; that all their SDK clients and APIs be created using &lt;a href="https://devblogs.microsoft.com/azure-sdk/async-programming-with-project-reactor/"&gt;Project Reactor&lt;/a&gt;. &lt;a href="https://github.com/rsocket/rsocket-java"&gt;Facebook&lt;/a&gt; developed the Java client for their RSocket protocol using Project Reactor. Project Reactor is mature - it&amp;rsquo;s been around since 2010! - but growing new features all the time. If you&amp;rsquo;re &lt;em&gt;still&lt;/em&gt; not getting what you need, it works flawlessly with other reactive data flow libraries through the interoperable &lt;a href="http://www.reactive-streams.org/"&gt;Reactive Streams&lt;/a&gt; types. &lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s look at an example of how Project Reactor makes short work of the composition of different data flow sources and sinks and all but eliminates any manual threading code. This is a &lt;em&gt;huge&lt;/em&gt; win. Remember: only one person &lt;em&gt;truly&lt;/em&gt; understands how to write safe, useful, multithreaded Java code&amp;hellip;. and it&amp;rsquo;s &lt;em&gt;not&lt;/em&gt; you! I don&amp;rsquo;t know &lt;em&gt;who&lt;/em&gt; it is. It doesn&amp;rsquo;t matter. Don&amp;rsquo;t tempt fate; let Project Reactor help. &lt;/p&gt;
-&lt;p&gt;You&amp;rsquo;ll need the following dependencies. &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Reactive Web on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-webflux&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Now, let&amp;rsquo;s look at a sample. This example demonstrates how easy it is to normalize processing given disparate kinds of data. In this example, we look at a Java 8 &lt;code&gt;java.util.Stream&amp;lt;T?&amp;gt;&lt;/code&gt; and a &lt;code&gt;CompletableFuture&amp;lt;T&amp;gt;&lt;/code&gt;, but the sky&amp;rsquo;s the limit. In most reactive applications, you won&amp;rsquo;t necessarily be in the business of converting non-reactive types to reactive types (like &lt;code&gt;Flux&amp;lt;T&amp;gt;&lt;/code&gt; or &lt;code&gt;Mono&amp;lt;T&amp;gt;&lt;/code&gt;). Those examples would be even more straightforward. This example assumes that you&amp;rsquo;ve got two data sources and need to compose them. &lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.rx;&#xD;
-&#xD;
-import org.springframework.boot.SpringApplication;&#xD;
-import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
-import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
-import org.springframework.context.ApplicationListener;&#xD;
-import org.springframework.context.annotation.Bean;&#xD;
-import reactor.core.publisher.Flux;&#xD;
-import reactor.core.publisher.Mono;&#xD;
-&#xD;
-import java.util.concurrent.CompletableFuture;&#xD;
-import java.util.stream.Stream;&#xD;
-&#xD;
-@SpringBootApplication&#xD;
-public class BootifulApplication {&#xD;
-&#xD;
-	CompletableFuture&amp;lt;String&amp;gt; returnCompletableFuture(int counter) {&#xD;
-		return CompletableFuture.supplyAsync(() -&amp;gt; {&#xD;
-			var start = System.currentTimeMillis();&#xD;
-			try {&#xD;
-				Thread.sleep((long) (Math.max((Math.random() * 10), 5) * 1000));&#xD;
-			}&#xD;
-			catch (InterruptedException e) {&#xD;
-				// threads smdh&#xD;
-			}&#xD;
-			var stop = System.currentTimeMillis();&#xD;
-			var delta = stop - start;&#xD;
-			return &amp;quot;(&amp;quot; + Thread.currentThread().getName() + &amp;quot;) Hello, #&amp;quot; + counter + &amp;quot;! (after &amp;quot; + delta + &amp;quot; ms.)&amp;quot;;&#xD;
-		});&#xD;
-	}&#xD;
-&#xD;
-	Stream&amp;lt;Integer&amp;gt; returnStream() {&#xD;
-		return Stream.iterate(0, integer -&amp;gt; integer + 1);&#xD;
-	}&#xD;
-&#xD;
-	@Bean&#xD;
-	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; begin() {&#xD;
-		return event -&amp;gt; {&#xD;
-&#xD;
-			Flux&amp;lt;String&amp;gt; count = Flux//&#xD;
-					.fromStream(this.returnStream()) //&#xD;
-					.take(10) //&#xD;
-					.flatMap(c -&amp;gt; Flux.zip(Mono.just(c), Mono.fromCompletionStage(this.returnCompletableFuture(c)))) //&#xD;
-					.map(tuple -&amp;gt; tuple.getT2() + &amp;quot; #&amp;quot; + tuple.getT1()); //&#xD;
-&#xD;
-			count.subscribe(System.out::println);&#xD;
-		};&#xD;
-	}&#xD;
-&#xD;
-	public static void main(String[] args) {&#xD;
-		SpringApplication.run(BootifulApplication.class, args);&#xD;
-	}&#xD;
-&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Do you know what else you get with Reactor? Operators supporting retries, error handling, timeouts, etc., all of which you would also farm out to yet another third-party library if they weren&amp;rsquo;t included in Project Reactor. Win-win. &lt;/p&gt;
-&lt;p&gt;I could go on and on about the opportunities that present themselves given something like Project Reactor. Indeed, I &lt;em&gt;did&lt;/em&gt;. Check out my book &lt;a href="http://ReactiveSpring.io"&gt;&lt;em&gt;Reactive Spring&lt;/em&gt;&lt;/a&gt; for (a lot) more. &lt;/p&gt;
-&lt;p&gt;Well? Did you have fun, and maybe learn something? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt; later this week, so be sure not to miss that. I&amp;rsquo;ve got installments on, among other things, Easy RPC, The Garden of &lt;code&gt;*Utils&lt;/code&gt; objects, Dimensional Metrics with Micrometer, and many, many more topics. &lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
