@@ -79,6 +79,7 @@ public class StarBoardController {
 	public String cateFreeList(Model model , Criteria cri ,String cate , HttpSession session) {
 
 		System.out.println("cate : "  + cate);
+		System.out.println(cri.toString());
 		ArrayList<StarBoardVO> list = starBoardService.getcate(cate, cri);
 		System.out.println(list.toString());
 		int cateTotal = starBoardService.cateToal(cate);

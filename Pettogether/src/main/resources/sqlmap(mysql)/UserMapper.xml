@@ -7,17 +7,17 @@
   
    <!-- 아이디 중복체크 -->
 	  <select id="idCheck" resultType="int">
-	  	select count(*) as result from users where id = #{id}
+	  	select count(*) as result from USERS where id = #{id}
 	  </select>
   
 	  <insert id="join">
-	  	insert into users(id, pw, name, phone1, phone2, email1, email2, basicAdd, detailAdd, zipNum, quiz, answer, petTag)
+	  	insert into USERS(id, pw, name, phone1, phone2, email1, email2, basicAdd, detailAdd, zipNum, quiz, answer, petTag)
 	  	values(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},#{answer},#{petTag})
 	  </insert>
 	  
 
 	  <select id="login" resultType="UserVO">
-	  	select * from users where id = #{id} and pw = #{pw}
+	  	select * from USERS where id = #{id} and pw = #{pw}
 	  </select>
 	  
 	  <!-- 마이페이지 회원정보 -->
@@ -42,7 +42,7 @@
 	</select> -->
   
   	<update id="update">
-  		update users set 
+  		update USERS set 
   		name = #{name}, 
   		pw = #{pw}, 
   		email1 = #{email1}, 
@@ -60,11 +60,11 @@
   	
 
   	<delete id="delete">
-  		delete from users where id = #{id} and pw = #{pw}
+  		delete from USERS where id = #{id} and pw = #{pw}
   	</delete>
 
 	  <select id="userLogin" resultType="UserVO">
-	  	select * from users where id = #{id} and pw = #{pw}
+	  	select * from USERS where id = #{id} and pw = #{pw}
 	  </select>
   
 
