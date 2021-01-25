@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 1075760701.index
 3676268747.index
@@ -11,3 +12,7 @@ INDEX VERSION 1.4+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.w
 731924712.index
 661311277.index
 2240305686.index
+=======
+INDEX VERSION 1.4+D:\java\project\PetTogether\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3041138483.index
+>>>>>>> master
