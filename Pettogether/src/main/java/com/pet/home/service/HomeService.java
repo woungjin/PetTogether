@@ -20,5 +20,5 @@ public interface HomeService {
 	
 	public ArrayList<StarBoardVO> getRandom();
 
-	
+	public ArrayList<StarBoardVO> getAll();
 }

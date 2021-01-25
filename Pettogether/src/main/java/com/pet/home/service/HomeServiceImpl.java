@@ -74,6 +74,12 @@ public class HomeServiceImpl implements HomeService {
 		return homeMapper.getRandom();
 	}
 
+	@Override
+	public ArrayList<StarBoardVO> getAll() {
+		
+		return homeMapper.getAll();
+	}
+
 
 
 
