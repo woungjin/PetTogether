@@ -99,6 +99,18 @@
 		where m.user_id = #{user_Id}
 		order by m.bno asc
   	</select>  	
+  	
+  	<select id="myReview" resultType="MyReviewVO">
+  		select review_bno,
+  				r.bno,
+  				u.id,
+  				r.content
+  			from users u left outer join reviewboard r
+  			on u.id = r.writer
+  			where u.id = #{id}
+  			order by r.bno asc
+  	
+  	</select>
   
   
   </mapper>

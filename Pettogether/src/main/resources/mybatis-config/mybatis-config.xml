@@ -17,6 +17,7 @@
 			<typeAlias type="com.pet.command.StarVO" alias="StarVO" />
 			<typeAlias type="com.pet.command.HeartVO" alias="HeartVO" />
 			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO" />
+			<typeAlias type="com.pet.command.MyReviewVO" alias="MyReviewVO" />
 
 
 

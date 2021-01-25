@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pet.command.HeartVO;
+import com.pet.command.MyReviewVO;
 import com.pet.command.UserVO;
 import com.pet.user.service.UserService;
 
@@ -71,6 +72,21 @@ public class UserController {
 			model.addAttribute("heart", userHeart);
 			
 		return "user/userMypageHeart";
+	}
+	
+	@RequestMapping("userMypageReview")
+	public String usermypageReview(HttpSession session, Model model) {
+		
+		UserVO result = (UserVO) session.getAttribute("userVO");
+		System.out.println(result + "내가쓴리뷰");
+		String userId = result.getId();
+		System.out.println(userId);
+		ArrayList<MyReviewVO> userReview = userService.myReview(userId);
+		
+		System.out.println(userReview);
+		model.addAttribute("myReview", userReview);
+		
+		return "user/userMypageReview";
 	}
 
 	// 마이페이지 안에서 리뷰 글 부분

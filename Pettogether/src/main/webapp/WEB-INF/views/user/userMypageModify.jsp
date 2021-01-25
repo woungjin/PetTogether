@@ -76,7 +76,7 @@
                                         	<div class="form-group form-input-group">
                                             	<div class="title text-middle">이름</div>
                                            	 	<div class="input-wrapper text-middle">
-                                                	<input type="text" class="form-input" value='${sessionScope.userVO.name}' name="name">
+                                                	<input type="text" class="form-input" value='${sessionScope.userVO.name}' name="name" id="name">
                                             	</div>
                                             	<div class="input-wrapper text-middle">
                                                 	<div class="row">
@@ -88,7 +88,7 @@
                                             <div class="form-group">
                                                 <div class="title text-middle">이메일</div>
                                                 <div class="input-wrapper text-middle">
-                                                    <input class="form-input"  value="${sessionScope.userVO.email1}" name="email1">@
+                                                    <input class="form-input"  value="${sessionScope.userVO.email1}" name="email1" id="phone1">@
                                                     <select class="form-input" name="email2">
                                                         <option ${sessionScope.userVO.email2 == '@naver.com' ? 'selected' : ''}>naver.com</option>
                                                         <option ${sessionScope.userVO.email2 == '@gmail.com' ? 'selected' : ''}>gmail.com</option>
@@ -110,7 +110,7 @@
 												        <option>017</option>
 												        <option>018</option>
 												    </select>
-										    		<input class="form-input" value="${sessionScope.userVO.phone2}" name="phone2">
+										    		<input class="form-input" value="${sessionScope.userVO.phone2}" name="phone2" id="phone2">
 										    		<span id="msgPhone"></span>
 										
 										      	</div>										      
@@ -265,21 +265,20 @@
   /*회원정보 수정*/
   $("#userUpdate").click(function(){
   	
-  	if($("#pw").val() ==''||$("#pw").val() != $("#pwCheck").val() ){
-  		alert("비밀번호 규칙을 확인하세요");
-  		$("#pw").focus();
-  		return;
-  	}else if($("#answer").val()==''){
-		alert("질문 및 답변은 필수입니다.");
-		$("#answer").focus();
-		return;
-	}else if($("#name").val()==''){
+	if($("#name").val()==''){
 		alert("이름은 필수입니다.");
 		$("#name").focus();
 		return;
 	}else if($("#phone2").val()==''){
 		alert("연락처 입력은 필수입니다.");
 		$("#phone2").focus();
+		return;
+	}else if($("#pw").val() ==''||$("#pw").val() != $("#pwCheck").val() ){
+  		alert("비밀번호 규칙을 확인하세요");
+  		return;
+  	}else if($("#answer").val()==''){
+		alert("질문 및 답변은 필수입니다.");
+		$("#answer").focus();
 		return;
 	}else{
   		$("#updateForm").submit();	// 전송

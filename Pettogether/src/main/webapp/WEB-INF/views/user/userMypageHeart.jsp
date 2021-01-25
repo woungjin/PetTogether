@@ -56,18 +56,19 @@
 
 		</div>
 		<div class="traveler-body">
-			<div class="my-point-box box clearfix">
-				<c:forEach var="heart" items="${heart}">
-					<div class="innerbox gray-inner">
-						<div class="item text-md">
-							<a href="${pageContext.request.contextPath }/starBoard/freeDetail?bno=${heart.bno}">
-								${heart.user_id }님이 찜! 한 게시물 ${heart.title } / ${heart.address } / 별점 ${heart.review_avg }
-							</a>
-						</div>					
-					</div>
-					<br/>
-				</c:forEach>
-			</div>
+				<div class="my-point-box box clearfix">
+						<c:forEach var="heart" items="${review}">
+							<div class="innerbox gray-inner">
+								<div class="item text-md">
+									<a href="${pageContext.request.contextPath }/starBoard/freeDetail?bno=${heart.bno}">
+										${heart.user_id }님이 찜! 한 게시물 ${heart.title } / ${heart.address } / 별점 ${heart.review_avg }
+									</a>
+								</div>					
+							</div>
+							<br/>
+						</c:forEach>
+				</div>
+					
 			<div class="notice-container">
 				<div class="text">
 					• 적립된 포인트는 상품 구매 시 현금처럼 사용할 수 있습니다.<br>• 단, 마이리얼트립 내 항공권 구매 또는
