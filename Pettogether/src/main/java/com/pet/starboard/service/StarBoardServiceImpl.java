@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pet.command.MyGoodVO;
 import com.pet.command.StarBoardReplyVO;
 import com.pet.command.StarBoardVO;
 import com.pet.common.util.Criteria;
@@ -79,6 +80,35 @@ public class StarBoardServiceImpl implements StarBoardService{
 	public int cateToal(String cate) {
 		System.out.println("cate :값 " + cate);
 		return starBoardMapper.cateToal(cate);
+	}
+
+
+	@Override
+	public StarBoardVO getStarReset(int bno) {
+		return starBoardMapper.getStarReset(bno);
+	}
+
+
+	@Override
+	public int starReplyTotal(int bno) {
+		System.out.println(bno+"111111" );
+
+		int result = starBoardMapper.starReplyTotal(bno);
+		System.out.println("1111"+"돌아옴?");
+		return result;
+	}
+
+
+	@Override
+	public String getUserPw(StarBoardReplyVO vo) {
+		
+		return starBoardMapper.getUserPw(vo);
+	}
+
+
+	@Override
+	public ArrayList<MyGoodVO> getMygood(String user_id) {
+		return starBoardMapper.getMygood(user_id);
 	}
 
 	

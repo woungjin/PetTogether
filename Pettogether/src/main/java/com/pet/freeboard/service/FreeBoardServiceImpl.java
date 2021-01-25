@@ -141,6 +141,17 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	}
 
 
+	public int replyTotal(int review_bno) {
+		return freeBoardMapper.replyTotal(review_bno);
+	}
+
+
+	@Override
+	public String getUserPw(ReviewReplyVO vo) {
+		return freeBoardMapper.getUserPw(vo);
+	}
+
+
 	
 	
 	

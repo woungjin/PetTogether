@@ -71,6 +71,23 @@ select * from starboard where category = #{cate}  order by bno desc) a ) where r
 	<select id="cateToal" resultType="int">
 		select count(*) as total from starboard where category = #{cate}
 	</select>
+	
+	<select id="getStarReset" resultType="StarBoardVO">
+		select * from starboard where bno = #{bno}
+	</select>
+
+	<select id="starReplyTotal"  resultType="int">
+		select count(*) as total from starboardreply where bno = #{bno}
+	</select>
+
+	<select id="getUserPw" resultType="string">
+		select pw from users where id = #{writer}
+		
+	</select>
+	
+	<select id="getMygood" resultType="MyGoodVO" >
+		select * from mygood where user_id = #{user_id}
+	</select>
 
  </mapper>
 
