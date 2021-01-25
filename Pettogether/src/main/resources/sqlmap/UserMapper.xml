@@ -11,8 +11,13 @@
 	  </select>
   
 	  <insert id="join">
-	  	insert into users(id, pw, name, phone1, phone2, email1, email2, basicAdd, detailAdd, zipNum, quiz, answer, petTag)
-	  	values(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},#{answer},#{petTag})
+	  	insert into users
+	  	(id, pw, name, phone1, phone2, email1, email2, 
+	  	basicAdd, detailAdd, zipNum, quiz, answer, petTag)
+	  	values
+	  	(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},
+	  	#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},
+	  	#{answer},#{petTag})
 	  </insert>
 	  
 
@@ -67,6 +72,19 @@
 	  	select * from users where id = #{id} and pw = #{pw}
 	  </select>
   
-
+	<select id="findId" resultType="UserVO">
+		select * from users where phone1 = #{phone1} and phone2 = #{phone2} and quiz = #{quiz} and answer = #{answer}
+	</select>
+	
+	<select id="findPw" resultType="UserVO">
+		select id from users where id = #{id} and quiz = #{quiz} and answer = #{answer}
+	</select>
+  
+  	<update id = "updatePw">
+  		update users set
+  		pw = #{pw}
+  		where id = #{id}
+  	</update>
+  
   
   </mapper>

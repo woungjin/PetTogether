@@ -49,7 +49,8 @@
 									<option>017</option>
 									<option>018</option>
 								</select> 
-							<input type="text" class="form-control phone2" id="phone2" name="phone2" placeholder="휴대폰번호를 입력하세요.">
+							<input type="text" class="form-control phone2" id="phone2" name="phone2" placeholder="-없이 입력해 주세요" maxlength="8">
+							<span id="msgPhone"></span>
                             </div>
                         </div>
                         
@@ -150,6 +151,7 @@
     				$("#msgId").html("사용가능한 아이디 입니다");
     			}else{	// 아이디 중복인 경우
     				$("#msgId").html("중복된 아이디 입니다")
+    				document.getElementById("id").style.borderColor = "red";
     			}
     		},
     		error: function(status, error){
@@ -174,7 +176,12 @@
     		alert("이름은 필수입니다.");
     		$("#name").focus();
     		return;
-    	}else{
+    	}else if($("#answer").val()==''){
+    		alert("질문 및 답변은 필수입니다.");
+    		$("#answer").focus();
+    		return;
+    	}
+    	else{
     		$("#joinForm").submit();	// 전송
     	}
     })
@@ -211,7 +218,7 @@
 
             } else {
                 document.getElementById("id").style.borderColor = "red";
-                document.getElementById("msgId").innerHTML = "";
+                document.getElementById("msgId").innerHTML = "사용불가능한 아이디입니다";
             }
         }
         /*비밀번호 형식 검사 스크립트*/
@@ -237,6 +244,20 @@
                 document.getElementById("pwCheck").style.borderColor = "red";
                 document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
             }
-        }        
+        }
+        
+        /* 연락처 검사 스크립트 */
+        var phone2 = document.getElementById("phone2");
+        phone2.onkeyup = function(){
+            var regex = /^[0-9+]{8}$/;
+             if(regex.test(document.getElementById("phone2").value )) {
+                document.getElementById("phone2").style.borderColor = "green";
+                document.getElementById("msgPhone").innerHTML = "";
+            } else {
+                document.getElementById("phone2").style.borderColor = "red";
+                document.getElementById("msgPhone").innerHTML = "8자리 입력해주세요";
+            }
+        }
+        
     </script>
 
