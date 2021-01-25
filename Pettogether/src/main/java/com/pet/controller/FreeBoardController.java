@@ -192,7 +192,9 @@ public class FreeBoardController {
 			System.out.println(fileLoca);
 			
 			// 2. 저장할폴더
-			String uploadPath = "D:\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
+			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
 			System.out.println(1);
 			File folder = new File(uploadPath);
 			if(!folder.exists()) {
@@ -210,7 +212,7 @@ public class FreeBoardController {
 			
 			System.out.println("=================");
 			System.out.println("저장할 path : " + uploadPath);
-			System.out.println("파일실젱름 : " + fileRealName);
+			System.out.println("파일실제이름 : " + fileRealName);
 			System.out.println("파일 사이즈 " + size);
 			System.out.println("확장자 : " + fileExtension);
 			System.out.println("변경해서 저장할 파일명" + fileName);
@@ -246,7 +248,9 @@ public class FreeBoardController {
 	public ResponseEntity<byte[]> displa(@PathVariable("fileLoca") String fileLoca,
 										@PathVariable("fileName") String fileName){
 		
-		String uploadPath = "D:\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
+		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
 		
 		File file = new File(uploadPath + "\\" + fileName);
 		
@@ -287,22 +291,29 @@ public class FreeBoardController {
 	@ResponseBody
 	@PostMapping("/reviewReplyRegist")
 	public int reviewReplyRegist(@RequestBody ReviewReplyVO vo) {
-	
-		
+		System.out.println("리뷰 댓들 " + vo.toString());
+		String pw = freeBoardService.getUserPw(vo);
+		System.out.println("pw : " + pw);
+		vo.setReview_reply_pw(pw);
 		return freeBoardService.reviewRplyInsert(vo);
 	}
 	
 	// ==============================================리뷰댓글 가져오기 ==========================================
 	@ResponseBody
 	@GetMapping("/getReviewReply/{bno}/{reviewPageNum}")
-	public ArrayList<ReviewReplyVO> getReviewReply(@PathVariable("bno") int review_bno,
+	public  HashMap<String, Object> getReviewReply(@PathVariable("bno") int review_bno,
 													@PathVariable("reviewPageNum") int reviewPageNum) {
 		
 		System.out.println(reviewPageNum);
-		Criteria cri = new Criteria(reviewPageNum , 10);
+		Criteria cri = new Criteria(reviewPageNum , 8);
 		ArrayList<ReviewReplyVO> list =  freeBoardService.getReviewReply(review_bno ,cri);
+		int total = freeBoardService.replyTotal(review_bno);
 		
-		return list;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("total",total);
+		return map;
 	}
 	
 	// ================================= 리뷰 댓글 수정하기 ===========================================

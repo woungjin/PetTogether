@@ -107,6 +107,12 @@ select * from reviewreply where review_bno=#{review_bno} order by review_rno des
   		select count(*) as total from starpoint where starpoint_bno = #{bno}and user_id = #{user_id}
   	</select>
   	
+  	<select id="replyTotal" resultType="int">
+  		select count(*) as total from reviewreply where review_bno = #{review_bno}
+  	</select>
   	
+  	<select id="getUserPw" resultType="string">
+  		select pw from users where id = #{review_reply_writer}
+  	</select>
   
   </mapper>

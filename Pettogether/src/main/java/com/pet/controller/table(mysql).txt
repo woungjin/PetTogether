@@ -1,0 +1,90 @@
+
+# 게시판테이블
+create table STARBOARD(
+    bno int(10) primary key auto_increment,
+    category varchar(50) not null,
+    title varchar(50) not null,
+    content varchar(2000) not null,
+    review_avg int(10) ,
+    review_total int(10),
+    petTag varchar(50) not null,
+    Address varchar(200) not null,
+    Postal int(10),
+    hit int(30),
+    regdate timestamp default current_timestamp
+);
+
+
+# 게시판댓글 테이블
+create table STARBOARDREPLY(
+    rno int(10) not null primary key auto_increment, 
+    bno int(10) not null,
+    writer varchar(20) not null,
+    pw varchar(20) not null,
+    content varchar(100) not null,
+    regdate timestamp default current_timestamp,
+    updatedate timestamp default current_timestamp
+);
+
+
+# 나의 찜 테이블
+create table MYGOOD (
+    bno int(10) not null, 
+    user_id varchar(50) not null
+);
+
+
+#리뷰보드 테이블
+create table REVIEWBOARD(
+    review_bno int(10) primary key auto_increment,
+    bno int(10),
+    writer varchar(50) not null,
+    content  varchar(200) not null,
+    uploadpath varchar(200) not null,
+    fileloca varchar(50) not null,
+    filename varchar(50) not null,
+    filerealname varchar(50) not null,
+    regdate timestamp default current_timestamp
+    );
+
+
+# 리뷰댓글테이블
+create table REVIEWREPLY(
+    review_rno int(10) primary key auto_increment,
+    review_bno int(10) NOT NULL,
+    review_reply_writer varchar(50) ,
+    review_reply_pw varchar(50),
+    review_reply_content varchar(100),
+    regdate timestamp default current_timestamp,
+    updatedate timestamp default current_timestamp
+    
+);
+
+
+#별점테이블
+create table STARPOINT(
+    starpoint_bno int(10),
+    point int(10),
+    user_id varchar(50)
+);
+
+
+# 유저테이블
+
+create table users(
+    id varchar(50) not null,
+    pw varchar(50) not null,
+    name varchar(50) not null,
+    phone1 varchar(50),
+    phone2 varchar(50),
+    email1 varchar(50),
+    email2 varchar(50),
+    basicAdd varchar(300),
+    detailAdd varchar(300),
+    zipNum varchar(50),
+    quiz varchar(300) not null,
+    answer varchar(300) not null,
+    petTag varchar(50) not null,
+    regdate timestamp default current_timestamp
+);
+

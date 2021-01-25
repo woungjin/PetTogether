@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- 회원정보 -->
 <main class="traveler">
@@ -48,21 +50,23 @@
 						        </form>
 					      	</div>
                         </div>
-				</div>
-				<a href="/invite_friends">
-					<div class="box invite-friends-container">
-						
-					</div>
+				</div>		
+					
 			</div>
 
 		</div>
 		<div class="traveler-body">
 			<div class="my-point-box box clearfix">
-				
-				<div class="innerbox gray-inner">
-					<div class="item text-md">30일 이내 소멸예정 포인트</div>
-					<div class="item text-lg font-bold">0원</div>
-				</div>
+				<c:forEach var="heart" items="${heart}">
+					<div class="innerbox gray-inner">
+						<div class="item text-md">
+							<a href="${pageContext.request.contextPath }/starBoard/freeDetail?bno=${heart.bno}">
+								${heart.user_id }님이 찜! 한 게시물 ${heart.title } / ${heart.address } / 별점 ${heart.review_avg }
+							</a>
+						</div>					
+					</div>
+					<br/>
+				</c:forEach>
 			</div>
 			<div class="notice-container">
 				<div class="text">

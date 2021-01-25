@@ -46,6 +46,7 @@
 							<div class="item-count text-md">
 								<form action="userMypageHeart" method="post">
 									<div class="item-header text-md">
+										<input type="hidden" value="${userVO.id }">
 										<button type="submit" class="mypageBtn">찜 목록</button>
 									</div>
 								</form>
