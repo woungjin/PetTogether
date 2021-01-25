@@ -110,7 +110,7 @@
 												        <option>018</option>
 												    </select>
 										    		<input class="form-input" value="${sessionScope.userVO.phone2}" name="phone2">
-										    
+										    		<span id="msgPhone"></span>
 										
 										      	</div>										      
 										      
@@ -268,11 +268,28 @@
   		alert("비밀번호 규칙을 확인하세요");
   		$("#pw").focus();
   		return;
-  	}else{
+  	}else if($("#answer").val()==''){
+		alert("질문 및 답변은 필수입니다.");
+		$("#answer").focus();
+		return;
+	}else{
   		console.log('mm')
   		$("#updateForm").submit();	// 전송
   	}
   })
+  
+  /* 연락처 검사 스크립트 */
+        var phone2 = document.getElementById("phone2");
+        phone2.onkeyup = function(){
+            var regex = /^[0-9+]{8}$/;
+             if(regex.test(document.getElementById("phone2").value )) {
+                document.getElementById("phone2").style.borderColor = "green";
+                document.getElementById("msgPhone").innerHTML = "";
+            } else {
+                document.getElementById("phone2").style.borderColor = "red";
+                document.getElementById("msgPhone").innerHTML = "8자리 입력해주세요";
+            }
+        }
 	
   </script>
    

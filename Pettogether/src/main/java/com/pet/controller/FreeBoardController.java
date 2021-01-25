@@ -192,7 +192,9 @@ public class FreeBoardController {
 			System.out.println(fileLoca);
 			
 			// 2. 저장할폴더
+
 			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
 			System.out.println(1);
 			File folder = new File(uploadPath);
 			if(!folder.exists()) {
@@ -246,7 +248,9 @@ public class FreeBoardController {
 	public ResponseEntity<byte[]> displa(@PathVariable("fileLoca") String fileLoca,
 										@PathVariable("fileName") String fileName){
 		
+
 		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+
 		
 		File file = new File(uploadPath + "\\" + fileName);
 		
