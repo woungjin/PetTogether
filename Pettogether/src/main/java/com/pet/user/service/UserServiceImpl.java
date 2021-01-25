@@ -49,4 +49,22 @@ public class UserServiceImpl implements UserService{
 		return userMapper.delete(vo);
 	}
 
+	@Override
+	public UserVO findId(UserVO vo) {
+		
+		return userMapper.findId(vo);
+	}
+
+	@Override
+	public UserVO findPw(UserVO vo) {
+		
+		return userMapper.findPw(vo);
+	}
+
+	@Override
+	public int updatePw(UserVO vo) {
+		
+		return userMapper.updatePw(vo);
+	}
+
 }
