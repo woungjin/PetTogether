@@ -85,6 +85,20 @@
   		pw = #{pw}
   		where id = #{id}
   	</update>
+  	
+  	<select id="heart" resultType="HeartVO">
+  		select m.bno,
+		       m.user_id,
+		       category,
+		       title,
+		       s.review_avg,
+		       pettag,
+		       address
+		from mygood m left outer join starboard s
+		on m.bno = s.bno
+		where m.user_id = #{user_Id}
+		order by m.bno asc
+  	</select>  	
   
   
   </mapper>

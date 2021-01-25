@@ -15,7 +15,9 @@
 			<typeAlias type="com.pet.command.StarBoardReplyVO" alias="StarBoardReplyVO" />
 			<typeAlias type="com.pet.command.StarBoardVO" alias="StarBoardVO" />
 			<typeAlias type="com.pet.command.StarVO" alias="StarVO" />
+			<typeAlias type="com.pet.command.HeartVO" alias="HeartVO" />
 			<typeAlias type="com.pet.command.MyGoodVO" alias="MyGoodVO" />
+
 
 
 

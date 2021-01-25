@@ -1,9 +1,12 @@
 package com.pet.user.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.pet.command.HeartVO;
 import com.pet.command.UserVO;
 import com.pet.user.mapper.UserMapper;
 
@@ -66,5 +69,13 @@ public class UserServiceImpl implements UserService{
 		
 		return userMapper.updatePw(vo);
 	}
+
+	@Override
+	public ArrayList<HeartVO> heart(String userId) {
+		
+		return userMapper.heart(userId);
+	}
+
+	
 
 }

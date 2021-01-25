@@ -1,5 +1,7 @@
 package com.pet.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.pet.command.HeartVO;
 import com.pet.command.UserVO;
 import com.pet.user.service.UserService;
 
@@ -56,12 +59,16 @@ public class UserController {
 	}
 	// 마이페이지 안에서 찜 목록 부분
 	@RequestMapping("userMypageHeart")
-	public String userMypageHeart(HttpSession session) {
+	public String userMypageHeart(HttpSession session, Model model) {
 			
 			UserVO result = (UserVO) session.getAttribute("userVO");
 			System.out.println(result + "찜");
 			String userId = result.getId();
 			System.out.println(userId);
+			ArrayList<HeartVO> userHeart = userService.heart(userId);
+			System.out.println(userHeart);
+			
+			model.addAttribute("heart", userHeart);
 			
 		return "user/userMypageHeart";
 	}
