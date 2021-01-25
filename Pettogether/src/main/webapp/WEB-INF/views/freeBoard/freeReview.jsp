@@ -18,8 +18,9 @@
 
                 <h3 style="text-align: center;">여기는 리뷰 top4</h3>
 
-				
+				<!--  오라클 -->
 				<c:forEach var="vo" items="${list }" >
+				<c:out value="${list }"/>
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
                     <div class="list">
                         <div class="list-img">
@@ -54,6 +55,43 @@
                     </div>
                 </div>
 				</c:forEach>
+				
+				<!--  mysql -->
+				<%-- <c:forEach var="vo" items="${list }" >
+                <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
+                    <div class="list">
+                        <div class="list-img">
+                            <a href="#">
+                                <img src="display/${vo['fileloca'] }/${vo['filename']}"  data-toggle="modal" data-target="#myModal" id="reviewModal"  onclick="reviewBno(${vo['review_bno'] })" >
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="list-content">
+                            <p style="border-bottom : 1px solid #cccc">${vo['content'] }</p>
+                            <div class="content-reivew" style="margin-top : 4px;">
+                                <p id="star_grade" class="content-left">
+                                   <strong>${vo['writer'] } </strong>&nbsp;
+                                </p>&nbsp;
+                                <p class="content-left"><small> <fmt:formatDate value="${vo['regdate']}" pattern="yyyy-MM-dd"/></small></p> <br/>
+                            </div>
+                            <div class="review-board">
+                               <ul >
+                                   <li>
+                                  
+                                       <a href="../starBoard/freeDetail?bno=${vo['bno']}">
+                                           <img src="${pageContext.request.contextPath }/resources/img/starboard/${vo['bno'] }.jpg" alt="">
+                                        </a>
+                                   </li>
+                                   <li>
+                                       <textarea style="resize : none;" readonly>${vo['title']} </textarea>
+                                   </li>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				</c:forEach> --%>
                
 
 
@@ -269,6 +307,7 @@
     		
     		$("#reviewDetailContent").html(data.content);
     		$("#reviewDetailImg").attr("src" , "display/"+ data.fileLoca + "/" + data.fileName);
+    		console.log(data.fileLoca);
     		getReviewReply(1 , true);
     	},
     	error : function(error) {
