@@ -7,28 +7,28 @@
   <mapper namespace="com.pet.freeboard.mapper.FreeBoardMapper">
   	<!-- 찜등록 -->
   	<insert id="myGoodInsert">
-  		insert into mygood values(#{bno} , #{user_id}) 
+  		insert into MYGOOD values(#{bno} , #{user_id}) 
   	</insert>
   	<!-- 찜삭제 -->
   	<delete id="myGoodDelete">
-  		delete from mygood where bno = #{bno} and user_id = #{user_id}
+  		delete from MYGOOD where bno = #{bno} and user_id = #{user_id}
   		
   	</delete>
   
   
   <!-- 리뷰 인써트  -->
   	<insert id="fileInsert">
-		insert into reviewboard(review_bno ,bno, writer , content , uploadPath, fileloca , filename , filerealname)
-		values(reviewboard_seq.nextval ,#{bno}, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
+		insert into REVIEWBOARD(bno, writer , content , uploadPath, fileloca , filename , filerealname)
+		values(#{bno}, #{writer} , #{content} , #{uploadPath} , #{fileLoca} , #{fileName} ,#{fileRealName} )  		
   	</insert>
  
  <!-- 별점등록 -->
  	<insert id="starInsert">
- 		insert into starpoint values(#{bno} , #{point} ,#{user_id} )
+ 		insert into STARPOINT values(#{bno} , #{point} ,#{user_id} )
  	</insert>
  	
  	<select id="getStar" resultType="StarVo">
- 		select * from starpoint where starpoint_bno = #{bno}
+ 		select * from STARPOINT where starpoint_bno = #{bno}
  	</select>
  	
  	
@@ -51,10 +51,10 @@ left join starboard s on r.bno = s.bno
 	select s.title,
     r.*
     from(select * from (
-select rownum as rn,
+select @rownum := @rownum + 1 as rn,
         a.* from(
-select * from reviewboard order by review_bno desc) a ) where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount} ) r 
-left join starboard s on r.bno = s.bno	 	
+select * from REVIEWBOARD order by review_bno desc) a )  b , (select @rownum:=0) as rn where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount} ) r 
+left join STARBOARD s on r.bno = s.bno	 	
  
  ]]>
 	</select>
@@ -62,57 +62,59 @@ left join starboard s on r.bno = s.bno
   	
   	<!-- 리뷰 전체글 얻어오기  -->
   	<select id="reviewGetTotal" resultType="int">
-		select count(*) as total from reviewboard  	
+		select count(*) as total from REVIEWBOARD  	
   	</select>
   	
   	<!-- 리뷰 딕테일얻어오기 -->
   	<select id="getReviewDetail" resultType="ReviewRegistVO">
-  		select * from reviewboard where review_bno = #{review_bno}
+  		select * from REVIEWBOARD where review_bno = #{review_bno}
   	</select>
   	
   	
   	<insert id="reviewRplyInsert">
-  		insert into reviewreply(review_rno , review_bno , review_reply_writer , review_reply_pw, review_reply_content)
-  		values(reviewreply_seq.nextval , #{review_bno} , #{review_reply_writer} , #{review_reply_pw},#{review_reply_content})
+  		insert into REVIEWREPLY( review_bno , review_reply_writer , review_reply_pw, review_reply_content)
+  		values( #{review_bno} , #{review_reply_writer} , #{review_reply_pw},#{review_reply_content})
   	</insert>
   	
   	<!-- 리뷰댓들얻어오기 -->
   	<select id="getReviewReply" resultType="ReviewReplyVO">
   		<![CDATA[
-			select * from (
-select rownum as rn,
-        a.* from(
-select * from reviewreply where review_bno=#{review_bno} order by review_rno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount} 		
+select * from (
+select @rownum := @rownum + 1 as rn, a.*
+ from(select * 
+ from REVIEWREPLY where review_bno=#{review_bno} order by review_rno desc) a 
+ ) b , (select @rownum:=0) as rn  
+where rn > (#{cri.pageNum} - 1 ) * #{cri.amount} and rn <= #{cri.pageNum} * #{cri.amount} 
   		]]>
   		
   	</select>
   	
   	<select id="pwCheck" resultType="int">
-  		select count(*) from reviewreply where review_rno = #{review_rno} and review_reply_pw = #{review_reply_pw}
+  		select count(*) from REVIEWREPLY where review_rno = #{review_rno} and review_reply_pw = #{review_reply_pw}
   	</select>
   	
   	<update id="reviewReplyUpdate">
-  		update reviewreply set review_reply_content = #{review_reply_content} where review_rno = #{review_rno}
+  		update REVIEWREPLY set review_reply_content = #{review_reply_content} where review_rno = #{review_rno}
   	</update>
   	
   	<delete id="reviewReplyDelete">
-  		delete from reviewreply where review_rno = #{review_rno}
+  		delete from REVIEWREPLY where review_rno = #{review_rno}
   	</delete>
   	
   	<update id="UpdateStarBoard">
-  		update starboard set review_avg = #{avg} , review_total = #{sum} where bno = #{bno}
+  		update STARBOARD set review_avg = #{avg} , review_total = #{sum} where bno = #{bno}
   	</update>
   	
   	<select id="userCheck" resultType="int">
-  		select count(*) as total from starpoint where starpoint_bno = #{bno}and user_id = #{user_id}
+  		select count(*) as total from STARPOINT where starpoint_bno = #{bno} and user_id = #{user_id}
   	</select>
   	
   	<select id="replyTotal" resultType="int">
-  		select count(*) as total from reviewreply where review_bno = #{review_bno}
+  		select count(*) as total from REVIEWREPLY where review_bno = #{review_bno}
   	</select>
   	
   	<select id="getUserPw" resultType="string">
-  		select pw from users where id = #{review_reply_writer}
+  		select pw from USERS where id = #{review_reply_writer}
   	</select>
   
   </mapper>
