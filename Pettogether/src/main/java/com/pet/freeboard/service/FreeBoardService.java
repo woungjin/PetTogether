@@ -36,5 +36,7 @@ public interface FreeBoardService {
 	public ArrayList<StarVO> getStar(int bno);
 	public int UpdateStarBoard(int bno , int sum , int avg);
 	public int userCheck(StarVO vo);
+	public int replyTotal(int review_bno);
+	public String getUserPw(ReviewReplyVO vo);
 	
 }

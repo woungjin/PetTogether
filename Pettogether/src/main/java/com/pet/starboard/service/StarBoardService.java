@@ -2,6 +2,7 @@ package com.pet.starboard.service;
 
 import java.util.ArrayList;
 
+import com.pet.command.MyGoodVO;
 import com.pet.command.StarBoardReplyVO;
 import com.pet.command.StarBoardVO;
 import com.pet.common.util.Criteria;
@@ -19,5 +20,9 @@ public interface StarBoardService {
 	public int hit(int bno);
 	public ArrayList<StarBoardVO> getcate(String cate , Criteria cri);
 	public int cateToal(String cate);
+	public StarBoardVO getStarReset(int bno);
+	public int starReplyTotal(int bno);
+	public String getUserPw(StarBoardReplyVO vo);
+	public ArrayList<MyGoodVO> getMygood(String user_id);
 	
 }

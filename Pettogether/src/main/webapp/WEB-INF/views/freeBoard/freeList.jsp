@@ -60,8 +60,30 @@
                             	<p>
                                     
                                 <span class="bad"  id="bad" >
-                                    
-                                    <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg(${vo.bno})" >
+                                 	<!-- 1개만 출력돼도록 하면됌 -->
+                                 	<c:set var="flag" value="false"></c:set>
+                                 	<c:forEach var="goodvo" items="${mygoodVO}">
+                                 		<c:choose>
+                                 			
+                                 			
+                                 			<c:when test="${goodvo.bno == vo.bno }">
+												<c:set var="flag" value="true" />		                                    	
+                                 			</c:when>
+                                 		</c:choose>
+                                 	
+                                 	</c:forEach>  
+                                 	
+                                 	<c:choose>
+                                 		<c:when test="${flag eq true }">
+		                                <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love2.png" alt=""  onclick="changeImg(${vo.bno})" >
+                                 		
+                                 		</c:when>
+                                 		
+                                 		<c:when test="${flag eq false }">
+		                                <img   src="${pageContext.request.contextPath }/resources/img/freeBoard/love.png" alt=""  onclick="changeImg(${vo.bno})" >
+                                 		
+                                 		</c:when>
+                                 	</c:choose>
                                    
                                 </span>
                        			</p>
@@ -114,7 +136,7 @@
 					var user_id = "${sessionScope.userVO.id}";
 					
 					if(user_id == ''){
-						alert("회원만 등록이가능하빈다");
+						alert("회원만 등록이 가능합니다");
 						return;
 					}
 				
