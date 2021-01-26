@@ -1,9 +1,10 @@
 package com.pet.home.mapper;
 
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 import com.pet.command.StarBoardVO;
+
 
 public interface HomeMapper {
 
@@ -19,4 +20,6 @@ public interface HomeMapper {
 	public int parkTotal();
 	
 	public ArrayList<StarBoardVO> getRandom();
+	
+	public ArrayList<StarBoardVO> getAll();
 }

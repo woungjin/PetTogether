@@ -66,8 +66,50 @@
 			     (SELECT * 
 			        FROM starboard 
 			       ORDER BY DBMS_RANDOM.RANDOM()) 
-			 WHERE ROWNUM <= 4
+			 WHERE ROWNUM <= 8
 		]]>
 	</select>
+	
+	<select id="getAll" resultType="StarBoardVO">
+		<![CDATA[
+
+SELECT * FROM (select * 
+
+FROM starboard
+
+WHERE category = '호텔'
+
+ ORDER BY review_avg desc,hit desc,DBMS_RANDOM.RANDOM() ) where rownum <=8
+
+
+UNION ALL
+SELECT * FROM (select * 
+
+FROM starboard
+
+WHERE category = '카페'
+
+  ORDER BY review_avg desc,hit desc,DBMS_RANDOM.RANDOM() ) where rownum <=8
+
+UNION ALL
+SELECT * FROM (select * 
+
+FROM starboard
+
+WHERE category = '공원'
+
+  ORDER BY review_avg desc,hit desc,DBMS_RANDOM.RANDOM() ) where rownum <=8
+ UNION ALL
+ SELECT * FROM (select * 
+
+FROM starboard
+
+WHERE category = '병원'
+
+ ORDER BY review_avg desc,hit desc,DBMS_RANDOM.RANDOM()) where rownum <=8
+		]]>
+	</select>
+		
+		
 
  </mapper>
