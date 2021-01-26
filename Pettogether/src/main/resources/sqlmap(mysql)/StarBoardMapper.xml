@@ -6,87 +6,93 @@
  <mapper namespace="com.pet.starboard.mapper.StarBoardMapper">
  
 	<insert id="starReplyInsert">
-		insert into starboardreply(rno ,bno , writer, pw , content)
-		values(starboard_reply_seq.nextval , #{bno} , #{writer} , #{pw} , #{content})
+		insert into STARBOARDREPLY(bno , writer, pw , content)
+		values( #{bno} , #{writer} , #{pw} , #{content})
 	</insert>
 
 	
 	<select id="getStarReply" resultType="StarBoardReplyVO">
 		<![CDATA[
-			select * from (
-select rownum as rn,
-        a.* from(
-select * from starboardreply where bno=#{bno} order by rno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount} 		
+		select * from (
+select @rownum := @rownum + 1 as rn, a.*
+ from(select * 
+ from STARBOARDREPLY where bno=#{bno} order by rno desc) a 
+ ) b , (select @rownum:=0) as rn  
+where rn > (#{cri.pageNum} - 1 ) * #{cri.amount} and rn <= #{cri.pageNum} * #{cri.amount} 		
   		]]>
   		
 	</select>
 	
 	
 	<select id="pwCheck" resultType="int">
-		select count(*) as total from starboardreply where rno =#{rno}  and pw = #{pw}
+		select count(*) as total from STARBOARDREPLY where rno =#{rno}  and pw = #{pw}
  	</select>
  	
  	<update id="starReplyUpdate">
- 		update starboardreply set content =#{content}where rno = #{rno}
+ 		update STARBOARDREPLY set content = #{content}where rno = #{rno}
  	</update>
 	
 	<delete id="starReplyDelete">
-		delete from starboardreply where rno = #{rno}		
+		delete from STARBOARDREPLY where rno = #{rno}		
 	</delete>
 
 	<select id="getList" resultType="StarBoardVO">
 		<![CDATA[
 			select * from (
-select rownum as rn,
-        a.* from(
-select * from starboard order by bno desc) a ) where rn > (#{pageNum} - 1 ) * #{amount}and rn <= #{pageNum} * #{amount} 		
+			select @rownum := @rownum + 1 as rn,
+        	a.* from(
+			select * from STARBOARD order by bno desc) a 
+			) b , (select @rownum:=0) as rn
+			where rn > (#{pageNum} - 1 ) * #{amount} and rn <= #{pageNum} * #{amount} 		
   		]]>
 	</select>
 	
 	
 	<select id="getBoardDetail" resultType="StarBoardVO">
-		select * from starboard where bno = #{bno}
+		select * from STARBOARD where bno = #{bno}
 	</select>
 	
 	
 	<select id="getTotal" resultType="int">
-		select count(*) from starboard	
+		select count(*) from STARBOARD	
 	</select>
 	
 	<update id="hit">
-		update starboard set hit = hit + 1 where bno = #{bno}
+		update STARBOARD set hit = hit + 1 where bno = #{bno}
 	</update>
 
 	<select id="getcate" resultType="StarBoardVO">
 	<![CDATA[
-			select * from (
-select rownum as rn,
-        a.* from(
-select * from starboard where category = #{cate}  order by bno desc) a ) where rn > (#{cri.pageNum} - 1 ) * #{cri.amount}and rn <= #{cri.pageNum} * #{cri.amount}
+	select * from (
+			select @rownum := @rownum + 1 as rn,
+        	a.* from(
+			select * from STARBOARD where category = #{cate} order by bno desc) a 
+			) b , (select @rownum:=0) as rn
+			where rn > (#{cri.pageNum} - 1 ) * #{cri.amount} and rn <= #{cri.pageNum} * #{cri.amount}
   		]]>
 	
 	</select>
 	
 	
 	<select id="cateToal" resultType="int">
-		select count(*) as total from starboard where category = #{cate}
+		select count(*) as total from STARBOARD where category = #{cate}
 	</select>
 	
 	<select id="getStarReset" resultType="StarBoardVO">
-		select * from starboard where bno = #{bno}
+		select * from STARBOARD where bno = #{bno}
 	</select>
 
 	<select id="starReplyTotal"  resultType="int">
-		select count(*) as total from starboardreply where bno = #{bno}
+		select count(*) as total from STARBOARDREPLY where bno = #{bno}
 	</select>
 
 	<select id="getUserPw" resultType="string">
-		select pw from users where id = #{writer}
+		select pw from USERS where id = #{writer}
 		
 	</select>
 	
 	<select id="getMygood" resultType="MyGoodVO" >
-		select * from mygood where user_id = #{user_id}
+		select * from MYGOOD where user_id = #{user_id}
 	</select>
 
  </mapper>

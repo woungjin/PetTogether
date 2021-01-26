@@ -35,7 +35,7 @@
 						</div>
 						<div class="item">
 							<div class="item-count text-md">
-								<form action="userMypageReview" method="post">
+								<form action="userMypageReview" method="post" >
 									<div class="item-header text-md">
 										<button type="submit" class="mypageBtn">내가 쓴 리뷰</button>
 									</div>
@@ -46,7 +46,7 @@
 							<div class="item-count text-md">
 								<form action="userMypageHeart" method="post">
 									<div class="item-header text-md">
-										<input type="hidden" value="${userVO.id }">
+										<input type="hidden" value="${userVO.id }" >
 										<button type="submit" class="mypageBtn">찜 목록</button>
 									</div>
 								</form>
@@ -134,14 +134,6 @@
 
 									</div>
 
-
-									<div class="form-group">
-										<div class="title text-middle">비밀번호</div>
-										<div class="input-wrapper hide-on-editable text-middle">
-											*******</div>
-										<div class="input-wrapper show-on-editable"></div>
-									</div>
-									<div class="form-group form-subscription-group">
 
 										<div class="form-group">
 											<div class="title text-middle">우편번호</div>

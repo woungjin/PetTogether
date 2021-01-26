@@ -3,6 +3,7 @@ package com.pet.user.service;
 import java.util.ArrayList;
 
 import com.pet.command.HeartVO;
+import com.pet.command.MyReviewVO;
 import com.pet.command.UserVO;
 
 public interface UserService {
@@ -19,4 +20,5 @@ public interface UserService {
 	public UserVO findPw(UserVO vo);
 	public int updatePw(UserVO vo);
 	public ArrayList<HeartVO> heart(String userId);
+	public ArrayList<MyReviewVO> myReview(String userId);
 }

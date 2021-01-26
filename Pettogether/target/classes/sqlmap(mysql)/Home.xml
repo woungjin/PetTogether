@@ -6,68 +6,110 @@
  <mapper namespace="com.pet.home.mapper.HomeMapper">
  	
 	<select id="getBoard" resultType="StarBoardVO">
-		select * from starboard where bno = #{bno}		
+		select * from STARBOARD where bno = #{bno}		
 	</select>
 
 	<select id="hotelLank" resultType="StarBoardVO">
 			<![CDATA[
-		select * from (
-		select rownum as rn,
-		        a.* from(
-		select * from starboard where category = '호텔' order by review_avg desc, hit desc ) a ) where rn >= 0 and rn <= 1
+		 SELECT * FROM (
+ select  @rownum := @rownum + 1 as rn, a.* 
+FROM (select * from STARBOARD
+WHERE category = '호텔') a
+
+ ORDER BY review_avg desc, hit desc)b  , (select @rownum:=0) as rn  where rn >= 0 and rn <= 1
 		  		]]>	
 	</select>
   	<select id="cafeLank" resultType="StarBoardVO">
 			<![CDATA[
-		select * from (
-		select rownum as rn,
-		        a.* from(
-		select * from starboard where category = '카페' order by review_avg desc, hit desc ) a ) where rn >= 0 and rn <= 1
+		 SELECT * FROM (
+ select  @rownum := @rownum + 1 as rn, a.* 
+FROM (select * from STARBOARD
+WHERE category = '카페') a
+
+ ORDER BY review_avg desc, hit desc)b  , (select @rownum:=0) as rn where rn >= 0 and rn <= 1
 		  		]]>	
 	</select>
 	<select id="hospitalLank" resultType="StarBoardVO">
 			<![CDATA[
-		select * from (
-		select rownum as rn,
-		        a.* from(
-		select * from starboard where category = '병원' order by review_avg desc, hit desc ) a ) where rn >= 0 and rn <= 1
+		 SELECT * FROM (
+ select  @rownum := @rownum + 1 as rn, a.* 
+FROM (select * from STARBOARD
+WHERE category = '병원') a
+
+ ORDER BY review_avg desc, hit desc)b  , (select @rownum:=0) as rn where rn >= 0 and rn <= 1
 		  		]]>	
 	</select>
    	<select id="parkLank" resultType="StarBoardVO">
 			<![CDATA[
-		select * from (
-		select rownum as rn,
-		        a.* from(
-		select * from starboard where category = '공원' order by review_avg desc, hit desc ) a ) where rn >= 0 and rn <= 1
+		 SELECT * FROM (
+ select  @rownum := @rownum + 1 as rn, a.* 
+FROM (select * from STARBOARD
+WHERE category = '공원') a
+
+ ORDER BY review_avg desc, hit desc )b  , (select @rownum:=0) as rn where rn >= 0 and rn <= 1
 		  		]]>	
 	</select>
 	
 	<select id="hotelTotal" resultType="int">
-		select count(*) from starboard where category='호텔'
+		select count(*) from STARBOARD where category='호텔'
 	</select>
 	
 	<select id="cafeTotal" resultType="int">
-		select count(*) from starboard where category='카페'
+		select count(*) from STARBOARD where category='카페'
 	</select>
 	
 	<select id="hospitalTotal" resultType="int">
-		select count(*) from starboard where category='병원'
+		select count(*) from STARBOARD where category='병원'
 	</select>
 	
 	<select id="parkTotal" resultType="int">
-		select count(*) from starboard where category='공원'
+		select count(*) from STARBOARD where category='공원'
 	</select>
 	
 	<!-- 이달의 추천지역  -->
 	<select id="getRandom" resultType="StarBoardVO">
 		<![CDATA[
-			SELECT * 
-			  FROM
-			     (SELECT * 
-			        FROM starboard 
-			       ORDER BY DBMS_RANDOM.RANDOM()) 
-			 WHERE ROWNUM <= 4
+			 select * from(
+ select @rownum := @rownum + 1 as rn, a.* from(
+ select * from STARBOARD order by RAND() )a ) b , (select @rownum:=0) as rn    where rn <=8
 		]]>
 	</select>
+	
+	<select id="getAll" resultType="StarBoardVO">
+		<![CDATA[
+
+select * from (
+select @rownum := @rownum + 1 as rn, a.*
+ from(select * 
+ from STARBOARD where category='호텔'  ORDER BY review_avg desc, hit desc , RAND()) a 
+ ) b , (select @rownum:=0) as rn  
+where rn > 0 and rn <= 8
+union all
+select * from (
+select @rm := @rm + 1 as rm, a.*
+ from(select * 
+ from STARBOARD where category='카페'  ORDER BY review_avg desc, hit desc , RAND()) a 
+ ) b , (select @rm:=1) as rm  
+where rm > 0 and rm <= 8
+
+union all
+select * from (
+select @rd := @rd + 1 as rd, a.*
+ from(select * 
+ from STARBOARD where category='공원'  ORDER BY review_avg desc, hit desc , RAND()) a 
+ ) b , (select @rd:=1) as rd
+where rd > 0 and rd <= 8
+
+union all
+select * from (
+select @rc := @rc + 1 as rc, a.*
+ from(select * 
+ from STARBOARD where category='병원'  ORDER BY review_avg desc, hit desc , RAND()) a 
+ ) b , (select @rc:=1) as rc
+where rc > 0 and rc <= 8;
+		]]>
+	</select>
+		
+		
 
  </mapper>

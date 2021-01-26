@@ -60,12 +60,15 @@ public class FreeBoardController {
 		System.out.println(cri.toString());
 		System.out.println(pageVO.toString());
 		
+		System.out.println(list.toString() + "asdasdasdas");
+		
+		// oracle은 CONTENT
 		for(int i=0 ;  i< list.size(); i++) {
 			
 			String content = (String) list.get(i).get("CONTENT");
 			String content2 = content.substring(0,3);
 			
-			list.get(i).put("CONTENT", content2  + "...");
+			list.get(i).put("content", content2  + "...");
 			
 			
 		}
@@ -193,7 +196,9 @@ public class FreeBoardController {
 			
 			// 2. 저장할폴더
 
-			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+			String uploadPath = "D:\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+
+
 
 			System.out.println(1);
 			File folder = new File(uploadPath);
@@ -222,7 +227,7 @@ public class FreeBoardController {
 			file.transferTo(saveFile);
 			System.out.println(5);
 			// 5. DB에 insert작업
-			ReviewRegistVO vo = new ReviewRegistVO(0,bno, writer, content, uploadPath, fileLoca, fileName, fileRealName, null);
+			ReviewRegistVO vo = new ReviewRegistVO( 0, bno, writer, content, uploadPath, fileLoca, fileName, fileRealName, null);
 			boolean result = freeBoardService.fileInsert(vo);
 			System.out.println(6);
 			if(result) {
@@ -245,11 +250,13 @@ public class FreeBoardController {
 	// reReviewGetIMG
 	@RequestMapping("display/{fileLoca}/{fileName:.+}") // fileName 뒤에 특수문자를 받는 문법
 	@ResponseBody
-	public ResponseEntity<byte[]> displa(@PathVariable("fileLoca") String fileLoca,
+	public ResponseEntity<byte[]> display(@PathVariable("fileLoca") String fileLoca,
 										@PathVariable("fileName") String fileName){
 		
 
-		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload" + fileLoca;
+		String uploadPath = "D:\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+		
+		System.out.println("들어오는거여ㅑ ??");
 
 		
 		File file = new File(uploadPath + "\\" + fileName);
@@ -281,7 +288,8 @@ public class FreeBoardController {
 	public ReviewRegistVO getReviewDetail(@RequestBody ReviewRegistVO vo , Model model) {
 		System.out.println(vo.toString());
 		ReviewRegistVO reviewVO = freeBoardService.getReviewDetail(vo);
-		
+	
+		System.out.println("vovovovovovo" + vo.toString());
 		model.addAttribute("reviewReplyVO" , reviewVO);
 		return reviewVO;
 	}
@@ -305,6 +313,7 @@ public class FreeBoardController {
 													@PathVariable("reviewPageNum") int reviewPageNum) {
 		
 		System.out.println(reviewPageNum);
+		System.out.println("bno" + review_bno);
 		Criteria cri = new Criteria(reviewPageNum , 8);
 		ArrayList<ReviewReplyVO> list =  freeBoardService.getReviewReply(review_bno ,cri);
 		int total = freeBoardService.replyTotal(review_bno);

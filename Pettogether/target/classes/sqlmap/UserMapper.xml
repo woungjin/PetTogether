@@ -99,6 +99,15 @@
 		where m.user_id = #{user_Id}
 		order by m.bno asc
   	</select>  	
+  	
+  	<select id="myReview" resultType="MyReviewVO">
+	  	select review_bno,
+			    content,
+			    writer
+		from REVIEWBOARD 
+		where writer = #{id}
+		order by bno asc
+  	</select>
   
   
   </mapper>
