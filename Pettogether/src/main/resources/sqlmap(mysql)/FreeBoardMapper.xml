@@ -53,7 +53,9 @@ left join starboard s on r.bno = s.bno
     from(select * from (
 select @rownum := @rownum + 1 as rn,
         a.* from(
-select * from REVIEWBOARD order by review_bno desc) a )  b , (select @rownum:=0) as rn where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount} ) r 
+select * from REVIEWBOARD order by review_bno desc) a ) 
+ b , (select @rownum:=0) as rn 
+ where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount} ) r 
 left join STARBOARD s on r.bno = s.bno	 	
  
  ]]>
