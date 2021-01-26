@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wst.web.ui"/>
+=======
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
 		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
@@ -12,6 +18,7 @@
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
 			<item value="C:\Users\a5740\OneDrive\바탕 화면\mysql문으로 고쳤음.zip"/>
 			<item value="C:\Users\a5740\OneDrive\바탕 화면\쿠키빼고다했습니다.zip"/>
+>>>>>>> master
 		</list>
 	</section>
 </section>

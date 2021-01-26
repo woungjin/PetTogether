@@ -20,7 +20,6 @@
 
 				<!--  오라클 -->
 				<c:forEach var="vo" items="${list }" >
-				<c:out value="${list }"/>
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
                     <div class="list">
                         <div class="list-img">

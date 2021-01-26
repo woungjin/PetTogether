@@ -21,11 +21,12 @@
                             <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호">
                          </div>
                          <div class="form-group">
-                            <button type="submit" class="btn btn-info btn-block" id="loginBtn">로그인</button>
+                            <button type="submit" class="btn btn-primary btn-block" id="loginBtn">로그인</button>
                             <button type="button" class="btn btn-primary btn-block" onclick="location.href='userJoin'">회원가입</button>
                          </div>
-	                    	<a href="../user/userFindId">아이디 찾기 </a>||
-	                    	<a href="../user/userFindPw">비밀번호 찾기</a>                              
+	                    	<button type="button" class="btn btn-info" onclick="location.href='userFindId'">아이디 찾기</button>
+	                    	<button type="button" class="btn btn-info" onclick="location.href='userFindPw'">비밀번호 찾기</button>
+	                    	                   
                     </form>
                 </div>
             </div>

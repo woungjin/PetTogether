@@ -180,6 +180,10 @@
     		alert("질문 및 답변은 필수입니다.");
     		$("#answer").focus();
     		return;
+    	}else if($("#phone2").val()==''){
+    		alert("연락처 입력은 필수입니다.");
+    		$("#phone2").focus();
+    		return;
     	}
     	else{
     		$("#joinForm").submit();	// 전송
@@ -255,7 +259,7 @@
                 document.getElementById("msgPhone").innerHTML = "";
             } else {
                 document.getElementById("phone2").style.borderColor = "red";
-                document.getElementById("msgPhone").innerHTML = "8자리 입력해주세요";
+                document.getElementById("msgPhone").innerHTML = "숫자 8자리 입력해주세요";
             }
         }
         

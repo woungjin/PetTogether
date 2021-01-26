@@ -56,13 +56,15 @@
 
 		</div>
 		<div class="traveler-body">
-			<div class="my-point-box box clearfix">
-				
-				<div class="innerbox gray-inner">
-					<div class="item text-md">30일 이내 소멸예정 포인트</div>
-					<div class="item text-lg font-bold">0원</div>
+				<div class="my-point-box box clearfix">
+						<c:forEach var ="my" items="${myReview}" varStatus="status">
+	
+    <a > ${my} </a>
+    <a> ${status.index} </a>
+
+</c:forEach>
 				</div>
-			</div>
+					
 			<div class="notice-container">
 				<div class="text">
 					• 적립된 포인트는 상품 구매 시 현금처럼 사용할 수 있습니다.<br>• 단, 마이리얼트립 내 항공권 구매 또는
@@ -77,4 +79,11 @@
 </main>
 
 </div>
+
+<script>
+var my = "${myReview}"
+console.log(my);
+console.log(my.writer);
+
+</script>
 
