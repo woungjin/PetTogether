@@ -26,7 +26,5 @@
     <!--
     <Manager pathname="" />
     -->
-    <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="300" maxWait="1000" name="jdbc/mysql" password="jsp" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul" username="jsp"/>
-    
-    
+    <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="300" maxWait="1000" name="jdbc/oracle" password="jsp" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521/XEPDB1" username="JSP"/>
 </Context>

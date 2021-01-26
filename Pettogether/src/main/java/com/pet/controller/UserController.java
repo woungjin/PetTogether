@@ -11,15 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.web.servlet.ModelAndView;
+
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pet.command.HeartVO;
-import com.pet.command.MyReviewVO;
+
+import com.pet.command.ReviewRegistVO;
+
 import com.pet.command.UserVO;
 import com.pet.user.service.UserService;
 
@@ -63,11 +65,10 @@ public class UserController {
 	public String userMypageHeart(HttpSession session, Model model) {
 			
 			UserVO result = (UserVO) session.getAttribute("userVO");
-			System.out.println(result + "찜");
+			
 			String userId = result.getId();
-			System.out.println(userId);
-			ArrayList<HeartVO> userHeart = userService.heart(userId);
-			System.out.println(userHeart);
+			
+			ArrayList<HeartVO> userHeart = userService.heart(userId);			
 			
 			model.addAttribute("heart", userHeart);
 			
@@ -79,12 +80,13 @@ public class UserController {
 	public String userMypageReview(HttpSession session, Model model) {
 		
 		UserVO result = (UserVO)session.getAttribute("userVO");
-		System.out.println(result+"마이리뷰");
+		
 		String userId = result.getId();
-		System.out.println(userId);
-		ArrayList<MyReviewVO> userReview = userService.myReview(userId);
-		model.addAttribute("myReview", userReview);
-		System.out.println("유저리뷰"+userReview);
+		
+		ArrayList<ReviewRegistVO> userReview = userService.myReview(userId);
+		
+		
+		model.addAttribute("review", userReview);
 		
 		
 		return "user/userMypageReview";
@@ -213,7 +215,7 @@ public class UserController {
 	@RequestMapping(value="/Delete", method = RequestMethod.POST)
 	public String userDelete(UserVO vo,
 							RedirectAttributes RA,HttpSession session) {
-		System.out.println(vo + "삭제");
+		
 		int result = userService.delete(vo);
 		
 		if(result == 1) {			
@@ -231,7 +233,7 @@ public class UserController {
 	@RequestMapping(value="/findId", method = RequestMethod.POST)
 	public String userFindId(UserVO vo,RedirectAttributes RA,HttpSession session) {
 		
-		System.out.println(vo+"id 찾기");
+		
 		UserVO result = userService.findId(vo);
 		
 		if(result == null) {
@@ -250,7 +252,7 @@ public class UserController {
 	public String userFindPw(UserVO vo,RedirectAttributes RA,HttpSession session) {
 		
 		UserVO result = userService.findPw(vo);
-		System.out.println(result);
+		
 		if(result == null) {
 			RA.addFlashAttribute("msg", "인증실패.다시 시도해주세요");
 			return "redirect:/user/userFindPw";

@@ -23,28 +23,7 @@
 
 	  <select id="login" resultType="UserVO">
 	  	select * from users where id = #{id} and pw = #{pw}
-	  </select>
-	  
-	  <!-- 마이페이지 회원정보 -->
-	<!-- 조인의 결과로 1:N 관계의 형태를 map으로 처리하는 방식에서 resultMap속성을 이용합니다. -->
-	<!-- <select id="getInfo" resultMap="userInfo">
-		select id,
-		        name,
-		        phone1,
-		        phone2,
-		        email1,
-		        email2,
-		        basicAdd,
-		        detailAdd,
-		        zipNum,
-		        f.bno,
-		        f.title,
-		        f.regdate
-		from USERS u left outer join REVIEWBOARD r
-		on u.id = r.writer
-		where u.id = {#id}
-		order by r.review_bno desc
-	</select> -->
+	  </select>	  
   
   	<update id="update">
   		update users set 
@@ -100,10 +79,8 @@
 		order by m.bno asc
   	</select>  	
   	
-  	<select id="myReview" resultType="MyReviewVO">
-	  	select review_bno,
-			    content,
-			    writer
+  	<select id="myReview" resultType="ReviewRegistVO">
+	  	select *
 		from REVIEWBOARD 
 		where writer = #{id}
 		order by bno asc
