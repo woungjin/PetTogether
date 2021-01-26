@@ -21,7 +21,7 @@
 <section class="content">
         <div class="container">
             <div class="row">
-                <h3 style="text-align: center;">여기는 리뷰 top4</h3>
+                <h3 style="text-align: center;">전체 게시판</h3>
 
 
 				<c:forEach var="vo" items="${list }">

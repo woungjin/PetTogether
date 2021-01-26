@@ -5,7 +5,85 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-25T11:00:00Z</updated>
+  <updated>2021-01-26T03:20:00Z</updated>
+  <entry>
+    <title>What's New in Azure Spring Cloud after GA?</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/25/what-s-new-in-azure-spring-cloud-after-ga" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-26:4346</id>
+    <updated>2021-01-26T03:20:00Z</updated>
+    <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;This post was written by our friend on the Azure Spring Cloud team, the amazing &lt;a href="https://twitter.com/liangkylie"&gt;Kylie Liang (@liangkylie)&lt;/a&gt;. I interviewed her for the &lt;a href="http://bootifulpodcast.fm"&gt;&lt;em&gt;Bootiful Podcast&lt;/em&gt;&lt;/a&gt; in April 2019, too! -Josh&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;2020 was a busy year for Azure Spring Cloud service. Microsoft and VMware co-announced Azure Spring Cloud General Availability (GA). We were excited to see how Azure Spring Cloud helped customers focus on code and let us take care of the underlying infrastructure management, operation, and maintenance. We continue to prioritize our work according to customers¡¯ requests and feedback. For example, 7 more regions were enabled, and Azure Spring Cloud service is now available in &lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#in-which-regions-is-azure-spring-cloud-available"&gt;18&lt;/a&gt; regions of Asia Pacific, Australia, Canada, China, Europe, India, Korea, United Arab Emirates, United Kingdom, and the United States. In this blog, I¡¯ll share more about the newest features and enhancements since GA. &lt;/p&gt;&lt;h2&gt;&lt;a href="#full-apm-capabilities-w-application-insights-java-in-process-agent" class="anchor" name="full-apm-capabilities-w-application-insights-java-in-process-agent"&gt;&lt;/a&gt;Full APM Capabilities w/ Application Insights Java in-process Agent&lt;/h2&gt;
+&lt;p&gt;Application Insights is an extensible Application Performance Management (APM) service for developers and DevOps professionals. With its latest Java in-process agent you can enjoy full APM functionalities besides distributed tracing. For example, you can monitor real-time live metrics without any code changes and obtain insights into application dependencies ? MySQL, PostgreSQL, JDBC, Redis, JMS, Kafka, Netty / WebFlux, etc. Learn more &lt;a href="https://spring.io/blog/2021/01/21/bootiful-application-monitoring-with-azure-spring-cloud"&gt;from here&lt;/a&gt; about effortlessly monitoring applications and dependencies in Azure Spring Cloud!&lt;/p&gt;
+&lt;p&gt;As you know, there is always the possibility that a service may be down or having high latency when a service invokes another service. This may lead to exhaustion of the threads as they might be waiting for other requests to complete. With the implementation of the Circuit Breaker pattern, you can prevent failures from cascading and provide fallback behavior until a failing service is restored to normal operation. The new Spring Cloud Circuit Breaker framework unifies all implementations of its metrics data pipeline into Micrometer. Resilience4j is a new option for Spring developers to implement the Circuit Breaker pattern. Resilience4j works well with Spring Boot and using Micrometer libraries, it can produce metrics for monitoring. After enabling &lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-circuit-breaker-metrics"&gt;Application Insights java in-process agent and dimension collection for Resilience4j metrics&lt;/a&gt;, you can collect Spring Cloud Resilience4j Circuit Breaker Metrics and display them in the Metrics blade of Application Insights. &lt;/p&gt;
+&lt;img src ="https://github.com/joshlong/blog-images/raw/master/whats-new-in-azure-spring-cloud-after-ga-25-jan-2021/Picture1.png" /&gt;&lt;h2&gt;&lt;a href="#get-outbound-public-ip-to-secure-the-communication-with-external-resources" class="anchor" name="get-outbound-public-ip-to-secure-the-communication-with-external-resources"&gt;&lt;/a&gt;Get outbound public IP to secure the communication with external resources&lt;/h2&gt;
+&lt;p&gt;Some network environments are locked down via a Firewall and allow only whitelisted IP addresses inbound to their internal network. Learn how to get &lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-outbound-public-ip"&gt;static outbound public IP addresses&lt;/a&gt; of Azure Spring Cloud applications to communicate with external resources, such as databases, storage, and key vaults. &lt;/p&gt;
+&lt;p&gt;Below is an example to whitelist an Azure Spring Cloud app in Azure Database for MySQL. Azure Database for MySQL provides access security using a firewall to protect your data. You can explicitly add all the outbound IPs of your Azure Spring Cloud apps. &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;To find the outbound public IP addresses currently used by your Azure Spring Cloud service instance in the Azure portal, click &lt;strong&gt;Networking&lt;/strong&gt; in your instance&amp;rsquo;s left-hand navigation pane. They are listed in the &lt;strong&gt;Outbound IP addresses&lt;/strong&gt; field. &lt;br/&gt; &lt;img src ="https://github.com/joshlong/blog-images/raw/master/whats-new-in-azure-spring-cloud-after-ga-25-jan-2021/Picture2.png" /&gt;&lt;/li&gt;
+  &lt;li&gt;On the MySQL server page, under Settings heading, click &lt;strong&gt;Connection Security&lt;/strong&gt; and add above outbound IPs one-by-one. &lt;br/&gt;&lt;img src ="https://github.com/joshlong/blog-images/raw/master/whats-new-in-azure-spring-cloud-after-ga-25-jan-2021/Picture3.png" /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#vs-code-extension-for-azure-spring-cloud" class="anchor" name="vs-code-extension-for-azure-spring-cloud"&gt;&lt;/a&gt;VS Code extension for Azure Spring Cloud&lt;/h2&gt;
+&lt;p&gt;Besides feature requests for the Azure Spring Cloud service, we also received requests from developers about how to deploy and manage apps in their familiar environment. You can now use &lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-intellij-deploy-apps"&gt;Azure Toolkit for IntelliJ&lt;/a&gt; or &lt;a href="http://asc-vscode/"&gt;Azure Spring Cloud extension for VS Code&lt;/a&gt; to quickly create, manage and deploy apps to Azure Spring Cloud. &lt;/p&gt;
+&lt;img src ="https://github.com/joshlong/blog-images/raw/master/whats-new-in-azure-spring-cloud-after-ga-25-jan-2021/Picture4.gif" /&gt;&lt;h2&gt;&lt;a href="#what-is-upcoming" class="anchor" name="what-is-upcoming"&gt;&lt;/a&gt;What is Upcoming&lt;/h2&gt;
+&lt;p&gt;Security, elastic scaling, and monitoring are key tenets of Azure Spring Cloud. In the following months, you will see more updates for:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Managed Virtual Network&lt;/strong&gt;: allows users to be in control of inbound and outbound network communications for Azure Spring Cloud and enables Azure Spring Cloud to interact with systems in on-premises data centers or Azure services in virtual networks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Autoscale&lt;/strong&gt;: automates the upscaling or downscaling of the application based on load or schedule ? thus providing cost-efficiency and better performance.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;E2E TLS&lt;/strong&gt;: allows users to encrypt and securely transmit sensitive data among applications or from app to the backend.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Azure RBAC&lt;/strong&gt; for managed Spring Cloud Config Server/Service Registry: allows users to authenticate with AAD (Azure Active Directory) token for accessing to managed Spring Cloud Config Server/Service Registry by Azure Spring Cloud service.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Integration with 3rd party APM solutions&lt;/strong&gt;: enables out-of-box experience w/ 3rd party Application Performance Monitoring (APM) tools such as New Relic, App Dynamics and Dynatrace for Azure Spring Cloud apps.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#get-started" class="anchor" name="get-started"&gt;&lt;/a&gt;Get Started&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart?tabs=Azure-CLI&amp;pivots=programming-language-java"&gt;Step by step tutorials&lt;/a&gt;: Learn the basics of Azure Spring Cloud with well-known Spring sample apps.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://docs.microsoft.com/learn/modules/azure-spring-cloud-workshop/"&gt;Online workshop&lt;/a&gt;: Go through tasks to deploy Spring Boot microservices to Azure Spring Cloud with Azure database for MySQL.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://docs.microsoft.com/azure/spring-cloud/spring-cloud-troubleshoot"&gt;Troubleshooting tips&lt;/a&gt;: Read common tips for troubleshooting Azure Spring Cloud server- and client-side issues.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We are excited about the improving developer experience we are creating for Azure Spring Cloud service. Your feedback has been instrumental in shaping these features, keep the feedback coming. &lt;a href="mailto:AzureSpringCloud-Talk@service.microsoft.com"&gt;Contact us&lt;/a&gt; if you have feedback or questions. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Task 2.2.5 Release!</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/25/spring-cloud-task-2-2-5-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Glenn Renfro</name>
+    </author>
+    <id>tag:spring.io,2021-01-25:4345</id>
+    <updated>2021-01-25T16:41:00Z</updated>
+    <content type="html">&lt;p&gt;Spring Cloud Task 2.2.5 includes fixes for the following vulnerability:&lt;/p&gt;
+&lt;p&gt;CVE-2020-5428&lt;br/&gt;In applications using Spring Cloud Task 2.2.4.RELEASE and below, may contain code that is vulnerable to SQL injection when exercising certain lookup queries in the TaskExplorer. &lt;/p&gt;
+&lt;p&gt;Users of Spring Cloud Task 2.2.4.RELEASE and below are encouraged to upgrade to Spring Cloud Task 2.2.5.RELEASE or 2.3.0.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Data Flow 2.7.1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/25/spring-cloud-data-flow-2-7-1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Janne Valkealahti</name>
+    </author>
+    <id>tag:spring.io,2021-01-25:4344</id>
+    <updated>2021-01-25T15:00:00Z</updated>
+    <content type="html">&lt;p&gt;Spring Cloud Data Flow team is pleased to announce the release of &lt;em&gt;2.7.1&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;2.7.1&lt;/em&gt; is a maintenance release fixing following issues:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;UI bug fixes&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Cloudfoundry Java Client&lt;/em&gt; has been updated to &lt;em&gt;4.13.0&lt;/em&gt; fixing its memory leak&lt;/li&gt;
+  &lt;li&gt;Using &lt;em&gt;Spring Boot 2.3.7&lt;/em&gt; and &lt;em&gt;Cloud Hoxton.SR9&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Spring Cloud Task&lt;/em&gt; updated to &lt;em&gt;2.2.5&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Dataflow server contains fixes for docker, metrics and some endpoints&lt;/li&gt;
+  &lt;li&gt;More detailed list can be found from &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.7.1"&gt;GitHub 2.7.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is also releases for &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.6.5"&gt;GitHub 2.6.5&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.5.4.RELEASE"&gt;GitHub 2.5.4&lt;/a&gt; with updated &lt;em&gt;Spring Cloud Task&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stack Overflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>YMNNALFT:  Websockets</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/25/ymnnalft-websockets" />
@@ -988,290 +1066,6 @@ class MyContext {&#xD;
     <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;5.3.3&lt;/code&gt; is available now.&lt;/p&gt;
 &lt;p&gt;Spring Framework &lt;code&gt;5.3.3&lt;/code&gt; includes &lt;a href="https://github.com/spring-projects/spring-framework/releases/tag/v5.3.3"&gt;40 fixes and improvements&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/5.3.3/spring-framework-reference"&gt;Documentation&lt;/a&gt;&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>YMNNALFT:  HTTP Clients</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/11/ymnnalft-http-clients" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-12-30:4318</id>
-    <updated>2021-01-11T11:00:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
-&lt;p&gt;Today we&amp;rsquo;re going to look at an all-in-one, handy dandy HTTP client, the &lt;code&gt;WebClient&lt;/code&gt;. &lt;/p&gt;
-&lt;p&gt;HTTP services are a common source of data. The web is an existence proof of the scalability and resilience of HTTP, and it makes a very compelling case for constraints on HTTP, like REST, when building network services. If HTTP is the lingua franca of the open web, then we must ask questions in HTTP. &lt;/p&gt;
-&lt;p&gt;There are some great libraries out there (like &lt;a href="http://hc.apache.org/"&gt;Apache HttpComponents Client&lt;/a&gt; and &lt;a href="https://square.github.io/okhttp/"&gt;OkHttp&lt;/a&gt;) that work in much the same way. If you haven&amp;rsquo;t got a particular one in mind but want a world-class option and are already using Spring, you could use the non-blocking, Netty-based HTTP client in Spring Webflux, the &lt;code&gt;WebClient&lt;/code&gt;. &lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;WebClient&lt;/code&gt; is the reactive, non-blocking alternative to the &lt;code&gt;RestTemplate&lt;/code&gt;. I love the &lt;code&gt;WebClient&lt;/code&gt; because it is non-blocking: the client thread used to make the network request won&amp;rsquo;t get hung up waiting for a network service response. This implies much better scalability - threads are free to be used for something else. I also love the &lt;code&gt;WebClient&lt;/code&gt; because it uses the Reactive Streams APIs, making composition &lt;em&gt;much&lt;/em&gt; easier. We just saw some of that in the last example. &lt;/p&gt;
-&lt;p&gt;You can use the &lt;code&gt;WebClient&lt;/code&gt; to talk to any old HTTP endpoint, not just those written using non-blocking or reactive APIs on the server-side. And, even better, you can use the &lt;code&gt;WebClient&lt;/code&gt; even in otherwise non-reactive code. What if - and just hear me out here - &lt;em&gt;what if&lt;/em&gt; somebody wanted to use the &lt;code&gt;WebClient&lt;/code&gt; but couldn&amp;rsquo;t use the full reactive Spring web stack? &lt;/p&gt;
-&lt;img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F1M9fmo1WAFVK0%2Fgiphy.gif&amp;f=1&amp;nofb=1" /&gt;
-&lt;p&gt;Search me! I can&amp;rsquo;t imagine why you&amp;rsquo;d not want to use the reactive HTTP stack. That&amp;rsquo;s OK even if you don&amp;rsquo;t because there&amp;rsquo;s still a lot of value in using the &lt;code&gt;WebClient&lt;/code&gt; all by its lonesome. You could use the &lt;code&gt;WebClient&lt;/code&gt; to make one or more HTTP calls and then concurrently compose the results. It&amp;rsquo;s ideal for easy scatter-gather kinds of composition. This is a natural thing to want to do even if you&amp;rsquo;re not otherwise using a reactive HTTP runtime, as might be the case if you&amp;rsquo;re running in a Servlet environment. &lt;/p&gt;
-&lt;p&gt;You&amp;rsquo;ll need the following dependencies to get the &lt;code&gt;WebClient&lt;/code&gt; on the classpath. &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Reactive Web on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-webflux&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Let&amp;rsquo;s look at some code. This example does two different things (concurrently): &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Initializes a new project using the HTTP API that powers &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;It retrieves all of the active open-source Spring projects using the Spring API&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.httpclient.webclient;&#xD;
-&#xD;
-import lombok.ToString;&#xD;
-import org.springframework.beans.factory.annotation.Value;&#xD;
-import org.springframework.boot.SpringApplication;&#xD;
-import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
-import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
-import org.springframework.context.ApplicationListener;&#xD;
-import org.springframework.context.annotation.Bean;&#xD;
-import org.springframework.core.io.buffer.DataBuffer;&#xD;
-import org.springframework.core.io.buffer.DataBufferUtils;&#xD;
-import org.springframework.http.MediaType;&#xD;
-import org.springframework.scheduling.annotation.EnableAsync;&#xD;
-import org.springframework.web.reactive.function.client.WebClient;&#xD;
-import reactor.core.publisher.Mono;&#xD;
-&#xD;
-import java.net.URI;&#xD;
-import java.nio.file.Path;&#xD;
-import java.util.ArrayList;&#xD;
-import java.util.Collection;&#xD;
-&#xD;
-import static java.nio.file.StandardOpenOption.CREATE;&#xD;
-&#xD;
-@EnableAsync&#xD;
-@SpringBootApplication&#xD;
-public class BootifulApplication {&#xD;
-&#xD;
-	public static void main(String[] args) {&#xD;
-		SpringApplication.run(BootifulApplication.class, args);&#xD;
-	}&#xD;
-&#xD;
-	@Bean&#xD;
-	WebClient webClient(WebClient.Builder builder) {&#xD;
-		return builder//&#xD;
-				.filter(//&#xD;
-						(clientRequest, exchangeFunction) -&amp;gt; exchangeFunction//&#xD;
-								.exchange(clientRequest)//&#xD;
-								.doOnNext(response -&amp;gt; System.out.println(&amp;quot;got a WebClient response: &amp;quot; + response))//&#xD;
-				) //&#xD;
-				.build();&#xD;
-	}&#xD;
-&#xD;
-	@Bean&#xD;
-	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; ready(@Value(&amp;quot;file://${user.home}/Desktop/output.zip&amp;quot;) Path output,&#xD;
-			WebClient client) {&#xD;
-&#xD;
-		return event -&amp;gt; {&#xD;
-&#xD;
-			// initialize a new Spring Boot project .zip archive&#xD;
-			Mono&amp;lt;DataBuffer&amp;gt; db = client.get()//&#xD;
-					.uri(URI.create(&amp;quot;https://start.spring.io/starter.zip&amp;quot;))//&#xD;
-					.accept(MediaType.APPLICATION_OCTET_STREAM)//&#xD;
-					.retrieve()//&#xD;
-					.bodyToMono(DataBuffer.class);&#xD;
-&#xD;
-			// gets written out to ~/output.zip&#xD;
-			Mono&amp;lt;Boolean&amp;gt; write = DataBufferUtils.write(db, output, CREATE).thenReturn(true);&#xD;
-&#xD;
-			// enumerate all the active Spring projects using the&#xD;
-			// JSON API while we&amp;#39;re at it...&#xD;
-			Mono&amp;lt;ProjectsResponse&amp;gt; json = client//&#xD;
-					.get()//&#xD;
-					.uri(URI.create(&amp;quot;https://spring.io/api/projects&amp;quot;))//&#xD;
-					.retrieve()//&#xD;
-					.bodyToMono(ProjectsResponse.class);&#xD;
-&#xD;
-			// look ma! No threading code! this will launch both network&#xD;
-			// calls (the .zip and the json) at the same time&#xD;
-			Mono.zip(write, json).subscribe(tuple -&amp;gt; enumerate(tuple.getT2()));&#xD;
-		};&#xD;
-	}&#xD;
-&#xD;
-	private void enumerate(ProjectsResponse pr) {&#xD;
-		pr._embedded //&#xD;
-				.projects //&#xD;
-						.stream() //&#xD;
-						.filter(p -&amp;gt; p.status.equalsIgnoreCase(&amp;quot;active&amp;quot;)) //&#xD;
-						.forEach(project -&amp;gt; System.out.println(project.toString()));&#xD;
-	}&#xD;
-&#xD;
-}&#xD;
-&#xD;
-@ToString&#xD;
-class ProjectsResponse {&#xD;
-&#xD;
-	public Embedded _embedded = new Embedded();&#xD;
-&#xD;
-	@ToString&#xD;
-	public static class Project {&#xD;
-&#xD;
-		public String name, slug, status, repositoryUrl;&#xD;
-&#xD;
-	}&#xD;
-&#xD;
-	@ToString&#xD;
-	public static class Embedded {&#xD;
-&#xD;
-		public Collection&amp;lt;Project&amp;gt; projects = new ArrayList&amp;lt;&amp;gt;();&#xD;
-&#xD;
-	}&#xD;
-&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you want to bring in the &lt;code&gt;WebClient,&lt;/code&gt; but _ don&amp;rsquo;t_ want to use the rest of the reactive web stack, then you&amp;rsquo;ll need to tell Spring Boot. Spring Boot will attempt to standup a Netty-based Spring Webflux environment, otherwise. You&amp;rsquo;ll need the following configuration in your &lt;code&gt;application.properties&lt;/code&gt;. &lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.main.web-application-type=none
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Data's Migration from Jira to GitHub Issues</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/07/spring-data-s-migration-from-jira-to-github-issues" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Mark Paluch</name>
-    </author>
-    <id>tag:spring.io,2020-12-31:4327</id>
-    <updated>2021-01-08T03:15:00Z</updated>
-    <content type="html">&lt;p&gt;Spring Data has migrated its entire history of issues from Jira to GitHub. The goal of this blog post is to give you context and details about this migration.&lt;/p&gt;&lt;h1&gt;&lt;a href="#migration-details" class="anchor" name="migration-details"&gt;&lt;/a&gt;Migration Details&lt;/h1&gt;
-&lt;p&gt;Spring Data issues have been managed for over ten years in Jira. Today, every issue and every comment has been imported into GitHub. There is a lot to consider in such a move, so let&amp;rsquo;s take a tour and go over some details.&lt;/p&gt;
-&lt;p&gt;Spring Data consists of 19 individual projects, each one of which is associated with its own issue tracker namespace. Four projects (Spring Data Build, BOM, Envers, and R2DBC) have been using GitHub. One project (Spring Data GemFire) was not migrated as it is in maintenance mode and is going end of life soon.&lt;br/&gt;During this migration, we migrated almost 15,000 tickets from 14 Jira projects into 14 GitHub repositories. &lt;/p&gt;&lt;h3&gt;&lt;a href="#jira-details" class="anchor" name="jira-details"&gt;&lt;/a&gt;Jira Details&lt;/h3&gt;
-&lt;p&gt;Every imported issue displays information from Jira in the bottom half of its description. The goal was that all information from Jira is available on GitHub, and you don&amp;rsquo;t have to go back and forth between the two. You may see one or more of the following, when available:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Affected versions&lt;/li&gt;
-  &lt;li&gt;Reference URL&lt;/li&gt;
-  &lt;li&gt;Attachments&lt;/li&gt;
-  &lt;li&gt;Related issues&lt;/li&gt;
-  &lt;li&gt;Pull requests and commit references&lt;/li&gt;
-  &lt;li&gt;Backport versions&lt;/li&gt;
-  &lt;li&gt;Vote and watcher counts&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Note that votes and watch subscriptions could not be carried over to GitHub. Even if &lt;code&gt;spring-issuemaster&lt;/code&gt; has full privileges, it can only vote once, and it cannot vote on someone else&amp;rsquo;s behalf. So please visit GitHub issues to re-apply reactions and subscribe to receive updates for specific issues.&lt;/p&gt;&lt;h3&gt;&lt;a href="#labels" class="anchor" name="labels"&gt;&lt;/a&gt;Labels&lt;/h3&gt;
-&lt;p&gt;Some Jira fields were converted to GitHub issue labels:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Jira Field &lt;/th&gt;
-      &lt;th&gt;Label&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Issue Type &lt;/td&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;type: *&amp;quot;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Status &lt;/td&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;status: *&amp;quot;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Resolution &lt;/td&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;status: *&amp;quot;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Component &lt;/td&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;in: *&amp;quot;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Two extra labels were also applied to imported issues:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Label &lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;has: votes-jira&amp;quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;imported issues with 10+ votes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;has: backports&amp;quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;issues with backport versions&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;We used the opportunity to streamline the Jira field values over all repositories. Components are reflected through &lt;code&gt;&amp;quot;in: *&amp;quot;&lt;/code&gt; labels. The &lt;code&gt;&amp;quot;status: *&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;type: *&amp;quot;&lt;/code&gt; labels have also been given extra thought and revised. A typical Spring Data project has the following components:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Label &lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;in: core&amp;quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Core support&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;in: mapping&amp;quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Mapping metadata and converter infrastructure&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code&gt;&amp;quot;in: repository&amp;quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Repository abstraction&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Depending on the actual project, you can find additional components, such as &lt;code&gt;&amp;quot;in: aggegation-framework&amp;quot;&lt;/code&gt; for Spring Data MongoDB. Therefore, you might find components in &lt;a href="https://github.com/spring-projects/spring-data-rest/labels"&gt;Spring Data REST&lt;/a&gt; that do not exist in &lt;a href="https://github.com/spring-projects/spring-data-jpa/labels"&gt;Spring Data JPA&lt;/a&gt;.. &lt;/p&gt;
-&lt;p&gt;Our choice of labels is aligned with the labels used in Spring Boot and Spring Framework. The Boot team has given their process and labels a lot of thought, and we know many people will appreciate the consistency. See the complete &lt;a href="https://github.com/spring-projects/spring-data-commons/labels"&gt;set of labels&lt;/a&gt; for &lt;a href="https://github.com/spring-projects/spring-data-commons"&gt;Spring Data Commons&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;In Jira, many fields and labels are modifiable. In GitHub, only contributors can add or remove labels. This makes perfect sense. Reporters simply describe the issue, while contributors categorize it. Both developers and contributors can use the labels to search.&lt;/p&gt;
-&lt;p&gt;Going forward, Spring Data adopts a bit of automation such that each new ticket must be triaged by the project team before a ticket is accepted as a feature request or a bug report.&lt;/p&gt;&lt;h3&gt;&lt;a href="#fix-versions" class="anchor" name="fix-versions"&gt;&lt;/a&gt;Fix Versions&lt;/h3&gt;
-&lt;p&gt;A Jira issue can have multiple fix versions, while a GitHub issue can have only one target milestone. This feels like a drawback, but there is more than is apparent to the eye, and the constraint has forced us to consider some meaningful adjustments.&lt;/p&gt;
-&lt;p&gt;Take &lt;a href="https://jira.spring.io/browse/DATACMNS-715?redirect=false"&gt;DATACMNS-715&lt;/a&gt;, for example, with fix versions &lt;code&gt;1.8.6&lt;/code&gt;, &lt;code&gt;1.9.3&lt;/code&gt;, &lt;code&gt;1.10.1&lt;/code&gt;, and &lt;code&gt;1.11 RC1&lt;/code&gt;. While the issue was fixed in all four versions, there is no way to express these using milestones. We can instead say it was fixed in &lt;code&gt;1.8.6&lt;/code&gt; and forward-ported to all other versions. This is how it shows on the GitHub issue &lt;a href="https://github.com/spring-projects/spring-framework/issues/21759"&gt;#21759&lt;/a&gt;. Could we have made this adjustment in the past? Sure, but the support for multiple fix versions in Jira didn&amp;rsquo;t force us to do so.&lt;/p&gt;&lt;h3&gt;&lt;a href="#markup" class="anchor" name="markup"&gt;&lt;/a&gt;Markup&lt;/h3&gt;
-&lt;p&gt;The markup was, without a doubt the most significant and most painful part of the migration. A ten-year history of issue tracking reflects big shifts in programming styles that in turn determine what shows up in comments. &lt;/p&gt;
-&lt;p&gt;For example, lots of XML was pasted in comments in the beginning, and Markdown treats that as &lt;a href="https://spec.commonmark.org/0.28/#html-blocks"&gt;HTML blocks&lt;/a&gt;, which results in the tags not showing at all. Of course if those were surrounded with &lt;code&gt;{code:xml}...{code}&lt;/code&gt;, it would look fine, but in those days, markup wasn&amp;rsquo;t commonly used and the XML snippets showed up anyway, so it didn&amp;rsquo;t force the issue and, consequently, made it impossible to migrate properly.&lt;/p&gt;
-&lt;p&gt;There are many other intricacies (such as the escaping of curly braces, avoiding the effect of monospacing, or escaping asterisks to prevent them from disappearing as markup for bold). I&amp;rsquo;ll spare you the details. Suffice it to say that we put a lot of effort into making sure the markup conversion quality is reasonably high.&lt;/p&gt;
-&lt;p&gt;One specific issue to highlight is the use of &amp;ldquo;@&amp;rdquo; in plain text (that is, outside of code blocks). Those are user mentions on GitHub that trigger notifications. You might be surprised that &lt;a href="https://github.com/query"&gt;@Query&lt;/a&gt;, &lt;a href="https://github.com/modifying"&gt;@Modifying&lt;/a&gt;, &lt;a href="https://github.com/configuration"&gt;@Configuration&lt;/a&gt; are actual GitHub users. This is why we&amp;rsquo;ve taken care to escape them. Going forward, when creating new issues or comments, please be a good GitHub citizen and use backticks (for example, `@Query`.&lt;/p&gt;&lt;h1&gt;&lt;a href="#background" class="anchor" name="background"&gt;&lt;/a&gt;Background&lt;/h1&gt;
-&lt;p&gt;We&amp;rsquo;ve used and liked Jira for a long time. The idea of migrating to GitHub Issues did not come to our team immediately. Jira seemed too essential. Over time, we&amp;rsquo;ve seen a growth in adoption of GitHub issues. Some of our projects used GitHub already and, for newer projects, such as Envers and R2DBC, we&amp;rsquo;ve used GitHub issues right from the start. We also see an elevated use of Markdown in Jira. Finally, the way we see our projects as a team is pretty fragmented, as there&amp;rsquo;s no single view over all tickets to work on.&lt;/p&gt;
-&lt;p&gt;GitHub is the home of just about every open source project, including &lt;em&gt;every&lt;/em&gt; Spring project, and all users can be reasonably expected to have GitHub credentials. As a result, it has become untenable today to expect developers to maintain a separate login for the issue tracker of every open source project they depend on or want to report an issue against.&lt;/p&gt;
-&lt;p&gt;Then there are the benefits of co-locating source code and issues. I&amp;rsquo;ve mentioned many of those earlier, like the &lt;a href="https://help.github.com/articles/autolinked-references-and-urls/"&gt;autolinked references&lt;/a&gt; across issues, pull requests, source code and commits, within a single project and across all projects on GitHub and the ability to mention and notify any GitHub user. All of those are very powerful benefits that are simply not possible with siloed issue tracking. I doubt anyone wants to go back to the days when open source projects were hosted in different places. The same is true for issue tracking.&lt;/p&gt;
-&lt;p&gt;There are deeper, less obvious benefits for co-located source code and issues. GitHub treats issues and pull requests equally. They are assigned numbers from the same sequence, they look the same (description, comments, labels, and target milestone), they appear in release notes without distinction. A pull request is nothing but an issue with commits attached.&lt;/p&gt;
-&lt;p&gt;Historically, in the Spring Data projects, we required a Jira issue for every pull request. We didn&amp;rsquo;t like the burden either, but we needed a single place of record for all issues. As a consequence of this split situation, it was never too clear what should be discussed under the pull request and how much belongs in the Jira issue. &lt;/p&gt;
-&lt;p&gt;Going forward, this is no longer a problem. We expect either an issue or a pull request, not both. If you need to start with a discussion first, which we &lt;em&gt;do&lt;/em&gt; encourage, create an issue, and later, if you submit a pull request, the PR will supersede the issue. The two are still linked, and nothing is lost. The conversation follows the action.&lt;/p&gt;
-&lt;p&gt;Not to be overlooked is the markup question. There is no doubt that using different markup variants depending on the issue tracker is painful.&lt;br/&gt;There is also no question that Markdown is widely used and easy to use in code-related discussions. It requires less typing compared to Jira&amp;rsquo;s Wiki markup and it just works when it comes to formatting code, because it&amp;rsquo;s simpler and does not clash with symbols that commonly appear in code. This has looked obvious to me from the start, since I&amp;rsquo;ve also used GitHub and Markdown in parallel for years. Jira is about the oldest Atlassian product so there&amp;rsquo;s a bit of history of why there&amp;rsquo;s no out of the box support for Markdown. To be clear, this wasn&amp;rsquo;t a decisive factor. It&amp;rsquo;s just one of those things you learn to live with that can later become extra incentive for change.&lt;/p&gt;
-&lt;p&gt;Last but not least, today, most developers use Spring through Spring Boot, which has always used GitHub Issues. Spring Framework has used GitHub Issues for two years. From that perspective alone, there is enough incentive for Spring Data to migrate and to create a more consistent experience for Spring users.&lt;/p&gt;
-&lt;p&gt;Migrating to GitHub issues gives us, as a team, an opportunity to reconsider or commit message format. Since its inception, Spring Data messages followed the pattern of &lt;a href="https://github.com/spring-projects/spring-data-commons/commit/2b7c5552738763dfec299695c4a17086af9b3b0b"&gt;&lt;code&gt;&amp;lt;ticketnumber&amp;gt; - summary.&lt;/code&gt;&lt;/a&gt;. That format worked well for us in the past. With migrating to GitHub, the ticket number starts with a hash (&lt;code&gt;#&lt;/code&gt;), which is typically used as a comment character. As a consequence, changing commit messages or amending commits becomes a burden, as each committer needs to tune their Git config to not consider &lt;code&gt;#&lt;/code&gt; a comment character. Going forward, GitHub allows &lt;a href="https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword"&gt;closing tickets and pull requests by referencing the ticket in a commit message&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Our future commit messages therefore will look more like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;Summary.&#xD;
-&#xD;
-Body comes here.&#xD;
-&#xD;
-Original pull request #456&#xD;
-Closes #123
-&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;&lt;a href="#the-actual-migration" class="anchor" name="the-actual-migration"&gt;&lt;/a&gt;The Actual Migration&lt;/h1&gt;
-&lt;hr/&gt;
-&lt;p&gt;Despite a lot of preparation, there is nothing like the day of the actual migration. We used GitHub&amp;rsquo;s unofficial &lt;a href="https://gist.github.com/jonmagic/5282384165e0f86ef105"&gt;import API&lt;/a&gt;, which is documented to not trigger any notifications. Once in a while, the import of individual issues failed because of their body size. Especially pasting raw &lt;code&gt;StackOverflowExceptions&lt;/code&gt; causes large issue bodies that need to be truncated.&lt;/p&gt;
-&lt;p&gt;With that in mind, we migrated all 14 projects over the course of two days. It took another few hours to make a second pass over all issues and comments to replace Jira issue keys with GitHub reference numbers.&lt;/p&gt;
-&lt;p&gt;All of that is now complete, and it is my pleasure to announce we are now open for business on GitHub Issues.&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: Netty and Armeria founder Trustin Lee</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/07/a-bootiful-podcast-netty-and-armeria-founder-trustin-lee" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2021-01-08:4329</id>
-    <updated>2021-01-08T02:15:00Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! In this episode &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to Netty and Armeria founder &lt;a href="http://twitter.com/trustin"&gt;Trustin Lee (@trustin)&lt;/a&gt;.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="http://Armeria.dev"&gt;Armeria&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://netty.io/"&gt;Netty&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://mina.apache.org/"&gt;Apache Mina &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/trustin"&gt;Trustin&amp;rsquo;s Twitter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/trustin_ko"&gt;Trustin&amp;rsquo;s Twitter in Korean&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://t.motd.kr/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://www.youtube.com/playlist?list=PLuWz7MpEAx_fPDwy0yus3SJdzWVtu3mwc"&gt;Trustin&amp;rsquo;s Talks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://speakerdeck.com/trustin"&gt;Speaker Deck&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Chat with Trustin in the &lt;a href="https://armeria.dev/s/slack"&gt;Armeria Slack workspace&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;iframe title="Netty and Armeria founder Trustin Lee" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/4r7nq-f6fcf5?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
