@@ -57,7 +57,7 @@
 		</div>
 		<div class="traveler-body">
 				<div class="my-point-box box clearfix">
-						<c:forEach var="heart" items="${review}">
+						<c:forEach var="heart" items="${heart}">
 							<div class="innerbox gray-inner">
 								<div class="item text-md">
 									<a href="${pageContext.request.contextPath }/starBoard/freeDetail?bno=${heart.bno}">

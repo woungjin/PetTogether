@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 public class MyReviewVO {
 
 	private int review_bno;
-	private int bno;
-	private String id;
 	private String writer;
 	private String content;
 	

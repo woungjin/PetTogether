@@ -101,15 +101,12 @@
   	</select>  	
   	
   	<select id="myReview" resultType="MyReviewVO">
-  		select review_bno,
-  				r.bno,
-  				u.id,
-  				r.content
-  			from users u left outer join reviewboard r
-  			on u.id = r.writer
-  			where u.id = #{id}
-  			order by r.bno asc
-  	
+	  	select review_bno,
+			    content,
+			    writer
+		from REVIEWBOARD 
+		where writer = #{id}
+		order by bno asc
   	</select>
   
   

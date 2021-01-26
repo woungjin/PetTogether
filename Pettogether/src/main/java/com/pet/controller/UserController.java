@@ -73,25 +73,20 @@ public class UserController {
 			
 		return "user/userMypageHeart";
 	}
-	
-	@RequestMapping("userMypageReview")
-	public String usermypageReview(HttpSession session, Model model) {
-		
-		UserVO result = (UserVO) session.getAttribute("userVO");
-		System.out.println(result + "내가쓴리뷰");
-		String userId = result.getId();
-		System.out.println(userId);
-		ArrayList<MyReviewVO> userReview = userService.myReview(userId);
-		
-		System.out.println(userReview);
-		model.addAttribute("myReview", userReview);
-		
-		return "user/userMypageReview";
-	}
 
 	// 마이페이지 안에서 리뷰 글 부분
 	@RequestMapping("userMypageReview")
-	public String userMypageReview() {
+	public String userMypageReview(HttpSession session, Model model) {
+		
+		UserVO result = (UserVO)session.getAttribute("userVO");
+		System.out.println(result+"마이리뷰");
+		String userId = result.getId();
+		System.out.println(userId);
+		ArrayList<MyReviewVO> userReview = userService.myReview(userId);
+		model.addAttribute("myReview", userReview);
+		System.out.println("유저리뷰"+userReview);
+		
+		
 		return "user/userMypageReview";
 	}
 	

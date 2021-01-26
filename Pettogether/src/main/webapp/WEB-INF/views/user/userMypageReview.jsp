@@ -56,26 +56,15 @@
 
 		</div>
 		<div class="traveler-body">
-					<table>
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th class="board-title">제목</th>
-                                <th>작성자</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="heart" items="${myReview}">
-                            <tr>
-                                <td>${myReview.bno }</td>
-                                <td><a href="${pageContext.request.contextPath }/freeboard/freeDetail?bno=${myReview.bno}"> ${myReview.content }</a></td>
-                                <td>${myReview.id }</td>
-                                
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                        
-                    </table>
+				<div class="my-point-box box clearfix">
+						<c:forEach var ="my" items="${myReview}" varStatus="status">
+	
+    <a > ${my} </a>
+    <a> ${status.index} </a>
+
+</c:forEach>
+				</div>
+					
 			<div class="notice-container">
 				<div class="text">
 					• 적립된 포인트는 상품 구매 시 현금처럼 사용할 수 있습니다.<br>• 단, 마이리얼트립 내 항공권 구매 또는
@@ -90,4 +79,11 @@
 </main>
 
 </div>
+
+<script>
+var my = "${myReview}"
+console.log(my);
+console.log(my.writer);
+
+</script>
 
