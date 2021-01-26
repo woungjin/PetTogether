@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 회원정보 -->
 <main class="traveler">
 	<div class="traveler-container clearfix">
-		<div class="sidebar-heading">내가 작성한 리뷰</div>
+		<div class="sidebar-heading">내가 만든 게시글</div>
 		<div class="detail-page-xs-hidden traveler-sidebar">
 			<div class="sidebar-wrapper">
 				<div class="profile-container box">
@@ -23,18 +24,18 @@
 				<div class="promotion-container box clearfix">
 					<div class="item">
 	                        <div class="item-count text-md">
-	                            <form action="userMypageModify" method="post">
+	                            <form action="userMypageHeart" method="post">
 							          <div class="item-header text-md">
-							           		<button type="submit" class="mypageBtn">회원정보수정</button>		            
+							           		<button type="submit" class="mypageBtn">찜 목록</button>		            
 							          </div>
 						        </form>
 						    </div>
                         </div>
                         <div class="item">
                             <div class="item-count text-md">
-                                <form action="userMypageHeart" method="post">
+                                <form action="userMypageModify" method="post">
 							          <div class="item-header text-md">
-							           		<button type="submit" class="mypageBtn">찜 목록</button>		            
+							           		<button type="submit" class="mypageBtn">회원정보수정</button>		            
 							          </div>
 						        </form>
                             </div>
@@ -48,21 +49,23 @@
 						        </form>
 					      	</div>
                         </div>
-				</div>
-				
-    
-					</div>
+				</div>		
+					
 			</div>
 
 		</div>
 		<div class="traveler-body">
 				<div class="my-point-box box clearfix">
-						<c:forEach var ="my" items="${myReview}" varStatus="status">
-	
-    <a > ${my} </a>
-    <a> ${status.index} </a>
-
-</c:forEach>
+						<c:forEach var="review" items="${review}">						
+							<div class="innerbox gray-inner">
+								<div class="item text-md">
+									<a href="${pageContext.request.contextPath }/freeBoard/freeReview?bno=${review.review_bno}">
+										${review.writer }님의  ${review.review_bno }번 게시글! / ${review.content }"
+									</a> 
+								</div>					
+							</div>
+							<br/>
+						</c:forEach>
 				</div>
 					
 			<div class="notice-container">
@@ -80,10 +83,5 @@
 
 </div>
 
-<script>
-var my = "${myReview}"
-console.log(my);
-console.log(my.writer);
 
-</script>
 
