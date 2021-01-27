@@ -65,7 +65,7 @@ public class FreeBoardController {
 		// oracle은 CONTENT
 		for(int i=0 ;  i< list.size(); i++) {
 			
-			String content = (String) list.get(i).get("CONTENT");
+			String content = (String) list.get(i).get("content");
 			String content2 = content.substring(0,3);
 			
 			list.get(i).put("content", content2  + "...");
@@ -196,7 +196,9 @@ public class FreeBoardController {
 			
 			// 2. 저장할폴더
 
-			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+			
+//			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+			String uploadPath = "/var/upload/" + fileLoca;
 
 
 
@@ -254,9 +256,9 @@ public class FreeBoardController {
 										@PathVariable("fileName") String fileName){
 		
 
-		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+//		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+		String uploadPath = "/var/upload/" + fileLoca;
 		
-		System.out.println("들어오는거여ㅑ ??");
 
 		
 		File file = new File(uploadPath + "\\" + fileName);
