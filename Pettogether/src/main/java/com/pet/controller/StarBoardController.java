@@ -47,12 +47,10 @@ public class StarBoardController {
 
 		try {
 			UserVO user = (UserVO) session.getAttribute("userVO");
-			System.out.println("user의 정보" + user.toString());
 			
 			String user_id = user.getId();
 			
 			ArrayList<MyGoodVO> mygoodVO = starBoardService.getMygood(user_id);
-			System.out.println("찜테이블 불러오기 " + mygoodVO.toString());
 			
 			
 			model.addAttribute("mygoodVO" , mygoodVO);
@@ -78,21 +76,16 @@ public class StarBoardController {
 	@RequestMapping("/cateList")
 	public String cateFreeList(Model model , Criteria cri ,String cate , HttpSession session) {
 
-		System.out.println("cate : "  + cate);
-		System.out.println(cri.toString());
 		ArrayList<StarBoardVO> list = starBoardService.getcate(cate, cri);
-		System.out.println(list.toString());
 		int cateTotal = starBoardService.cateToal(cate);
 		
 
 		try {
 			UserVO user = (UserVO) session.getAttribute("userVO");
-			System.out.println("user의 정보" + user.toString());
 			
 			String user_id = user.getId();
 			
 			ArrayList<MyGoodVO> mygoodVO = starBoardService.getMygood(user_id);
-			System.out.println("찜테이블 불러오기 " + mygoodVO.toString());
 			
 			
 			model.addAttribute("mygoodVO" , mygoodVO);
@@ -132,7 +125,6 @@ public class StarBoardController {
 			if(ck[i].getValue().equals(bno2)) {
 				checkCookie = true;
 				value = ck[i].getValue();
-				System.out.println("value 값 : "+ value);
 				Cookie kc = new Cookie(ck[i].getValue(),null);
 				kc.setMaxAge(0);
 				kc.setPath("/");
@@ -166,9 +158,7 @@ public class StarBoardController {
 		
 		int result = starBoardService.hit(bno);
 		if(result == 1) {
-			System.out.println("hit 없데이트 성공");
 		}else {
-			System.out.println("hit 업데이트 실패");
 		}
 		StarBoardVO vo = starBoardService.getBoardDetail(bno);
 		
@@ -183,9 +173,7 @@ public class StarBoardController {
 	@ResponseBody
 	@PostMapping("starBoardReplyInsert")
 	public int starBoardReplyInsert(@RequestBody StarBoardReplyVO vo) {
-		System.out.println("댓글입력 " + vo.toString());
 		String pw = starBoardService.getUserPw(vo);
-		System.out.println("pw : " + pw);
 		vo.setPw(pw);
 		int result = starBoardService.starReplyInsert(vo);
 		return result; 
@@ -200,8 +188,6 @@ public class StarBoardController {
 		
 		Criteria cri = new Criteria(pageNum , 8);
 		ArrayList<StarBoardReplyVO> list = starBoardService.getStarReply(bno , cri);
-		System.out.println(list.toString());
-		System.out.println(pageNum);
 		int total = starBoardService.starReplyTotal(bno);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -217,9 +203,7 @@ public class StarBoardController {
 	@PostMapping("/starReplyUpdate")
 	public int starReplyUpdate(@RequestBody StarBoardReplyVO vo) {
 		
-		System.out.println(vo.toString());
 		int pwResult = starBoardService.pwCheck(vo);
-		System.out.println(pwResult);
 		if(pwResult == 1) {
 			int updateResult = starBoardService.starReplyUpdate(vo);
 			if(updateResult == 1) {
@@ -238,7 +222,6 @@ public class StarBoardController {
 	@PostMapping("/starReplyDelete")
 	public int starReplyDelete(@RequestBody StarBoardReplyVO vo) {
 		
-		System.out.println(vo.toString());
 		
 		int pwResult = starBoardService.pwCheck(vo);
 		if(pwResult == 1) {

@@ -5,7 +5,38 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-26T03:20:00Z</updated>
+  <updated>2021-01-26T21:50:00Z</updated>
+  <entry>
+    <title>This Week in Spring - January 26th, 2021</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/26/this-week-in-spring-january-26th-2021" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2021-01-26:4347</id>
+    <updated>2021-01-26T21:50:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! As I type this I&amp;rsquo;m sitting on the amazing Tanzu Tuesday&amp;rsquo;s stream as a (guest) cohost &lt;a href="http://twitter.com/tiffanyfayj"&gt;with Tiffany Jernigan (@tiffanyfayj)&lt;/a&gt; learning about tips and tricks for working with Spring Boot and Kubernetes from the &lt;a href="http://twitter.com/olliehughes82"&gt;Spring team&amp;rsquo;s Oliver Hughes (@olliehughes82)&lt;/a&gt;. If you missed it, then it - and all sorts of other content - is available for replays on our &lt;a href="http://twitch.tv/vmwaretanzu"&gt;Tanzu Twitch.tv channel&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now then, we&amp;rsquo;ve got a ton of good stuff to get to so let&amp;rsquo;s gooo&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tomorrow, I&amp;rsquo;ll be streaming with Reactor team member and &lt;a href="https://tanzu.vmware.com/developer/tv/code/0018/"&gt;RSocket committer Oleh Dokuka on Twitch.tv/vmwaretanzu&lt;/a&gt; - don&amp;rsquo;t miss it!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcloud/status/1352347656178302997"&gt;Mark your calendars! Call for Papers and registration for SpringOne 2021 open on Feb. 16. Sign up for updates&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/21/a-bootiful-podcast-spring-tools-lead-martin-lippert-on-sustainable-software"&gt;A Bootiful Podcast - Spring Tools lead Martin Lippert on sustainable software&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/21/bootiful-application-monitoring-with-azure-spring-cloud"&gt;Bootiful Application Monitoring with Azure Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/JavaAtMicrosoft/status/1352321956138217474"&gt;You can monitor Azure Spring Cloud Spring Boot apps and dependencies without any effort! Brought to you jointly by Microsoft and VMware &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/20/ymnnalft-dimensional-metrics-accumulation-with-micrometer"&gt;YMNNALFT: Dimensional Metrics Accumulation with Micrometer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=j6y-k0j7hd4&amp;feature=share"&gt;Building a Spring Boot and Spring MVC web application&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2021/01/20/reactive-java-microservices"&gt;The Okta blog has a nice post on reactive Java microservices &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/trankchung/kubeswitch/"&gt;Kubeswitch v0.2.0 - Kubernetes context and namespace switching&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.javavogue.com/2019/02/how-to-create-a-rest-api-with-spring-boot/"&gt;How to create a REST API with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://jishuin.proginn.com/p/763bfbd382bf"&gt;An interesting post on RSocket (Ù”€ REST Ó‹‹ÙÏ£??)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/21/spring-boot-2-5-0-m1-available-now"&gt;Spring Boot 2.5.0-M1 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/rorypreddy/status/1353338898219479044?s=12"&gt;The Azure Spring Cloud VSCode extension is out!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I really enjoyed this discussion - &lt;a href="https://www.reddit.com/r/kubernetes/comments/l2l9jf/top_considerations_when_evaluating_an_ingress/"&gt;Top Considerations when Evaluating an Ingress Controller for Kubernetes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/VMwareTanzu/status/1351951632158875652"&gt;VMwareTanzu KubeAcademy°Øs expert instructors design and deliver each course to give you practical #Kubernetes training. &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/cloudfoundry/status/1351963315614879746"&gt; Learn how CF Protect helps recover data in Cloud Foundry &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>What's New in Azure Spring Cloud after GA?</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/25/what-s-new-in-azure-spring-cloud-after-ga" />
@@ -1052,20 +1083,6 @@ class MyContext {&#xD;
   &lt;li&gt;Ram N. has published an interesting article looking at &lt;a href="https://dzone.com/articles/spring-boot-crud-operations-example-with-exception"&gt;Spring Boot CRUD operations with exception handling&lt;/a&gt;: nice!&lt;/li&gt;
   &lt;li&gt;Ram N. also posted a video looking &lt;a href="https://dzone.com/articles/what-is-byname-auto-wiring-mode-in-spring"&gt;at Spring&amp;rsquo;s &lt;code&gt;byName&lt;/code&gt; auto-wiring mode&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Framework 5.3.3 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/11/spring-framework-5-3-3-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2021-01-12:4330</id>
-    <updated>2021-01-12T07:06:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;5.3.3&lt;/code&gt; is available now.&lt;/p&gt;
-&lt;p&gt;Spring Framework &lt;code&gt;5.3.3&lt;/code&gt; includes &lt;a href="https://github.com/spring-projects/spring-framework/releases/tag/v5.3.3"&gt;40 fixes and improvements&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/5.3.3/spring-framework-reference"&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
