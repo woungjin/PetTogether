@@ -3,7 +3,10 @@ INDEX VERSION 1.131+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse
 2229698843.index
 1713955133.index
 3290775545.index
+<<<<<<< HEAD
 1148100548.index
+=======
+>>>>>>> master
 2264340213.index
 4131128720.index
 3956163270.index

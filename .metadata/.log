@@ -6902,6 +6902,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 20:25:16.981
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-26 23:35:01.294
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
@@ -7173,4 +7174,10 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 20:32:21.374
+=======
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 21:46:06.521
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 21:46:06.538
+>>>>>>> master
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
