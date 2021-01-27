@@ -2,7 +2,6 @@ INDEX VERSION 1.4+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.w
 1075760701.index
 3676268747.index
 3856510703.index
-3041138483.index
 1308349953.index
 1427095054.index
 2123453590.index
