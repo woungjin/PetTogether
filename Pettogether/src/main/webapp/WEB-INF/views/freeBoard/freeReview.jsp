@@ -123,7 +123,7 @@
 
                                         <div class="reply-input">
                                         <textarea style="margin: 0px; width: 441px;height: 53px; resize: none;" id="replycontent"></textarea>
-                                        <input type="text" class="form-control" id="replyId" placeholder="이름" readonly value="${sessionScope.userVO.id}">
+                                        <input type="text" class="form-control" id="replyId" placeholder="이름" readonly value="${sessionScope.userVO.name}">
                                         </div>
                                         
                                         <button type="button" class="right btn btn-info" id="reviewReplyRegist">등록하기</button>

@@ -60,7 +60,7 @@
 							<div class="innerbox gray-inner">
 								<div class="item text-md">
 									<a href="${pageContext.request.contextPath }/freeBoard/freeReview?bno=${review.review_bno}">
-										${review.writer }님의  ${review.review_bno }번 게시글! / ${review.content }"
+										${sessionScope.userVO.name  }님의  ${review.review_bno }번 게시글! / ${review.content }"
 									</a> 
 								</div>					
 							</div>

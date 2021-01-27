@@ -1131,6 +1131,10 @@ main {
         #pagination a {display:inline-block;margin-right:10px;}
         #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
+a.kakaoBtn:hover{
+	text-decoration:none;
+}
+
 select {    
     color: -internal-light-dark(black, white);    
     text-transform: none;    

@@ -187,6 +187,7 @@ public class FreeBoardController {
 			// 2. 저장할폴더
 
 			
+
 //			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
 			String uploadPath = "/var/upload/" + fileLoca;
 
@@ -234,9 +235,10 @@ public class FreeBoardController {
 										@PathVariable("fileName") String fileName){
 		
 
-//		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+
+		//String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
 		String uploadPath = "/var/upload/" + fileLoca;
-		
+
 
 		
 		File file = new File(uploadPath + "\\" + fileName);

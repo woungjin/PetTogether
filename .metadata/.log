@@ -1,4 +1,4 @@
-!SESSION 2021-01-27 00:39:59.047 -----------------------------------------------
+!SESSION 2021-01-27 18:26:39.051 -----------------------------------------------
 eclipse.buildId=4.16.0.I20200604-0540
 java.version=1.8.0_271
 java.vendor=Oracle Corporation
@@ -7,6 +7,7 @@ Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
 This is a continuation of log file D:\java\project\PetTogether\.metadata\.bak_0.log
+<<<<<<< HEAD
 Created Time: 2021-01-27 00:40:06.161
 !SESSION 2021-01-27 00:39:59.047 -----------------------------------------------
 eclipse.buildId=4.16.0.I20200604-0540
@@ -6903,6 +6904,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-26 23:35:01.294
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
@@ -7175,10 +7177,13 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 20:32:21.374
 =======
+=======
+>>>>>>> master
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 21:46:06.521
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 21:46:06.538
+<<<<<<< HEAD
 >>>>>>> master
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
@@ -7668,4 +7673,80 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:08:36.209
+=======
+>>>>>>> master
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+=======
+Created Time: 2021-01-28 03:06:07.052
+
+!ENTRY org.springframework.ide.eclipse.beans.core 1 0 2021-01-28 03:06:07.052
+!MESSAGE Error occured processing '/Pettogether/src/main/webapp/WEB-INF/config/root-context.xml'
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 39; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.springframework.ide.eclipse.core.io.xml.XercesDocumentLoader.loadDocument(XercesDocumentLoader.java:48)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:429)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:391)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.loadBeanDefinitions(BeansConfig.java:395)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:454)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+>>>>>>> 64f101887da2bde9a5983f2c22c3da89fae91b4b
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:32.531
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:32.554
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:52.598
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:52.605
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:56.200
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:11:56.209
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:12:01.183
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:12:01.189
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:12:18.246
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:12:18.249
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:21.276
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:21.296
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:44.432
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:44.486
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:44.496
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:57.244
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-28 03:13:57.257
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!

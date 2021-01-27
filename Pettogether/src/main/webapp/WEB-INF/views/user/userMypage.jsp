@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- 회원정보 -->
 <div class="mypage">
@@ -20,7 +21,7 @@
 						<div class="text-md setting hide-on-mobile">
 							<img alt="프로필 관리" class="icon item-inline" height="11px"
 								src="https://d2yoing0loi5gh.cloudfront.net/assets/kitty/traveler/reservation/ic_setting@2x-832c08d9d38f208502f94e8d35e78a320024fc5f61630f2eba7801845e1eda78.png"
-								width="11px"> <a href="/traveler/account">프로필 관리</a>
+								width="11px"> 
 						</div>
 					</div>
 					<div class="promotion-container box clearfix">
@@ -184,3 +185,10 @@
 
 
 </div>
+<script>
+var msg = "${msg}";
+if(msg != ""){
+	alert(msg);
+}
+</script>
+
