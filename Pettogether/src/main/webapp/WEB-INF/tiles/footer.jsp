@@ -10,7 +10,7 @@
                 <div class="footer-copyright">
                     <a href="#"><img src="${pageContext.request.contextPath }/resources/img/home/footer_PetLogo2.png" width="20"></a>
                     <div class="footer-content">
-                      반려동물과의 생활을 더욱 즐겁고 추억을 만들어 드리는 펫투게더 입니다
+                     	 반려동물과의 생활을 더욱 즐겁고 추억을 만들어 드리는 펫투게더 입니다
                     </div>
                 </div>
             </div>

@@ -19,7 +19,11 @@
                 <h3 style="text-align: center;">여기는 리뷰 top4</h3>
 
 				<!--  오라클 -->
+<<<<<<< HEAD
 				<c:forEach var="vo" items="${list }" >
+=======
+				<%-- <c:forEach var="vo" items="${list }" >
+>>>>>>> master
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
                     <div class="list">
                         <div class="list-img">
@@ -53,10 +57,10 @@
                         </div>
                     </div>
                 </div>
-				</c:forEach>
+				</c:forEach> --%>
 				
 				<!--  mysql -->
-				<%-- <c:forEach var="vo" items="${list }" >
+				<c:forEach var="vo" items="${list }" >
                 <div class="col-md-3 col-sm-6 col-xs-12 content-img ">
                     <div class="list">
                         <div class="list-img">
@@ -91,7 +95,7 @@
                     </div>
                 </div>
 				</c:forEach>
-                --%>
+                
 
 
 

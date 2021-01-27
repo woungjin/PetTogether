@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="ImportExportAction">
-		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.jst.servlet.ui.internal.wizard.WebComponentExportWizard"/>
 		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+<<<<<<< HEAD
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
@@ -13,6 +14,9 @@
 			<item value="C:\course\project\PetTogether\sql변경완료.zip"/>
 			<item value="C:\Users\a5740\OneDrive\바탕 화면\mysql문으로 고쳤음.zip"/>
 			<item value="C:\Users\a5740\OneDrive\바탕 화면\쿠키빼고다했습니다.zip"/>
+=======
+			<item value="org.eclipse.wst.web.ui"/>
+>>>>>>> master
 		</list>
 	</section>
 </section>
