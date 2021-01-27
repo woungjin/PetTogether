@@ -18,8 +18,7 @@
 	  	(#{id},#{pw},#{name},#{phone1},#{phone2},#{email1},
 	  	#{email2},#{basicAdd},#{detailAdd},#{zipNum},#{quiz},
 	  	#{answer},#{petTag})
-	  </insert>
-	  
+	  </insert>  
 
 	  <select id="login" resultType="UserVO">
 	  	select * from users where id = #{id} and pw = #{pw}

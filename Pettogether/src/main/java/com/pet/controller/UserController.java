@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pet.command.HeartVO;
-
 import com.pet.command.ReviewRegistVO;
 
 import com.pet.command.UserVO;
@@ -57,8 +56,18 @@ public class UserController {
 	}
 	// 마이페지이안에서 수정부분
 	@RequestMapping("userMypageModify")
-	public String userMyModify() {
-		return "user/userMypageModify";
+	public String userMyModify(HttpSession session,
+							   Model model) {
+		
+		UserVO vo = (UserVO) session.getAttribute("userVO");		
+		
+		if(vo.getQuiz() == null) {
+			model.addAttribute("msg", "카카오계정은 수정할수 없습니다.");
+			return "user/userMypage";
+		}else {
+			return "user/userMypageModify";
+		}		
+		
 	}
 	// 마이페이지 안에서 찜 목록 부분
 	@RequestMapping("userMypageHeart")
@@ -92,10 +101,26 @@ public class UserController {
 		return "user/userMypageReview";
 	}
 	
+	@RequestMapping("userKakaoPw")
+	public String userKakaoPw() {
+		return "user/userKakaoPw";
+	}
+	
 	// 마이페이지 안에서 회원 탈퇴 부분
 	@RequestMapping("userMypageDelete")
-	public String userMypageDelete() {
-		return "user/userMypageDelete";
+	public String userMypageDelete(HttpSession session,
+								   Model model) {
+		
+		UserVO vo = (UserVO) session.getAttribute("userVO");
+		
+		if(vo.getQuiz() == null) {
+			model.addAttribute("msg", "카카오계정은 탈퇴기능이 없습니다.");
+			return "user/userMypage";			
+		}else {
+			return "user/userMypageDelete";
+		}		
+		
+		
 	}
 
 	// 아이디 찾기 페이지
@@ -156,31 +181,30 @@ public class UserController {
 			}else {
 				// 세션에 회원정보 저장
 				
-				session.setAttribute("userVO", result);
-				UserVO se = (UserVO) session.getAttribute("userVO");
+				session.setAttribute("userVO", result);				
 				
 				
 				return "redirect:/";
 			}
 		}
 	
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)  
-//	public ModelAndView login(UserVO vo, Model model,
-//						HttpSession session) {
-//		// 로그인 성공시 회원정보를 받아오고, 로그인 실패시 null을 반환
-//		UserVO result = userService.login(vo);
-//		System.out.println("컨트롤러" + result);
-//		ModelAndView mv = new ModelAndView(); // view와 model 정보를 동시에 저장하는 객체
-//		mv.setViewName("/user/userJoin");
-//		
-//		if(result != null) {  // 로그인 성공 
-//			mv.addObject("login", result);
-//		} else {  // 로그인 실패
-//			mv.addObject("msg", "아이디, 비밀번호를 확인하세요");
-//		}
-//		
-//		return mv;
-//	}
+	@RequestMapping(value="/kakaoLogin", method=RequestMethod.POST)
+	public String kakaoLogin(UserVO vo,
+							 Model model,
+							 HttpSession session) {			
+		
+		if(vo == null) {
+			model.addAttribute("login", "다시 시도해주세요.");
+			return "user/userLogin";
+		}else {
+			session.setAttribute("userVO", vo);
+			
+			return "redirect:/";
+		}
+		
+		
+	}
+
 	
 	// 로그아웃
 		@RequestMapping("/userLogout")

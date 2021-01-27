@@ -61,7 +61,7 @@
 							<div class="innerbox gray-inner">
 								<div class="item text-md">
 									<a href="${pageContext.request.contextPath }/starBoard/freeDetail?bno=${heart.bno}">
-										${heart.user_id }님이 찜! 한 게시물 ${heart.title } / ${heart.address } / 별점 ${heart.review_avg }
+										${sessionScope.userVO.name  }님이 찜! 한 게시물 ${heart.title } / ${heart.address } / 별점 ${heart.review_avg }
 									</a>
 								</div>					
 							</div>

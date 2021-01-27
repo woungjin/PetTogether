@@ -36,8 +36,8 @@
 		<property name="dataSource" ref="ds" />
 		<!-- 마이바티스의 구현체 매퍼를 묶어서 관리하기위한 경로 설정 -->
 
-	 	<!-- <property name="mapperLocations" value="classpath:/sqlmap/*.xml" />  -->
-		<property name="mapperLocations" value="classpath:/sqlmap(mysql)/*.xml" /> 
+	 	<property name="mapperLocations" value="classpath:/sqlmap/*.xml" />  
+		<!-- <property name="mapperLocations" value="classpath:/sqlmap(mysql)/*.xml" /> -->
 		
 		<!-- 마이바티스의 부가적인 설정파일 위치 -->
 		<property name="configLocation"	value="classpath:/mybatis-config/mybatis-config.xml"/>
