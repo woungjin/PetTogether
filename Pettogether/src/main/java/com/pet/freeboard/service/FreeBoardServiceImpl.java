@@ -28,9 +28,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	
 	public int myGoodDelete(MyGoodVO vo) {
 		
-		System.out.println("service에 들어온 vo :" + vo.toString());
 		int result = freeBoardMapper.myGoodDelete(vo);
-		System.out.println("맵퍼다녀옴");
 		
 		
 		return result; 
@@ -68,7 +66,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public ArrayList<HashMap<String, Object>> getReviewList(Criteria cri) {
 		
 		ArrayList<HashMap<String, Object>> result =  freeBoardMapper.getReviewList(cri);
-		System.out.println(result.toString());
 		return result;
 	}
 
