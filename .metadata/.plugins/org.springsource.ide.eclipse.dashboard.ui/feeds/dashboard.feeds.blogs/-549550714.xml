@@ -5,7 +5,204 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-01-26T21:50:00Z</updated>
+  <updated>2021-01-27T11:00:00Z</updated>
+  <entry>
+    <title>YMNNALFT:  The Spring *Utils Classes</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/01/27/ymnnalft-the-spring-utils-classes" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-12-30:4323</id>
+    <updated>2021-01-27T11:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;You May Not Need Another Library For That&lt;/em&gt; (YMNNALFT)! I&amp;rsquo;ve spent a lot of time since 2016 illuminating (or trying to, anyway!) some of the more enormous opportunities in the Spring ecosystem in &lt;a href="http://bit.ly/spring-tips-playlist"&gt;my Spring Tips videos&lt;/a&gt;. Today, however, I come to you in a different spirit, wanting to focus on the little, sometimes hidden, gems that do fantastic things and that might spare you an additional third-party dependency and its implied complexity. &lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve all been there. There&amp;rsquo;s some everyday string-manipulation routine you want, so you extract it out into a separate abstract class and expose it as a &lt;code&gt;static&lt;/code&gt; method. Then, there&amp;rsquo;s some factory method for building a &lt;code&gt;java.util.Collection&amp;lt;T&amp;gt;&lt;/code&gt;, so you extract it out into a separate class and expose it as a &lt;code&gt;static&lt;/code&gt; method. And eventually, you&amp;rsquo;ve got a whole collection of these things scoured about your codebase, and there&amp;rsquo;s little to no cohesion across them. After all, there&amp;rsquo;s just not that much to it, right? These are, essentially, only global functions, not really methods on stateful objects, &lt;em&gt;per se&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not to say that building your own static methods is inherently wrong, as long as you approach them with some conventions. We typically use abstract classes with static methods, for example.&lt;/p&gt;
+&lt;p&gt;It all starts off so innocuously. Of course, it does. You know the cycle. First, a few methods in a solitary class stuck in a jar in a company-wide artifact repository. Then there are classes, plural. Now &lt;em&gt;packages&lt;/em&gt; have entered the picture. Packages are trouble! You&amp;rsquo;ll start to realize that some thought had better go into an organization, or things will quickly get out of hand. You start accepting pull requests. At some point, there are breaking changes, and developers with pitchforks line up outside your door. You wonder why everyone keeps eating slashing your tires at work. It&amp;rsquo;s too much! So you get the company to open-source your nascent module. It&amp;rsquo;s the &lt;em&gt;world&lt;/em&gt;&amp;rsquo;s problem now! Like Tamagotchis and reality TV, there can be no end. And that wide world? Well, that wide world &lt;em&gt;loves&lt;/em&gt; breaking changes in point-releases, and they will &lt;em&gt;love you&lt;/em&gt; for them! &lt;/p&gt;
+&lt;p&gt;Maybe.&lt;/p&gt;
+&lt;p&gt;There is another way. &lt;/p&gt;
+&lt;p&gt;There are many third-party utility libraries of varying quality out there: GS Collections, Apache Commons, Guava, etc. There is no shortage of options here. Did you know Spring offers several utility classes in the frameworks themselves, potentially sparing you a dependency? I&amp;rsquo;m not saying that they&amp;rsquo;ll do everything you might get from the distinguished competition, but you might be surprised! This example will look at a handful of these utility classes, but there are many others on the classpath. You can typically find them by going into your IDE and searching for &lt;code&gt;*Utils&lt;/code&gt; in your class search or &lt;code&gt;*Utils.java&lt;/code&gt; in your file search. Let&amp;rsquo;s take a look at some of them.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Many of these are included by default in every Spring Boot project through the following transitive (or default) dependency on &lt;a href="http://start.spring.io"&gt;the Spring Initializr&lt;/a&gt; - &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package bootiful.utils;&#xD;
+&#xD;
+import lombok.AllArgsConstructor;&#xD;
+import lombok.Data;&#xD;
+import lombok.extern.log4j.Log4j2;&#xD;
+import org.springframework.aop.support.AopUtils;&#xD;
+import org.springframework.beans.BeanUtils;&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.context.event.ApplicationReadyEvent;&#xD;
+import org.springframework.context.ApplicationListener;&#xD;
+import org.springframework.context.annotation.Bean;&#xD;
+import org.springframework.core.ResolvableType;&#xD;
+import org.springframework.core.io.ClassPathResource;&#xD;
+import org.springframework.core.io.Resource;&#xD;
+import org.springframework.jmx.support.JmxUtils;&#xD;
+import org.springframework.stereotype.Component;&#xD;
+import org.springframework.util.*;&#xD;
+&#xD;
+import javax.annotation.PostConstruct;&#xD;
+import java.beans.PropertyDescriptor;&#xD;
+import java.io.InputStreamReader;&#xD;
+import java.io.Reader;&#xD;
+import java.io.Serializable;&#xD;
+import java.lang.reflect.Constructor;&#xD;
+import java.lang.reflect.Field;&#xD;
+import java.util.*;&#xD;
+&#xD;
+@Log4j2&#xD;
+@SpringBootApplication&#xD;
+public class BootifulApplication {&#xD;
+&#xD;
+	@Data&#xD;
+	@AllArgsConstructor&#xD;
+	@Component&#xD;
+	public static class DemoClass {&#xD;
+&#xD;
+		@PostConstruct&#xD;
+		public void begin() {&#xD;
+			log.info(&amp;quot;begin()&amp;quot;);&#xD;
+		}&#xD;
+&#xD;
+		private final List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();&#xD;
+&#xD;
+	}&#xD;
+&#xD;
+	@Bean&#xD;
+	ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt; ready(DemoClass demo) {&#xD;
+		return event -&amp;gt; {&#xD;
+&#xD;
+			Assert.notNull(demo.getList(), &amp;quot;the list can&amp;#39;t be null&amp;quot;);&#xD;
+&#xD;
+			beansUtils(demo);&#xD;
+			classUtils();&#xD;
+			systemPropertyUtils();&#xD;
+			fileCopyUtils();&#xD;
+			aop(demo);&#xD;
+			reflection();&#xD;
+			ensure();&#xD;
+			collections();&#xD;
+			serialize();&#xD;
+&#xD;
+		};&#xD;
+	}&#xD;
+&#xD;
+	private void ensure() {&#xD;
+		int counter = 2;&#xD;
+		Assert.state(counter == 2, () -&amp;gt; &amp;quot;the counter should be 2 or more. Was &amp;quot; + counter);&#xD;
+		Assert.hasText(&amp;quot;Hello, world!&amp;quot;, () -&amp;gt; &amp;quot;this string should be a non-null, non-empty String&amp;quot;);&#xD;
+	}&#xD;
+&#xD;
+	private void reflection() {&#xD;
+&#xD;
+		ReflectionUtils.doWithFields(DemoClass.class, field -&amp;gt; log.info(&amp;quot;field = &amp;quot; + field.toString()));&#xD;
+		ReflectionUtils.doWithMethods(DemoClass.class, method -&amp;gt; log.info(&amp;quot;method = &amp;quot; + method.toString()));&#xD;
+&#xD;
+		Field list = ReflectionUtils.findField(DemoClass.class, &amp;quot;list&amp;quot;);&#xD;
+		log.info(Objects.requireNonNull(list).toString());&#xD;
+&#xD;
+		ResolvableType rt = ResolvableType.forField(list);&#xD;
+		log.info(rt.toString());&#xD;
+	}&#xD;
+&#xD;
+	private void aop(DemoClass demoClass) {&#xD;
+		Class&amp;lt;?&amp;gt; targetClass = AopUtils.getTargetClass(demoClass);&#xD;
+		log.info(&amp;quot;Class&amp;lt;?&amp;gt; is &amp;quot; + targetClass);&#xD;
+		log.info(&amp;quot;is AOP proxy? &amp;quot; + AopUtils.isAopProxy(demoClass));&#xD;
+		log.info(&amp;quot;is CGlib proxy? &amp;quot; + AopUtils.isCglibProxy(demoClass));&#xD;
+	}&#xD;
+&#xD;
+	private void collections() {&#xD;
+		Collection&amp;lt;String&amp;gt; names = Arrays.asList(&amp;quot;Tammie&amp;quot;, &amp;quot;Kimly&amp;quot;, &amp;quot;Josh&amp;quot;);&#xD;
+		boolean contains = CollectionUtils.containsAny(names, Arrays.asList(&amp;quot;Josh&amp;quot;));&#xD;
+		Assert.state(contains, () -&amp;gt; &amp;quot;one or more of the names in &amp;quot; + names.toString() + &amp;quot; should be present&amp;quot;);&#xD;
+	}&#xD;
+&#xD;
+	private void serialize() {&#xD;
+		Customer in = new Customer(593232329, &amp;quot;Josh&amp;quot;);&#xD;
+		byte[] bytes = SerializationUtils.serialize(in);&#xD;
+		Customer out = (Customer) SerializationUtils.deserialize(bytes);&#xD;
+		Assert.state(out.getId() == in.getId() &amp;amp;&amp;amp; out.getName().equals(in.getName()),&#xD;
+				() -&amp;gt; &amp;quot;the &amp;quot; + Customer.class.getName() + &amp;quot; did not serialize correctlyy&amp;quot;);&#xD;
+	}&#xD;
+&#xD;
+	private void fileCopyUtils() {&#xD;
+		Resource cpr = new ClassPathResource(&amp;quot;/application.properties&amp;quot;);&#xD;
+		try (Reader r = new InputStreamReader(cpr.getInputStream())) {&#xD;
+			String contents = FileCopyUtils.copyToString(r);&#xD;
+			log.info(&amp;quot;application.properties contents: &amp;quot; + contents);&#xD;
+		}&#xD;
+		catch (Exception e) {&#xD;
+			throw new RuntimeException(e);&#xD;
+		}&#xD;
+	}&#xD;
+&#xD;
+	private void systemPropertyUtils() {&#xD;
+		String resolvedText = SystemPropertyUtils.resolvePlaceholders(&amp;quot;my home directory is ${user.home}&amp;quot;);&#xD;
+		log.info(&amp;quot;resolved text: &amp;quot; + resolvedText);&#xD;
+	}&#xD;
+&#xD;
+	private void classUtils() {&#xD;
+		Constructor&amp;lt;DemoClass&amp;gt; demoClassConstructor = ClassUtils.getConstructorIfAvailable(DemoClass.class);&#xD;
+		log.info(&amp;quot;demoClassConstructor: &amp;quot; + demoClassConstructor);&#xD;
+		try {&#xD;
+			DemoClass demoClass = demoClassConstructor.newInstance();&#xD;
+			log.info(&amp;quot;newInstance&amp;#39;d demoClass: &amp;quot; + demoClass);&#xD;
+		}&#xD;
+		catch (Exception e) {&#xD;
+			throw new RuntimeException(e);&#xD;
+		}&#xD;
+	}&#xD;
+&#xD;
+	private void beansUtils(DemoClass demo) {&#xD;
+		PropertyDescriptor[] descriptors = BeanUtils.getPropertyDescriptors(demo.getClass());&#xD;
+		for (PropertyDescriptor pd : descriptors) {&#xD;
+			log.info(&amp;quot;pd: &amp;quot; + pd.getName());&#xD;
+		}&#xD;
+	}&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		SpringApplication.run(BootifulApplication.class, args);&#xD;
+	}&#xD;
+&#xD;
+}&#xD;
+&#xD;
+@Data&#xD;
+class Customer implements Serializable {&#xD;
+&#xD;
+	static final long serialVersionUID = 1L;&#xD;
+&#xD;
+	private int id;&#xD;
+&#xD;
+	private String name;&#xD;
+&#xD;
+	public Customer(int id, String name) {&#xD;
+		this.id = id;&#xD;
+		this.name = name;&#xD;
+	}&#xD;
+&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This example introduces a &lt;em&gt;sm?rg?sbord&lt;/em&gt; of various &lt;code&gt;Utils&lt;/code&gt; class implementations in the Spring ecosystem. It looks at &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;BeanUtils&lt;/code&gt; - useful functions for dealing with JavaBeans&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;ClassUtils&lt;/code&gt; - useful functions for asking questions reflectively about types&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;SystemPropertyUtils&lt;/code&gt; - useful functions for dealing with &lt;code&gt;System&lt;/code&gt; properties&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;FileCopyUtils&lt;/code&gt; - useful functions for copying &lt;code&gt;InputStream&lt;/code&gt; and &lt;code&gt;OutputStream&lt;/code&gt; implementations&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;AopUtils&lt;/code&gt; - useful functions for dealing with Spring&amp;rsquo;s AOP proxies&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;ReflectionUtils&lt;/code&gt; - useful functions for dealing with reflection, broadly&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Assert&lt;/code&gt; - useful functions to help with design-by-contract-style assertions&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;CollectionUtils&lt;/code&gt; - useful functions for working various Java &lt;code&gt;java.util.Collection&lt;/code&gt; types&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;SerializeUtils&lt;/code&gt; - useful functions for working with Java serialization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There&amp;rsquo;s a &lt;em&gt;ton&lt;/em&gt; of exciting stuff, and this dense example doesn&amp;rsquo;t even begin to scratch the surface! &lt;/p&gt;
+&lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - January 26th, 2021</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/26/this-week-in-spring-january-26th-2021" />
@@ -111,7 +308,8 @@
   &lt;li&gt;More detailed list can be found from &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.7.1"&gt;GitHub 2.7.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There is also releases for &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.6.5"&gt;GitHub 2.6.5&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.5.4.RELEASE"&gt;GitHub 2.5.4&lt;/a&gt; with updated &lt;em&gt;Spring Cloud Task&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve switched &lt;a href="https://dataflow.spring.io/docs/applications/"&gt;Pre-packaged Applications&lt;/a&gt; in our import links to point to &lt;em&gt;3.x&lt;/em&gt; versions.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
 &lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stack Overflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
@@ -1059,30 +1257,6 @@ class MyContext {&#xD;
 &lt;p&gt;In the &lt;code&gt;ApplicationListener&amp;lt;ApplicationReadyEvent&amp;gt;&lt;/code&gt; I manually instantiate an instance of &lt;code&gt;SpelExpressionParser&lt;/code&gt;, against which I can evaluate SpEL expressions. I show how to configure a custom context (an object against which the expression may invoke methods and dereference properties) and use the expression language to call a method on a &lt;code&gt;String&lt;/code&gt; literal. &lt;/p&gt;
 &lt;p&gt;I also configure two beans, &lt;code&gt;Foo&lt;/code&gt; and &lt;code&gt;Bar&lt;/code&gt;. &lt;code&gt;Bar&lt;/code&gt; depends on a property in &lt;code&gt;Foo&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, which dereferences that property using SpEL and then references other beans in the Spring application context.&lt;/p&gt;
 &lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - January 12th, 2021</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/12/this-week-in-spring-january-12th-2021" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2021-01-13:4331</id>
-    <updated>2021-01-13T05:13:00Z</updated>
-    <content type="html">&lt;p&gt;I almost wrote in 2020! There&amp;rsquo;s been so much going on I almost forgot to take stock of the &lt;em&gt;year&lt;/em&gt;. What a rush. We better get to the roundup before I somehow lose even more track of time. So, without further ado, this week&amp;rsquo;s roundup.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/11/spring-framework-5-3-3-available-now"&gt;Spring Framework 5.3.3 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I posted another installment of &lt;em&gt;You May Not Need a Library For That&lt;/em&gt;, this one looking at &lt;a href="https://spring.io/blog/2021/01/11/ymnnalft-http-clients"&gt;the fabulous &lt;code&gt;WebClient&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/07/spring-data-s-migration-from-jira-to-github-issues"&gt;Spring Data&amp;rsquo;s Migration from Jira to GitHub Issues &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;In last week&amp;rsquo;s installment of a &lt;a href="https://spring.io/blog/2021/01/07/a-bootiful-podcast-netty-and-armeria-founder-trustin-lee"&gt;Bootiful Podcast, I talked to Netty founder Trustin Lee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;In last week&amp;rsquo;s installment of &lt;em&gt;You May Not Need a Library For That&lt;/em&gt;, I looked at &lt;a href="https://spring.io/blog/2021/01/06/ymnnalft-reactive-dataflow-with-project-reactor"&gt;reactive dataflow with project Reactor&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/shelajev/status/1347165207068610561?s=12"&gt;A useful sheet full of information about GraalVM&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/odrotbohm/spring-playground"&gt;Oliver Drotbohm&amp;rsquo;s collection of tiny helpers for building Spring applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This is very cool: Ruchi Saini wrote a pretty long introduction on how to build &lt;a href="https://dzone.com/articles/how-to-create-microservices-using-spring"&gt;microservices with Spring (Cloud)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Ram N. has published an interesting article looking at &lt;a href="https://dzone.com/articles/spring-boot-crud-operations-example-with-exception"&gt;Spring Boot CRUD operations with exception handling&lt;/a&gt;: nice!&lt;/li&gt;
-  &lt;li&gt;Ram N. also posted a video looking &lt;a href="https://dzone.com/articles/what-is-byname-auto-wiring-mode-in-spring"&gt;at Spring&amp;rsquo;s &lt;code&gt;byName&lt;/code&gt; auto-wiring mode&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
