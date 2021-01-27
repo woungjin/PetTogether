@@ -22,5 +22,5 @@ public interface UserService {
 	public UserVO findPw(UserVO vo);
 	public int updatePw(UserVO vo);
 	public ArrayList<HeartVO> heart(String userId);
-	public ArrayList<ReviewRegistVO> myReview(String userId);
+	public ArrayList<ReviewRegistVO> myReview(String userId);	
 }

@@ -1023,6 +1023,15 @@
 			$(this).removeClass('active');
 			autoSlider = setInterval(slideRight, 3000);
 		});
+		
+		 if (self.name != 'reload') {
+				self.name = 'reload';
+				self.location.reload(true);
+			} else {
+				self.name = '';
+
+			} 
+		
 	});//DOCUMENT READY
 	/***********
 	 SLIDE LEFT
@@ -1063,13 +1072,13 @@
 	}
 	// 배너끝
 
-	if (self.name != 'reload') {
+	/* if (self.name != 'reload') {
 		self.name = 'reload';
 		self.location.reload(true);
 	} else {
 		self.name = '';
 
-	}
+	} */
 
 	// 2
 	var slideIndex2 = 1;

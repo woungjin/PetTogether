@@ -83,10 +83,6 @@ public class UserServiceImpl implements UserService{
 	public ArrayList<ReviewRegistVO> myReview(String userId) {
 		
 		return userMapper.myReview(userId);
-	}
-
-
-
-	
+	}	
 
 }
