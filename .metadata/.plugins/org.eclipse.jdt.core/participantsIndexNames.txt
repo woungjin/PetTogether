@@ -1,20 +1,5 @@
 INDEX VERSION 1.131
-C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1427095054.index
-\Pettogether\src\main\java
-C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2123453590.index
-\Pettogether\src\main\java
-<<<<<<< HEAD
-D:\java\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1427095054.index
-=======
-C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1308349953.index
-\Pettogether\src\main\java
-C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1113699873.index
->>>>>>> master
-\Pettogether\src\main\java
-C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1075760701.index
-\Pettogether\src\main\java
-<<<<<<< HEAD
-=======
 C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1353589166.index
 \Pettogether\src\main\java
->>>>>>> master
+C:\course\project\PetTogether\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1308349953.index
+\Pettogether\src\main\java

@@ -104,40 +104,6 @@
 	  
 	  
   
-  <select id="findId" resultType="UserVO">
-        select * from USERS where phone1 = #{phone1} and phone2 = #{phone2} and quiz = #{quiz} and answer = #{answer}
-    </select>
-
-    <select id="findPw" resultType="UserVO">
-        select id from USERS where id = #{id} and quiz = #{quiz} and answer = #{answer}
-    </select>
-
-      <update id = "updatePw">
-          update USERS set
-          pw = #{pw}
-          where id = #{id}
-      </update>
-
-       <select id="heart" resultType="HeartVO">
-          select m.bno,
-               m.user_id,
-               category,
-               title,
-               s.review_avg,
-               pettag,
-               address
-        from MYGOOD m left outer join STARBOARD s
-        on m.bno = s.bno
-        where m.user_id = #{user_Id}
-        order by m.bno asc
-      </select> 
-
-      <select id="myReview" resultType="ReviewRegistVO">
-          select *
-        from REVIEWBOARD 
-        where writer = #{id}
-        order by bno asc
-      </select>
 
   
   </mapper>
