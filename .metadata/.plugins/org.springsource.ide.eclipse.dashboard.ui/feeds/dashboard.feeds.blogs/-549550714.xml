@@ -5,9 +5,6 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-<<<<<<< HEAD
-  <updated>2021-01-26T21:50:00Z</updated>
-=======
   <updated>2021-01-27T11:00:00Z</updated>
   <entry>
     <title>YMNNALFT:  The Spring *Utils Classes</title>
@@ -206,7 +203,6 @@ class Customer implements Serializable {&#xD;
 &lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
->>>>>>> master
   <entry>
     <title>This Week in Spring - January 26th, 2021</title>
     <link rel="alternate" href="https://spring.io/blog/2021/01/26/this-week-in-spring-january-26th-2021" />
@@ -312,7 +308,8 @@ class Customer implements Serializable {&#xD;
   &lt;li&gt;More detailed list can be found from &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.7.1"&gt;GitHub 2.7.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There is also releases for &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.6.5"&gt;GitHub 2.6.5&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.5.4.RELEASE"&gt;GitHub 2.5.4&lt;/a&gt; with updated &lt;em&gt;Spring Cloud Task&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve switched &lt;a href="https://dataflow.spring.io/docs/applications/"&gt;Pre-packaged Applications&lt;/a&gt; in our import links to point to &lt;em&gt;3.x&lt;/em&gt; versions.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
 &lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stack Overflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
@@ -1262,31 +1259,4 @@ class MyContext {&#xD;
 &lt;p&gt;Did you like this gem at a glance approach? Did you learn anything? As always, I&amp;rsquo;m keen on hearing from you, so &lt;a href="http://twitter.com/starbuxman"&gt;please sound off on Twitter (@starbuxman) &lt;/a&gt;! I&amp;rsquo;ll be back with another installment of &lt;em&gt;YMNNALFT&lt;/em&gt;, so be sure not to miss that. &lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
-<<<<<<< HEAD
-  <entry>
-    <title>This Week in Spring - January 12th, 2021</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/01/12/this-week-in-spring-january-12th-2021" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2021-01-13:4331</id>
-    <updated>2021-01-13T05:13:00Z</updated>
-    <content type="html">&lt;p&gt;I almost wrote in 2020! There&amp;rsquo;s been so much going on I almost forgot to take stock of the &lt;em&gt;year&lt;/em&gt;. What a rush. We better get to the roundup before I somehow lose even more track of time. So, without further ado, this week&amp;rsquo;s roundup.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/11/spring-framework-5-3-3-available-now"&gt;Spring Framework 5.3.3 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I posted another installment of &lt;em&gt;You May Not Need a Library For That&lt;/em&gt;, this one looking at &lt;a href="https://spring.io/blog/2021/01/11/ymnnalft-http-clients"&gt;the fabulous &lt;code&gt;WebClient&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2021/01/07/spring-data-s-migration-from-jira-to-github-issues"&gt;Spring Data&amp;rsquo;s Migration from Jira to GitHub Issues &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;In last week&amp;rsquo;s installment of a &lt;a href="https://spring.io/blog/2021/01/07/a-bootiful-podcast-netty-and-armeria-founder-trustin-lee"&gt;Bootiful Podcast, I talked to Netty founder Trustin Lee&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;In last week&amp;rsquo;s installment of &lt;em&gt;You May Not Need a Library For That&lt;/em&gt;, I looked at &lt;a href="https://spring.io/blog/2021/01/06/ymnnalft-reactive-dataflow-with-project-reactor"&gt;reactive dataflow with project Reactor&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/shelajev/status/1347165207068610561?s=12"&gt;A useful sheet full of information about GraalVM&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/odrotbohm/spring-playground"&gt;Oliver Drotbohm&amp;rsquo;s collection of tiny helpers for building Spring applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This is very cool: Ruchi Saini wrote a pretty long introduction on how to build &lt;a href="https://dzone.com/articles/how-to-create-microservices-using-spring"&gt;microservices with Spring (Cloud)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Ram N. has published an interesting article looking at &lt;a href="https://dzone.com/articles/spring-boot-crud-operations-example-with-exception"&gt;Spring Boot CRUD operations with exception handling&lt;/a&gt;: nice!&lt;/li&gt;
-  &lt;li&gt;Ram N. also posted a video looking &lt;a href="https://dzone.com/articles/what-is-byname-auto-wiring-mode-in-spring"&gt;at Spring&amp;rsquo;s &lt;code&gt;byName&lt;/code&gt; auto-wiring mode&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-=======
->>>>>>> master
 </feed>
