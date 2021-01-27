@@ -140,7 +140,7 @@ public class StarBoardController {
 		}
 		}
 //		5개 이상이라면 삭제
-		if(ck.length >= 8 && !checkCookie ) {
+		if(ck.length >= 5 && !checkCookie ) {
 			Cookie kc = new Cookie(ck[5].getValue(),null);
 			kc.setMaxAge(0);
 			kc.setPath("/");
@@ -160,6 +160,7 @@ public class StarBoardController {
 		if(result == 1) {
 		}else {
 		}
+		
 		StarBoardVO vo = starBoardService.getBoardDetail(bno);
 		
 		model.addAttribute("vo" , vo);
