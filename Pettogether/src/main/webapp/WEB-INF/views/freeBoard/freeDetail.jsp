@@ -172,7 +172,6 @@
     				data : JSON.stringify({"rno" : rno , "pw": pw}),
     				contentType : "application/json; charset=utf-8",
     				success : function(data) {
-    					console.log(data);
     					if(data == 1){
     						alert("삭제성공!");
     						getStarReply(1, true);
@@ -219,7 +218,6 @@
     				data : JSON.stringify({"rno" : rno , "pw": pw, "content" : content}),
     				contentType : "application/json; charset=utf-8",
     				success : function(data) {
-    					console.log(data);
     					if(data == 1){
     						alert("업데이트성공");
     						getStarReply(1, true);
@@ -240,7 +238,7 @@
     				}
   	      		})
   	      		
-  	      		console.log(rno)
+  	      	
   	      		
   	      		
   	      		
@@ -250,14 +248,13 @@
         	function resetStar(){
         		
         		var bno =${vo.bno};
-        		console.log("이것은 이것은 " + bno);
+        		
         		var starAdd= '';
         		
         		$.getJSON(
         				"../starBoard/getStarReset/" + bno,
         				function(data) {
         					
-        					console.log(data);
         					for(var i =1; i<= 5 ; i++){
         						
         						if(data.review_avg >= i){
@@ -305,7 +302,6 @@
     			$.getJSON(
     				"../starBoard/getStarReply/" + bno + "/" + starPage ,
     				function(datalist) {
-    					console.log(datalist);
     					var list = datalist.list;
     					var total = datalist.total;
     				
@@ -350,7 +346,6 @@
         		var reply = $("#reply").val();
         		var replyId = "${sessionScope.userVO.id}";
         		
-        		console.log(reply, replyId);
         		
         		if(reply == ''){
         			alert("공백을 주의 해주세요");	
@@ -367,7 +362,6 @@
         			data : JSON.stringify({"bno" : bno , "writer" : replyId  , "content" : reply}),
         			contentType : "application/json; charset=utf-8",
         			success : function(data ){
-        				console.log(data);
         				alert("댓글등록완료");
         				getStarReply(1 , true);
         				$("#reply").val("");
@@ -388,7 +382,6 @@
         	
         	// 별점 등록 ======================================================
         	var starInsert = document.getElementById("starInsert");
-        	console.log(starInsert);
         	starInsert.onclick = function() {
         		
         		var point = 0 ;
@@ -473,7 +466,6 @@
 				// 1. 수정버튼인지 삭제버튼인지 확인 
 				// 현쟈 클릭한 a태그에 href안에 있는 rno번 호출 -> 모달창의 hidden태그로 옮겨보세요.
 				// 제이쿼리 hasClass() 함구를 이용해서 처리...
-					console.log($(this));
 					var rno = $(this).attr("href");
 					$("#modalRno").val(rno);
 				if($(this).hasClass("replyModify")) {

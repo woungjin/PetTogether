@@ -99,7 +99,7 @@
 					$("#file").val(""); // 파일데이터 초기화
 					$("#content").val(""); // content초기화
 					$(".fileDiv").css("display" , "none"); //미리보기 숨기기
-					alert(result);
+					alert("등록을 완료하였습니다");
 					
 					location.href="freeReview";
 					

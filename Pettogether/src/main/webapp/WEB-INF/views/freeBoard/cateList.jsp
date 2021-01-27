@@ -175,7 +175,6 @@
             	if(event.target.tagName !== 'A') return;
             	
             	var pageNum = event.target.dataset.page;
-            	console.log(pageNum);
             	
             	document.listForm.pageNum.value = pageNum;
             	

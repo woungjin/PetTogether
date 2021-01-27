@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.pet.command.MyReviewVO"/>
-<fullyQualifiedTypeName name="com.pet.command.ReviewReplyVO"/>
-<fullyQualifiedTypeName name="com.pet.command.ReviewRegistVO"/>
+    <fullyQualifiedTypeName name="com.pet.command.MyReviewVO"/>
+    <fullyQualifiedTypeName name="com.pet.command.ReviewReplyVO"/>
+    <fullyQualifiedTypeName name="com.pet.command.ReviewRegistVO"/>
 </qualifiedTypeNameHistroy>

@@ -57,15 +57,12 @@ public class FreeBoardController {
 		
 		PageVO pageVO = new PageVO(cri, total);
 		
-		System.out.println(cri.toString());
-		System.out.println(pageVO.toString());
 		
-		System.out.println(list.toString() + "asdasdasdas");
 		
 		// oracle은 CONTENT
 		for(int i=0 ;  i< list.size(); i++) {
 			
-			String content = (String) list.get(i).get("CONTENT");
+			String content = (String) list.get(i).get("content");
 			String content2 = content.substring(0,3);
 			
 			list.get(i).put("content", content2  + "...");
@@ -81,7 +78,6 @@ public class FreeBoardController {
 	
 	@RequestMapping("/freeReviewRegist")
 	public String freeReviewRegist(@RequestParam("bno") int bno , Model model) {
-		System.out.println(bno);
 		model.addAttribute("bno" , bno);
 		return "freeBoard/freeReviewRegist";
 	}
@@ -124,9 +120,7 @@ public class FreeBoardController {
 			
 		
 		
-		System.out.println(vo.toString());
 		int result = freeBoardService.starInsert(vo);
-		System.out.println(result);
 		// 별점에 따른 스타보드를 업데이트 해줍니다
 		ArrayList<StarVO> list = freeBoardService.getStar(vo.getBno());
 		int sum = 0;
@@ -136,7 +130,6 @@ public class FreeBoardController {
 		}
 		
 		avg =(int) sum / list.size();
-		System.out.println("sum : " + sum  + "avg : "  + avg);
 		
 		freeBoardService.UpdateStarBoard(vo.getBno(), list.size(), avg);
 		return result; 
@@ -178,7 +171,6 @@ public class FreeBoardController {
 								@RequestParam("writer")String writer,
 								@RequestParam("bno") int bno,
 								HttpSession session) {
-		System.out.println("들어왔습니다");
 		
 		try {
 			/*
@@ -187,20 +179,17 @@ public class FreeBoardController {
 			 String wrtier = userVO.getUserId();
 			  */
 			
-			System.out.println(writer + bno);
 			// 1. 날짜별로 폴더관리 
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			String fileLoca = sdf.format(date);
-			System.out.println(fileLoca);
 			
 			// 2. 저장할폴더
 
-			String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
-//			String uploadPath = "/var/upload/" + fileLoca;
+			
+			//String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+		String uploadPath = "/var/upload/" + fileLoca;
 
-
-			System.out.println(1);
 			File folder = new File(uploadPath);
 			if(!folder.exists()) {
 				folder.mkdir();
@@ -209,27 +198,16 @@ public class FreeBoardController {
 			String fileRealName = file.getOriginalFilename();
 			long size = file.getSize();
 			String fileExtension = fileRealName.substring(fileRealName.lastIndexOf(".") , fileRealName.length());
-			System.out.println(2);
 			UUID uuid = UUID.randomUUID();
 			String uuids = uuid.toString().replaceAll("-", "");
 			String fileName = uuids + fileExtension;
-			System.out.println(3);
 			
-			System.out.println("=================");
-			System.out.println("저장할 path : " + uploadPath);
-			System.out.println("파일실제이름 : " + fileRealName);
-			System.out.println("파일 사이즈 " + size);
-			System.out.println("확장자 : " + fileExtension);
-			System.out.println("변경해서 저장할 파일명" + fileName);
-			System.out.println(4);
 			// 4. 파일 업로드처리 
 			File saveFile = new File(uploadPath + "\\" + fileName);
 			file.transferTo(saveFile);
-			System.out.println(5);
 			// 5. DB에 insert작업
 			ReviewRegistVO vo = new ReviewRegistVO( 0, bno, writer, content, uploadPath, fileLoca, fileName, fileRealName, null);
 			boolean result = freeBoardService.fileInsert(vo);
-			System.out.println(6);
 			if(result) {
 				return "success";
 				
@@ -254,9 +232,10 @@ public class FreeBoardController {
 										@PathVariable("fileName") String fileName){
 		
 
-		String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
-//		String uploadPath = "/var/upload/" + fileLoca;
-		System.out.println("들어오는거여ㅑ ??");
+		//String uploadPath = "D:\\java\\project\\PetTogether\\Pettogether\\src\\main\\webapp\\resources\\img\\fileupload\\" + fileLoca;
+		String uploadPath = "/var/upload/" + fileLoca;
+
+
 
 		
 		File file = new File(uploadPath + "\\" + fileName);
@@ -286,10 +265,8 @@ public class FreeBoardController {
 	@ResponseBody
 	@PostMapping("/getReviewDetail")
 	public ReviewRegistVO getReviewDetail(@RequestBody ReviewRegistVO vo , Model model) {
-		System.out.println(vo.toString());
 		ReviewRegistVO reviewVO = freeBoardService.getReviewDetail(vo);
 	
-		System.out.println("vovovovovovo" + vo.toString());
 		model.addAttribute("reviewReplyVO" , reviewVO);
 		return reviewVO;
 	}
@@ -299,9 +276,7 @@ public class FreeBoardController {
 	@ResponseBody
 	@PostMapping("/reviewReplyRegist")
 	public int reviewReplyRegist(@RequestBody ReviewReplyVO vo) {
-		System.out.println("리뷰 댓들 " + vo.toString());
 		String pw = freeBoardService.getUserPw(vo);
-		System.out.println("pw : " + pw);
 		vo.setReview_reply_pw(pw);
 		return freeBoardService.reviewRplyInsert(vo);
 	}
@@ -312,8 +287,6 @@ public class FreeBoardController {
 	public  HashMap<String, Object> getReviewReply(@PathVariable("bno") int review_bno,
 													@PathVariable("reviewPageNum") int reviewPageNum) {
 		
-		System.out.println(reviewPageNum);
-		System.out.println("bno" + review_bno);
 		Criteria cri = new Criteria(reviewPageNum , 8);
 		ArrayList<ReviewReplyVO> list =  freeBoardService.getReviewReply(review_bno ,cri);
 		int total = freeBoardService.replyTotal(review_bno);
@@ -331,7 +304,6 @@ public class FreeBoardController {
 	public int reviewReplyUpdate(@RequestBody ReviewReplyVO vo) {
 		
 		int pwCheckResult = freeBoardService.pwCheck(vo);
-		System.out.println(pwCheckResult);
 		
 		if(pwCheckResult == 1) {
 			int updateResult = freeBoardService.reviewReplyUpdate(vo);
@@ -350,7 +322,6 @@ public class FreeBoardController {
 	@PostMapping("/reviewReplyDelete")
 	public int reviewReplyDelete(@RequestBody ReviewReplyVO vo) {
 		
-		System.out.println(vo.toString());
 		int pwCheckResult = freeBoardService.pwCheck(vo);
 		
 		if(pwCheckResult == 1) {
