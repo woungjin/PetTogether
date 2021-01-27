@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: a5740
+=======
+Built-By: jin
+>>>>>>> 85cdd832c7f9c1f98b113c30c48ea7958c1ef929
 Build-Jdk: 15.0.1
 Created-By: Maven Integration for Eclipse
 
