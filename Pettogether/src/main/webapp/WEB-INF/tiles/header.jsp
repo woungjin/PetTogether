@@ -19,8 +19,8 @@
               </c:when>
               <c:otherwise>
               <a href="${pageContext.request.contextPath }/user/userMypage">MYPAGE</a> 
-	          <span>|</span>
-	          <a href="${pageContext.request.contextPath }/user/userLogout">LOGOUT</a>
+	          <span>|</span>	          
+	          <a href="${pageContext.request.contextPath }/user/userLogout" >LOGOUT</a>	                   
               </c:otherwise>
               </c:choose>
               
@@ -69,7 +69,7 @@
 </a>
 
 
-  <script>
+<script>
       $( document ).ready( function() {
         var jbOffset = $('#midBar').offset();
         $( window ).scroll( function() {
@@ -100,6 +100,10 @@
           if(scrollBottom > 100){$("#nowfooter").fadeIn();}
           else{$("#nowfooter").fadeOut();}
       });
-      });
+      });    
+      
+      
+            
 
-  </script>
+
+</script>

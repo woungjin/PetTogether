@@ -6,7 +6,7 @@
   <mapper namespace="com.pet.map.mapper.MapMapper">
   	
   	<select id="categoryCheck" resultType="StarBoardVO">
-  		select * from starboard where category = #{category} order by review_avg, hit asc
+  		select * from STARBOARD where category = #{category} order by review_avg, hit asc
   	</select>
  
   

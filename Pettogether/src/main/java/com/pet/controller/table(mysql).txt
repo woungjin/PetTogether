@@ -71,7 +71,7 @@ create table STARPOINT(
 
 # 유저테이블
 
-create table users(
+create table USERS(
     id varchar(50) not null,
     pw varchar(50) not null,
     name varchar(50) not null,

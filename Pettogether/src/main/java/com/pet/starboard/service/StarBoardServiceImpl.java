@@ -78,7 +78,6 @@ public class StarBoardServiceImpl implements StarBoardService{
 
 	@Override
 	public int cateToal(String cate) {
-		System.out.println("cate :값 " + cate);
 		return starBoardMapper.cateToal(cate);
 	}
 
@@ -91,10 +90,8 @@ public class StarBoardServiceImpl implements StarBoardService{
 
 	@Override
 	public int starReplyTotal(int bno) {
-		System.out.println(bno+"111111" );
 
 		int result = starBoardMapper.starReplyTotal(bno);
-		System.out.println("1111"+"돌아옴?");
 		return result;
 	}
 

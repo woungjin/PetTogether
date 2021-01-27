@@ -308,7 +308,8 @@ class Customer implements Serializable {&#xD;
   &lt;li&gt;More detailed list can be found from &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.7.1"&gt;GitHub 2.7.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There is also releases for &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.6.5"&gt;GitHub 2.6.5&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.5.4.RELEASE"&gt;GitHub 2.5.4&lt;/a&gt; with updated &lt;em&gt;Spring Cloud Task&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;These releases fixes &lt;a href="https://tanzu.vmware.com/security/cve-2020-5427"&gt;CVE-2020-5427&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve switched &lt;a href="https://dataflow.spring.io/docs/applications/"&gt;Pre-packaged Applications&lt;/a&gt; in our import links to point to &lt;em&gt;3.x&lt;/em&gt; versions.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
 &lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stack Overflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>

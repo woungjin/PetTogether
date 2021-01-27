@@ -1,4 +1,4 @@
-!SESSION 2021-01-27 00:39:59.047 -----------------------------------------------
+!SESSION 2021-01-27 18:26:39.051 -----------------------------------------------
 eclipse.buildId=4.16.0.I20200604-0540
 java.version=1.8.0_271
 java.vendor=Oracle Corporation
@@ -7,6 +7,7 @@ Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
 This is a continuation of log file D:\java\project\PetTogether\.metadata\.bak_0.log
+<<<<<<< HEAD
 Created Time: 2021-01-27 00:40:06.161
 !SESSION 2021-01-27 00:39:59.047 -----------------------------------------------
 eclipse.buildId=4.16.0.I20200604-0540
@@ -6907,3 +6908,26 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-01-27 21:46:06.538
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+=======
+Created Time: 2021-01-28 03:06:07.052
+
+!ENTRY org.springframework.ide.eclipse.beans.core 1 0 2021-01-28 03:06:07.052
+!MESSAGE Error occured processing '/Pettogether/src/main/webapp/WEB-INF/config/root-context.xml'
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 39; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.springframework.ide.eclipse.core.io.xml.XercesDocumentLoader.loadDocument(XercesDocumentLoader.java:48)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:429)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:391)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.loadBeanDefinitions(BeansConfig.java:395)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:454)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+>>>>>>> 64f101887da2bde9a5983f2c22c3da89fae91b4b

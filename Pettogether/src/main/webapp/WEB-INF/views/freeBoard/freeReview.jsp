@@ -123,7 +123,7 @@
 
                                         <div class="reply-input">
                                         <textarea style="margin: 0px; width: 441px;height: 53px; resize: none;" id="replycontent"></textarea>
-                                        <input type="text" class="form-control" id="replyId" placeholder="이름" readonly value="${sessionScope.userVO.id}">
+                                        <input type="text" class="form-control" id="replyId" placeholder="이름" readonly value="${sessionScope.userVO.name}">
                                         </div>
                                         
                                         <button type="button" class="right btn btn-info" id="reviewReplyRegist">등록하기</button>
@@ -242,7 +242,6 @@
     			pageNum = 1; 
     			strAdd = '';
     		}
-    		console.log(bno + "bno");
     		
     		$.getJSON(
     			"getReviewReply/" + bno + "/" + reviewPage,
@@ -306,7 +305,6 @@
     		
     		$("#reviewDetailContent").html(data.content);
     		$("#reviewDetailImg").attr("src" , "display/"+ data.fileLoca + "/" + data.fileName);
-    		console.log(data.fileLoca);
     		getReviewReply(1 , true);
     	},
     	error : function(error) {
@@ -333,9 +331,7 @@
     			if(event.target.tagName !== "A") return; // A태그가 아니라면 종료
     			// a태긔의 pageNnm값을 가져와서 input타입에 value에 넣어서 값을 보내준다 그러고 다시 돌아와서 
     			// 값이 유지가 될 수 있다
-    			console.log(1);
     			var pageNum = event.target.dataset.page; // 클릭한 타겟의 데이터셋 값
-    			console.log(pageNum);
     			document.reviewPageForm.pageNum.value = pageNum;
     			
     			document.reviewPageForm.submit();// 폼 값 서브밋
@@ -347,7 +343,6 @@
     		$("#reviewReplyRegist").click(function() {
     			var review_reply_content = $("#replycontent").val();
     			var review_reply_writer = $("#replyId").val();
-    			console.log(review_reply_content + review_reply_writer);
 				if(review_reply_content == '' ){
 					alert("빈칸에 주의하세요");
 					return;
@@ -425,7 +420,6 @@
 					}
     			})
     			
-    			console.log(review_rno );
     			
     			
     			
@@ -483,10 +477,8 @@
 				// 1. 수정버튼인지 삭제버튼인지 확인 
 				// 현쟈 클릭한 a태그에 href안에 있는 rno번 호출 -> 모달창의 hidden태그로 옮겨보세요.
 				// 제이쿼리 hasClass() 함구를 이용해서 처리...
-					console.log($(this));
 					var rno = $(this).attr("href");
 					$("#modalRno").val(rno);
-					console.log(rno);
 			
 				if($(this).hasClass("replyModify")) {
 					// 수정을 눌렀을 때 수정 창형식으로 변경
