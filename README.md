@@ -3,6 +3,7 @@
 </div>
 
 
+[펫투게더 바로가기](http://pettogether.pw/)
 
 # ＊ PET TOGETER (1/6 ~ 1/28)
 | **TYPE** | **DATE** | **Contents** |
